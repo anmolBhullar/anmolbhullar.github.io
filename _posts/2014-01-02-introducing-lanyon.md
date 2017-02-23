@@ -1,38 +1,18 @@
 ---
 layout: post
-title: Introducing Lanyon
+title: My plans for this website
 ---
 
-Lanyon is an unassuming [Jekyll](http://jekyllrb.com) theme that places content first by tucking away navigation in a hidden drawer. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+Welcome to my website!
 
-### Built on Poole
+Over the past year, I've been reading a fair bit of math textbooks of which I've made plenty of notes from and have written down solutions of problems from some of their chapters. I hope to upload these
+onto this site for more organized web keeping and so that anyone in the world can access them. I hope to update this website at the most biweekly with either LaTeX'd notes or LaTeX'd solutions to %
+problems. I will probably upload notes to some of my courses but they will often be incomplete - especially the ones of courses I have already completed.
 
-Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by [@mdo](https://twitter.com/mdo). Poole, and every theme built on it (like Lanyon here) includes the following:
+I'm still not sure what format I want to be uploading notes/solutions in. Currently, I have set up this website with Github Pages using Jekyll because it was a quick way of just getting my website online. %
+This is a problem because Github Pages are meant to be for static pages only. While I don't plan on doing anything crazy with this website it would be nice later down the road to not have such a limitation.
+Currently, I'm thinking of embedding the PDF notes/solutions using this [solution](http://jamesonzimmer.com/simple-pdf-embed-for-jekyll/) and giving them the option to download if they please.
 
-* Complete Jekyll setup included (layouts, config, [404](/404), [RSS feed](/atom.xml), posts, and [example page](/about))
-* Mobile friendly design and development
-* Easily scalable text and component sizing with `rem` units in the CSS
-* Support for a wide gamut of HTML elements
-* Related posts (time-based, because Jekyll) below each post
-* Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)
-
-### Lanyon features
-
-In addition to the features of Poole, Lanyon adds the following:
-
-* Toggleable sliding sidebar (built with only CSS) via **☰** link in top corner
-* Sidebar includes support for textual modules and a dynamically generated navigation with active link support
-* Two orientations for content and sidebar, default (left sidebar) and [reverse](https://github.com/poole/lanyon#reverse-layout) (right sidebar), available via `<body>` classes
-* [Eight optional color schemes](https://github.com/poole/lanyon#themes), available via `<body>` classes
-
-[Head to the readme](https://github.com/poole/lanyon#readme) to learn more.
-
-### Browser support
-
-Lanyon is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.
-
-### Download
-
-Lanyon is developed on and hosted with GitHub. Head to the <a href="https://github.com/poole/lanyon">GitHub repository</a> for downloads, bug reports, and features requests.
+Head to the <a href="https://github.com/anmolbhullar/anmolbhullar.github.io">Github repository</a> for downloads of the pdf, any typo reports or even feature requests.
 
 Thanks!
