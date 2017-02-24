@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Anmol Bhullar</title>
- <link href="http://localhost:4444/atom.xml" rel="self"/>
- <link href="http://localhost:4444/"/>
- <updated>2017-02-23T14:51:26-05:00</updated>
- <id>http://localhost:4444</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2017-02-24T01:17:55-05:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Anmol Bhullar</name>
    <email>anmol.bhullar@mail.utoronto.ca</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>My plans for this website</title>
-   <link href="http://localhost:4444/2017/02/23/introducing-me/"/>
+   <link href="http://localhost:4000/2017/02/23/introducing-me/"/>
    <updated>2017-02-23T00:00:00-05:00</updated>
-   <id>http://localhost:4444/2017/02/23/introducing-me</id>
+   <id>http://localhost:4000/2017/02/23/introducing-me</id>
    <content type="html">&lt;p&gt;Welcome to my website!&lt;/p&gt;
 
 &lt;p&gt;Over the past year, I’ve been reading a fair bit of math textbooks of which I’ve made plenty of notes from and have written down solutions of problems from some of their chapters. I hope to upload these
@@ -35,23 +35,23 @@ Currently, I’m thinking of embedding the PDF notes/solutions using this &lt;a 
  
  <entry>
    <title>Notes for Introduction to Analysis</title>
-   <link href="http://localhost:4444/2017/02/23/intr-to-analysis/"/>
+   <link href="http://localhost:4000/2017/02/23/intr-to-analysis/"/>
    <updated>2017-02-23T00:00:00-05:00</updated>
-   <id>http://localhost:4444/2017/02/23/intr-to-analysis</id>
+   <id>http://localhost:4000/2017/02/23/intr-to-analysis</id>
    <content type="html">&lt;p&gt;The first order of business is to upload my notes for a course I’m taking called Introduction to Analysis. It covers all of the basic topics a student might need to know before they can tackle on a Real Analysis course. I will also be uploading solutions to the problems in the textbook we are using for this course which is called &lt;em&gt;Real Analysis and Foundations by Steven G. Krantz (4th Ed.)&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The notes are embedded below or can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/notes/matb43.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The notes are embedded below or can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/notes&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;iframe src=&quot;https://drive.google.com/file/d/0B_F-4YnSC7qdUlBGbWZFZDM2bW8/preview&quot; width=&quot;100%&quot; height=&quot;500em&quot;&gt;&lt;/iframe&gt;
 
-&lt;p&gt;The solutions of the textbook problems will start from section 4.3 which is on compactness on the real line. They can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/solutions/krantz/compact.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The solutions of the textbook problems will start from section 4.3 which is on compactness on the real line. They can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/solutions/krantz&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>Example content</title>
-   <link href="http://localhost:4444/2014/01/01/example-content/"/>
+   <link href="http://localhost:4000/2014/01/01/example-content/"/>
    <updated>2014-01-01T00:00:00-05:00</updated>
-   <id>http://localhost:4444/2014/01/01/example-content</id>
+   <id>http://localhost:4000/2014/01/01/example-content</id>
    <content type="html">&lt;div class=&quot;message&quot;&gt;
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
 &lt;/div&gt;
