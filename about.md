@@ -7,24 +7,29 @@ title: About
   Hey there!
 </p>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+## A little bit about me
 
-There are currently two themes built on Poole:
+I am an undergraduate student at the University of Toronto, Scarborough currently studying Mathematics. I read way too many unrelated books %
+on mathematics than I probably should. I play Dota 2. I love poutine. But perhaps, the quality that I am most proud of is my ability to snap %
+my fingers.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+## What is this website about
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+It's meant to showcase what I do! Which granted is not much, but I am trying to use the time that I don't spend on school and instead spend %
+reading irrelevant books (with respect to my courses) more efficiently via organizing my notes on readings in a place that is easy to access %
+and perhaps even share my notes to the world. I will probably also showcase some of my graphic design work from time to time.
+
+Thus, to answer the question, I suppose this website is a mix between a blog, resource center and a portfolio website.
 
 ## Setup
 
 Some fun facts about the setup of this project include:
 
-* Built for [Jekyll](http://jekyllrb.com)
+* Built using [Jekyll](http://jekyllrb.com) and the [Lanyon Template](https://github.com/poole/lanyon) 
 * Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
+* Coded with [Vim](http://vim.org), the ultimate code editor
 * Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
+Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/anmolbhullar/anmolbhullar.github.io/issues)
 
 Thanks for reading!
