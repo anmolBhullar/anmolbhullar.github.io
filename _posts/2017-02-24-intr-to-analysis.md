@@ -10,3 +10,6 @@ The notes are embedded below or can be downloaded [here](https://github.com/anmo
 
 
 The solutions of the textbook problems will start from section 4.3 which is on compactness on the real line. They can be downloaded [here](https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/solutions/krantz).
+
+
+[not finished]
