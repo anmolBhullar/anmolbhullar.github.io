@@ -1,0 +1,395 @@
+%% filename: amstext-doc.tex
+%% version: 0.92
+%% date: 2010/03/10
+%%
+%% American Mathematical Society
+%% Technical Support
+%% Publications Technical Group
+%% 201 Charles Street
+%% Providence, RI 02904
+%% USA
+%% tel: (401) 455-4080
+%%      (800) 321-4267 (USA and Canada only)
+%% fax: (401) 331-3842
+%% email: tech-support@ams.org
+%%
+%% Copyright 2010 American Mathematical Society.
+%%
+%% Unlimited copying and redistribution of this file are permitted as
+%% long as this file is not modified.  Modifications, and distribution
+%% of modified versions, are permitted, but only if the resulting file
+%% is renamed.
+%%
+%% ====================================================================
+\documentclass[multixcb]{amstext-l}
+\usepackage{url}
+\usepackage{mathrsfs}
+\DeclareMathAlphabet{\mathzc}{OT1}{pzc}{m}{it}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{xca}{Exercise}[section]
+
+\newcommand{\cs}[1]{\texttt{\char`\\#1}}
+\def\<#1>{$\langle$\textit{#1}$\rangle$}
+\newenvironment{exm}{%
+  \par
+  \begingroup
+    \parindent0pt
+    \leftskip2\normalparindent
+    \obeylines
+}{%
+    \par
+  \endgroup
+%  \noindent\ignorespaces
+}
+
+\begin{document}
+
+\frontmatter
+
+\makeatletter
+\def\currversion{\csname ver@amstext-l.cls\endcsname}
+\makeatother
+
+\title{Preparing a Manuscript for the\\ AMSTEXT Book Series}
+\author{American Mathematical Society\\[12pt]
+        \smaller \currversion}
+%        \smaller Version 0.92 beta, March 2010}
+
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{Introduction}
+
+The \texttt{amstext-l} (``ell'' for \LaTeX, not ``one'') document class
+is intended for undergraduate textbooks and other instructional works.
+Since this is a new area for the AMS, the document class still lacks
+some features that will ultimately prove useful, or even essential.  We
+intend to build in more features as they are proposed by authors of
+volumes in the series, aiming always for generality.
+
+This brief document is intended to introduce features that are
+specific to \texttt{amstext-l}.  It has been produced using
+\verb+\documentclass{amstext-l}+ and illustrates this style in
+practice.  Features already present in \texttt{amsbook} (on which
+\texttt{amstext-l} is based) will not be reiterated in detail;
+please refer to the manuals for AMS document classes \cite{INSTR}
+and the \texttt{amsthm} package \cite{THM} for that information.
+
+\section{Type sizes and styles}
+
+\subsection{Type sizes}
+
+The default type size for \texttt{amstext-l} is 10pt---the size
+used for this introductory manual.  This results from the command
+\begin{exm}
+\verb+\documentclass{amstext-l}+
+\end{exm}
+\noindent
+An 11pt option is available with
+\begin{exm}
+\verb+\documentclass[11pt]{amstext-l}+
+\end{exm}
+
+\subsection{Sectioning}
+
+Experience with manuscripts prepared for this series
+demonstrates that section headings in the ``usual'' style do not
+stand out sufficiently well to be spotted easily among closely
+packed examples and exercises.  For this reason, a sans serif font
+has been substituted for the more traditional serif form, and lower
+levels are indented to contrast with the predominantly flush left
+theorem-class headings.  Chapter headings are also set in sans serif
+to complement the section heading style.
+
+\subsubsection{Second-level sections}
+
+Headings at this level are set in slanted sans serif type.
+Subsubsections are not by default listed in the table of contents.
+
+\section{Existing facilities for exercises}
+
+Some facilities that already exist in the basic \texttt{amsbook}
+document class are especially relevant for textbooks, but are not
+as well documented in \cite{INSTR} as they might be.
+
+\subsection{Exercises grouped in a section}
+
+The \texttt{xcb} environment is intended for exercises that are
+grouped in a separate section either at the end of a chapter or
+between other sections within a chapter.  These sections are
+unnumbered.  The environment requires one argument: the title of
+the section:
+\begin{exm}
+\verb+\begin{xcb}{Sample exercise section}+
+\dots
+\verb+\end{xcb}+
+\end{exm}
+\noindent
+By default, the end of an \texttt{xcb} section is unmarked, but
+an end-of-section marker can be set by specifying the document-class
+option \texttt{[multixcb]}.  This marker is most appropriate when
+\texttt{xcb} sections are interspersed among other sections.  When
+no option is specified, the section heading, like all chapters and
+other section headings (numbered and unnumbered), is listed in the
+table of contents; when the option is specified, ``Exercises'' does
+not appear in the table of contents and the running heads are
+unaffected.
+
+The sample exercise section below is set with the \texttt{[multixcb]}
+option.
+
+Within an \texttt{xcb} section, the \texttt{enumerate} environment
+is used to number the exercises.  The space allowed for exercise
+numbers assumes that no more than 99 exercises will be present in
+the section.  However, the number of digits can be changed with
+the \cs{xcbdigits} command:
+\begin{exm}
+\verb+\xcbdigits{999}+
+\end{exm}
+\noindent
+This command can be placed either in the preamble or directly before
+the line \verb+\begin{xcb}+; it will have no effect if it is placed
+within the scope of the \texttt{xcb} environment.
+
+\begin{xcb}{Sample exercise section}
+
+\begin{enumerate}
+\item First exercise.
+\item Second exercise.
+\end{enumerate}
+
+\end{xcb}
+
+\subsection{Individual exercises within main text}
+
+If exercises are desired outside of an \texttt{xcb} block,
+it is recommended to set up an individual exercise environment,
+\texttt{xca}, as a theorem-class element:
+\begin{exm}
+\verb+\theoremstyle{definition}+
+\verb+\newtheorem{xca}{Exercise}[+\<\textit{counter}>\verb+]+
+\end{exm}
+\noindent
+The \texttt{xca} environment is defined in the \texttt{amstext-l.template}
+file, but if you do not use that, you will need to define it yourself.
+
+The following example of an \texttt{xca} exercise was input as
+\begin{exm}
+\verb+\begin{xca}[Illustrative exercise]+
+\texttt{Study the input for this document and suggest improvements.}
+\verb+\end{xca}+
+\end{exm}
+
+\begin{xca}[Illustrative exercise]
+Study the input for this document and suggest improvements.
+\end{xca}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{New Features}
+
+Several new environments and commands have been defined for
+\texttt{amstext-l}:
+\begin{itemize}
+\item a framed environment for highlighting important
+  information, for example theorems;
+\item an ``inclusion'' environment for de-emphasizing material
+  that is more advanced, or can be skipped over on first reading;
+\item a bibliography style suitable for inclusion in a chapter,
+  rather than at the end of the book.  (This feature is a candidate
+  for inclusion in the next update of \texttt{amsbook}.)
+\item a facility to place symbols comparable to the ``QED box'' at
+  the end of elements other than the proof environment.  (Only the
+  proof environment, where it is automatic, can at present accept
+  such an addition in the basic AMS document classes.)
+\end{itemize}
+
+\section{Framed environment for highlighting important information}
+
+The framed environment, \verb+framedthm+, is illustrated by two examples.
+
+\begin{framedthm}{theorem}
+If $(Q,\sigma)$ is a quiver with automorphism such that the
+associated valued quiver $\Gamma=\Gamma(Q,\sigma)$ contains no
+loops, then there is a surjective map $\psi\colon
+\Phi(Q)\to\Phi(Q,\sigma)$ defined by putting $\psi(\beta):=
+\theta(\tilde\sigma(\beta))$, $\beta\in\Phi(Q)$. Moreover, if
+$\alpha=\psi(\beta)$ is a real root in $\Phi(Q,\sigma)$, then
+$\beta$ must be a real root in $\Phi(Q)$, uniquely determined up
+to $\sigma$-conjugacy.
+\end{framedthm}
+
+Note that a framed element will not be broken at the end of a
+page; such an element falling too close to the bottom of a page
+will be moved to the next page.  Since material treated in this
+fashion is usually brief, this restriction should not pose a
+problem.  Moreover, presentation as a unit on one
+page aids comprehension and the ability to locate a particular
+item at a later time.
+
+\begin{framedthm}{lemma}
+%\label{TAforMQ}
+In the tensor algebra $\mathsf T(\mathscr Q)$, the
+component $\mathsf T^n(M)$ of grade $n$ decomposes as
+$$\mathsf T^n(M)\cong\bigoplus M_{\rho_n}
+ \otimes_{\mathzc D_{h\rho_{n-1}}}\cdots\otimes_{\mathzc  D_{h\rho_1}}M_{\rho_1},
+$$
+where the sum is formed over the set of paths $\rho_n\cdots\rho_1$
+of length $n$.
+\end{framedthm}
+
+\section{Environment for inclusions to be skipped on first reading}
+
+A left-indented ``inclusion'' environment is provided for text
+intended to be skipped on first reading.  It is set one size smaller
+than the main text, but may be varied by redefining \cs{inclusionfont}.
+One argument is required: a heading, which may be empty.
+
+The input for an inclusion is entered like this:
+\begin{exm}
+\verb+\begin{inclusion}{+\<optional heading text>\verb+}+
+...
+\verb+\end{inclusion}+
+\end{exm}
+
+One important feature of an inclusion is that it must be able to
+span multiple pages.  The second example below should be long
+enough to demonstrate this requirement.
+
+\begin{inclusion}{}
+Example without a heading.
+This prose is set off in a smaller size.  It comprises several lines.
+This prose is set off in a smaller size.  It comprises several lines.
+This prose is set off in a smaller size.  It comprises several lines.
+
+Here is the beginning of a new paragraph.
+This prose is set off in a smaller size.  It comprises several lines.
+This prose is set off in a smaller size.  It comprises several lines.
+\end{inclusion}
+
+That wasn't very interesting; the next example should be more entertaining.
+
+\begin{inclusion}{Jabberwocky\footnote{Apologies to
+  Lewis Carroll \cite{Do}.}}
+\obeylines\parindent=0pt
+'Twas brillig, and the slithy toves
+  Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+  And the mome raths outgrabe.
+\null
+\leavevmode\llap{``}Beware the Jabberwock, my son!
+  The jaws that bite, the claws that catch!
+Beware the Jubjub bird, and shun
+  The frumious Bandersnatch!''
+\null
+He took his vorpal sword in hand:
+  Long time the manxome foe he sought---
+So rested he by the Tumtum tree,
+  And stood awhile in thought.
+\null
+And, as in uffish thought he stood,\par\nobreak
+  The Jabberwock, with eyes of flame,
+Came whiffling through the tulgey wood,
+  And burbled as it came!
+\null
+One, two! One, two! And through and through
+  The vorpal blade went snicker-snack!
+He left it dead, and with its head
+  He went galumphing back.
+\null
+\leavevmode\llap{``}And, has thou slain the Jabberwock?
+  Come to my arms, my beamish boy!
+O frabjous day! Callooh! Callay!''
+  He chortled in his joy.
+\null
+'Twas brillig, and the slithy toves
+  Did gyre and gimble in the wabe:
+All mimsy were the borogoves,
+  And the mome raths outgrabe.
+\end{inclusion}
+
+\section{``In-chapter'' bibliography}
+
+It is sometimes appropriate to include a brief reference list within
+a chapter, in addition to, or in place of the main bibliography (which
+is always a separate chapter).  Such a bibliography is presented as
+an unnumbered section.  The \texttt{inchapterbibliography} environment
+produces the desired list.  However, it is usually desirable to change
+the title from ``Bibliography'' to something more appropriate.  This
+is done by redefining the command \cs{bibname}; remember that
+\cs{bibname} must be changed again before the main bibliography
+is processed.
+
+This input sets up the format for the local references list.
+\begin{exm}
+\verb+\renewcommand{\bibname}{References for this chapter}+
+\verb+\begin{inchapterbibliography}{Do}+
+\verb+...+
+\verb+\end{inchapterbibliography}+
+\end{exm}
+\noindent
+The coding of references is the same as for the main bibliography.
+
+\renewcommand{\bibname}{References for this chapter}
+\begin{inchapterbibliography}{Do}
+
+\bibitem[Do]{Do} Charles Lutwidge Dodgson [Lewis Carroll],
+  \textit{Through the Looking-Glass and What Alice Found There}, 1872.
+
+\end{inchapterbibliography}
+
+\section{End-of-element markers}
+
+Especially for pedagogical clarity, textbook authors sometimes use
+markers (similar to the {\qedsymbol} at the end of a proof) to
+indicate the end of other elements, such as definitions, examples,
+remarks, and the like.  The command \cs{xqed} is provided for this
+purpose; it takes one argument: the command for the desired symbol.
+
+The input\par\nobreak
+\begin{exm}
+\verb+\xqed{\lozenge}+
+\end{exm}
+\noindent
+places a lozenge flush right at the end of this paragraph.
+\xqed{\lozenge}
+
+The command \cs{qedhere}, which makes it possible to force the
+QED symbol up onto the last line of a display or list that ends
+a proof, is not easily adapted to non-proof environments, although
+consideration is being given to include this in future releases.
+
+If such a situation occurs in practice, you can request assistance
+by e-mail from the AMS Publications Technical Group at
+\texttt{tech-support@ams.org}; please identify the AMSTEXT series
+in your message, and include a small, self-contained, {\LaTeX}able
+file that contains the problem material and enough surrounding
+text to allow for valid experimentation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\bibname}{Bibliography}
+\begin{thebibliography}{INSTR}
+
+\bibitem[INSTR]{INSTR} \textit{Instructions for Preparation of
+  Papers and Monographs:\ AMS-\LaTeX, version~\textup{2.20}},
+  Amer. Math. Soc., Providence, RI, 2004.
+  \url{ftp://ftp.ams.org/pub/author-info/documentation/amslatex/instr-l.pdf}
+
+\bibitem[THM]{THM} \textit{Using the \texttt{amsthm} package,
+  version~\textup{2.20}}, Amer. Math. Soc., Providence, RI, 2004.
+  \url{ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf}
+
+\end{thebibliography}
+
+\end{document}
