@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.9.3)  19 MAY 2017 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.9.3)  19 MAY 2017 10:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -112,13 +112,68 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \inclusionindent=\dimen115
 \copyins=\insert198
 )
-\c@theorem=\count100
+(c:/texlive/2016/texmf-dist/tex/latex/exercise/exercise.sty
+Package: exercise 2014/10/20 v1.6 Exercise package (P.Pichaureau)
+
+(c:/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+(c:/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\ExerciseSkipBefore=\skip51
+\ExerciseSkipAfter=\skip52
+\AnswerSkipBefore=\skip53
+\AnswerSkipAfter=\skip54
+\Exesep=\skip55
+\Exetopsep=\skip56
+\Exeparsep=\skip57
+\Exepartopsep=\skip58
+\Exeleftmargin=\skip59
+\Exerightmargin=\skip60
+\Exelabelwidth=\skip61
+\Exelabelsep=\skip62
+\ExerciseBefore=\skip63
+\QuestionBefore=\skip64
+\subQuestionBefore=\skip65
+\subsubQuestionBefore=\skip66
+\QuestionIndent=\skip67
+\subQuestionIndent=\skip68
+\subsubQuestionIndent=\skip69
+\c@Exercise=\count100
+\c@Answer=\count101
+\c@ExePart=\count102
+\c@Question=\count103
+\c@subQuestion=\count104
+\c@subsubQuestion=\count105
+\c@savedQuestion=\count106
+\c@savedsubQuestion=\count107
+\c@savedsubsubQuestion=\count108
+\@QuestionLevel=\count109
+\@Exercisebox=\box29
+\all@Exercisebox=\box30
+\temp@Exercisebox=\box31
+\all@Answerbox=\box32
+\temp@Answerbox=\box33
+\ExerciseDifficulty=\count110
+\QuestionDifficulty=\count111
+\subQuestionDifficulty=\count112
+\subsubQuestionDifficulty=\count113
+\ExePartDifficulty=\count114
+\@Answerbox=\box34
+\colonnesLevel=\count115
+\tempskipa=\skip70
+\tempskipb=\skip71
+\@savedmathindent=\skip72
+)
+\c@theorem=\count116
 \@indexfile=\write3
 \openout3 = `mat327_big_list.idx'.
 
 
 Writing index file mat327_big_list.idx
-No file mat327_big_list.aux.
+(./mat327_big_list.aux (./preface.aux) (./chapter1_topologies.aux) (./.aux))
 \openout1 = `mat327_big_list.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
@@ -134,6 +189,7 @@ LaTeX Font Info:    ... okay on input line 54.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
 LaTeX Font Info:    ... okay on input line 54.
 LaTeX Font Info:    Try loading font information for U+msa on input line 54.
+
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -146,51 +202,79 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 
-] [5{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [6
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [5] [6
 
 
 ]
 Contents
-No file mat327_big_list.toc.
+(./mat327_big_list.toc)
 \tf@toc=\write4
 \openout4 = `mat327_big_list.toc'.
 
-[7]
-\openout2 = `.aux'.
+ [7]
+\openout2 = `preface.aux'.
 
- (c:/texlive/2016/texmf-dist/tex/latex/tools/.tex File ignored) [8
+ (./preface.tex [8
 
+
+
+]
+Chapter 1
+) [9] [10
+
+
+
+]
+\openout2 = `chapter1_topologies.aux'.
+
+ (./chapter1_topologies.tex
+Chapter 2
+
+Package Exercise Warning: An answer has no reference and no number on input lin
+e 7.
+
+) [1
 
 
 
 ]
 \openout2 = `.aux'.
 
-
-(c:/texlive/2016/texmf-dist/tex/latex/tools/.tex File ignored)
-\openout2 = `.aux'.
+ (c:/texlive/2016/texmf-dist/tex/latex/tools/.tex File ignored) [2
 
 
-(c:/texlive/2016/texmf-dist/tex/latex/tools/.tex File ignored)
+
+
+
+]
 No file mat327_big_list.bbl.
 No file mat327_big_list.ind.
-(./mat327_big_list.aux (./.aux) (./.aux) (./.aux)) ) 
+(./mat327_big_list.aux (./preface.aux) (./chapter1_topologies.aux) (./.aux)) ) 
 Here is how much of TeX's memory you used:
- 1431 strings out of 493013
- 16000 string characters out of 6136994
- 70335 words of memory out of 5000000
- 4844 multiletter control sequences out of 15000+600000
- 7082 words of font info for 27 fonts, out of 8000000 for 9000
+ 1959 strings out of 493013
+ 24023 string characters out of 6136994
+ 76866 words of memory out of 5000000
+ 5343 multiletter control sequences out of 15000+600000
+ 8632 words of font info for 33 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 39i,6n,30p,294b,136s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2016/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb>
-Output written on mat327_big_list.pdf (5 pages, 32808 bytes).
+ 39i,6n,30p,294b,158s stack positions out of 5000i,500n,10000p,200000b,80000s
+<
+c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10
+.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mat327_big_list.pdf (9 pages, 130721 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
