@@ -1,11 +1,68 @@
 \chapter{Topologies}
 
 \begin{ExerciseList}
-	\Exercise\marker*1
-		Fix $a<b\in\mathbb{R}$. Show explicitly that the open interval $(a,b)$ is open in $\mathbb{R}_{\text{usual}}$. Show explicitly
-		that the interval $[a,b)$ is not open in $\mathbb{R}_{\text{usual}}$.
-	\Answer First, we show that $(a, b)$ is open in $\mathbb{R}_{\text{usual}}$.
-    \Exercise\marker*1
-        Let $X$ be a set and $\mathcal{B} = \{ \{x\}: x\in X\}$. Show that the only topology on $X$ that contains $\mathcal{B}$ %
-        as a subset is the discrete topology.
+	\Exercise[difficulty=1] Fix $a<b\in\RR$. Show explicitly that the %
+    open interval $(a,b)$ is open in $\RR_{\text{usual}}$. Show %
+    explicitly that the interval $[a,b)$ is not open in %
+    $\RR_{\text{usual}}$
+
+	\Answer First, we show that $(a, b)$ is open in %
+    $\mathbb{R}_{\text{usual}}$. To do this: we have to show that %
+    for any point $x\in (a,b)$, there exists a neigbourhood $N(x,\e) %
+    \subseteq (a,b)$.\\
+    Thus, choose a point $x\in(a,b)$. By density of $\RR$, there %
+    exists $x_1\in(a,x)$ and $x_2\in(x,b)$. Let $\e =$ min$(x_1,x_2).%
+    $ Then $N(x,\e) \subseteq (a,b)$.\\
+    Next, we show that $[a,b)$ is not open. To do this, we show that %
+    $\exists$ no $\e>0$ such that $N(a,\e) \subseteq [a,b)$. Note %
+    that any $x\in (a-\e,a]$ would not be in $(a,b)$ for any $\e>0$, %
+    so $N(a,\e)\not\subseteq [a,b)$.
+
+    \Exercise[difficulty=1] Let $X$ be a set and $\mathcal{B} = %
+    \{ \{x\}: x\in X\}$. Show that the only topology on $X$ that %
+    contains $\B$ as a subset is the discrete topology.
+
+    \Answer To show that only $X_{\text{discrete}}$ has the property %
+    $\B\subseteq X_{\text{discrete}}$, consider the set:
+    \[\T := \{ \{x\}: x\in X\}\]
+    For $\T$ to be a topology, it must be closed under finite %
+    intersections so we must put $\emptyset$ in $\T$. Furthermore, %
+    $\T$ must be closed under the union of an arbitrary collection %
+    elements of $X$. If this is to be true, then $\T$ must contain %
+    every subset of $X$ since any arbritrary subset can be written %
+    as the union of all of its elements. Thus an arbitrary subset %
+    $A\subseteq X$ must be in $\T$. This implies %
+    $\T = X_{\text{discrete}}$.
+
+    \stepcounter{Exercise}
+
+    \Exercise[difficulty=1] Let $(X, \T_{\text{co-countable}})$ be %
+    an infinite set with the co-countable topology. Show that %
+    $\T_{\text{co-countable}}$ is closed under countable %
+    intersections but not necessairly arbitrary ones.
+
+    \Answer Given a countable indexing set $I$, we have to show %
+    \[\bigcap_{\alpha\in I} U_{\alpha} \in \T_{\text{co-countable}}\]
+    Equivalently, we can show $X \setminus (\cap U_{\alpha})$ %
+    is countable. By DeMorgan's Law: $X\setminus(\cap_{\alpha})=
+    \cup (X\setminus U_{\alpha})$. Since the right hand side %
+    is the countable union of countable sets, it is countable.
+    Thus, $\cap U_{\alpha} \in \T_{\text{co-countable}}$. To show %
+    that an arbitrary intersection of elements is not open, it %
+    suffices to state that the intersection of arbitrary many %
+    elements does not necessairly form a countable set.
+
+    \Exercise[difficulty=1] Let $(X, \T)$ be a topological space, %
+    and let $A\subseteq X$ be a set with the property that for all %
+    $x\in A,\;\exists$ an open set $U_x\in\T$ such that $x\in U_x %
+    \subseteq A$. Show that $A$ is open.
+
+    \Answer Let $I$ be a set which indexes the elements of $A$. Then:
+    \[\bigcup_{\alpha\in I} \{x_{\alpha}\} = A\]
+    Similarly, since $x_{\alpha} \in U_{x_{\alpha}}$ and %
+    $U_{x_{\alpha}} \subseteq A$, then:
+    \[\bigcup_{\alpha\in I} U_{x_{\alpha}} = A\]
+    Since this is the union of arbitrary elements of $\T$, then %
+    $A\in\T$.
+
 \end{ExerciseList}

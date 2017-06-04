@@ -21,7 +21,7 @@
 %\includeonly{}
 
 %    If you need symbols beyond the basic set, uncomment this command.
-%\usepackage{amssymb}
+\usepackage{amssymb}
 
 %    If your book includes graphics, uncomment this command.
 %\usepackage{graphicx}
@@ -31,6 +31,8 @@
 
 %    Include other referenced packages here.
 \usepackage{exercise}
+\usepackage{amsmath}
+\usepackage{csquotes}
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -45,6 +47,12 @@
 
 \numberwithin{section}{chapter}
 \numberwithin{equation}{chapter}
+
+%   Commands
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\e}{\epsilon}
+\newcommand{\T}{\mathcal{T}}
 
 %    For a single index; for multiple indexes, see the manual
 %    "Instructions for preparation of papers and monographs:
