@@ -128,12 +128,37 @@
     is not refined by $\T^{'}$ and then $\T^{'}=\T$ which implies %
     $\T$ is unique.
 
-    \Exericse[difficulty=1] This extends exercise 6. Show with %
+    \Exercise[difficulty=1] This extends exercise 6. Show with %
     examples that the assumption that $f$ is injective is necessary.
     That is, give an example of a topological space $(X,\T)$ and %
     a non-injective function $f:X\to Y$ such that $\T_f$ is a %
     topology and another example where $\T_f$ is not.
 
-    \Answer An example of a non-injective function which is a %
-    topology.
+    \Answer An example of a non-injective function which is not a %
+    topology is given by mapping all of the irrationals of $\RR$ %
+    to themselves but mapping all rationals to 0. Since there is %
+    no open set in $\RR$ which maps to 0, we arrive that $\T_f$ %
+    is not a topology. An example of a non injective function which %
+    is a topology is given by:
+
+    \Exercise[difficulty=3] Working in $\RR_{\text{usual}}$: 
+    \begin{enumerate}
+        \item Show that every non empty open set contains a %
+            rational number
+        \item Show that there is no uncountable collection of %
+            pairwise disjoint open subsets of $\RR$.
+    \end{enumerate}
+
+    \Answer Let $U$ be such a set. For any $x\in U$, $\exists \e>0$ %
+    such that $N(x,\e)\subseteq U$, but this is impossible since %
+    by density of $\QQ$, there exists a $y\in(x,x+\e)$. Then, no %
+    such $U$ exists. Now, we prove (b). We know the set of all %
+    intervals $(a,b)$ where $a,b\in\QQ$ is countable. Suppose %
+    $\{X_{\alpha}:\alpha\in I\}$ is such a set. If we show %
+    $\theta:=\{X_{\alpha}:\alpha\in I\}$, $|\theta|\geq|%
+    \{(a,b):a,b\in\QQ\}|$ then we are done. Since we construct %
+    a set $\theta_2$ where for every $X_{\alpha}\in\theta$, %
+    $\theta_2$ contains two rational open subsets of $X_{\alpha}$.
+    Then $|\theta|\leq|\theta_2|$ implying that $\theta_2$ is at %
+    most countable.
 \end{ExerciseList}
