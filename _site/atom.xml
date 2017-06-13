@@ -4,13 +4,76 @@
  <title>Anmol Bhullar</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-02-24T01:17:55-05:00</updated>
+ <updated>2017-06-13T18:30:37-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anmol Bhullar</name>
    <email>anmol.bhullar@mail.utoronto.ca</email>
  </author>
 
+ 
+ <entry>
+   <title>How the set of orthogonal matrices form a (smooth) manifold.</title>
+   <link href="http://localhost:4000/2017/06/13/ortho-manifold/"/>
+   <updated>2017-06-13T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2017/06/13/ortho-manifold</id>
+   <content type="html">&lt;p&gt;Preface: This article is the beginning of a series of articles about 
+random parts about math that I find really cool.&lt;/p&gt;
+
+&lt;p&gt;Before we get started, it is always good to give some definitions so
+as to avoid any confusion.&lt;/p&gt;
+
+&lt;p&gt;[Not finished]&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Analysis II Notes</title>
+   <link href="http://localhost:4000/2017/03/13/mat257-notes/"/>
+   <updated>2017-03-13T00:00:00-04:00</updated>
+   <id>http://localhost:4000/2017/03/13/mat257-notes</id>
+   <content type="html">&lt;p&gt;These notes are from a course called &lt;em&gt;MAT257: Analysis II&lt;/em&gt;. It is the more theoretical version of MAT237. The notes are found from
+Dr. Dror Bar-Natan’s website &lt;a href=&quot;http://drorbn.net/index.php?title=1617-257&quot;&gt;here&lt;/a&gt;. The notes posted here are all of them compiled into
+a single document as well as having been typeset.&lt;/p&gt;
+
+&lt;p&gt;The notes can be downloaded from my Github &lt;a href=&quot;https://github.com/anmolBhullar/anmolbhullar.github.io/tree/master/notes&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;[Not finished]&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Advanced Calculus Problem Sets</title>
+   <link href="http://localhost:4000/2017/03/12/advanced-calc-psets/"/>
+   <updated>2017-03-12T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/03/12/advanced-calc-psets</id>
+   <content type="html">&lt;p&gt;These problem sets are from a course I am taking called &lt;em&gt;MAT237: Advanced Calculus&lt;/em&gt;, it is a year long course on second year
+calculus, we cover all the topics on multi-variable differentiation/integration as well as covering topology in R^n to
+supplement the theory behind those topics. Later in the course, it gets quite geometric heavy as calculus naturally tends to get
+more differential geometry if one to continue in it. The questions were given from &lt;a href=&quot;http://utmat237.com&quot;&gt;our class website&lt;/a&gt;.
+I am posting my solutions for these problem sets below.&lt;/p&gt;
+
+&lt;p&gt;They can be downloaded from my Github &lt;a href=&quot;https://github.com/anmolBhullar/anmolbhullar.github.io/tree/master/solutions/mat237&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;[not finished]&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Notes for Introduction to Analysis</title>
+   <link href="http://localhost:4000/2017/02/24/intr-to-analysis/"/>
+   <updated>2017-02-24T00:00:00-05:00</updated>
+   <id>http://localhost:4000/2017/02/24/intr-to-analysis</id>
+   <content type="html">&lt;p&gt;The first order of business is to upload my notes for a course I’m taking called Introduction to Analysis. It covers all of the basic topics a student might need to know before they can tackle on a Real Analysis course. I will also be uploading solutions to the problems in the textbook we are using for this course which is called &lt;em&gt;Real Analysis and Foundations by Steven G. Krantz (4th Ed.)&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The notes are embedded below or can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/notes&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;iframe src=&quot;https://drive.google.com/file/d/0B_F-4YnSC7qdUlBGbWZFZDM2bW8/preview&quot; width=&quot;100%&quot; height=&quot;500em&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The solutions of the textbook problems will start from section 4.3 which is on compactness on the real line. They can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/solutions/krantz&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;[not finished]&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>My plans for this website</title>
@@ -30,153 +93,6 @@ Currently, I’m thinking of embedding the PDF notes/solutions using this &lt;a 
 &lt;p&gt;Head to the &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io&quot;&gt;Github repository&lt;/a&gt; for downloads of the pdfs, any typo reports or even feature requests.&lt;/p&gt;
 
 &lt;p&gt;Thanks!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Notes for Introduction to Analysis</title>
-   <link href="http://localhost:4000/2017/02/23/intr-to-analysis/"/>
-   <updated>2017-02-23T00:00:00-05:00</updated>
-   <id>http://localhost:4000/2017/02/23/intr-to-analysis</id>
-   <content type="html">&lt;p&gt;The first order of business is to upload my notes for a course I’m taking called Introduction to Analysis. It covers all of the basic topics a student might need to know before they can tackle on a Real Analysis course. I will also be uploading solutions to the problems in the textbook we are using for this course which is called &lt;em&gt;Real Analysis and Foundations by Steven G. Krantz (4th Ed.)&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The notes are embedded below or can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/notes&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;iframe src=&quot;https://drive.google.com/file/d/0B_F-4YnSC7qdUlBGbWZFZDM2bW8/preview&quot; width=&quot;100%&quot; height=&quot;500em&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The solutions of the textbook problems will start from section 4.3 which is on compactness on the real line. They can be downloaded &lt;a href=&quot;https://github.com/anmolbhullar/anmolbhullar.github.io/tree/master/solutions/krantz&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Example content</title>
-   <link href="http://localhost:4000/2014/01/01/example-content/"/>
-   <updated>2014-01-01T00:00:00-05:00</updated>
-   <id>http://localhost:4000/2014/01/01/example-content</id>
-   <content type="html">&lt;div class=&quot;message&quot;&gt;
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
-&lt;/div&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;
-
-&lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt;
-
-&lt;p&gt;HTML defines a long list of available inline tags, a complete list of which can be found on the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Element&quot;&gt;Mozilla Developer Network&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;To bold text&lt;/strong&gt;, use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;To italicize text&lt;/em&gt;, use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;em&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Abbreviations, like &lt;abbr title=&quot;HyperText Markup Langage&quot;&gt;HTML&lt;/abbr&gt; should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;abbr&amp;gt;&lt;/code&gt;, with an optional &lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt; attribute for the full phrase.&lt;/li&gt;
-  &lt;li&gt;Citations, like &lt;cite&gt;— Mark otto&lt;/cite&gt;, should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;cite&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;del&gt;Deleted&lt;/del&gt; text should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;del&amp;gt;&lt;/code&gt; and &lt;ins&gt;inserted&lt;/ins&gt; text should use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ins&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Superscript &lt;sup&gt;text&lt;/sup&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sup&amp;gt;&lt;/code&gt; and subscript &lt;sub&gt;text&lt;/sub&gt; uses &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sub&amp;gt;&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Most of these elements are styled by browsers with few modifications on our part.&lt;/p&gt;
-
-&lt;h2 id=&quot;heading&quot;&gt;Heading&lt;/h2&gt;
-
-&lt;p&gt;Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis &lt;code class=&quot;highlighter-rouge&quot;&gt;code element&lt;/code&gt; montes, nascetur ridiculus mus.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Example can be run directly in your JavaScript console
-&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Create a function that takes two arguments and returns the sum of those arguments
-&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;return a + b&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Call the function
-&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &amp;gt; 8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.&lt;/p&gt;
-
-&lt;h3 id=&quot;lists&quot;&gt;Lists&lt;/h3&gt;
-
-&lt;p&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/li&gt;
-  &lt;li&gt;Donec id elit non mi porta gravida at eget metus.&lt;/li&gt;
-  &lt;li&gt;Nulla vitae elit libero, a pharetra augue.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vestibulum id ligula porta felis euismod semper.&lt;/li&gt;
-  &lt;li&gt;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&lt;/li&gt;
-  &lt;li&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.&lt;/p&gt;
-
-&lt;dl&gt;
-  &lt;dt&gt;HyperText Markup Language (HTML)&lt;/dt&gt;
-  &lt;dd&gt;The language used to describe and define the content of a Web page&lt;/dd&gt;
-
-  &lt;dt&gt;Cascading Style Sheets (CSS)&lt;/dt&gt;
-  &lt;dd&gt;Used to describe the appearance of Web content&lt;/dd&gt;
-
-  &lt;dt&gt;JavaScript (JS)&lt;/dt&gt;
-  &lt;dd&gt;The programming language used to build advanced Web sites and applications&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;h3 id=&quot;tables&quot;&gt;Tables&lt;/h3&gt;
-
-&lt;p&gt;Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Upvotes&lt;/th&gt;
-      &lt;th&gt;Downvotes&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tfoot&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Totals&lt;/td&gt;
-      &lt;td&gt;21&lt;/td&gt;
-      &lt;td&gt;23&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tfoot&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Alice&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Bob&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Charlie&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Want to see something else added? &lt;a href=&quot;https://github.com/poole/poole/issues/new&quot;&gt;Open an issue.&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
