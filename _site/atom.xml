@@ -4,7 +4,7 @@
  <title>Anmol Bhullar</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-06-13T18:30:37-04:00</updated>
+ <updated>2017-06-13T18:56:33-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anmol Bhullar</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>How the set of orthogonal matrices form a (smooth) manifold.</title>
+   <title>How the set of n by n orthogonal matrices form a (smooth) manifold.</title>
    <link href="http://localhost:4000/2017/06/13/ortho-manifold/"/>
    <updated>2017-06-13T00:00:00-04:00</updated>
    <id>http://localhost:4000/2017/06/13/ortho-manifold</id>
@@ -22,6 +22,18 @@ random parts about math that I find really cool.&lt;/p&gt;
 
 &lt;p&gt;Before we get started, it is always good to give some definitions so
 as to avoid any confusion.&lt;/p&gt;
+
+&lt;p&gt;What is a (smooth) manifold?&lt;/p&gt;
+
+&lt;p&gt;A set \( X\subset\mathbb{R}^n \) such that for any point $x\in X$, 
+there exists a neighbourhood \( N(x,\epsilon) \) such that there
+exists a diffeomorphism ( \( C^{\infty} \) and bijective) 
+\( f: \mathbb{R}^k \to N(x,\epsilon) \). In this case, 
+\( X \) is said to be of dimension \( k \).&lt;/p&gt;
+
+&lt;p&gt;What is a tangent space?&lt;/p&gt;
+
+&lt;p&gt;Let \(X\) be a \(k\)-dimensional manifold&lt;/p&gt;
 
 &lt;p&gt;[Not finished]&lt;/p&gt;
 </content>

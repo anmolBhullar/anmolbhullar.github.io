@@ -15,6 +15,7 @@ description:         'My personal website where I have my resume and showcase so
 url:                 http://anmolbhullar.me
 baseurl:             ''
 paginate:            5
+markdown:            kramdown
 
 # About/contact
 author:
