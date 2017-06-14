@@ -4,7 +4,7 @@
  <title>Anmol Bhullar</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-06-13T18:56:33-04:00</updated>
+ <updated>2017-06-14T01:33:48-04:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Anmol Bhullar</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>How the set of n by n orthogonal matrices form a (smooth) manifold.</title>
+   <title>How the set of n by n orthogonal matrices forms a lie group.</title>
    <link href="http://localhost:4000/2017/06/13/ortho-manifold/"/>
    <updated>2017-06-13T00:00:00-04:00</updated>
    <id>http://localhost:4000/2017/06/13/ortho-manifold</id>
@@ -33,9 +33,69 @@ exists a diffeomorphism ( \( C^{\infty} \) and bijective)
 
 &lt;p&gt;What is a tangent space?&lt;/p&gt;
 
-&lt;p&gt;Let \(X\) be a \(k\)-dimensional manifold&lt;/p&gt;
+&lt;p&gt;Let \(X\) be a \(k\)-dimensional manifold. Then,
+there exists a mapping \( f: \mathbb{R}^k \to N(x,\epsilon) \). Let
+\(df_{x}: \mathbb{R}^k \to \mathbb{R}^n \)
+be the directional derivative of \(f\) at \(x\in\mathbb{R}^k\). The
+image of \(df_{x}\) is called the tangent space of \(X\) denoted by
+\(T_{x}(X)\). Thus \(df_{x}\) is the mapping from \(\mathbb{R}^k\to T_{x}(X)\).&lt;/p&gt;
 
-&lt;p&gt;[Not finished]&lt;/p&gt;
+&lt;p&gt;What is an orthogonal matrix? A symmetric matrix?&lt;/p&gt;
+
+&lt;p&gt;An orthogonal matrix is a generalized notion of the rotation matrix \(R\theta\) in \(\mathbb{R}^2\)
+in the sense that these matrices are distance preserving functions or more
+formally known as isomoteries which are perhaps one of the nicest functions we can
+find between two arbitrary metric spaces. An orthogonal matrix is a matrix consisting
+of orthonormal vectors, or more specifically, a matrix \(Q\) is orthogonal if:
+\[ QQ^{T} = I \] where \(I\) is the identity \(n\times n\) matrix. Symmetric
+matrices are matrices which can be diagonalized by orthogonal matrices i.e. for
+every symmetric matrix \(A\), there exists an orthogonal matrix \(Q\) such that
+\[ D = Q^{T}AQ \] where \(D\) is the diagonal matrix. A much more usual definition
+of symmetric matrices is any matrix whose transpose is itself, i.e.
+\[ A = A^{T} \]&lt;/p&gt;
+
+&lt;p&gt;Let \(O(n)\) be the set of \(n\times n\) orthogonal matrices, \(S(n)\) for symmetric matrices and
+\(M(n)\) for any general matrix in \(\mathbb{R}^{n}\).&lt;/p&gt;
+
+&lt;p&gt;Remark: Consider the matrix \(A\in M(n)\) which
+has \(n^2\) entries. Thus, \(M(n)\) can be viewed as the set \(\mathbb{R}^{n^{2}}\).&lt;/p&gt;
+
+&lt;p&gt;Remark: We know that, \(S(n)\) forms a subspace under the vector space \(M(n)\). Thus, we can calculate
+the dimension of this subspace explicitly. We know that to uniquely determine a symmetric matrix,
+it suffices to only list the entries in the upper triangle part of the matrix as well as the 
+diagonal. Thus, to uniquely determine an element in \(S(n)\), we need:
+\[ \frac{n^{2}}{2} + n = \frac{(n)(n+1)}{2} \]
+elements. Thus, \(S(n)\) is of dimension \(\mathbb{R}^{k}\) where \(k=\frac{(n)(n+1)}{2}\).&lt;/p&gt;
+
+&lt;p&gt;This proof that \(O(n)\) is a manifold under \(M(n)=\mathbb{R}^{n^{2}}\) is a very clear
+application of the pre-image theorem so we state it first but before, we state that, we need to have
+a notion of a regular value. So we state these two things now before attempting to prove anything:&lt;/p&gt;
+
+&lt;p&gt;What is a regular value?&lt;/p&gt;
+
+&lt;p&gt;Let \(f: X\to Y\) be a smooth map between manifolds. Then \(y\) is a regular value of \(f\) if
+and only if every for all \(x\in f^{-1}(y) \), \(df_{x}: T_{x}(X) \to T_{y}(Y)\) is surjective
+(where \(y = f(x)\).&lt;/p&gt;
+
+&lt;p&gt;What is the pre-image theorem?&lt;/p&gt;
+
+&lt;p&gt;If \(y\) is a regular value of \(f: X\to Y\), then the preimage \(f^{-1}(y)\) is a
+submanifold of \(X\), with dim \(f^{-1}(y) =\) dim \(X\) - dim \(Y\).&lt;/p&gt;
+
+&lt;p&gt;Thus, for our purposes, let \(f: M(n) \to S(n)\) via \(A \mapsto AA^{T}\). Since for any orthogonal
+matrix \(Q\), \(QQ^{T} = I\), it follows that we want to determine if the preimage \(f^{-1}(I)\)
+is a submanifold of \(M(n)\). Thus, it leaves us to check that \(I\) is a regular value of \(f\)
+or in other words, it leaves us to check that for any \(A\in f^{-1}(I)\) (so any orthogonal matrix),
+\(df_{A}: T_{A}(M(n)) \to T_{f(A)}(S(n))\) is surjective. First, note that for any \(B\in M(n)\):&lt;/p&gt;
+
+&lt;p&gt;\[
+        df_{A}(B) &amp;amp;= \lim_{h\to 0} \frac{f(A+h)-f(A)}{h} &lt;br /&gt;
+        &amp;amp;= \lim_{h\to 0} \frac{(A+h)(A+h)^{T} - AA^{T}}{h} &lt;br /&gt;
+        &amp;amp;= \lim_{h\to 0} \frac{AA^{T} + hBA^{T} + hAB^{T} + h^{2}BB^{T} - AA^{T}}{h} &lt;br /&gt;
+        &amp;amp;= \lim_{h\to 0} BA^{T} + AB^{T} + hBB^{T} &lt;br /&gt;
+        &amp;amp;= BA^{T} + AB^{T}
+\]&lt;/p&gt;
+
 </content>
  </entry>
  
