@@ -117,45 +117,31 @@
     <p>Preface: This article is the beginning of a series of articles about 
 random parts about math that I find really cool.</p>
 
-<p>Before we get started, it is always good to give some definitions so
-as to avoid any confusion.</p>
+<p>I’ve always suspected that algebra and differential topology were somehow connected in some way, 
+(after all, a lot of fields in Math are like this) but I’ve personally done any math which integrates
+algebra and differential topology so seamlessly. This is why when I encountered this in <em>Differential
+Topology by Victor Guillemin and Allan Pollack</em>, it blew my mind. This is why I wanted to write
+this article to showcase the relationship between lie groups and orthogonal matrices.</p>
 
-<p>What is a (smooth) manifold?</p>
+<h3 id="what-is-an-orthogonal-matrix">What is an Orthogonal Matrix?</h3>
 
-<p>A set \( X\subset\mathbb{R}^n \) such that for any point $x\in X$, 
-there exists a neighbourhood \( N(x,\epsilon) \) such that there
-exists a diffeomorphism ( \( C^{\infty} \) and bijective) 
-\( f: \mathbb{R}^k \to N(x,\epsilon) \). In this case, 
-\( X \) is said to be of dimension \( k \).</p>
+<p>Consider the rotation matrix \(R(\theta)\) in \(\mathbb{R}^2\). This is a matrix/transformation
+which is distance preserving. I mean, ‘distance preserving’ in the same sense of the functions that
+one would use to apply a change of variables in an integral. If we generalize this notion of linear
+maps which are distance preserving, we obtain the idea of an orthogonal matrix. For example, in
+order for a matrix \(Q\) to be distance preserving, we can say that it needs to preserve the dot
+product, so, we can say that if \(Q\) is an \(n\times n\) dimensional matrix (i.e. a function
+\(\mathbb{R^n} \to \mathbb{R^n})\), then it must obey the following rule for \(u,v\in\mathbb{R}^n\):
+\[ u\cdot v = (Qu)\cdot(Qv)\]
+This implies an important result. For any \(v\in\mathbb{R}^n\), we have that:
+\[ v^{T}\cdot v = (Qv)^{T}\cdot(Qv) = (v^{T}Q^{T})(Qv) = v^{T}(Q^{T}Q)v \]
+which implies that \(Q^{T}Q = I\) or in other words: \(Q^{T} = Q^{-1}\). Thus, we can just
+define orthogonal matrices as matrices whose inverse is equal to its transpose.</p>
 
-<p>What is a tangent space?</p>
-
-<p>Let \(X\) be a \(k\)-dimensional manifold. Then,
-there exists a mapping \( f: \mathbb{R}^k \to N(x,\epsilon) \). Let
-\(df_{x}: \mathbb{R}^k \to \mathbb{R}^n \)
-be the directional derivative of \(f\) at \(x\in\mathbb{R}^k\). The
-image of \(df_{x}\) is called the tangent space of \(X\) denoted by
-\(T_{x}(X)\). Thus \(df_{x}\) is the mapping from \(\mathbb{R}^k\to T_{x}(X)\).</p>
-
-<p>What is an orthogonal matrix? A symmetric matrix?</p>
-
-<p>An orthogonal matrix is a generalized notion of the rotation matrix \(R\theta\) in \(\mathbb{R}^2\)
-in the sense that these matrices are distance preserving functions or more
-formally known as isomoteries which are perhaps one of the nicest functions we can
-find between two arbitrary metric spaces. An orthogonal matrix is a matrix consisting
-of orthonormal vectors, or more specifically, a matrix \(Q\) is orthogonal if:
-\[ QQ^{T} = I \] where \(I\) is the identity \(n\times n\) matrix. Symmetric
-matrices are matrices which can be diagonalized by orthogonal matrices i.e. for
-every symmetric matrix \(A\), there exists an orthogonal matrix \(Q\) such that
-\[ D = Q^{T}AQ \] where \(D\) is the diagonal matrix. A much more usual definition
-of symmetric matrices is any matrix whose transpose is itself, i.e.
-\[ A = A^{T} \]</p>
+<h3 id="step-1-show-the-set-of-ntimes-n-orthogonal-matrices-form-a-smooth-manifold">Step 1: Show the set of \(n\times n\) orthogonal matrices form a smooth manifold</h3>
 
 <p>Let \(O(n)\) be the set of \(n\times n\) orthogonal matrices, \(S(n)\) for symmetric matrices and
 \(M(n)\) for any general matrix in \(\mathbb{R}^{n}\).</p>
-
-<p>Remark: Consider the matrix \(A\in M(n)\) which
-has \(n^2\) entries. Thus, \(M(n)\) can be viewed as the set \(\mathbb{R}^{n^{2}}\).</p>
 
 <p>Remark: We know that, \(S(n)\) forms a subspace under the vector space \(M(n)\). Thus, we can calculate
 the dimension of this subspace explicitly. We know that to uniquely determine a symmetric matrix,

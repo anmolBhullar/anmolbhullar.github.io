@@ -1,0 +1,213 @@
+%-----------------------------------------------------------------------
+% Beginning of amstext-l-template.tex
+%-----------------------------------------------------------------------
+%
+%    This is a template file for the AMS book series Pure and Applied
+%    Undergraduate Texts, for use with AMS-LaTeX 2.0.
+%    Separate chapters should be included at the appropriate position.
+%
+%    Templates for various common text, math and figure elements are
+%    given following the \end{document} line.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%    Use this form if exercise blocks are only at the end of chapters.
+\documentclass{amstext-l}
+%    If you intersperse blocks of exercises throughout chapters, use
+%    the documentclass with the [multixcb] option.
+%\documentclass[multixcb]<amstext-l}
+
+%    For use when working on individual chapters
+%\includeonly{}
+
+%    If you need symbols beyond the basic set, uncomment this command.
+\usepackage{amssymb}
+
+%    If your book includes graphics, uncomment this command.
+%\usepackage{graphicx}
+
+%    If you are using the author-year citation style:
+%\usepackage{natbib}
+
+%    Include other referenced packages here.
+\usepackage{exercise}
+\usepackage{amsmath}
+\usepackage{csquotes}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+%   Commands
+\newcommand{\Po}{\mathcal{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\e}{\epsilon}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\NN}{\mathbb{N}}
+
+%    For a single index; for multiple indexes, see the manual
+%    "Instructions for preparation of papers and monographs:
+%    AMS-LaTeX" (instr-l.pdf in the author package).
+\makeindex
+
+\begin{document}
+
+\frontmatter
+
+\title{MAT327: Introduction to Topology. Solutions to the Big List Problems}
+
+%    Remove any unused author tags.
+
+%    author one information
+\author{Anmol Bhullar}
+\address{ Undergraduate Student University of Toronto, Scarborough}
+\email{anmol.bhullar@mail.utoronto.ca}
+\thanks{Thank you to my instructor Ivan Khatchatourian for providing these wonderful problems}
+
+% \subjclass[2000]{Primary }
+%    The 2010 edition of the Mathematics Subject Classification is
+%    now available.  If you are citing a classification from the
+%    new scheme, use the following input coding instead.
+%\subjclass[2010]{Primary }
+
+\keywords{}
+
+\maketitle
+
+%    Dedication.  If the dedication is longer than a line or two,
+%    remove the centering instructions and the line break.
+%\cleardoublepage
+%\thispagestyle{empty}
+%    If this book uses the documentclass stml-l or mmono-s, change
+%    13.5pc to 10.5pc.
+%\vspace*{13.5pc}
+%\begin{center}
+%  Dedication text (use \\[2pt] for line break if necessary)
+%\end{center}
+%\cleardoublepage
+
+%    Change page number to 6 if a dedication is present.
+\setcounter{page}{5}
+
+\tableofcontents
+
+%    Include unnumbered chapters (preface, acknowledgments, etc.) here.
+\include{preface}
+
+\mainmatter
+%    Include main chapters here.
+\include{chapter1_topologies}
+\include{chapter2_bases}
+
+\appendix
+%    Include appendix "chapters" here.
+\include{}
+
+\backmatter
+%    Bibliographies can be prepared with BibTeX using amsplain,
+%    amsalpha, or (for author-year style) natbib.
+\bibliographystyle{amsalpha}
+\bibliography{}
+
+%    See note above about multiple indexes.
+\printindex
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%    Templates for common elements in a book; for information specific
+%    to this series, see the sample amstext-doc.pdf and .tex files.
+%    For additional general information, see the AMS-LaTeX instructions
+%    manual, instr-l.pdf, included in the author package, and the amsthm
+%    user's guide, linked from http://www.ams.org/tex/amslatex.html .
+
+%    Section headings
+\section{}
+\subsection{}
+
+%    Exercises grouped in a section
+\begin{xcb}
+\begin{enumerate}
+\item ...
+\item ...
+\end{enumerate}
+\end{xcb}
+
+%    Exercise standing alone in text
+\begin{exa}[Optional exercise heading]
+% text of exercise
+\end{exa}
+
+%    Framed environment for highlighting important (brief) information
+\begin{framedthm}{<type of theorem-class element>}
+% text
+\end{framedthm}
+
+%    Environment for inclusions to be skipped on first reading; note
+%    that, even if there is no heading text, the second pair of braces
+%    must be present.
+\begin{inclusion}{<optional heading text>}
+% text, will be set in smaller type
+\end{inclusion}
+
+%    Figure insertion; default placement is top; if the figure occupies
+%    more than 75% of a page, the [p] option should be specified.
+\begin{figure}
+\includegraphics{filename}
+\caption{text of caption}
+\label{}
+\end{figure}
+
+%    Ordinary theorem and proof
+\begin{theorem}[Optional addition to theorem head]
+% text of theorem
+\end{theorem}
+
+\begin{proof}[Optional replacement proof heading]
+% text of proof
+\end{proof}
+
+%    Marker for the end of some important element.  \lozenge is used
+%    here only as an illustration; other symbols may also be used.
+% text
+\xqed{\lozenge}
+
+%    Mathematical displays; for additional information, see the amsmath
+%    user's guide, linked from http://www.ams.org/tex/amslatex.html .
+
+%    Numbered equation
+\begin{equation}
+\end{equation}
+
+%    Unnumbered equation
+\begin{equation*}
+\end{equation*}
+
+%    Aligned equations
+\begin{align}
+  &  \\
+  &
+\end{align}
+
+%    In-chapter bibliography
+\renewcommand{\bibname}{References for this chapter}
+\begin{inchapterbibliography}{AAA}
+\bibitem[]{} text
+\end{inchapterbibliography}
+
+%-----------------------------------------------------------------------
+% End of amstext-l-template.tex
+%-----------------------------------------------------------------------

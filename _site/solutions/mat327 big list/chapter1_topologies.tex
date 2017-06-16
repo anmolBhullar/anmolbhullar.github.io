@@ -1,0 +1,164 @@
+\chapter{Topologies}
+
+\begin{ExerciseList}
+	\Exercise[difficulty=1] Fix $a<b\in\RR$. Show explicitly that the %
+    open interval $(a,b)$ is open in $\RR_{\text{usual}}$. Show %
+    explicitly that the interval $[a,b)$ is not open in %
+    $\RR_{\text{usual}}$
+
+	\Answer First, we show that $(a, b)$ is open in %
+    $\mathbb{R}_{\text{usual}}$. To do this: we have to show that %
+    for any point $x\in (a,b)$, there exists a neigbourhood $N(x,\e) %
+    \subseteq (a,b)$.\\
+    Thus, choose a point $x\in(a,b)$. By density of $\RR$, there %
+    exists $x_1\in(a,x)$ and $x_2\in(x,b)$. Let $\e =$ min$(x_1,x_2).%
+    $ Then $N(x,\e) \subseteq (a,b)$.\\
+    Next, we show that $[a,b)$ is not open. To do this, we show that %
+    $\exists$ no $\e>0$ such that $N(a,\e) \subseteq [a,b)$. Note %
+    that any $x\in (a-\e,a]$ would not be in $(a,b)$ for any $\e>0$, %
+    so $N(a,\e)\not\subseteq [a,b)$.
+
+    \Exercise[difficulty=1] Let $X$ be a set and $\mathcal{B} = %
+    \{ \{x\}: x\in X\}$. Show that the only topology on $X$ that %
+    contains $\B$ as a subset is the discrete topology.
+
+    \Answer To show that only $X_{\text{discrete}}$ has the property %
+    $\B\subseteq X_{\text{discrete}}$, consider the set:
+    \[\T := \{ \{x\}: x\in X\}\]
+    For $\T$ to be a topology, it must be closed under finite %
+    intersections so we must put $\emptyset$ in $\T$. Furthermore, %
+    $\T$ must be closed under the union of an arbitrary collection %
+    elements of $X$. If this is to be true, then $\T$ must contain %
+    every subset of $X$ since any arbritrary subset can be written %
+    as the union of all of its elements. Thus an arbitrary subset %
+    $A\subseteq X$ must be in $\T$. This implies %
+    $\T = X_{\text{discrete}}$.
+
+    \stepcounter{Exercise}
+
+    \Exercise[difficulty=1] Let $(X, \T_{\text{co-countable}})$ be %
+    an infinite set with the co-countable topology. Show that %
+    $\T_{\text{co-countable}}$ is closed under countable %
+    intersections but not necessairly arbitrary ones.
+
+    \Answer Given a countable indexing set $I$, we have to show %
+    \[\bigcap_{\alpha\in I} U_{\alpha} \in \T_{\text{co-countable}}\]
+    Equivalently, we can show $X \setminus (\cap U_{\alpha})$ %
+    is countable. By DeMorgan's Law: $X\setminus(\cap_{\alpha})=
+    \cup (X\setminus U_{\alpha})$. Since the right hand side %
+    is the countable union of countable sets, it is countable.
+    Thus, $\cap U_{\alpha} \in \T_{\text{co-countable}}$. To show %
+    that an arbitrary intersection of elements is not open, it %
+    suffices to state that the intersection of arbitrary many %
+    elements does not necessairly form a countable set.
+
+    \Exercise[difficulty=1] Let $(X, \T)$ be a topological space, %
+    and let $A\subseteq X$ be a set with the property that for all %
+    $x\in A,\;\exists$ an open set $U_x\in\T$ such that $x\in U_x %
+    \subseteq A$. Show that $A$ is open.
+
+    \Answer Let $I$ be a set which indexes the elements of $A$. Then:
+    \[\bigcup_{\alpha\in I} \{x_{\alpha}\} = A\]
+    Similarly, since $x_{\alpha} \in U_{x_{\alpha}}$ and %
+    $U_{x_{\alpha}} \subseteq A$, then:
+    \[\bigcup_{\alpha\in I} U_{x_{\alpha}} = A\]
+    Since this is the union of arbitrary elements of $\T$, then %
+    $A\in\T$.
+
+    \Exercise[difficulty=1] Let $(X,\T)$ be a topological space, and %
+    let $f: X\to Y$ be injective. Is $\T_f := \{f(U): U\in\T\}$ a %
+    topology on $Y$? Is it necessairly a topology on the range of $f$?
+
+    \Answer Lost solution : (
+
+    \Exercise[difficulty=1] Let $X$ be a set and let $\T_1$ and %
+    $\T_2$ be two topologies on $X$. Is $\T_1\cup\T_2$ a topology %
+    on $X$? What about $\T_1\cap\T_2$? Is yes, prove it. If not, %
+    provide a counterexample.
+
+    \Answer Let $\T_1 := \T_{\text{usual}}$, $\T_2 := \T_7$ on $\RR$. 
+    Consider:
+    \[(6,7) \cap [6.5, 7] \qquad\text{both in}\T_1\cup\T_2)\]
+    but this intersection yields the interval: $[6.5,7)$
+    which is not open in either $\T_1$ or $\T_2$. So $\T_1\cup\T_2$ %
+    is not necessairly a topology. Now, we show that $\T_1\cap\T_2$ %
+    is a topology:\\
+    \begin{align*}
+        \emptyset\in\T_1,\emptyset\in\T_2\implies\emptyset%
+        \in\T_1\cap\T_2 \\
+        X\in\T_1, X\in\T_2 \implies X\in\T_1\cap\T_2
+    \end{align*}
+    Furthermore, given, $U,V\in\T_1,T_2$. Then $U\cap V$ is in both %
+    $\T_1$ and $\T_2$ so it follows $U, V\in\T_1\cap\T_2$ and that %
+    since $U,V\in\T_1$, then $U\cap V\in\T_1$. Similarly for $\T_2$ %
+    so then $U\cap V\in\T_1\cap\T_2$. Thus, the finite intersection %
+    of open sets in $\T_1\cap\T_2$ is in $\T_1\cap\T_2$. Now it is %
+    left to show that $\cup_{\alpha\in I} V_{\alpha} \in %
+    \T_1\cap\T_2$ given that for all $\alpha\in I$, $V_{\alpha} \in %
+    \T_1\cap\T_2$. If every $V_{\alpha}\in\T_1\cap\T_2$, then it %
+    follows $\cup V_{\alpha}\in T_1$ and similarly for $\T_2$.
+    Thus $\T_1\cap\T_2$ is a topology.
+
+    \Exercise[difficulty=1] Let $X$ be an infinite set. Show that %
+    there are infinitely many topologies on $X$.
+
+    \Answer Define $\T_{\text{co-k}} := \{U\subseteq X: %
+    |U^c|\leq k\}$. Since $\T_{\text{co-k}}$ is a topology for all %
+    $k\in\NN$, it follows that if $|X|=\infty$, then there are %
+    infinite topologies on $X$.
+
+    \Exercise[difficulty=1] Let $\{\T_{\alpha} : \alpha\in I\}$ be %
+    a collection of topologies on a set $X$, where $I$ is some %
+    indexing set. Prove that there is a unique finest topology that %
+    is refined by all the $\T_{\alpha}'s$. That is, prove that %
+    there is a topology $\T$ on $X$ such that:
+    \begin{enumerate}
+        \item $\T_{\alpha}$ refines $\T$ for every $\alpha\in I$
+        \item If $\T^{'}$ is another topology that fulfills (a), %
+            then $\T$ is finer than $\T^{'}$
+    \end{enumerate}
+
+    \Answer Claim: $\T = \cap \T_{\alpha}$. By Ex 7, $\T$ is a %
+    topology, and $\T_{\alpha}$ refines $\T$ by construction of %
+    $\T$. Suppose $T^{'}$ is another topology of $X$ such that %
+    all $\T_{\alpha}$ refine $\T^{'}$ and that $\T{'}$ refines %
+    $\T$. Then, there exists $x\in\T^{'}$ such that $x\not\in\T$.
+    But then $x\not\in \cap \T_{\alpha}$ so there exists %
+    $T_{\alpha_0}$ such that $x\not\in\T_{\alpha_0}$. Thus $\T$ %
+    is not refined by $\T^{'}$ and then $\T^{'}=\T$ which implies %
+    $\T$ is unique.
+
+    \Exercise[difficulty=1] This extends exercise 6. Show with %
+    examples that the assumption that $f$ is injective is necessary.
+    That is, give an example of a topological space $(X,\T)$ and %
+    a non-injective function $f:X\to Y$ such that $\T_f$ is a %
+    topology and another example where $\T_f$ is not.
+
+    \Answer An example of a non-injective function which is not a %
+    topology is given by mapping all of the irrationals of $\RR$ %
+    to themselves but mapping all rationals to 0. Since there is %
+    no open set in $\RR$ which maps to 0, we arrive that $\T_f$ %
+    is not a topology. An example of a non injective function which %
+    is a topology is given by:
+
+    \Exercise[difficulty=3] Working in $\RR_{\text{usual}}$: 
+    \begin{enumerate}
+        \item Show that every non empty open set contains a %
+            rational number
+        \item Show that there is no uncountable collection of %
+            pairwise disjoint open subsets of $\RR$.
+    \end{enumerate}
+
+    \Answer Let $U$ be such a set. For any $x\in U$, $\exists \e>0$ %
+    such that $N(x,\e)\subseteq U$, but this is impossible since %
+    by density of $\QQ$, there exists a $y\in(x,x+\e)$. Then, no %
+    such $U$ exists. Now, we prove (b). We know the set of all %
+    intervals $(a,b)$ where $a,b\in\QQ$ is countable. Suppose %
+    $\{X_{\alpha}:\alpha\in I\}$ is such a set. If we show %
+    $\theta:=\{X_{\alpha}:\alpha\in I\}$, $|\theta|\geq|%
+    \{(a,b):a,b\in\QQ\}|$ then we are done. Since we construct %
+    a set $\theta_2$ where for every $X_{\alpha}\in\theta$, %
+    $\theta_2$ contains two rational open subsets of $X_{\alpha}$.
+    Then $|\theta|\leq|\theta_2|$ implying that $\theta_2$ is at %
+    most countable.
+\end{ExerciseList}

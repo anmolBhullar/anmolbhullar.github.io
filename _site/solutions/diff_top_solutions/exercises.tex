@@ -1,0 +1,240 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\TheSolution{%
+  \textbf{Solution:}\\%
+}
+
+\newcommand\ASolution{%
+  \stepcounter{solution}%
+  \textbf{Solution \thesolution:}\\%
+}
+\parindent 0in
+\parskip 1em
+
+
+\begin{document}
+
+\begin{titlepage}
+    \vspace*{\stretch{1.0}}
+    \begin{center}
+        \Large\textbf{(Selected) Exercise Solutions From Guillemin's %
+            Differential Topology}\\
+        \large\textit{Anmol Bhullar}\\
+        \large{anmol.bhullar@mail.utoronto.ca}
+    \end{center}
+    \vspace*{\stretch{2.0}}
+\end{titlepage}
+
+\Problem[1.1.4] Let $B_{a}$ be the open ball $\{x:|x|^{2}<a\}$ in %
+$\mathbb{R}^k$. Show that the map: 
+\[x \to \frac{ax}{\sqrt{a^{2}-|x|^2}}\]
+is a diffeomorphism of $B_{a}$ onto $\mathbb{R}^{k}$.\\
+For the second %
+part of this problem, suppose that $X$ is a $k$-dimensional manifold. %
+Show that every point in $X$ has a neighbourhood diffeomorphic to %
+all of $\mathbb{R}^k$. Deduce that local parameterizations may be %
+written with all of $\mathbb{R}^k$ for their domains.
+
+\TheSolution It is sufficient to find an inverse of the mapping %
+$f: \mathbb{R}^k \to B_{a}$ (with the element mapping given above).
+One may compute directly to find that:
+\[f^{-1}(x) = \frac{ax}{\sqrt{a^2+|x|^2}}\]
+Therefore, $f$ is a diffeomorphism.\\
+(b) By definition, for any point $x\in X$, we have that there %
+exists a diffeomorphism $\phi: V \to U$ where %
+$U\subseteq\mathbb{R}^k$ is open and $V$ is some neighbourhood %
+around $x$. Restrict $V$ so that $f(V)=B_a(f(x))$ for some $a$.
+Then, the mapping $f^{-1}\circ \phi: V \to \mathbb{R}^k$ %
+is a diffeomorphism which maps a neighbhourhood around $x$ to all %
+of $\mathbb{R}^k$. Furthermore, the inverse of the composition %
+mapping is a diffeomorphism going from $\mathbb{R}^k \to V$.
+Thus, it is a local parameterization written with all of %
+$\mathbb{R}^k$ for its domain.
+
+\Problem[1.1.5] Show that every $k$-dimensional vector subspace %
+of $\mathbb{R}^n$ is a manifold diffeomorphic to $\mathbb{R}^k$, %
+and that all linear maps on $V$ are smooth. %
+If $\phi: \mathbb{R}^k \to V$ is a linear isomorphism, then the %
+corresponding coordinate functions are linear functionals %
+on $V$ called \textit{linear coordinates}.
+
+\TheSolution First, we will show $V$ is isomorphic to %
+$\mathbb{R}^k$. Let $\{e_1,e_2,\hdots,e_k\}$ be some basis of %
+$\mathbb{R}^k$ and $\{\varphi_1,\varphi_2,\hdots,\varphi_k\}$ %
+be the basis of $V$. Then, there exists a linear map $L$ such %
+that $L(\varphi_1)=e_1,L(\varphi_2)=e_2,\hdots,L(\varphi_k)=e_k$.
+By a similar process, $L^{-1}$ is defined. Thus, we obtain that %
+$L$ is an isomorphism which implies $V$ and $\mathbb{R}^k$ are %
+isomorphic.\\
+Next, we will show $L$ is differentiable. Consider, for any %
+$a\in\mathbb{R}^k$ and %
+(let $A_{m\times n}$ be the matrix from $L(x) = Ax$). Then:
+\begin{align*}
+    &= \lim_{h\to0} \frac{|L(a+h)-L(a)-Ah|}{|h|}\\
+    &= \lim_{h\to0} \frac{|L(a)+L(h)-L(a)-Ah|}{|h|}\\
+    &= \lim_{h\to0} \frac{|L(h)-Ah|}{|h|}\\
+    &= \lim_{h\to0} \frac{|Ah-Ah|}{|h|}\\
+    &= 0
+\end{align*}
+Since $DL(a) := A$ is stil a linear map (it is composed of %
+$m$ linear maps), then via induction, we can obtain the %
+result that $L$ is a smooth function. Thus $L$ is actually %
+diffeomorphic implying that $V$ and $\mathbb{R}^k$ are %
+diffeomorphic. Furthermore, since $L$ is arbitrary, any %
+linear map on $V$ is smooth.
+
+\Problem[1.1.8] Prove that the hyperboloid in $\mathbb{R}^3$, %
+defined by $x^2+y^2-z^2 = a$, is a manifold if $a>0$. Why %
+doesn't $x^2+y^2-z^2=0$ define a manifold?
+
+\TheSolution Suppose $a>0$. Then we show that $x^2+y^2-z^2=a$ %
+defines a manifold.\\
+\textbf{Case I: $y^2-z^2>a$} Then:
+\[x^2+y^2-z^2=a \implies x^2+y^2-a=z \implies z=\pm\sqrt{x^2+y^2-a}\]
+So we get the covers:
+\[\phi(x,y) = (x,y,\pm\sqrt{x^2+y^2-a})\]
+\textbf{Case II:}
+One can check that for the other two cases $x^2-z^2>a$ and $x^2+y^2-z^2>a$,
+we arrive at the same covers. Thus the diffeomorphisms:
+\[\phi(x,y)=(x,y,\pm\sqrt{x^2+y^2-a})\]
+cover the hyperboloid so it is a manifold.\\
+Now suppose that $a=0$. We show that $x^2+y^2=z^2$ does not define %
+a manifold. Note that:
+\[z=\pm\sqrt{x^2+y^2}\]
+Thus, if the hyperboloid is a manifold, then the maps
+\[\phi(x,y)=(x,y,\pm\sqrt{x^2+y^2})\]
+are smooth on their domains. However, we prove that $\phi'(0,0)$ %
+does not exist. First note that:
+\begin{align*}
+    \phi'(0,0)=\begin{pmatrix}
+        1 & 0 & \pm\frac{x}{\sqrt{x^2+y^2}} \\
+        0 & 1 & \pm\frac{y}{\sqrt{x^2+y^2}}
+    \end{pmatrix}
+\end{align*}
+It suffices to show that $\lim_{(x,y)\to(0,0)} \frac{x}{\sqrt{x^2+y^2}}$ %
+does not exist. So, take $||(x,y)||<1$ and consider approaching the %
+function at $y=mx$:
+\begin{align*}
+    &\lim_{(x,y)\to(0,0)}\frac{x}{\sqrt{x^2+y^2}} \\
+    &= \lim_{(x,y)\to(0,0)}\frac{x}{\sqrt{x^2+(mx)^2}} \\
+    &= \lim_{(x,y)\to(0,0)}\frac{x}{\sqrt{x^2(1+m^2)}} \\
+    &= \lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{1+m^2}} \\
+    &\neq (0,0)
+\end{align*}
+so $\phi$ is not smooth at $(0,0)$, thus $x^2+y^2=z^2$ does not %
+define a manifold.
+
+\Problem[1.1.9] Explicitly exhibit enough parameterizations to cover %
+$S^1\times S^1 \subset \mathbb{R}$.
+\TheSolution Let $a,b \in \{x,-x,\sqrt{1-x^2},-\sqrt{1-x^2}\}$ and %
+$c,d\in \{y,-y,-\sqrt{1-y^2},\sqrt{1-y^2}\}$.
+Then the set:
+$\{(a,b,c,d)\}$ holds the parameterizations which cover $S^1\times S^1$.
+
+\Problem[1.1.10] ‘The’ \textit{torus} is the set of points in $\mathbb{R}^3$ %
+at distance $b$ from the circle of radius $a$ in the $xy$ plane where %
+$0<b<a$. Prove that these tori are all diffeomorphic to $S^1\times S^1$.
+Also, draw the cases $b=a$ and $b>a$; why are these not manifolds?
+
+\Problem[1.1.11] Show that one cannot parameterize the $k$ sphere $S^k$ %
+by a single parameterization.
+
+\TheSolution Suppose such a parameterization exists. Then let %
+$\phi: U\subseteq\mathbb{R}^k \to S^n$ be the parameterization. We know %
+that $\phi^{-1}: S^n \to U$ is continuous. Therefore, since $S^k$ is %
+compact, $U$ must be as well. But note that by definition of $\phi$, $U$ %
+must be open. Thus $U$ is open and closed and the only non-empty set %
+which is open and closed is $\mathbb{R}^k$ so $U=\mathbb{R}^k$. But then %
+$U$ cannot be compact (Heine-Borel) even though the mapping $\phi^{-1}$ %
+implies that it should be. Thus we have a contradiction, implying that %
+there exists no \textit{single} parameterization which can cover $S^k$.
+
+\Problem[1.1.12] A stereographic projection is a map $\pi$ from the %
+punctured sphere $S^2-\{N\}$ onto $\mathbb{R}^2$, where $N$ is the %
+north pole. For any $p\in S^2-\{N\}$, $\pi(p)$ is defined to be the %
+point at which the line through $N$ and $p$ intersects the $xy$ plane.
+Prove that $\pi: S^2-\{N\}\to\mathbb{R}^2$ is a diffeomorphism. Note, %
+that if $p$ is near $N$, then $|\pi(p)|$ is large. Thus $\pi$ allows %
+us to think of $S^2$ as a copy of $\mathbb{R}^2$ compactified by the %
+addition of one point ‘infinity’. Since we can define stereographic %
+projection by using the south pole instead of the north, $S^2$ may be %
+covered by two local parameterizations.
+
+\TheSolution Let $(p_1,p_2,p_3)$ be a point in $S^2-\{N\}$. Then the %
+line starting from $N$ going through $(p_1,p_2,p_3)$ is given by:
+\[t \mapsto (0,0,1) + t(p_1,p_2,p_3-1)\]
+Let this function be reffered to as $\phi$. We know $\phi(t)=0$ when %
+$t(p_3-1)+1=0$ or when $t=\frac{-1}{p_3-1}$. So, 
+\begin{align}
+\pi(p)=(\frac{-p_1}{p_3-1},\frac{-p_2}{p_3-1})
+\end{align}
+Now, to find $\pi^{-1}$, take any $(x,y)\in\mathbb{R}^2$. Then, %
+consider the line $t\mapsto (0,0,1)+t(x,y,-1)$ (furthermore, let us %
+refer to this function as $\theta$. To find when $\theta(t)$ %
+intersects $S^2-\{N\}$, consider:
+\begin{align*}
+    \sqrt{(tx)^2+(ty)^2+(-t+1)^2} &= 1 \\
+    \Leftrightarrow (tx)^2+(ty)^2+t^2-t &= 0
+\end{align*}
+which holds when $t=0$ or when $t=\frac{1}{1+x^2+y^2}$. This implies %
+$\pi^{-1}(x,y)=(0,0,1)+t(x,y,-1)$ where $t=\frac{1}{1+x^2+y^2}$. Note %
+that if $x^2+y^2=1$, then $\pi^{-1}(x,y) := (x,y,0)$.\\
+It is easy to see that both $\pi$ and $\pi^{-1}$ are both smooth. Thus, %
+$\pi: S^2-\{N\}\to\mathbb{R}^2$ is diffeomorphic.
+
+\Problem[1.1.13] By generalizing stereographic projection define a %
+diffeomorphism $S^k - \{N\} \to \mathbb{R}^k$.
+
+\TheSolution Define $\pi(p)$ to the point formed at the intersection %
+between the line $\overline{Np}$ (where $N$ is the north pole) and %
+the hyperplane. Specifically:
+\[\pi(p) = (0,\hdots,0,1) + (\frac{p_1}{1-p_{k+1}},%
+    \frac{p_2}{1-p_{k+1}},\hdots,\frac{p_k}{1-p_{k+1}})\]
+and
+\[\pi^{-1}(x) = (0,\hdots,0,1) + %
+    (1-p_1^2,-p_2^2,\hdots,-p_k^2)(p_1,\hdots,p_k,-1)\]
+
+\Problem[1.1.17] The \textit{graph} of a map $f:X\to Y$ is the %
+subset of $X\times Y$ defined by
+\[\text{graph}(f) = \{(x,f(x)): x\in X\}\]
+Define $F:X\to\:$graph$(f)$ by $F(x)=(x,f(x))$. Show that if $f$ is %
+smooth, then $F$ is a diffeomorphism; thus graph$(f)$ is a manifold %
+if $X$ is.
+
+\TheSolution Note $F'(x) = (1,f(x))$. Since $f(x)$ is smooth, $f'$ %
+exists and is continuous. Also note that $F$ is then differentiable %
+$(\in C^1$ to be more specific) since both of the components of $F$ %
+are $C^1$. We can apply induction and use the same arguements to %
+obtain that $F$ is smooth.
+
+Now suppose that $F(x)=F(y)$. Then $(x,f(x))=(y,f(y))$ which implies %
+that in the first component, $x=y$. Thus $F$ is injective. The fact %
+that $F$ is surjective follows from the definition of graph$(f)$.
+
+Smoothness of inverse is given by the fact that it is a projection %
+mapping $(x,f(x))\mapsto x$ and all such mappings are smooth. 
+
+Thus $F$ is a diffeomorphism and $F$ or $F^{-1}$ would be the %
+parameterization used to cover $X$ or graph$(f)$ if they were %
+manifolds.
+
+Problem[1.1.18(a)] An extermely useful function %
+$f:\mathbb{R}\to\mathbb{R}$ is:
+\begin{align*}
+    f(x) = \{ &e^{\frac{-1}{x^2}}\:\: \text{if}\:\: x>0,\\
+            &0\:\: \text{if}\:\: x\leq0\}
+\end{align*}
+
+\end{document}
