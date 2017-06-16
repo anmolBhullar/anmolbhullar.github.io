@@ -61,7 +61,7 @@ What is a regular value?
 
 Let \\(f: X\to Y\\) be a smooth map between manifolds. Then \\(y\\) is a regular value of \\(f\\) if
 and only if every for all \\(x\in f^{-1}(y) \\), \\(df_{x}: T_{x}(X) \to T_{y}(Y)\\) is surjective
-(where \\(y = f(x)\\).
+where \\(y = f(x)\\).
 
 What is the pre-image theorem?
 
@@ -74,12 +74,31 @@ is a submanifold of \\(M(n)\\). Thus, it leaves us to check that \\(I\\) is a re
 or in other words, it leaves us to check that for any \\(A\in f^{-1}(I)\\) (so any orthogonal matrix),
 \\(df_{A}: T_{A}(M(n)) \to T_{f(A)}(S(n))\\) is surjective. First, note that for any \\(B\in M(n)\\):
 
-\\[
-        df_{A}(B) &= \lim_{h\to 0} \frac{f(A+h)-f(A)}{h} \\
-        &= \lim_{h\to 0} \frac{(A+h)(A+h)^{T} - AA^{T}}{h} \\
-        &= \lim_{h\to 0} \frac{AA^{T} + hBA^{T} + hAB^{T} + h^{2}BB^{T} - AA^{T}}{h} \\
-        &= \lim_{h\to 0} BA^{T} + AB^{T} + hBB^{T} \\
-        &= BA^{T} + AB^{T}
-\\]
+\begin{align}
+        df_{A}(B) = \lim_{h\to 0} \frac{f(A+h)-f(A)}{h}
+        = \lim_{h\to 0} BA^{T} + AB^{T} + hBB^{T}
+        = BA^{T} + AB^{T}
+\end{align}
 
+So, we want to check that for any matrix \\(C\in S(n)\\), that, there exists \\(B\in M(n)\\) such
+that \\(df_{A}(B) = BA^{T} + AB^{T} = C\\). Note that since \\(C\\) is symmetric, then
+\\(\frac{1}{2}C + \frac{1}{2}C^{T} = C\\). Thus, if we suppose that \\(BA^{T} = \frac{1}{2}C\\), then:
+\\[ BA^{T} = \frac{1}{2}C \implies B = \frac{1}{2}CA\\]
+so,
+\begin{align}
+    BA^{T} + AB^{T} = (\frac{1}{2}CA)A^{T} + A(\frac{1}{2}CA)^{T} = \frac{1}{2}(C+C^{T}) = C
+\end{align}
 
+So, we see that \\(df_{A}: M(n) \to S(n)\\) is surjective for any \\(A\in O(n)\\), proving that
+\\(f^{-1}(I)=O(n)\\) is a manifold under \\(M(n)\\).
+
+In order, to show this is a lie group under the operation of matrix multiplication:
+\\[ O(n) \times O(n) \to O(n) \\]
+is a smooth operation, it suffices to show that if \\(A,B\in O(n)\\), then \\(AB\\) is an
+orthogonal matrix. Note that:
+\\[ (AB)^{T}(AB) = B^{T}A^{T}(AB) = B^{T}B = I\\]
+so that \\(AB\\) is an orthogonal matrix. The inverse of this operation comes from the fact
+that:
+\\[ A^{T} = A^{-1} \\]
+so this set also fulfills the definition of a group with the additional property that its
+operation is smooth. Thus, \\(O(n)\\) is a lie group!
