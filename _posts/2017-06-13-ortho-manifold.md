@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How the set of n by n orthogonal matrices forms a lie group.
+summary: Some knowledge of linear algebra and basic group theory is required!
 ---
 
 Preface: This article is the beginning of a series of articles about 

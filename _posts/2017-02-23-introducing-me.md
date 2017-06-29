@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My plans for this website
+summary: Welcome to my blog!
 ---
 
 Welcome to my website!
