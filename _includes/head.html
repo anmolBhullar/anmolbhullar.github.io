@@ -1,4 +1,6 @@
 <head>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
     {% if site.google_tag_manager %}
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,11 +39,9 @@
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     {% endif %}
 
-    <!-- MathJax -->
-    {% if site.enable_mathjax %}
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
-    {% endif %}
+    <!-- MathJax 
+        {% if site.enable_mathjax %} -->
+    <!-- {% endif %} -->
 
     <!-- Verifications -->
     {% if site.google_verification %}

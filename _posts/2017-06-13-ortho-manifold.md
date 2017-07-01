@@ -15,7 +15,7 @@ this article to showcase the relationship between lie groups and orthogonal matr
 
 ### What is an Orthogonal Matrix?
 
-Consider the rotation matrix \\(R(\theta)\\) in \\(\mathbb{R}^2\\). This is a matrix/transformation
+Consider the rotation matrix \\( R(\theta) \\) in \\(\mathbb{R}^2\\). This is a matrix/transformation
 which is distance preserving. I mean, 'distance preserving' in the same sense of the functions that
 one would use to apply a change of variables in an integral. If we generalize this notion of linear
 maps which are distance preserving, we obtain the idea of an orthogonal matrix. For example, in
