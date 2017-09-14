@@ -120,10 +120,10 @@ Problem Set 1}         }\\[2\baselineskip] % Title
     Suppose $\abs{w} = 1$. Then:
     \[ \abs{\frac{w-z}{1-\overline{w}{z}}} = \abs{\frac{1}{w}\cdot\frac{w-z}{1-\overline{w}{z}}}\]
     since if $\abs{w} = 1$, then $\frac{1}{w}$ also has norm of 1. Simplifying, we obtain in the denominator:
-    \[\abs{w - \overline{w}zw} = \abs{w - z} \]
+    \[\abs{w - \overline{w}wz} = \abs{w - z} \]
     so the whole fraction reduces to 1. Now, suppose $\abs{z} = 1$, then $\abs{\overline{z}} = 1$, so that
     $\frac{1}{\overline{z}}$ also has a norm of 1. Repeating a similar process as above, we obtain that:
-    \[ \frac{w-z}{1-\overline{w}z} = \abs{\frac{w-z}{\overline{z} - \overline{w}z\overline{z}}} = \abs{\frac{w-z}{\overline{z-w}}} = \abs{\frac{w-z}{w-z}} (\text{conjugate symmetry})\]
+    \[ \abs{\frac{w-z}{1-\overline{w}z}} = \abs{\frac{w-z}{\overline{z} - \overline{w}z\overline{z}}} = \abs{\frac{w-z}{\overline{z-w}}} = \abs{\frac{w-z}{\overline{w-z}}} = \abs{\frac{w-z}{w-z}} (\abs{\overline{w-z}} = \abs{w-z})\]
     so the fraction, again reduces down to 1 as wanted.
 \end{s}
 
@@ -158,14 +158,16 @@ Problem Set 1}         }\\[2\baselineskip] % Title
     \[-1 > 0 \implies (-1) \cdot (-1) > 0 \implies 1 > 0\]
     By property (ii) of total order and that $1 > 0$, we obtain that:
     \[ -1 > 0 \implies -1 + 1 > 0 + 1 \implies 0 > 1\] which is a contradiction so $-1 > 0$ cannot hold. By
-    property (i) of total order, then $-1 < 0$. Now suppose that $i > 0$, then via property (iii) of total
-    order, we obtain the inequality:
+    property (i) of total order, then $-1 < 0$ or $-1 = 0$. If $-1 = 0$, then for any $a\in\mathbb{C}$, 
+    $-a = 0$ which is a contradiction because, we know $\abs{-2} > \abs{0}$ is true, but the equality $-a = 0$, should imply
+    that $\abs{-2} = \abs{0}$. Therefore, $-1 < 0$ by property (i) of total order. 
+    Now suppose that $i > 0$, then via property (iii) of total order, we obtain the inequality:
     \[i > 0 \implies i \cdot i > 0 \cdot i \implies -1 > 0\]
     which we have already shown is not true so $i > 0$ cannot be true. Thus, suppose $i < 0$. Then, $-i > 0$.
     So, by using property (iii) of total order, we obtain that:
     \[ 0 \cdot (-i) < (-i) \cdot (-i) = -1 \implies 0 < -1 \]
     which is a contradiction. Thus $i < 0$ does not hold which implies $i = 0$ (by property (i)) but this is
-    obviously not true (e.g. $3 \cdot i = 3i \neq 0$). Since property (i) of total order is broken, then
+    obviously not true (if it were, then $3 \cdot i = 3 \cdot 0 = 2 \cdot i$, so $3i = 2i \implies 3 = 2$). Since property (i) of total order is broken, then
     $\mathbb{C}$ does not have a total ordering on it.
 \end{s}
 \end{document}
