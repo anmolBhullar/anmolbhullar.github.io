@@ -96,11 +96,11 @@ Assignment 1}         }\\[2\baselineskip] % Title
         \abs{\abs{\alpha'(t)}} &= 1
     \end{align*}
     Since $\abs{\abs{\alpha'(t)}} = 1$, this implies that $s(t) = t$, which implies that $\alpha$ is already
-    arclength parameterized.
+    arclength parametrized.
 \end{s}
 
 \begin{p}
-    Reparameterize the catenary by arclength
+    Reparametrize the catenary by arclength
 \end{p}
 \begin{s}
     Note, that computing the arc-length of $\alpha(t)$, we obtain $\sinh(b)$ (by the computation in 5(a)).
@@ -193,6 +193,27 @@ Assignment 1}         }\\[2\baselineskip] % Title
     Show that the involute of a catenary is a tractrix.
 \end{p}
 \begin{s}
-    h
+    The equation for an involute $(X(t), Y(t))$ of a parametrically defined function $t\mapsto (x(t),\:y(t))$ is:
+    \begin{align*}
+        X(t) &= x(t) - \frac{x'(t)}{\sqrt{(x'(t))^2+(y'(t))^2}}\cdot\int_{a}^{t}\sqrt{(x'(w))^2+(y'(w))^2}dw \\
+        Y(t) &= y(t) - \frac{y'(t)}{\sqrt{(x'(t))^2+(y'(t))^2}}\cdot\int_a^t\sqrt{(x'(w))^2+(y'(w))^2}dw
+    \end{align*}
+    Thus, we just have to subsitute in the proper values. $x(t) = t, y(t) = \cosh(t)$ (from the parameteric 
+    representation of the catenary). In an earlier question, we also discovered that the arclength of this
+    parametrization is $\sinh(t)$. Now, we have enough information to calculate $X(t)$:
+    \begin{align*}
+        X(t) &= t - \frac{1}{\sqrt{1^2+\sinh^2(t)}}\cdot\int_a^t\sqrt{(x'(w))^2+(y'(w))^2}dw \\
+        &= t - \frac{1}{\cosh(t)}\cdot\sinh(t) \\
+        &= t - \tanh(t)
+    \end{align*}
+    and $Y(t)$:
+    \begin{align*}
+        Y(t) &= \cosh(t) - \frac{\sinh(t)}{\sqrt{1^2+\sinh(t)}}\cdot\sinh(t) \\
+        &= \frac{\cosh^2(t) - \sinh^2(t)}{\cosh(t)} \\
+        &= \frac{1}{\cosh(t)} \\
+        &= \text{sech}(t)
+    \end{align*}
+    Thus, the involute of the catenary is given by the parametrization $t\mapsto(t-\tanh(t),$sech$(t))$ which is
+    the parametrization of a tractrix as wanted.
 \end{s}
 \end{document}
