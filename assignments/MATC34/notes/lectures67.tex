@@ -1,0 +1,121 @@
+\chapter{Power Series}
+
+\section{Power Series}
+
+The power series in $\mathbb{C}$ is as follows:
+\[\sum_{n=1}^{\infty} a_nz^n\]
+where $z\in\mathbb{C}$, and $a_n\in\mathbb{C}$. This series just like the geometric
+series, can be explicitly calculated given some certain conditions.
+
+\begin{theorem}
+    Given a power series $\sum_{n=1}^{\infty} a_nz^n$, there exists a $0\leq R\leq\infty$ such that
+    the power series converges for $z$ such that $|z|<R$ and does not converge for $|z|>R$. Moreover,
+    if we let $\frac{1}{0}:=\infty$ and $\frac{1}{\infty}:=0$, then $R$ is given by:
+    \[ \frac{1}{R} = \limsup\limits_{n\to\infty}|a_n|^{\frac{1}{n}} \]
+\end{theorem}
+
+Some terminology before we begin the proof.
+\begin{definition}
+    The disk $\{z: |z|<R\}$ is called the \textbf{disk of convergence} for the corresponding power series. Also,
+    $R$ is called the \textbf{radius of convergence}.
+\end{definition}
+
+\begin{proof}
+    Let $L = \frac{1}{R}$. Suppose $|z| < R$. We want to show that $\sum |a_n||z|^n$ converges. Since $|z|<R$,
+    we can choose a $\epsilon>0$ such that:
+    \[ (L+\epsilon)|z| = r < 1 \]
+    Since $L = \limsup|a_n|^{\frac{1}{n}}$, this means that for sufficiently large $n$, $|a_n|^{\frac{1}{n}} <
+    (L+\epsilon)$ or equivalently, $|a_n| < (L+\epsilon)^n$. Therefore:
+    \[ \sum_{n=1}^{\infty} |a_n||z|^n \leq \sum_{n=1}^{\infty}(L+\epsilon)^n|z|^n \leq \sum_{n=1}^{\infty} 
+        ((L+\epsilon)|z|)^n \]
+    This is a convergent geometric series so we have that $\sum |a_n||z|^n$ converges.\\
+    Now suppose $|z|>R$. By the definition of $\limsup$, for any $\epsilon>0$ there exists infinitely many
+    $a_n$ satisfying $|a_n|^{\frac{1}{n}} > (L-\epsilon)$, or $|a_n| > (L-\epsilon)^n$. Choose $\epsilon>0$ small
+    enough that $(L-\epsilon)|z|>1$. Then $\sum ((L-\epsilon)|z|)^n$ is a diverging geometric series and since
+    $(L-\epsilon)|z| < |a_n||z|^n$ for infinitely many $n$, we have that:
+    \[ \sum_{n=1}^{\infty} |a_n||z|^n \]
+    diverges.
+\end{proof}
+
+\begin{remark}
+    If it happens that $|z|=R$, then the series may or may not converge. For example, consider the power series:
+    \begin{enumerate}
+        \item $\sum_{n=1}^{\infty} z^n$
+        \item $\sum_{n=1}^{\infty} \frac{z^n}{n}$
+        \item $\sum_{n=1}^{\infty} \frac{z^n}{n^2}$
+    \end{enumerate}
+    For (1), we have that $\frac{1}{R} = \limsup|a_n|^{\frac{1}{n}} = 1$ so $R = 1$. Then it is clear that
+    if $|z| = R$, the series would just fail the diverging series test, i.e. $\lim_{n\to\infty} |z|^n \neq 0$.
+    To calculate $R$ in (2), note that: 
+    \begin{align*}
+        \lim_{n\to\infty} (\frac{1}{n})^{\frac{1}{n}} &= \lim_{n\to\infty} \exp{(\log{(\frac{1}{n})^{\frac{1}{n}}})}\\
+            &= \lim_{n\to\infty} \exp{(\frac{1}{n}\log{(\frac{1}{n})})} \\
+            &= \exp{\lim_{n\to\infty}\frac{\log(\frac{1}{n})}{n}} \\
+            &= \exp{\lim_{n\to\infty}\frac{\frac{1}{n}}{1}}\\
+            &= \exp(0) \\
+            &= 1
+    \end{align*}
+    so $R = 1$ again. Then if $z = 1$, we just have the series $\sum_{n=1}^{\infty} \frac{z^n}{n} = 
+    \sum_{n=1}^{\infty} \frac{1}{n}$ which does not converge. Now what if $z = -1$? Then the series becomes
+    $\sum_{n=1}^{\infty} \frac{(-1)^n}{n}$ which converges by the alternating series test.
+    We can repeat the same process for (3), but this time
+    we get that it converges since $\sum_{n=1}^{\infty} \frac{1}{n^2}$ converges.
+\end{remark}
+
+\begin{example}
+    Examples of power series that converge in the whole complex plane are given by the standard
+    \textbf{trigonometric functions}. These are defined by:
+    \[ \cos{z} = \sum_{n=0}^{\infty} (-1)^n\frac{z^{2n}}{(2n)!} \]
+    and
+    \[ \sin{z} = \sum_{n=0}^{\infty} (-1)^n\frac{z^{2n+1}}{(2n+1)!} \]
+\end{example}
+
+\begin{theorem}
+    The power series $f(z) = \sum_{n=0}^{\infty} a_nz^n$ defines a holomorphic function in its disc of
+    convergence. The derivative of $f$ is given by $f'(z) = \sum_{n=0}^{\infty} na_{n-1}z^{n-1}$.
+    Moreover, $f'$ has the same radius of convergence as $f$.
+\end{theorem}
+\begin{proof}
+    The assertion about the radius of convergence of $f'$ follows from Hadamard's formula. Indeed,
+    $\lim_{n\to\infty} n^{\frac{1}{n}} = 1$ and therefore
+    \[ \limsup |a_n|^{\frac{1}{n}} = \limsup |na_n|^{\frac{1}{n}}, \]
+    so that $\sum a_nz_n$ and $\sum na_nz_n$ have the same radius of convergence, and hence so do
+    $\sum a_nz^n$ and $\sum na_nz^{n-1}$.\\
+    To prove the first assertion, we must show that the series
+    \[ g(z) = \sum_{n=0}^{\infty} na_nz^{n-1} \]
+    gives the derivative of $f$. For that, let $R$ denote the radius of convergence of $f$, and suppose
+    $|z_0| < r < R$. Write,
+    \[ f(z) = S_{N}(z) + E_{N}(z) \]
+    where
+    \[ S_N(z) = \sum_{n=0}^{N} a_nz^n\]
+    and
+    \[ E_N(z) = \sum_{n=N+1}^{\infty} a_nz^n \]
+    Then, if $h$ is chosen so that $|z_0 + h| < r$ we have
+    \begin{align*}
+        \frac{f(z_0+h) - f(z)}{h} - g(z_0) &= \Bigg{(}\frac{S_N(z_0+h)-S_N(z_0)}{h}-S_N^{'}(z_0)\Bigg{)} \\
+        &+ (S_N^{'}(z_0) - g(z_0)) + \Bigg{(}\frac{E_N(z_0+h)-E_N(z_0)}{h}\Bigg{)}
+    \end{align*}
+    Since $a^n-b^n = (a-b)(a^{n-1}+a^{n-2}b + \hdots + ab^{n-2}+b^{n-1})$, we have that
+    \[ \Bigg{|}\frac{E_N(z_0+h)-E_N(z_0)}{h}\Bigg{|}\leq\sum_{n=N+1}^{\infty}|a_n|\Bigg{|}\frac{(z_0+h)^n-z_0^n}{h}
+        \Bigg{|}\leq \sum_{n=N+1}^{\infty} |a_n|nr^{n-1},\]
+    where we have used the fact that $|z_0|<r$ and $|z_0+h|<r$. The expression on the right is the tail end of
+    a convergent series, since $g$ converges absolutely on $|z|<R$. Therefore, given $\epsilon>0$ we can find
+    $N_1 > 0$ so that $N > N_1$ implies
+    \[ \Bigg{|}\frac{E_N(z_0+h)-E_N(z_0)}{h}\Bigg{|} < \epsilon \]
+    Also, since $\lim_{N\to\infty} S_N^{'}(z_0) = g(z_0)$, we can find $N_2$ so that $N > N_2$ implies
+    \[ |S_N^{'}(z_0) - g(z_0)| < \epsilon \]
+    If we can fix $N$ so that $N > N_1$ and $N > N_2$ hold, then we can find $\delta > 0$ so that $|h| < \delta$
+    implies
+    \[ \Bigg{|}\frac{S_N(z_0+h) - S_N(z_0)}{h} - S_N^{'}(z_0)\Bigg{|} < \epsilon \]
+    simply because the derivative of a polynomial is obtained by differentiating it term by term. Therefore,
+    \[ \Bigg{|}\frac{f(z_0+h)-f(z_0)}{h} - g(z_0)\Bigg{|} < 3\epsilon \]
+    whenever $|h| < \delta$.
+\end{proof}
+
+Since by applying this theorem on a power series yields yet another power series, we can keep on repeating this
+process as much as we want, even till infinity.
+
+\begin{theorem}
+    A power series is infinitely complex differentiable in its disc of convergence, and the higher derivatives
+    are obtained by termwise differentiation.
+\end{theorem}

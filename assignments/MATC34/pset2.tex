@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} 
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    % Math symbols such as \mathbb
+\usepackage{graphicx} % Allows for eps images
+\usepackage[dvips,letterpaper,margin=1in,bottom=0.7in]{geometry}
+\usepackage{tensor}
+ % Sets margins and page size
+\usepackage{amsmath}
+
+\renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
+% \DeclareMathOperator{\Sample}{Sample}
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+\usepackage{enumerate}
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}}
+% for vectors of Greek letters
+\newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+% for partial derivatives
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+% for double partial derivatives
+\newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2}
+ \right)_{#3}} % for thermodynamic partial derivatives
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+ \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
+ #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot \v{#1}} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times \v{#1}} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\providecommand{\wave}[1]{\v{\tilde{#1}}}
+\providecommand{\fr}{\frac}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\seq}{\subseteq}
+\providecommand{\e}{\epsilon}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{p}{Problem}[section]
+\usepackage{cancel}
+\newtheorem*{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{dfn}{Definition}
+ \newenvironment{s}{%\small%
+        \begin{trivlist} \item \textbf{Solution}. }{%
+            \hspace*{\fill} $\blacksquare$\end{trivlist}}%
+% ***********************************************************
+% ********************** END HEADER *************************
+% ***********************************************************
+
+\begin{document}
+
+{\noindent\Huge\bf  \\[0.5\baselineskip] {\fontfamily{cmr}\selectfont  %
+Problem Set 2}         }\\[2\baselineskip] % Title
+{ {\bf \fontfamily{cmr}\selectfont MATC34: Complex Variables}\\ {\textit{\fontfamily{cmr}%
+\selectfont September 27, 2017, 1002678140}}}
+{\large \textsc{Anmol Bhullar}} % Author name
+\\[1.4\baselineskip]
+
+\begin{p}
+    Compute $\limsup_{n\to\infty}a_n$ for the following sequences. (Note: it may be infinity)
+    \begin{enumerate}
+        \item $a_n = (-1)^n + (-1)^{3n}$
+        \item $a_n = \frac{(-1)^n}{n^2+n}$
+        \item $a_n = e^{\pi in}$
+        \item $a_n = \begin{cases} n^2 & n\: \text{even} \\ \frac{1}{n} & n\: \text{odd} \end{cases}$
+    \end{enumerate}
+\end{p}
+\begin{s}
+    (a). We know $a_n = (-1)^n + (-1)^{3n}$. Note, that $1^3 = [(-1)\cdot(-1)](-1) = 1\cdot(-1) = -1$ so
+    we have that $(-1)^n = (-1)^{3n}$. Thus, $a_n = 2\cdot(-1)^n = \{-2,2,\hdots,-2,2,-2,2,\hdots\}$. Thus, we see
+    that the subsequence $\{2,2,\hdots,2,2,2,\hdots\}$ converges to the limit $2$ and that the limits of all other
+    subsequences will be bounded by $2$. Thus since, $\limsup_{n\to\infty}a_n = \sup\{\text{limits of all convergent subsequences}\}$,
+    we have that $\limsup_{n\to\infty}a_n = 2$.\\
+    (b) We know $a_n = \frac{(-1)^n}{n^2+n}$. Note that, as $n\to\infty$, $a_n\to0$ since:
+    \begin{align*}
+        \lim_{n\to\infty} \frac{(-1)^n}{n^2+n} \leq \lim_{n\to\infty} \frac{1}{n^2+n} = 0 \\
+        \lim_{n\to\infty} \frac{(-1)^n}{n^2+n} \geq \lim_{n\to\infty} \frac{-1}{n^2+n} = 0
+    \end{align*}
+    Thus, by the squeeze theorem, $\lim_{n\to\infty} a_n = 0$ which implies that $\limsup_{n\to\infty}a_n$ exists
+    and $\lim_{n\to\infty} a_n = \limsup_{n\to\infty}a_n = 0$.\\
+    (c) We know $a_n = e^{\pi in}$. By Euler's identity, we have that $e^{\pi i} = -1$ which implies that
+    $(e^{\pi i})^n = (-1)^n$, thus $a_n = (-1)^n = \{-1, 1, -1, 1, \hdots\}$. Then the subsequence $\{1, 1, 1, \hdots\}$ 
+    converges to 1, and the limits of all other convergent subsequences are bounded by 1. Thus,
+    $\limsup_{n\to\infty} a_n = 1$.\\
+    (d) Let $a_{n_k}$ be the subsequence of all $n$ such that $n = 2k$ for some $l\in\NN$. Then, $a_{n_k}$ is an
+    unbounded increasing sequence (follows from the real valued function $f(x) = x^2$ which is increasing without bound
+    for $x>1$). Thus, $\lim_{n\to\infty} a_{n_k} = \infty$. Note that for all $n\in\NN, n > 1$, we have that $n^2 > \frac{1}{n}$
+    and for $n=1$, we have that $n^2 = \frac{1}{n}$. Thus, $\sup\{\text{limit of all convergent subsequences}\} = a_{n_k} = 
+    \infty$ so $\limsup_{n\to\infty} a_n = \infty$.
+\end{s}
+
+\begin{p}
+    Determine the radius of convergence of the following series:
+    \begin{enumerate}
+        \item $\sum_{n=1}^{\infty} (-1)^n\frac{z^n}{n^2+1}$
+        \item $\sum_{n=1}^{\infty} \frac{z^n}{2^n+n}$
+        \item $\sum_{n=1}^{\infty} 3^nn^5z^n$
+        \item $\sum_{n=1}^{\infty} \log(n)z^n$
+    \end{enumerate}
+\end{p}
+\begin{s}
+    (a) Let $a_n = \frac{(-1)^n}{n^2+1}$. Then this is a power series, so we can calculate its radius of convergence via
+    the formula $\frac{1}{R} = \limsup_{n\to\infty}|a_n|^{\frac{1}{n}}$. Thus:
+    \begin{align*}
+        |a_n|^{\frac{1}{n}} = \Bigg{|}\frac{(-1)^n}{n^2+1}\Bigg{|}^{\frac{1}{n}} = \frac{1}{|n^2+1|^{\frac{1}{n}}}
+    \end{align*}
+    Note that,
+    \begin{align*}
+        \lim_{x\to\infty} |n^2+1|^{\frac{1}{n}} &= \lim_{n\to\infty} \exp(\log(|n^2+1|^{\frac{1}{n}})) \\
+        &= \exp(\lim_{x\to\infty}\frac{\log(x^2+1)}{x}) = \exp(\lim_{x\to\infty}\frac{2x}{x^2}) (\text{L'hopital's Rule})\\
+        &= \exp(\lim_{x\to\infty}\frac{2}{x}) = \exp(0) = 1
+    \end{align*}
+    which implies that $\lim_{n\to\infty}|n^2+1|^{\frac{1}{n}} = 1$ so that $\lim_{n\to\infty}|a_n|^{\frac{1}{n}} = 1$.
+    Since the general limit exists, then $\limsup_{n\to\infty}|a_n|^{\frac{1}{n}} = 1$ which implies that $\frac{1}{R} = 1
+    \implies R = 1$.\\ \\
+
+    (b) Let $a_n = \frac{1}{2^n + n}$. Then this is a power series who radius of convergence can be calculated by
+    $\frac{1}{R} = \limsup_{n\to\infty}|a_n|^{\frac{1}{n}}$. Note that:
+    \begin{align*}
+        |a_n|^{\frac{1}{n}} &= \Bigg{|}\frac{1}{2^n+n}\Bigg{|}^{\frac{1}{n}} = \frac{1}{|2^n+n|^{\frac{1}{n}}}
+    \end{align*}
+    Extending this sequence as a function of the reals, we can consider:
+    \begin{align*}
+        \lim_{x\to\infty} |2^n+n|^{\frac{1}{n}} &= \lim_{x\to\infty} \exp(\log(|2^n+n|^{\frac{1}{n}})) \\
+        &= \exp(\lim_{x\to\infty} \frac{\log(2^n+n)}{n}) = \exp(\lim_{x\to\infty} \frac{\log(2)2^n+1}{2^n+n}) \\
+        &= \exp(\log(2)\lim_{n\to\infty}\frac{2^n}{2^n}) = \exp(\log(2)) = 2
+    \end{align*}
+    so that $\limsup_{n\to\infty} = \lim_{n\to\infty} |a_n|^{\frac{1}{n}} = \frac{1}{2}$ and that $\frac{1}{R} = \frac{1}{2}$
+    implies that $R = 2$. \\ \\
+
+    (c) Let $a_n = 3^nn^5$. Then the radius of convergence is given by $\frac{1}{R} = \limsup_{n\to\infty} |a_n|^{\frac{1}{n}}$.
+    Note that:
+    \begin{align*}
+        \lim_{n\to\infty}|a_n|^{\frac{1}{n}} &= \lim_{n\to\infty} |3^n\cdot n^5|^{\frac{1}{n}} \\
+        &= \lim_{n\to\infty}|3^n|^{\frac{1}{n}}\cdot |n^5|^{\frac{1}{n}} = \lim_{n\to\infty} 3\cdot |n^\frac{5}{n}|
+    \end{align*}
+    Then we compute:
+    \begin{align*}
+        \lim_{x\to\infty} n^{\frac{5}{n}} &= \lim_{x\to\infty} \exp(\log(n^{\frac{5}{n}})) \\
+        &= \exp(\lim_{n\to\infty}5\frac{\log(n)}{n}) = \exp(5\cdot0) = \exp(0) = 1
+    \end{align*}
+    Thus, $\limsup_{n\to\infty} |a_n|^{\frac{1}{n}} = \lim_{n\to\infty} |a_n|^{\frac{1}{n}} = 3$ so $R = \frac{1}{3}$. \\ \\
+
+    (d) It is obvious by pre-school mathematics that $ |a_n|^{\frac{1}{n}} = \exp(\frac{\log(\log(n))}{n}) = 1 \implies R = 1$.
+\end{s}
+
+\begin{p}
+    (a) Prove that if $|z| < 1$, then:
+    \[ \sum_{n=1}^{\infty} nz^{n-1} = (\frac{1}{1-z})^2 \]
+    (b) Write down a power series which equals the function $f(z) = (\frac{1}{1-z})^3$ for all
+    $z$ with $|z| < 1$.
+\end{p}
+\begin{s}
+    (a) Let $g(z) = \sum_{n=1}^{\infty} z^n$. Then by the geometric series (since $|z| < 1$), we have that:
+    \[ g(z) = \frac{1}{1-z} \]
+    Note that: 
+    \[ g'(z) = \Bigg{(}\frac{1}{1-z}\Bigg{)}^2  \]
+    and more importantly that,
+    \[ g'(z) = \sum_{n=1}^{\infty} n\cdot z^{n-1} = f(z) \] 
+    so we have that $f(z) = (\frac{1}{1-z})^2$. \\ \\
+
+    (b) Let $h(z) = \frac{1}{2} \sum_{n=1}^{\infty} z^n$. Then:
+    \begin{align*}
+        h(z) = \frac{1}{2-2z} \implies h'(z) = \frac{1}{2(x-1)^2} \implies h^{(2)}(z) = \frac{1}{(1-z)^3}
+    \end{align*}
+    where $h^{(2)}(z)$ is then equal to $\sum_{n=1}^{\infty} n\cdot(n-1)z^{n-2}$.
+\end{s}
+
+\begin{p}
+    Consider the function $f: \mathbb{C} \to \mathbb{C}$ given by $f(z) = z^3$.
+\end{p}
+\begin{s}
+\end{s}
+\end{document}
