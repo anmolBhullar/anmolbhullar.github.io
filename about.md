@@ -9,8 +9,7 @@ I am a 19-year old student at the University of Toronto (Scarborough Campus) cur
 studying Computer Science and Mathematics. This blog was created in hopes of bringing
 them together! I will be writing articles on cool mathematics e.g. proofs or exposes
 on cool fields within mathematics, and I will also be showcasing some cool programs
-I've made on here. In order to challenge myself, I've decided to write a new
-article once every two weeks (excluding exam seasons for obvious reasons).
+I've made on here.
 
 Feel free to contact me if you find any typos or if you have some questions about
 whatever I wrote. I check my emails fairly regularly so I should reply back within
