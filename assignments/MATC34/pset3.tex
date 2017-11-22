@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} 
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    % Math symbols such as \mathbb
+\usepackage{graphicx} % Allows for eps images
+\usepackage[dvips,letterpaper,margin=1in,bottom=0.7in]{geometry}
+\usepackage{tensor}
+ % Sets margins and page size
+\usepackage{amsmath}
+
+\renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
+% \DeclareMathOperator{\Sample}{Sample}
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+\usepackage{enumerate}
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}}
+% for vectors of Greek letters
+\newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+% for partial derivatives
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+% for double partial derivatives
+\newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2}
+ \right)_{#3}} % for thermodynamic partial derivatives
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+ \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
+ #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot \v{#1}} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times \v{#1}} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\providecommand{\wave}[1]{\v{\tilde{#1}}}
+\providecommand{\fr}{\frac}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\CC}{\mathbb{C}}
+\providecommand{\ZZ}{\mathbb{Z}}
+\providecommand{\seq}{\subseteq}
+\providecommand{\e}{\epsilon}
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{p}{Problem}[section]
+\usepackage{cancel}
+\newtheorem*{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{dfn}{Definition}
+ \newenvironment{s}{%\small%
+        \begin{trivlist} \item \textbf{Solution}. }{%
+            \hspace*{\fill} $\blacksquare$\end{trivlist}}%
+% ***********************************************************
+% ********************** END HEADER *************************
+% ***********************************************************
+
+\begin{document}
+
+{\noindent\Huge\bf  \\[0.5\baselineskip] {\fontfamily{cmr}\selectfont  %
+Problem Set 3}         }\\[2\baselineskip] % Title
+{ {\bf \fontfamily{cmr}\selectfont MATC34: Complex Variables}\\ {\textit{\fontfamily{cmr}%
+\selectfont October 13, 2017, 1002678140}}}
+{\large \textsc{Anmol Bhullar}} % Author name
+\\[1.4\baselineskip]
+
+\begin{p}
+    Compute the integrals. All curves are considered with counterclockwise orientation. We use the notation
+    $C(z_0,r) := \{z\in\CC: \abs{z-z_0} = r\}$, while $[a,b]$ denotes the segment in $\CC$ with endpoints $a,b$.
+    \begin{enumerate}
+        \item \[ \int_S z^3+2z\:dz\: \text{where}\: S := \{z\in\CC: \abs{z}=1\: \text{and Im}(z)\geq 0\}. \]
+        \item \[ \int_P z-4z^2\:dz\: \text{where}\: P := [0,1] \cup [1,1+i] \]
+        \item \[ \int_Q z-4z^2\:dz\: \text{where $Q$ is the square of side length 2 centered at the origin.} \]
+        \item \[ \int_{C(0,1)} e^{z+z^2}\:dz. \]
+        \item \[ \int_{C(2,1)} \log{z}\:dz \]
+    \end{enumerate}
+\end{p}
+\begin{s}
+    \begin{enumerate}
+        \item Note that $z^3+2z$ is a polynomial. Thus it is holomorphic and its primitive exists and is equal to
+            $\frac{z^4}{4} + z^2$. Thus, we can apply FTOC. To find the end points of $S$, notice that
+            $S$ is equal to the upper unit semicircle and we are given positive orientation on $S$
+            which means $S$ is a curve moving from $z=1$ to $z=-1$. Thus:
+            \[ \int_S z^3+2z\:dz = \big{[}\frac{z^4}{4}+z^2\big{]}_1^{-1} = (\frac{1}{4}+1) - (\frac{1}{4}+1) = 0\]
+        \item Again we have that $z-4z^2$ is a polynomial implying that it is holomorphic and its primitive exists which is equal
+            to $\frac{z^2}{2}-\frac{4}{3}z^3$. Thus, we can apply FTOC. Looking at the definition of $P$, we see that the end points
+            are $0$ and $1+i$. Thus:
+            \begin{align*}
+                \int_P z-4z^2\:dz &= \int_{[0,1+i]} z-4z^2\:dz \\
+                &= \big{[}\frac{z^2}{2} - \frac{4}{3}z^3\big{]}_0^{1+i} \\
+                &= (\frac{(1+i)^2}{2}-\frac{4}{3}(1+i)^3) \\
+                &= \frac{8}{3} - \frac{5i}{3}
+            \end{align*}
+        \item Note that $z-4z^2$ is a polynomial so it is holomorphic on every $z\in\mathbb{C}$ which implies that it is holomorphic
+            on $Q$ and its interior. Thus by corrollary 1.2 (Complex Analysis, pg. 36), we have that:
+            \[ \int_Q z-4z^2\:dz = 0 \]
+        \item Since $e^z$ and $z+z^2$ are holomorphic everywhere, thus their composition must be as well so $e^z\circ (z+z^2) 
+            = e^{z+z^2}$ is holomorphic everywhere. Furthermore, note that $C(0,1)$ is a closed curve so by Cauchy's theorem,
+            we have that:
+            \[ \int_{C(0,1)} e^{z+z^2}\:dz = 0 \]
+        \item Note that $\log{z}$ is holomorphic everywhere except at $z=0$. Since $0\not\in C(2,1)$, then $\log{z}$ is holomorphic
+            on the interior of $C(2,1)$. Since $C(2,1)$ is a closed curve, then by Cauchy's theorem, we have that:
+            \[ \int_{C(2,1)} \log{(z)}dz = 0 \]
+    \end{enumerate}
+\end{s}
+
+
+\begin{p}
+    Compute for each $n\in\ZZ$ the integral
+    \[ \int_{C(0,1)} z^n\:dz \]
+    For which values of $n$ is it zero?
+\end{p}
+\begin{s}
+    Consider the parameterization $z:[0,2\pi]\to\mathbb{C}$ where $z(t) = e^{it} = \cos{t}+i\sin{t}$. Note that this
+    parameterizes $C(0,1)$. By applying a change of variables, we get:
+    \begin{align*}
+        \int_{C(0,1)} z^n\:dz = \int_0^{2\pi} (z(t))^nz'(t)\:dt &= \int_0^{2\pi} i(e^{nit})e^{it}\:dt \\
+        &= i\int_0^{2\pi} e^{it(n+1)}\:dt
+    \end{align*}
+    If $n=-1$, then $e^{it(n+1)}=1 \implies$ (by FTOC) $i\int_0^{2\pi} 1dt = i[1]_0^{2\pi} = 2\pi i$. 
+    So, suppose $n\neq -1$.
+    Since $e^{it(n+1)}$ is holomorphic everywhere and $-\frac{ie^{i(n+1)t}}{n+1}$ is its primitive. So:
+    \begin{align*}
+        i\int_0^{2\pi} e^{(n+1)it}dt &= i\big{[}-i\frac{e^{i(n+1)t}}{n+1}\big{]}_0^{2\pi} \\
+        &= (-i)(i)\big{[}\frac{e^{(n+1)it}}{n+1}\big{]}_0^{2\pi} \\
+        &= (1)\big{(}\frac{e^{(n+1)i(2\pi)}}{n+1} - \frac{e^{(n+1)i(0)}}{n+1}\big{)} \\
+        &= \big{(}\frac{e^{(n+1)2\pi i} - e^0}{n+1}\big{)} \\
+        &= \frac{e^{(n+1)2\pi i}-1}{n+1}
+    \end{align*}
+    which is equal to 0 if and only if $e^{(n+1)2\pi i} = 1$. So to find which values of $n\in\mathbb{Z}$,
+    is the integral $\int_{C(0,1)} z^n\:dz = 0$,
+    we need to find which values of $n$ solves the equation $e^{(n+1)2\pi i} = 1$. Consider:
+    \begin{align*}
+        e^{(n+1)2\pi i} &= \cos{((n+1)2\pi)} + i\sin{((n+1)2\pi)}
+    \end{align*}
+    Since $\cos{(z)}$ is periodic with period $2\pi$, then $1 = \cos{(2\pi)} = \cos{((m+1)2\pi)}$ if $m\in\mathbb{Z},m\neq -1$. 
+    Similarly, $\sin{(2\pi)} = \sin{((m+1)2\pi)} = 0$. Thus:
+    \[ e^{(n+1)2\pi i} = (1) + i(0) = 1 \]
+    so that $\int_{C(0,1)} z^n\:dz = 0$ for all $n\in\mathbb{Z}$ but not at $n=-1$ since we established earlier that it is
+    equal to $2\pi i$.
+\end{s}
+
+\begin{p}
+    Consider the function
+    \[ g(z) := \sum_{n=1}^{\infty} (-1)^{n+1}\frac{z^n}{n} \]
+    \begin{enumerate}
+        \item Compute the radius of convergence $R$, showing that it is positive.
+        \item Compute the power series for $g'(z)$.
+        \item Use this to show that for any $x$ real with $\abs{x} < 1$ one has
+            \[ g(x) = \log{(1+x)} \]
+    \end{enumerate}
+    Thus, $g(z)$ defines the function $\log{(x+1)}$ for complex values.
+\end{p}
+\begin{s}
+    First, we compute the $R$ for $g(z)$. Recall that:
+    \[ \frac{1}{R} = \limsup_{n\to\infty} \abs{a_n}^{\frac{1}{n}} \]
+    Since $a_n = \frac{(-1)^{n+1}}{n}$, and $\limsup_{n\to\infty} \abs{a_n}^{\frac{1}{n}} = \lim_{n\to\infty} \abs{a_n}^{\frac{1}{n}}$ (if
+    the limit on the right hand exists but we claim this does and show it does exist by explicitly computing it), then:
+    \begin{align*}
+        \frac{1}{R} = \lim_{n\to\infty} \abs{a_n}^{\frac{1}{n}} &= \lim_{n\to\infty} \abs{\frac{(-1)^{n+1}}{n}}^{\frac{1}{n}}\\
+        &= \lim_{n\to\infty} \frac{1}{(n)^{\frac{1}{n}}} \\
+        &= \frac{1}{\lim_{n\to\infty} (n)^{\frac{1}{n}}} \\
+        &= \frac{1}{1} = 1
+    \end{align*}
+    so $\limsup{n\to\infty}\abs{a_n}^{\frac{1}{n}} = 1 \implies R = 1$ implying the $g(z)$ has positive radius of convergence.
+    By theorem 2.6 (Pg. 16, Complex Analysis), $g^{'}(z) = \sum_{n=2}^{\infty} (-1)^{n+1}z^{n-1}$.\\
+    Consider for real $x\in\mathbb{R}$:
+    \[ \sum_{n=2}^{\infty} (-x)^{n-1} = \sum_{n=1}^{\infty} (-x)^n = \frac{1}{1 - (-x)} \qquad (\text{geometric series}) \]
+    Furthermore,
+    \[ \frac{1}{1+x} = \sum_{n=2}^{\infty} (-x)^{n-1} = \sum_{n=2}^{\infty} (-1)^{n-1}(x)^{n-1} = \sum_{n=2}^{\infty} 
+        (-1)^{n+1}(x)^{n-1} \]
+    so that $g'(x) = \sum_{n=2}^{\infty} (-1)^{n+1}x^{n-1} = \frac{1}{1+x}$. Note that $\frac{d}{dx}(\log(1+x)) = \frac{1}{1+x}$
+    so we have that: 
+    \[\frac{d}{dx}(\log{(1+x)}) = \frac{d}{dx}(g(x)) \]
+    Since $x\in\RR$, this simply implies that:
+    \[ g(x) = \log{(1+x)} + C\]
+    Note that $g(0) = 0$ so if we want $\log{(1+x)}+C$ to agree at $x=0$, we must set $C = 0$. Thus:
+    \[ g(x) = \log{(1+x)} \]
+\end{s}
+
+\newpage
+
+\begin{p}
+    Consider the function
+    \[ h(z) = \frac{e^z-1}{z} \]
+    \begin{enumerate}
+        \item By writing $h(z)$ as a power series and computing its radius of convergence, prove that it is a holomorphic
+            function for each $z\in\CC$.
+        \item Compute
+            \[ \int_{C(1,1)} \frac{e^z}{z}dz.\]
+        \item Compute
+            \[ \int_{C(0,1)} \frac{e^z-1}{z}dz.\]
+        \item Compute
+            \[ \int_{C(0,1)} \frac{e^z}{z}dz. \]
+    \end{enumerate}
+\end{p}
+\begin{s}
+    \begin{enumerate}
+        \item We know that:
+            \begin{align*}
+                &e^z = 1 + \frac{z}{1} + \frac{z^2}{2} + \frac{z^3}{6} + \hdots \\
+                \implies &e^z - 1 = \frac{z}{1} + \frac{z^2}{2} + \frac{z^3}{6} + \hdots \\
+                \implies &\frac{e^z-1}{z} =  1 + \frac{z}{2} + \frac{z^2}{6} + \hdots
+            \end{align*}
+            which implies that $h(z) = 1 + \frac{z}{2} + \frac{z^2}{6} + \hdots + \frac{z^n}{(n+1)!} + \hdots$\\
+            so that $h(z) = \sum_{n=1}^{\infty} \frac{z^{n-1}}{n!}$. Now we compute this power series' radius of convergence. Similarly
+            to 3(a), we know that:
+    We know that
+    \[ \frac{1}{R} = \limsup_{n\to\infty} \abs{a_n}^{\frac{1}{n}} = \lim_{n\to\infty} \abs{a_n}^{\frac{1}{n}} \]
+    if the limit in the right most hand exists. We claim this limit exists by computing it explicitly. We know $a_n = \frac{1}{n!}$ so:
+    \begin{align*}
+        \lim_{n\to\infty} \abs{\frac{1}{n!}}^{\frac{1}{n}} &= \lim_{n\to\infty} (\frac{1}{n!})^{\frac{1}{n}}\quad (n!\:\text{is positive for}\:n>0)\\
+        &= \lim_{n\to\infty} \frac{1}{(n!)^{\frac{1}{n}}} \\
+    \end{align*}
+    In lecture, we computed the limit $\lim_{n\to\infty} (n!)^{\frac{1}{n}}$ and showed it is equal to 0. Thus:
+    \[ \lim_{n\to\infty} \frac{1}{(n!)^{\frac{1}{n}}} = \frac{1}{0} = \infty \]
+    Thus, $R = \infty$ so the power series converges for every $z\in\mathbb{C}$ implying that $h(z)$ is holomorphic for every $z\in\mathbb{C}$.
+        \item Note that $0\not\in$ Int$(C(1,1))$ where Int$(U)$ is the interior of a closed curve $U$. Furthermore, $\frac{e^z}{z}$ is
+            holomorphic for every $z\in\mathbb{C}$ but undefined at $z=0$. Thus, we have that $\frac{e^z}{z}$ is holomorphic on the interior
+            of $C(1,1)$ and since $C(1,1)$ is a closed curve, we can apply Cauchy's theorem to get that:
+            \[ \int_{C(1,1)} \frac{e^z}{z}dz = 0 \]
+        \item We have already established in 3(a) that $\frac{e^z-1}{z}$ is holomorphic on all of $\mathbb{C}$, thus it is holomorphic
+            on the interior of $C(0,1)$. Combining this with that fact that $C(0,1)$ is a closed curve, we get by Cauchy's theorem that:
+            \[ \int_{C(0,1)} \frac{e^z-1}{z}dz = 0 \]
+        \item Note that $\frac{e^z-1}{z} = \frac{e^z}{z} - \frac{1}{z}$ so that by 3(c), we have $\int_{C(0,1)} (\frac{e^z}{z} - \frac{1}{z})dz = 0$.
+            Since we have already computed the integral of $\int_{C(0,1)} \frac{dz}{z}$ in lecture and showed that it was equal to $2\pi i$. Thus, we
+            obtain that $\int_{C(0,1)} \frac{e^z}{z}dz = 2\pi i$.
+    \end{enumerate}
+\end{s}
+
+\begin{p}
+    Let
+    \[ f(z) := \sum_{n=0}^{\infty} a_nz^n \]
+    be a function defined by a power series, with positive radius of convergence. Prove that for any $n$ the $n^{th}$ derivative
+    at zero satisfies
+    \[ f^{(n)}(0) = a_nn! \]
+\end{p}
+\begin{s}
+    Note that $f(z)$ is a power series. By corollary 2.7, we know that power series are infinitely differentiable in their
+    disc of convergence (which exists for $f(z)$ since we are given the disc has positive radius).
+    Consider the predicate:
+    \[ P(k):\qquad f^{(k)}(z) = \sum_{n=k}^{\infty} (n)(n-1)\hdots(n-k+1)a_nz^{n-k}\]
+    We prove this is true using induction. \\
+    Consider the base case $k=1$. Then by theorem 2.6, we know:
+    \[ f^{(1)}(z) = \sum_{n=1}^{\infty} na_nz^{n-1} \]
+    which follows the form given by $P(1)$ so the base case holds. Now assume for some $n>k>1$, $P(k)$ holds. Then we show
+    that $P(k+1)$ holds. Consider:
+    \begin{align*}
+        f^{(k+1)}(z) = \frac{d}{dz}(f^{(k)}(z)) &= \frac{d}{dz}(\sum_{n=k}^{\infty} (n)\hdots(n-k+1)a_nz^{n-k})  \\
+        &= \sum_{n=k+1}^{\infty} (n)\hdots(n-k)a_nz^{n-(k+1)}\qquad\text{(By theorem 2.6)} \\
+    \end{align*}
+    Thus $P(k+1)$ holds. Then $P(n)$ holds which implies that (note, we let $i := n$ and switch to $i$ in the sum to avoid confusion between
+    the $n$ in the power series and the $n$ in the predicate):
+    \[ f^{(n)}(z) = \sum_{i=n}^{\infty} (i)\hdots(i-n+1)a_iz^{i-n} = a_nn! + \sum_{i=n+1}^{\infty} (i)\hdots(i-n)a_iz^{i-n} \]
+    which implies that:
+    \[ f^{(n)}(0) = a_nn! + \sum_{i=n+1}^{\infty} (i)\hdots(i-n+1)a_i(0)^{i-n} = a_nn! + (0) = a_nn!\]
+    as wanted.
+\end{s}
+
+
+\end{document}

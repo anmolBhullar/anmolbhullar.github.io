@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\title{MATC34 Problem Set 5}
+\date{November 20, 2017}
+\author{Anmol Bhullar | 1002678140}
+
+\begin{document}
+    \maketitle 
+
+    \textbf{Question 1}.\\
+    Define $F_n := a_n$. By using the recursive definition of $a_n$, we know 
+    \begin{align*} 
+        F_n &= 2F_{n-1} + F_{n-2} \\
+        \implies \sum_{n=0}^{\infty} F_n &= \sum_{n=0}^{\infty} (2F_{n-1} + F_{n-2}) \\
+        \implies \sum_{n=0}^{\infty} F_n &= 2\sum_{n=0}^{\infty} F_{n-1} + \sum_{n=0}^{\infty} 
+            F_{n-2}\quad\text{[linearity of summation]}\\
+        \implies \sum_{n=1}^{\infty} F_n &= 2\sum_{n=1}^{\infty} F_{n-1} + \sum_{n=1}^{\infty} F_{n-2}\quad[F_0 = 0]\\
+        \implies \sum_{n=1}^{\infty} F_nz^n &= 2\sum_{n=1}^{\infty} F_{n-1}z^n + \sum_{n=1}^{\infty} F_{n-2}z^n\quad(*)\\
+    \end{align*}
+    Note that (*) is a power series in $\mathbb{C}$ so that $F$ is a function defined by $F = \sum_{n=1}^{\infty} F_nz^n$.
+    Note $F_1 = 1$ so that $F(1) = z$ (since $z^{(1)} = z$). Now, consider the following:
+    \begin{align*}
+        F(z) &= z + \sum_{n=2}^{\infty} F_nz^n \\
+        &= z + \sum_{n=2}^{\infty} (2F_{n-1}+F_{n-2})z^n\quad\text{[definition of given recurrence relation]}\\
+        &= z + 2\sum_{n=2}^{\infty} F_{n-1}z^n + \sum_{n=2}^{\infty} F_{n-2}z^n\quad(**)
+    \end{align*}
+    More specifically:
+    \begin{align*}
+        \sum_{n=2}^{\infty} 2F_{n-1}z^{n-1}(z) = 2z\sum_{n=2}^{\infty} F_{n-1}z^{n-1} = 2zF(z) \\
+        \sum_{n=2}^{\infty} F_{n-2}z^{n-2}(z^2) = z^2\sum_{n=2}^{\infty} F_{n-2}z^{n-2} = z^2F(z)
+    \end{align*}
+    so that now using the results above and (**), we can write:
+    \begin{align*}
+        F(z) &= z + 2zF(z) + z^2F(z) \\
+        \implies -z &= -F(z) + 2zF(z) + z^2F(z)\\
+        \implies -z &= F(z)[-1 + 2z + z^2]\\
+        \implies F(z) &= \frac{-z}{z^2+2z-1}
+    \end{align*}
+    Using the quadratic formula, we can factor $z^2+2z-1$, note: $z = \frac{-2 \pm \sqrt{4-(1)(-1)}}{2} = \frac{-2 \pm \sqrt{5}}{2} =
+    \pm\sqrt{2} - 1$. Thus, $F$ is not holomorphic on $z = \sqrt{2}-1$ and $z = -\sqrt{2}-1$. Note, since $|\sqrt{2}-1| < |-\sqrt{2}-1|$,
+    it follows that $L = \sqrt{2} - 1$ since this be the largest radius which does not contain any singularities 
+    of $F$.\hfill$\blacksquare$\\
+
+    \textbf{Question 2a}.\\
+    We refer to theorem 1.2 on Page 74 in the textbook. Choose $\Omega = \mathbb{C}$ since $e^{z^2}-1$ is holomorphic everywhere
+    and $\frac{1}{z}$ is holomorphic everywhere except $z=0$. Choose $h$ such that $h(z) = e^{z^2}-1$ and choose $n=1$, then it follows:
+    \begin{align*}
+        f(z) &= (z - z_0)^{-n}h(z) \\
+        &= z^{-n}(e^{z^2}-1)\quad\text{[given $z_0 = 0$]} \\
+        &= z^{-1}(e^{z^2}-1) \\
+        &= \frac{e^{z^2}-1}{z}
+    \end{align*}
+    so that the order of zero at $z=0$ is clearly 1.\hfill$\blacksquare$\\
+
+    \textbf{Question 2b}.\\
+    Note the power series of $\sin{(z^3)}$ can be found by plugging $z^3$ into the power series for $\sin{(z)}$, thus we obtain
+    $\sin{(z^3)} = z^3 - \frac{z^9}{6} + O(z^{11})$. The power series for $\cos{(z^2)}$ is obtained in a similar way, so
+    $\cos{(z^2)} = 1 - \frac{z^4}{4} + \frac{z^8}{24} + O(z^9)$ implying $\cos{(z^2)}-1 = -\frac{z^4}{4} + \frac{z^8}{24} + O(z^9)$.
+    So, we obtain the equality:
+    \[ f(z) = \frac{\sin{z^3}}{\cos{z^2}-1} = \frac{z^3 - \frac{z^9}{6} + O(z^{11})}{-\frac{z^4}{4} + \frac{z^8}{24} + O(z^9)} \]
+    from which it is easy to compute the order as $\text{Ord}_0(\frac{\sin{z^3}}{\cos{z^2}-1}) = \text{Ord}_0(\sin{z^3}) - 
+    \text{Ord}_0(\cos{z^2}-1) = 3 - 4 = -1$. Thus, the order of the pole at $z=0$ is equal to -1.\hfill$\blacksquare$\\
+
+    \textbf{Question 2c}.\\
+    Rather than laboriously factoring the numerator and the denominator, simply consider: $(z-1)(z-3) = z^2 - 3z - z + 3 = z^2 - 4z 
+    + 3$ and $(z-1)(z-2) = z^2 - 2z - z + 2 = z^2 - 3z + 2$. Thus, we can write:
+    \[ f(z) = \frac{(z-1)(z-3)}{(z-1)(z-2)} \]
+    so we see that there is a removable singularity at $z=1$ which implies that the order of the pole at $z=1$ is percisely 
+    0.\hfill$\blacksquare$\\
+
+    \textbf{Question 2d}.\\
+    Note $(z-1)^2(z-2) = [(z-1)(z-1)](z-2) = [z^2 - 2z + 1](z-2) = z^3 - 4z^2 + 5z - 2$ so that we can write
+    \[ f(z) = \frac{1}{(z-1)^2(z-2)} \]
+    so we can clearly see that the order of the pole at $z=1$ is 2.\hfill$\blacksquare$\\
+
+    \textbf{Question 3a}.\\
+    Note $1+z$ is a polynomial so it is its own power (or more specifically, taylor) series. Also, we know $e^z$'s power series
+    is given by $\sum_{n=0}^{\infty} \frac{z^k}{k!}$ so $e^{z^2}$'s taylor series is given by $\sum_{n=0}^{\infty}\frac{z^{2k}}{k!}$
+    which further implies the taylor series of $-1+e^{z^2}$ is given by $z^2 + \frac{z^4}{2} + \frac{z^6}{6} + \frac{z^8}{24} + O(z^9)$.
+    Thus, we can write:
+    \begin{align*}
+        \frac{1+z}{-1 + \sum_{k=0}^{\infty}\frac{z^{2k}}{k!}} &= \frac{1 + z}{z^2 + \frac{z^4}{2} + \frac{z^6}{6} + O(z^7)} \\
+        &= \frac{1+z}{z^2(1 + \frac{z^2}{2} + \frac{z^3}{6} + O(z^4))} \\
+        &= \frac{1+z}{z^2}(1 + \frac{z^2}{2} + \frac{z^3}{6} + O(z^4))
+    \end{align*}
+    from which we can tell the principal part will be of this laurent series will be equal to $\frac{1+z}{z^2}$ or better put,
+    $\frac{1}{z^2} + \frac{1}{z}$.\hfill$\blacksquare$\\
+
+    \textbf{Question 3b}.\\
+    We know $e^z = 1 + z + \frac{z^2}{2} + O(z^3)$ and $\frac{1}{\sin{z^2}} = \csc{z^2} = \frac{1}{z} + \frac{z}{6} + \frac{7z^3}{360}
+    + O(z^4)$. We can then write:
+    \[ f(z) = (1 + z + \frac{z^2}{2} + O(z^3))(\frac{1}{z} + \frac{z}{6} + \frac{7z^3}{360} + O(z^4)) \]
+    which we can simplify to $f(z) = \frac{1}{z^2} + \frac{1}{z} + \frac{1}{2} + \frac{z}{6} + O(z^2)$ implying the principal
+    part is just $\frac{1}{z^2} + \frac{1}{z}$.\hfill$\blacksquare$\\
+
+    \textbf{Question 4a}.\\
+    Let $f(z) := \frac{1}{z(z+3)}$. Then $f$ is clearly holomorphic at all points except $z=0$ and $z=3$. Moreover, in the interior
+    of the curve $C(0,2)$, $f$ is not holomorphic only at the point $z=0$ ($z=3$ falls outside the curve). Thus, $C(0,2)$ contains
+    one (simple) pole at $z=0$ inside $C$. By theorem 2.1 on page 76, we have that
+    \[ \int_{C(0,2)} f(z)dz = 2\pi i\cdot \text{res}_{0}f \]
+    Recalling the formula on page 75 for a residue of a simple pole, we can compute: $\text{res}_{0}f = \lim_{z\to 0}zf(z) = 
+    \lim_{z\to 0}z \frac{1}{z(z+3)} = \lim_{z\to 0} \frac{1}{z+3}$ implying that $\text{res}_0f = 3$. Thus $\int_{C(0,2)} f(z)dz = 
+    6\pi i$.\hfill$\blacksquare$\\
+
+    \textbf{Question 4b}.\\
+    Let $f(z) := \frac{1}{1-\cos{z}}$. Clearly, there is a pole whenever $\cos{z} = 1$, from the cosine properties, we know this happens
+    every $2\pi$ i.e. $\cos{z} = 1$ if $z = 2\pi n$ for all $n\in\mathbb{Z}$. Since our curve is $C(0,1)$, there is only one solution
+    to the equation $\cos{z} = 1$, namely at $z = 0$. Thus, there is one pole for $f$ in the curve $C(0,1)$. From our properties of
+    the cosine function (namely holomorphicity), we know it is holomorphic elsewhere in $C(0,1)$. Now, we compute the residue of $f$
+    at $z = 0$. Note,
+    \begin{align*}
+        \cos{z} &= 1 - \frac{z^2}{2} + \frac{z^4}{4} - O(z^6) \\
+        \implies 1 - \cos{z} &= \frac{z^2}{2} - \frac{z^4}{24} + O(z^6) \\
+        \implies \frac{1}{1-\cos{z}} &= \frac{1}{\frac{z^2}{2} - \frac{z^4}{24} + O(z^6)}\\
+        &= \frac{1}{\frac{z^2}{2}[1 - \frac{z^2}{12} + O(z^4)]} \\
+        &= \frac{2}{z^2}[1 - \frac{z^2}{12} + O(z^4)] \\
+        &= \frac{2}{z^2} + \frac{1}{6} + \frac{z^2}{120} + O(z^4)
+    \end{align*}
+    which shows that the residue of $f$ at $z = 0$ is simply 0. By theorem 2.1 on page 76, we have that $\int_{C(0,1)} f(z)dz = 
+    0$.\hfill$\blacksquare$\\
+
+    \textbf{Question 5}.\\
+    Choose $y\in A$. Choose $r_1$ and $r_2$ so that $y$ is in the interior of the toy contour $\gamma$ (refer to image on the 
+    side). We are given $f$ is holomorphic inside $A$, so it is also holomorphic in the interior of $\gamma$. Thus, we apply
+    Cauchy's integral formula to obtain:
+    \[ f(z) = \frac{1}{2\pi i}\int_{\gamma} \frac{f(w)}{w-z}dz \qquad (*)\]
+    Note that $\gamma$ is defined to be the union of the curves $L_1, L_2, L_3$ and $L_4$ where $L_2$ and $L_4$ are (almost) the same
+    lines but are oriented in opposite directions ($L_2$ being positive and $L_4$ being negative). Also, note that $L_3$ and $L_1$ are
+    in opposite orientations (with their shapes being the same if you ignore their respective radii). Thus, we can write (*) as:
+    \[ f(z) = \frac{1}{2\pi i}\int_{L_{1+} \cup L_{2+} \cup L_{3-} \cup L_{4-}}\frac{f(w)}{w-z}dz \qquad (**) \] 
+    If we separate the integral from the four piecewise curve, we see that the integrals $L_{2+}$ and $L_{4-}$ cancel each other
+    out, thus, we can simplify (**) again and write:
+    \[ f(z) = \frac{1}{2\pi i}\int_{L_{1+} \cup L_{3-}} \frac{f(w)}{w-z}dz \]
+    However, note that we are $L_1$ and $L_2$ are not $C(0,r_2)$ or $C(0,r_1)$. One way to circumvent this is to separate the 
+    integral again
+    over $L_{1+}$ and $L_{3-}$ and close each respective curve (note before that the distance between $L_2$ and $L_4$ is 
+    completely arbitrary, so we can treat this as the case of this distance going to 0).
+    We see that this forms a closed loop as the figure on the side suggests
+    i.e. $L_{1+} \to C(0,r_2)$ and $L_{3-} \to C(0,r_1)$. Thus, our integral is now:
+    \[ f(z) = \frac{1}{2\pi i}\int_{C(0,r_2)} \frac{f(w)}{w-z}dz - \frac{1}{2\pi i}\int_{C(0,r_1)} \frac{f(w)}{w-z}dz \]
+    as wanted.\hfill$\blacksquare$
+
+
+\end{document}

@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\newcommand{\inter}[1]{int(#1)}
+
+\title{MATC27 Assignment 3}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+    \textbf{P1.}\\ 
+    Assume $f$ is continuous, we show that $A$ is clopen. If $f$ is continuous, then by definition of continuity, we have
+    that the preimage of any open set in $\mathbb{R}$ is open in $X$. Thus, choose $U = \{1\}^{c}$ which is clearly open
+    in $\mathbb{R}$. By definition of $f$, $U$'s pre-image is equal to $X-A$ and it must be open, so we obtain that
+    $X-A$ is open in $X$ so that $A$ is closed in $X$. Furthermore, note that if we choose $U = (0,2)$, then $f^{-1}(U)
+    = A$. Since $U$ is open in $\mathbb{R}$, then $A$ must be as well. Thus, we obtain that $A$ is clopen in $X$.\\
+    Now, assume that $A$ is clopen in $X$, we show that $f$ is continuous. Choose an arbitrary open set $U$ in $\mathbb{R}$.
+    There are four cases: (1) $1\in U,0\not\in U$, (2) $1\in U, 0\in U$, (3) $1\not\in U, 0\not\in U$, (4) $1\not\in U,0\in U$.
+    Suppose the first case is true. Then $f^{-1}(U) = A$ by definition of $f$. Since $A$ is clopen, it is open, so we obtain 
+    that the preimage of $U$
+    in $\mathbb{R}$ is open in $X$. Now, suppose the second case is true. Then $f^{-1}(U) = X$. Since
+    $X$ is a topological space, $X$ must be open. Thus the preimage of the open set $U$ is open in $X$.
+    Now, suppose the third case is true.
+    Then $f^{-1}(U) = \emptyset$ which is again open in $X$ by definition of a topological space. Then the preimage of the open set
+    $U$ is open in $X$. Finally,
+    now suppose the fourth case is true. Then $f^{-1}(U) = X-A$ which is still open in $X$ since $A$ is clopen, so it is closed
+    implying $X-A$ is open. Thus, the preimage of the open set $U$ is open in $X$. 
+    Since these cases cover all possibilities of $U$, we obtain that if for an
+    arbitrary open set $U$ in $\mathbb{R}$, the preimage of it in $X$ is open. Thus $f$ is continuous.\hfill$\blacksquare$\\
+
+    \textbf{P2.}\\
+    Suppose $f$ is continous. We show that the pre-image of each $S\in\mathcal{L}_Y$ (where $\mathcal{L}_Y$ is a subbasis for
+    the topological space $Y$) is open in $X$. We are given that $S$ is an element of a subbasis of $\mathcal{L}_Y$. Then by
+    definition, the unions of finite intersections of elements of $\mathcal{L}_Y$ generate $Y$. This implies that $S$ itself
+    is an open set of $Y$ (take the finite intersection to be just the element itself and union with itself). Then, by assumption
+    of continuity, we have that $f^{-1}(S)$ is open in $X$ as wanted.\\
+    Now, suppose that the pre-image of each $S\in\mathcal{L}_Y$ is open in $X$. We show that $f$ is continuous.
+    Since $\mathcal{L}_Y$ is a subbasis for $Y$, we have that it generates a basis $\mathcal{B}_Y$ for $Y$ where each element $U$
+    of $\mathcal{B}_Y$ can be written as a finite intersection of elements of $\mathcal{L}_Y$. Thus, choose an arbitrary element
+    $U\in\mathcal{B}_Y$ and write it as $U = \cap_{i=1}^n U_i$ where $\{U_i\}$ is some collection of elements in $\mathcal{L}_Y$.
+    Assign to each $U_i$, an open set in $X$ via $f^{-1}(U_i) = A_i$ ($A_i$ is open by our assumption). Thus, we have that
+    $\cap_{i=1}^n f^{-1}(U_i)$ is open in $X$ (it is a finite intersection of open sets of $X$). Since
+    $f^{-1}(\cap_{i=1}^n U_i) = \cap_{i=1}^n f^{-1}(U_i)$, we obtain that the preimage of an arbitrary element 
+    $U$ of $\mathcal{B}_Y$ is open in $X$ i.e. $f^{-1}(U)$ is open in $X$ where $U\in\mathcal{B}_Y$. Now, we repeat a similar
+    process to get the same result but for an arbitrary open set of $Y$. Since $\mathcal{B}_Y$ is a basis of $Y$, it generates
+    $Y$ or equivalently, an arbitrary element $V$ of $Y$ can be written as a union of elements of $\mathcal{B}_Y$. Thus, we write
+    \[ V = \bigcup_{i\in I} V_i\qquad\text{where $\{V_i\}_{i\in I}$ is some collections of elements of $\mathcal{B}_Y$} \]
+    Note since $f^{-1}(V_i)$ is open in $X$, we have that 
+    $\cup_{i\in I} f^{-1}{V_i}$ is open in $X$ (it is a union of arbitrary elements of open sets in $X$). Abusing the fact that
+    $f^{-1}(\cup_{i\in I} V_i) = \cup_{i\in I} f^{-1}(V_i)$, we obtain the result the pre-image of an arbitrary open set in $Y$
+    is open in $X$. Thus $f$ is continuous as wanted.\hfill$\blacksquare$\\
+
+    \textbf{P3.}\\ 
+    To show that $f$ is not continuous, it suffices to find an open set $U$ in $\mathbb{R}$ whose pre-image is not open
+    in $\mathbb{R}$. Let $U = (0,3)$. Notice that there is no set $V$ in $\mathbb{R}$ such that $f(V) = [2,3)$ (intuitively,
+    this is where the continuity "breaks"). Furthermore, notice that $f((1,3]) = (0,2]$ by definition of $f$. Thus, we have that
+    $f^{-1}(U) = f^{-1}((0,2])\cup f^{-1}((2,3)) = (1,3] \cup \emptyset = (1,3]$ so that $f^{-1}{(0,3)} = (1,3]$ implying that
+    $f$ is not continuous.\hfill$\blacksquare$\\
+
+    \textbf{P4.}\\
+    Let $f: X \to Y$ and $g: Y \to Z$ be homeomorphism (existence given by definition of two spaces being homeomorphic).
+    Note $g\circ f: X \to Z$ is then a well defined function. Since all homeomorphic mappings are bijective, we have that
+    $g\circ f$ is bijective. Since all homeomorphic mappings are continuous, we have that $g\circ f$ is also continuous (theorem
+    convered in lecture). Note that since $(g\circ f)^{-1} = f^{-1}\circ g^{-1}$, we have that the inverse of $g\circ f$ is given
+    by $f^{-1}\circ g^{-1}$. Note that we know $f^{-1}$ and $g^{-1}$ both exist since $f$ and $g$ are homeomorphisms. Furthermore,
+    since they are homeomorphisms, we have that $f^{-1}$ and $g^{-1}$ are continuous so that $f^{-1}\circ g^{-1}$ is also
+    continuous. Thus, we obtain that $g\circ f$ is a homeomorphism since it is bijective, continuous and has a continuous inverse.
+    \hfill$\blacksquare$\\
+
+    \textbf{P5.}\\
+    (a) $f(x) = -x + 2a$\\
+    (b) $f(x) = x - a + 1$\\
+    (c) $f(x) = \frac{x-a}{b-a}$\\
+    (d) $f(x) = \arctan(x)$\\
+    (e) $f: (0,1) \to (1,\infty)$ given by $f(x) = \frac{x}{1-x}$. Note $(0,1)\cong(1,\infty) \leftrightarrow (1,\infty)\cong(0,1)$
+    so $f$ still gives us a desired homeomorphism.\\
+    (f) Let $U$ be an arbitrary open interval in $\mathbb{R}$.\\
+    \newpage
+    Case 1: $U = (a,b)$ for some $a<b\in\mathbb{R}$. Consider the homeomorphism $f:(a,b)\to (0,1)$ is a given by 
+    $f(x) = \frac{x-a}{b-a}$ and the homeomorphism $g: \mathbb{R} \to (0,1)$ given by $g(x) = \frac{1}{1+2^{-x}}$.
+    We can then compute the inverse of this function so $g^{-1}(x) = -\frac{\log{\frac{1}{x}-1}}{\log{2}}$. Composing,
+    these two functions together, we get a homeomorphism $g^{-1}\circ f: (a,b) \to \mathbb{R}$ which shows $(a,b)\cong\mathbb{R}$
+    as wanted.\\
+    Case 2: $U = (-\infty,\infty)$. The identity function gives us that $(-\infty,\infty)\cong\mathbb{R}$ as wanted.\\
+    Case 3: $U = (a,\infty)$ for some $a\in\mathbb{R}$. Consider the homeomorphisms $u: (a,\infty)\to(1,\infty)$ given by
+    $u(x) = x - a + 1$, $v: (1,\infty)\to(0,1)$ given by $v(x) = \frac{x-1}{x}$ and $q: (0,1)\to\mathbb{R}$ given by $g^{-1}$
+    in case 1. Then the function $g^{-1}\circ v\circ u: (a,\infty) \to \mathbb{R}$ is a homeomorphism which shows $(a,\infty)
+    \cong\mathbb{R}$ as wanted.\\
+    Case 4: $U = (-\infty,a)$. This case is very similar to case 3 except we would add the homeomorphism $h:(-\infty,a)\to(a,\infty)$
+    given by $h(x) = -x + 2a$ so that the homeomorphism $g^{-1}\circ v\circ u\circ h$ shows $(-\infty,a)\cong\mathbb{R}$ as wanted.\\
+    Since we have considered every possible type of open interval in $\mathbb{R}$, every open interval in $\mathbb{R}$ is
+    homeomorphic to $\mathbb{R}$ as wanted.\hfill$\blacksquare$\\
+
+    \textbf{P6.}\\
+    To do this, we show opposite set containment.\\
+    First, we show that $A^{\circ}\times B^{\circ} \subseteq (A\times B)^{\circ}$. Note that we are given $A\subset X$ and
+    $B\subset Y$. Thus $A\times B\subset X\times Y$. Furthermore, we know $A^{\circ}\subseteq A$ and $B^{\circ}\subseteq B$
+    so that $A^{\circ}\times B^{\circ}\subseteq A \times B$. This implies $(A^{\circ}\times B^{\circ})^{\circ}\subseteq
+    (A\times B)^{\circ}$. Since the left side is already open, it is its own interior. Thus, we obtain 
+    $A^{\circ}\times B^{\circ}\subseteq (A\times B)^{\circ}$ as wanted.\\
+    Next, we show that $(A\times B)^{\circ}\subseteq A^{\circ}\times B^{\circ}$. We know that $(A\times B)^{\circ}$ is open
+    in $X\times Y$. Thus, by definition of the box topology, we can write $(A\times B)^{\circ}$ as:
+    \[ (A\times B)^{\circ} = \bigcup_{\alpha} A_{\alpha} \times B_{\alpha} \]
+    where $A_{\alpha}$ and $B_{\alpha}$ are open in $X$ and $Y$ (resp.) for all $\alpha$. Furthermore, by definition of
+    interior, we know that $A_{\alpha}\subseteq A^{\circ}$ and $B_{\alpha}\subseteq B^{\circ}$ so that:
+    \[ \bigcup_{\alpha} (A_{\alpha}\times B_{\alpha}) \subseteq A^{\circ} \times B^{\circ} \]
+    so $(A\times B)^{\circ} \subseteq A^{\circ} \times B^{\circ}$ as wanted.Thus 
+    $A^{\circ} \times B^{\circ} = (A\times B)^{\circ}$ as wanted.\hfill$\blacksquare$\\
+
+    \textbf{P7(a).}\\
+    To do this question, for every set, to find its closure, we will attempt to find the \textit{smallest} closed set which
+    contains it. $\overline{\{b\}} = \{b,e\}$ since the complement of $\{b\}$ is not in $\tau_X$ so $\{b\}$ is not closed. However,
+    the complement of the set $\{b,e\}$ (which contains just one point more) is equal to $\{a,c,d\}$ which is in $\tau_X$ so that
+    $\{b,e\}$ is closed. Thus $\overline{\{b\}} = \{b,e\}$. $\overline{\{a,c\}} = X$ 
+    since $\{a,c\}^{c} = \{b,d,e\}\not\in\tau_X$ so $\{a,c\}$
+    cannot be its own closure. Thus, the closure of $\{a,c\}$ must contain at least 3 elements. We compute all such possibilities:
+    \[ \{a,c,e\}^{c} = \{b,d\}\qquad \{a,c,b\}^{c} = \{d,e\}\qquad \{a,c,d\}^{c} = \{b,e,\} \]
+    None of which are open in $\tau_X$ so the closure of $\{a,c\}$ must contain at least 4 elements. Suppose it contains just 4. 
+    However, if it contains at 4 elements, then the complement of that set contains 1 element. By definition of $\tau_X$, the only
+    singleton set open in it is $\{a\}$ but this can never be the complement since $a\in \{a,c\}$. Thus, the closure must contain
+    at least 5 elements which is just $X$ itself. Thus $\overline{\{a,c\}} = X$. Now, we compute the closure of $\{b,d\}$. Note,
+    $\{b,d\}^{c} = \{a,c,e\}\not\in\tau_X$ so $\{b,d\}$ cannot be its own closure. Thus the closure of $\{b,d\}$ must contain
+    at least 3 elements. We compute all such possibilities:
+    \[ \{a,b,d\}^{c} = \{c,e\}\qquad \{b,c,d\}^{c} = \{a,e\}\qquad \{b,d,e\}^{c} = \{a,c\} \]
+    None of which are open in $\tau_X$. Thus the closure of $\{b,d\}$ must contain at least 4 elements. Note that $\{b,c,d,e\}^{c}
+    = \{a\}$ which is in $\tau_X$. Thus $\overline{\{b,d\}} = \{b,c,d,e\}$.\hfill$\blacksquare$\\
+
+    \textbf{P7(b).}\\
+    $a$ is not a limit point of $A$. This can be seen by the fact that $\{a\}$ is a neighbourhood of $a$ but $(\{a\}-\{a\})\cap A=
+    \emptyset$ implying $a$ is not a limit point of $A$. $b$ is a limit point of $A$. Note that there is only neighbourhood
+    of $b$ which is the set $\{b,c,d,e\}$. This set (with $\{b\}$ removed) clearly has a non empty intersection with $A$, thus
+    $b$ is a limit point of $A$. $c$ is a limit point of $A$. The neighbourhoods of $c$ are the sets $\{c,d\}$, $\{a,c,d\}$ and
+    $\{b,c,d,e\}$ all of which clearly have a non empty intersection with $A$. Thus $c$ is a limit point of $A$. $d$ is a limit
+    point of $A$ for the same reasons that $c$ is since $c$ and $d$ both have the same set of neighbourhoods. The neigbhourhoods
+    of $e$ is the set $\{b,c,d,e\}$ which has a non empty intersection with $A$ ($e$ removed). Thus $e$ is a limit point of $A$.
+    Therefore, the limit points of $A$ are $b,c,d,e$.\\
+
+    \textbf{P8.}\\
+    The closure of $A$ in $\tau_{\ell}$ is equal to $[-\sqrt{3},1)$. Note the complement of $A$ itself is not open so it
+    cannot be its own closure, but the complement of $[-sqrt{3},1)$ is open so it is a closed set which contains $A$. It is
+    easy to see this is the smallest since it contains only one more point than $A$ itself. The closure of $B$ in $\tau_{\ell}$
+    is equal to $[0,1)$ due to the same reasoning for the closure of $A$ in $\tau_{\ell}$. The closure of $C$ in $\tau_{\ell}$
+    is equal to the empty set since $\sqrt{2}<\pi$ so that the set $(\pi,\sqrt{2})$ has no points in it so it is empty. Using
+    the clopen property of the empty set, we get that the closure of $C$ is itself.\\
+    The closure of $A$ in $\tau_{\mathcal{B}}$ is equal to $[-\sqrt{3},1)$ since $A$ is not closed in $\tau_{\mathcal{B}}$
+    but the complement of $[-\sqrt{3},1)$ is equal to $(-\infty,\sqrt{3})\cup[1,\infty)$. $[1,\infty)$ is clearly the union
+    of basis elements of $\mathcal{B}$ so $[1,\infty)\in\tau_{\mathcal{B}}$ implying $[-\sqrt{3},1)$ is closed in this topology
+    and it contains $A$. Furthermore, it is easy to see that it is the smallest set which contains $A$ since $[-\sqrt{3},1)$ contains
+    only one more point than $A$ itself. The closure of $B$ in $\tau_{\mathcal{B}}$ is equal to $[0,1)$ for similar reasons.
+    The closure of $C$ is the empty set since $\sqrt{2} < \pi$ so the set $(\pi,\sqrt{2})$ is the empty set. Since the empty set
+    is clopen in any topological space, we have that the closure of $C$ is empty.
+\end{document}

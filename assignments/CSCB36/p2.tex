@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\begin{document}
+    \textbf{P2}.
+    Let \textbf{MAX}$(L) = \{x\in L:\:\text{for any}\:y\in\Sigma^{*},\:y\neq\epsilon,\:\text{then}\:xy\not\in L\}$. This is an operation on
+    a language $L$. We show that the class of regular languages is closed under this operation and we go about doing this by supposing
+    some DFSA $M$ exists and accepts $L$, then we construct another FSA $M'$ that accepts \textbf{MAX}$(L)$.\\
+    Suppose a DFSA $M = (Q,\Sigma,\delta,s,F)$ exists and accepts $L$. Then, let $F'$ be the set of accepting states in $M$ such that
+    we \textit{cannot} reach any other accepting state of $M$ by following some sequence of transitions i.e.
+    \[ F' = \{x\in F:\:\text{for all}\:y\in\Sigma^{*},\:\text{if}\:y\neq\epsilon,\:\text{then}\:\delta^{*}(x,y)\not\in F\} \]
+    Then, consider the DFSA $M' = (Q,\Sigma,\delta,s,F')$, then we know the following is true:
+    \begin{align*}
+        x\in\mathcal{L}(M') &= \delta^{*}(s,x)\in F' \\
+        &= \delta^{*}(s,x)\in F,\:\text{and for all}\:y\in\Sigma^{*},\:\text{if}\:y\neq\epsilon,\:\text{then}\:\delta^{*}(\delta^{*}(s,x),y)\not\in F
+    \end{align*}
+    Then, we can simplify $\delta^{*}(\delta^{*}(s,x),y)$ to $\delta^{*}(s,xy)$ so that $x\in \mathcal{L}(M')$ if and only if $x\in L$, and for
+    all $y\in\Sigma^{*}$, if $y\neq\epsilon$, then $xy\not\in L$. However, this is simply the definition of our operation so, we get that
+    $x\in\mathcal{L}(M')$ if and only if $x\in$ \textbf{MAX}$(L)$.
+
+    
+\end{document}
