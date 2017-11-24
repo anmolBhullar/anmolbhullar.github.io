@@ -123,16 +123,30 @@
     \[ d_A(x,y) = d(x,y) < \delta \implies d_Y(f(x),f(y))<\epsilon \]
     By Theorem 21.1 (pg. 129), we have that this is enough to imply that $f_A$ is continuous.\hfill$\blacksquare$\\
 
+    \newpage
+
     \textbf{P5}.\\
-    Let $\tau$ be the topological space induced by $(X,d)$ and let $\tau_{(A,d_A)}$ be a topological space induced by $(A,d_A)$ where $(A,d_A)$ is a subspace metric of
-    $(X,d)$ (with $A$ being nonempty). We show $\tau_{(A,d_A)} = \tau_A$ where $\tau_A$ is the subspace topology of $\tau$. To do this, we show that the collection
-    $\Delta_A$ of all $\epsilon$-balls $B_{d_A}(a,\epsilon)$ for all $\epsilon>0$ and $a\in A$ generates $\tau_A$ (note, by def. of metric topology, we already know
-    $\Delta_A$ is a basis of $\tau_{(A,d_A)}$).\\
-    Choose $\xi\in\tau_A$. By def'n of $\tau_A$, we can write $\xi = \zeta\cap A$ where $\zeta\in\tau$. We since $(A,d)$ is a metric space, that there exists
-    a ball $B_{d_A}(x,\epsilon)$ for some $x\in A$. If $\zeta\subseteq A$, then since $\tau$ is a metric topology, then $\cup_{x\in \zeta} B_d(x,\epsilon_x) = \zeta$
-    and since $(A,d_A)$ is a subspace metric of $(X,d)$, we have that $B_{d_A}(x,\epsilon_x) = B_d(x,\epsilon_x)$ for the same $x\in\zeta$.
-    This implies $\zeta = \zeta \cap A = \xi$ can be written as a union of elements of $\Delta_A$ as wanted. Now, assume instead that $\zeta\subseteq A$ is not true.
-    Choose $x\in\zeta\cap A$. Since $x\in A$ and $(A,d_A)$ is a metric, then there exists an $\epsilon>0$ such that $B_{d_A}(x,\epsilon)\subseteq \zeta\cap A$.\\
+    Since $X$ is metrizable, there exists a metric $d$ such that $(X,d)$ induces the topology $\tau$ on $X$. Furthermore, since $X$ is metrized by $d$, we can define
+    $\triangledown_X$ to be the collection of all $\epsilon$-balls given by $d$, we know this is a basis for $\tau$. Let $A$ be a non empty subset of $X$, and let
+    $\tau_A$ be the subspace topology on $A$. Define $\beta_A = \{B \cap A: B\in\triangledown_X\}$ to a basis for the subspace topology (we know this is a basis
+    since $\triangledown_X$ is a basis for $\tau$). Define 
+    $d_A$ to be a metric on $A$ given by $d_A(x,y) = d(x,y)$ for all $x,y\in A$, and let $\tau_{d_A}$ be the topology
+    on $A$ induced by $(A,d_A)$. Similarly to $\triangledown_X$, define $\triangledown_A$ to be the collection of all $\epsilon$-balls given by $d_A$, this forms a basis
+    on $\tau_{d_A}$. We show the bases $\triangledown_A$ and $\beta_A$ are equivalent.\\
+
+    Choose an arbitrary $B\in\triangledown_A$. Since $B\in\triangledown_A$, we can write $B$ as $B_{d_A}(y,\epsilon)$
+    for some $y\in A$ and $\epsilon>0$. Note: $B_d(y,\epsilon) \cap A = \{x': d(x',y) < \epsilon\} \cap A = \{x'\in A: d(x',y)<\epsilon\}$.
+    Since for all $w,w'\in A$, $d_A(w,w') = d(w,w')$, we have that $\{x'\in A: d(x',y)<\epsilon\} = \{x'\in A: d_A(x',y) < \epsilon\} = B_{d_A}(y,\epsilon)$. Thus,
+    $B_{d_A}(y,\epsilon) = B_d(y,\epsilon) \cap A$. Since $B_d(y,\epsilon)$ is an $\epsilon$-ball given by $d$, we have that $B_d(y,\epsilon)\in\triangledown_X$ so that
+    $B_d(y,\epsilon)\cap A\in \beta_A$. Therefore, for all $B\in\triangledown_A$, for all $x\in B$, there exists $B'\in\beta_A$ such that $x\in B' \subseteq B$.\\
+
+    Choose an arbitrary $B\in\beta_A$ and $x\in B$. Note by definition of $\beta_A$, we can write $B = B_d(y,\epsilon)\cap A$ for some $y\in X, \epsilon>0$. In the
+    previous paragraph, we proved that $B_d(y,\epsilon)\cap A = B_{d_A}(y,\epsilon)\in\triangledown_A$. Thus, we immediately 
+    obtain: for all $B\in\beta_A$, for all $x\in B$, there exists $B'\in\triangledown_A$ such that $x\in B'\subseteq B$.
+
+    By theorem X.XX, we have that $\triangledown_A$ and $\beta_A$ are equivalent, which implies they generate the same topology. Since $\triangledown_A$ generates
+    $\tau_{d_A}$ and $\beta_A$ generates $\tau_A$, we have that $\tau_{d_A} = \tau_A$ as wanted.\hfill$\blacksquare$\\
+
 
     \textbf{P6}.\\
     Let $X$ be a topological space equipped with the trivial topoloy. We show there is no metric $d$ that induces the topology $\tau$ on $X$. To do this, assume
