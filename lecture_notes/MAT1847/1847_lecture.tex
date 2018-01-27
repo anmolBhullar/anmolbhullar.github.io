@@ -1,0 +1,187 @@
+\documentclass[a4paper, 11pt]{book}
+
+\newcommand*{\plogo}{\fbox{$\mathcal{DB}$}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{stix}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{commath}
+\usepackage{dirtytalk}
+
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem*{example}{Example}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+    \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+    #1 % the function
+    \vphantom{\big|} % pretend it's a little taller at normal size
+    \right|_{#2} % this is the delimiter
+}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{prop}{Proposition}
+
+\newcommand{\inter}[1]{int(#1)}
+
+\begin{document}
+
+    \begin{titlepage} 
+        \raggedleft
+
+        \rule{1pt}{\textheight} % Vertical line
+        \hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+        \parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page 
+            % left or right on the page
+                            
+            {\Huge\bfseries MAT1847 Lecture \\[0.5\baselineskip] Notes }\\[2\baselineskip] % Title
+            {\large\textit{Lecture notes on a course Holomorphic Dynamics}}\\[4\baselineskip] % Subtitle or further description
+            {\Large\textsc{A. Wortschöpfer}} % Author name, lower case for consistent small caps
+                                                    
+            \vspace{0.5\textheight} % Whitespace between the title block and the publisher
+                                                            
+            {\noindent The Publisher~~\plogo}\\[\baselineskip] % Publisher and logo
+        }
+    \end{titlepage}
+
+    \chapter{Riemann Surfaces}
+
+    The next three sections are meant to be an overview of background material required for this course.
+
+    \section{Simply Connected Surfaces}
+
+    \begin{definition}[Riemann Surface]
+        A \textbf{Riemann surface} is a connected, paracompact, Hausdorff topological space $X$ equipped with an open covering $\{U_i\}$ 
+        and a collection of homeomorphisms $f_i: U_i\to\mathbb{C}$ such that there exist analytic (i.e. holomorphic) $g_{ij}$ 
+        such that
+        \[ f_i \circ f_j^{-1} = g_{ij} \]
+        where we have the assumption $U_i\cap U_j\neq 0$. We refer to the collection $\{(U_i,f_i)\}$ as the \textbf{chart} of 
+        the Riemann surface. An equivalent way defining a Riemann surface is as follows:
+        A Riemann surface is a connected complex analytic manifold of complex dimension 1.
+    \end{definition}
+
+    \begin{example}
+        The complex plane $\mathbb{C}$ is the most basic Riemann surface. $\mathbb{C}$ is not only connected but also
+        \textit{simply} connected and is also clearly Hausdorff and paracompact. The chart is given by $\{(\mathbb{C},i)\}$
+        where $i: \mathbb{C}\to\mathbb{C}$ is the identity function. In fact, any non-empty open set $U$ of $\mathbb{C}$ (for example
+        $\mathbb{H} = \{z\in\mathbb{C}: $Im$(z)>0\}$) is also a Riemann surface.
+    \end{example}
+
+    \begin{example}[Riemann sphere]
+        The Riemann sphere is another example of a \textit{simply} connected Riemann surface. This sphere is not a subset
+        of $\mathbb{C}$ nor is it biholomorphic to $\mathbb{C}$. This is the extended complex plane (i.e. $\mathbb{C}\cup\{\pm\infty\}$).
+        Geometrically, this can be idealized using \textit{stereographic projection}:\\
+        Identify the $xy-$plane (in $\mathbb{R}^3$) with $\mathbb{C}$. Let $\mathbb{S}$ be the sphere sitting in $\mathbb{R}^3$ centered
+        at $(0,0,\nicefrac{1}{2})$ and of radius $\nicefrac{1}{2}$. Also, denote $\mathbb{N}$ to be the North pole of $\mathbb{S}$.
+        Then, given any point $W = (X,Y,Z)$ on $\mathbb{S}-\mathbb{N}$, the line joining $N$ and $W$ intersects the $xy$-plane at
+        a single point $w$. We say that $w$ is the \textbf{stereographic projection} of $W$. The inverse map can also be derived
+        similarly, therefore we have a bijective mapping between $\mathbb{S}-\mathbb{N}$ and $\mathbb{C}$. As the point $w$ goes to
+        infinity in $\mathbb{C}$ (i.e. $|w|\to\infty$) the corresponding point $W$ on $\mathbb{S}$ comes arbitrarily close to 
+        $\mathbb{N}$. Thus, we can define $\mathbb{N}$ to be the point at infinity. Therefore, we can identify the extended complex 
+        plane with the sphere $\mathbb{S}$.
+    \end{example}
+
+    \begin{remark}
+        We can show that the projection mapping is not only a bijective mapping but a \textit{diffeomorphic} mapping. This makes
+        showing that transition maps are holomorphic not too hard.
+    \end{remark}
+
+    \begin{definition}[Conformal]
+        A function $f:\mathbb{C}\to\mathbb{C}$ is \textbf{conformal} if it preserves angles.
+    \end{definition}
+
+    \begin{remark}
+        A function $f:\mathbb{U}\to\mathbb{C}$ is \textbf{holomorphic} if
+        \begin{enumerate}
+            \item the Cauchy-Riemann equations hold i.e.
+                \[ \overline{\partial}{f} = 0\qquad\text{and}\qquad \nicefrac{\partial{f}}{\partial{\overline{z}}} = 0 \]
+            \item \[ \lim_{h\to 0} \frac{f(z+h)-f(z)}{h} = f'(z)\quad\text{exists} \]
+            \item For all $z_0\in U$, there exists a convergent power series such that $f(z) = \sum_{n=0}^{\infty} a_nz^n$ for
+                $z$ in a neighbourhood of $z_0$.
+        \end{enumerate}
+    \end{remark}
+
+    \begin{remark}
+        A holomorphic function $f:V\to\mathbb{C}$ is \textbf{conformal} if the derivative $f'(z)$ never vanishes i.e. $f'(z_0)\neq 0$
+        for all $z\in V$. (note $f': V\to\mathbb{C}$ also and $f'(z)\neq 0$ implies that $f$ is locally injective). We can see this
+        through:
+        \begin{align*}
+            f'(z_0) &= \lim_{h\to0} \frac{f(z+h)-f(z)}{h} \\
+            \implies f(z+h) &\approx f(z) + f'(z)h
+        \end{align*}
+        Recall that multiplying by a number (non-zero and complex) is a composition of rotation and dilation so $f$ is conformal.
+    \end{remark}
+
+    There are three main \textit{simply} connected Riemann surfaces that are distinct (general case is uncountable).
+
+    \begin{theorem}[Uniformization Theorem]
+        Any simply connected Riemann surface is conformally isomorphic either
+        \begin{enumerate}
+            \item to the open disk $\mathbb{D}\subset\mathbb{C}$ consisting of all $|z|^2 < 1$ or,
+            \item to the plane $\mathbb{C}$
+            \item to the Riemann sphere $\hat{\mathbb{C}}$
+        \end{enumerate}
+    \end{theorem}
+
+    To see that these are indeed inequivalent surfaces, we have to talk about the following:
+
+    \begin{theorem}[Liouville]
+        Every entire, bounded function is constant.
+    \end{theorem}
+
+    \begin{corollary}
+        $\mathbb{C}$ is not biholomorphic to $\mathbb{D}$.
+    \end{corollary}
+    \begin{proof}
+        Let $f$ be a holomorphic function $f:\mathbb{C}\to\mathbb{D}$. Then, $f$ is bounded since $D$ is bounded. By Liouville's
+        theorem, we have that $f$ is constant. Since constant functions are clearly not bijective, we have that $f$ is not
+        biholomorphic. Therefore, there exist no biholomorphic maps between $\mathbb{C}$ and $\mathbb{D}$. 
+    \end{proof}
+
+    It is clear that $\hat{\mathbb{C}}$ is not biholomorphic to any of the other Riemann surfaces on the list above since it is
+    compact and the two other surfaces are not. Here is another way to arrive at the same conclusion:
+
+    \begin{remark}
+        There are no non-constant biholomorphic maps $f:\hat{\mathbb{C}}\to\mathbb{C}$.
+    \end{remark}
+    \begin{proof}
+        It is clear that $f(\hat{\mathbb{C}})$ is compact since $\hat{\mathbb{C}}$ is and $f$ is continuous. By the open mapping
+        theorem, if $f$ is non-constant, $f(\hat{\mathbb{C}})$ is open. However, there are no open compact subsets of $\mathbb{C}$.
+        Therefore, $f$ is constant as wanted.
+    \end{proof}
+
+    \begin{remark}
+        $\mathbb{D}\hookrightarrow \mathbb{C} \hookrightarrow \hat{\mathbb{C}}$.
+    \end{remark}
+
+    \begin{corollary}
+        Every Riemann surface is the quotient of either $\mathbb{D},\mathbb{C}$, or $\hat{\mathbb{C}}$ by a discrete group $\Gamma$
+        of automorphisms of $\mathbb{D},\mathbb{C},$ or $\hat{\mathbb{C}}$.
+    \end{corollary}
+
+    \begin{definition}[Conformally Isomorphic]
+        Two Riemann surfaces $S$ and $S'$ are \textbf{conformally isomorphic} (or \textbf{biholomorphic}) if and only if there
+        exists a homeomorphism from $S$ to $S'$ which is holomorphic in terms of the respecting local uniformizing parameters i.e.
+        the transition maps. Equivalently, we can say that a \textbf{biholomorphism} is a bijective and holomorphic map (this forces
+        the inverse to be holomorphic as well).\\
+        A \textbf{conformal automorphism} is a conformal isomorphism $f:U\to U$ ($U$ a complex domain or Riemann surface). 
+    \end{definition}
+
+
+
+\end{document}
