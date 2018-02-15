@@ -18,6 +18,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{es}{Examples}
 \newtheorem*{example}{Example}
+\newtheorem{obs}{Observation}
 
 \newcommand\restr[2]{{% we make the whole thing an ordinary symbol
     \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -317,5 +318,232 @@
     \end{example}
 
     Note that most sets are neither open nor closed e.g. $(0,1]\subset \mathbb{R}$ is not open or closed.
+
+    \begin{definition}
+        A set $E$ is \textbf{bounded} if it is contained in some ball of finite radius. A bounded set is \textbf{compact}
+        if it is also closed. Compact sets can also be defined using the Heine-Borel property:\\
+        If $E$ is covered by some collection $\{Q_{\alpha}\}$ of open sets (called an \textbf{open cover}), then there are
+        finitely many of the open sets $Q_{\alpha_1},\hdots,Q_{\alpha_n}$ such that $E$ is also covered by this finite collection
+        of open sets from $\{Q_{\alpha}\}$ (called a \textbf{finite subcover}).
+    \end{definition}
+
+    \begin{definition}
+        A point $x\in\mathbb{R}^d$ is a \textbf{limit point} of the set $E$ is for every $r>0$, the ball $B_r(x)$ contains
+        points of $E$. An \textbf{isolated point} of $E$ is a point $x\in E$ such that there exists an $r>0$ where
+        $B_r(x)\cap E = \{x\}$.
+    \end{definition}
+
+    \begin{definition}
+        A point $x\in E$ is an interior point of $E$ if there exists $r>0$ such that $B_r(x) \subset E$. The set of all interior
+        points of $E$ is called the \textbf{interior} of $E$. Also, the \textbf{closure} $\overline{E}$ of $E$ consists of the
+        union of $E$ and all of its limit points. The \textbf{boundary} of a set $E$, denoted by $\partial{E}$, is the set of
+        points which are in the closure of $E$ but not in the interior of $E$. Note that the closure can be defined as the
+        \textit{smallest} closed set which \textit{contains} $E$ and similarly, the interior of a set can be defined as the
+        \textit{largest} open set which is \textit{contained in} $E$.
+    \end{definition}
+
+    \subsection{Rectangles and Cubes}
+
+    \begin{definition}
+        $R\subset\mathbb{R}^d$ is said to be a \textbf{closed rectangle} if it can be written in the form:
+        \[ R = [a_1,b_1]\times\hdots\times [a_n,b_n] = \{(x_1,\hdots,x_n)\in\mathbb{R}^d: a_j\leq x\leq b_j, j=1,\hdots,n\} \]
+        A \textbf{cube} is a rectangle for which $b_1-a_1=b_2-a_2=\hdots=b_d-a_d$.
+    \end{definition}
+
+    Note each rectangle $R$ has sides parallel to the coordinates axes and is closed.
+
+    \begin{example}
+        In $\mathbb{R}$, rectangles are line segments, in $\mathbb{R}^2$, rectangles are the usual 2-d flat, 4 sided polygons we
+        see in high school and rectangles in $\mathbb{R}^3$ are called parallelepipeds.
+    \end{example}
+
+    \begin{definition}
+        We say that the lengths of the sides of the rectangle $R$ are $b_1-a_1,\hdots,b_d-a_d$. The \textbf{volume} of the rectangle
+        $R$ is denoted by $|R|$ and is defined to be
+        \[ |R| = (b_1-a_1)\cdot\cdot\cdot(b_d-a_d) \]
+    \end{definition}
+
+    Continuing our most recent example, in $d=1$, the volume equals the length of the line segment and when $d=2$, it equals the area.
+
+    \begin{definition}
+        An open rectangle is the product of open intervals, and the interior of the rectangle $R$ is then
+        \[ (a_1,b_1)\times(a_2,b_2)\times\cdot\cdot\cdot\times(a_d,b_d) \]
+    \end{definition}
+
+    \begin{definition}
+        A union of rectangles is said to be \textbf{almost disjoint} if the interiors of the rectangles are disjoint.
+    \end{definition}
+
+    We shall make much use of coverings of sets with sets of rectangles and cubes. Some important results for these techniques
+    is discussed:
+
+    \begin{lemma}
+        If a rectangle is the almost disjoint union of finitely many other rectangles, say $R = \cup_{k=1}^N R_k$, then
+        \[ |R| = \sum_{k=1}^N |R_k| \]
+    \end{lemma}
+
+    \begin{proof}
+        We consider the grid formed by extending indefinitely the sides of all rectangles $R_1,\hdots,R_N$. This construction yields
+        finitely many rectangles $\hat{R_1},\hdots,\hat{R_M}$, and a partition $J_1,\hdots,J_N$ of the integers between 1 and $M$,
+        such that the unions
+        \[ R = \bigcup_{j=1}^M \hat{R_j}\quad\text{and}\quad R_k=\bigcup_{j\in J_k}\hat{R_j},\qquad\text{for}\:k=1,\hdots,N \]
+        are almost disjoint.
+        \begin{center}
+            \includegraphics[scale=0.5]{fig2}\\
+        \end{center}
+        For the rectangle $R$, for example, we see that $|R| = \sum_{j=1}^M |\hat{R}_j|$, since the grid actually partitions
+        the sides of $R$ and $\hat{R}_j$ consists of taking products of the intervals in these partitions. Thus when adding the
+        volumes of the $\hat{R}_j$ we are summing the corresponding products of lengths of the intervals that arise. Since this
+        also holds for other rectangles $R_1,\hdots,R_N$, we conclude that
+        \[ |R| = \sum_{j=1}^M |\hat{R}_j| = \sum_{k=1}^N \sum_{j\in J_k} |\hat{R}_j| = \sum_{k=1}^N |R_k|. \]
+    \end{proof}
+
+    and a related claim:
+
+    \begin{lemma}
+        If $R,R_1,\hdots,R_N$ are rectangles, and $R \subset \cup_{k=1}^N R_k$, then
+        \[ |R| \leq \sum_{k=1}^N |R_k|. \]
+    \end{lemma}
+
+    \begin{proof}
+        Similar to the proof of Lemma 3.
+    \end{proof}
+
+    \begin{theorem}
+        Every open set $O\subset\mathbb{R}$ can be written uniquely as a countable union of disjoint open intervals.
+    \end{theorem}
+    \begin{proof}
+        For each $x\in O$, let $I_x$ be the largest open interval that contains $x$ and is contained in $O$, i.e. $I_x=(a_x,b_x)$,
+        where 
+        \begin{align*}
+            a_x = \inf\{a<x: (a,x)\subset O\}\\
+            b_x = \inf\{b>x: (x,b)\subset O\}
+        \end{align*}
+        Then $x\in I_x$ and $I_x\subset O$, hence $O = \cup_{x\in O} I_x$.\\
+        If $I_x\cap I_y\neq\emptyset$ then $I_x\cup I_y\subseteq I_x$ by maximality of $I_x$. Similarly for $I_x\cup I_y\subset I_y$.
+        Thus, $I_x = I_y$. This proves the disjoint condition.\\
+        Finally, since every open interval contains a rational number, there are countably many distinct open intervals in our collection.
+    \end{proof}
+
+    \begin{theorem}
+        Every open set $O\subset\mathbb{R}^d$ can be written as a countable collection $\mathcal{Q}$ of almost disjoint closed cubes 
+        such that $O = \cup_{q\in Q} q$.
+    \end{theorem}
+    \begin{proof}
+        We must construct a countable collection $\mathcal{Q}$ of closed cubes whose interiors are disjoint, and so that
+        $O = \cup_{Q\in\mathcal{Q}} Q$.\\
+        As a first step, consider the grid in $\mathbb{R}^d$ formed by taking all closed cubes of side length 1 whose vertices
+        have integer coordinates. We shall also use the grides formed by cubes of side length $2^{-N}$ obtained by successively
+        bisecting the original grid.\\
+        we either accept of reject cubes in the initial grid as part of $\mathcal{Q}$ according to the following rule: if $Q$ is
+        entirely contained in $O$ then we accept $Q$; if $Q$ intersects both $O$ and $O^c$ then we tentatively accept it; and if
+        $Q$ is entirely contained in $O^c$ then we reject it.\\
+        As a second step, we bisect the tentatively accepted cubes into $2^d$ cubes with sidelength $\nicefrac{1}{2}$. We repeat
+        our procedure, by accepting the smaller cubes if they are completely contained in $O$, tentatively accepting them if they
+        intersect both $O$ and $O^c$, and rejecting them if they are contained in $O^c$.
+        \begin{center}
+            \includegraphics[scale=0.5]{fig3}
+        \end{center}
+        This procedure is then repeated indefinitely, and (by construction) the resulting collection $\mathcal{Q}$ of all accepted
+        cubes is countable and consists of almost disjoint cubes. To see why their union is all of $O$, we note that
+        given $x\in O$ there exists a cube of side length $2^{-N}$ that contains $x$ and that is entirely contained in $O$. Either
+        this cube has been accepted, or it is contained in a cube that has been previously accepted. This shows that the union of
+        all cubes in $\mathcal{Q}$ is $O$.
+    \end{proof}
+
+    \newpage
+
+    \section{The exterior measure}
+    
+    In order to develop a suitable measure to work with in this course, we will first develop the Lebesgue \textit{outer} measure
+    which can measure any set of $\mathbb{R}^d$ (by Vitali, this should not have one of the other properties of measure) and then
+    restrict the size of the number of sets we can measure to obtain all the desired properties of a measure.\\
+
+    \begin{definition}
+        If $E$ is \textit{any} subset of $\mathbb{R}^d$, the \textbf{exterior} or \textbf{outer} measure of $E$ is defined as:
+        \[ m_*(E) = \inf\sum_{j=1}^{\infty} |Q_j|,\]
+        where the infimum is taken over all countable coverings $E\subset \cup_{j=1}^{\infty} Q_j$ by closed cubes. The exterior
+        measure is always non-negative but could be infinite so, in particular, we have $m_*: \mathcal{P}(\mathbb{R}^d) \to [0,\infty]$.
+    \end{definition}
+
+    \begin{remark}
+        The infimum always exists since it is bounded and taken over a non-empty set. Suppose for some $A$, $m_*(A) = 42$. This
+        means:
+        \begin{enumerate}
+            \item For all countable coverings by closed cubes, $A\subset\cup_{j=1}^{\infty} Q_j$, so $\sum_{j=1}^{\infty} |Q_j|\geq 42$.
+            \item For all $\epsilon>0$, there exists a countable covering: $A\subseteq\cup_{j=1}^{\infty} Q_j$ by closed cubes
+                such that $\sum_{j=1}^{\infty} |Q_j| \leq 42 + \epsilon$.
+        \end{enumerate}
+        We can also replace the coverings by cubes with coverings by rectangles or even converings by balls.
+    \end{remark}
+
+    \begin{es}
+        \begin{enumerate}
+            \item $m_*(\emptyset) = 0$. This follows from the fact that any cube of arbitrary volume covers $\emptyset$.
+            \item $m_*(\{x\in\mathbb{R}^d\}) = 0$. $x$ is covered by $[p-\nicefrac{1}{n},p+\nicefrac{1}{n}]$
+                which are cubes of arbitrary length (by variying $n$).
+            \item $m_*(\mathbb{Z}^+) = 0$ where $\mathbb{Z}^+$ are the positive integers. Given $\epsilon>0$, choose
+                $Q_j = [j-\nicefrac{\epsilon}{2^{j+1}},j+\nicefrac{\epsilon}{2^{j+1}}]$. Then $\mathbb{Z}^+\subset\cup_{j=1}^{\infty}
+                Q_j$ and
+                \[ \sum_{j=1}^{\infty} |Q_j| = \sum_{j=0}^{\infty} \nicefrac{\epsilon}{2^j} = \epsilon \]
+                so that $m_*(\mathbb{Z}^+) = 0$.
+            \item Other examples of outer measure being zero include $\mathbb{Z},\mathbb{Z}^d,\mathbb{Q}$.
+            \item Let $Q$ be a closed cube in $\mathbb{R}^d$. Simply cover it by itself to obtain $m_*(Q)\leq |Q|$. It is left
+                to prove the reverse inequality. We consider an arbitrary cover $Q\subset\cup_{j=1}^{\infty} Q_j$ by cubes,
+                and note that it suffices to prove that
+                \[ |Q| \leq \sum_{j=1}^{\infty} |Q_j| \]
+                Fix $\epsilon>0$. Choose for each $j$ and cube $S_j$ which contains $Q_j$, and such that $|S_j|\leq (1+\epsilon)|Q_j|$.
+                From the open covering $\cup_{j=1}^{\infty} S_j$ of the compact set $Q$, we may select a finite subcovering which,
+                after possibly renumbering the rectangles ,we may write as $Q\subset\cup_{j=1}^N S_j$. Taking the closure of the cubes
+                $S_j$, we may apply Lemma 4 to conclude $|Q|\leq \sum_{j=1}^N |S_j|$. Consequently,
+                \[ |Q| \leq (1+\epsilon)\sum_{j=1}^N |Q_j| \leq (1+\epsilon)\sum_{j=1}^{\infty} |Q_j| \]
+                Since $\epsilon$ is aribtrary, we find that the inequality we wanted to prove holds; thus $|Q|\leq m_*(Q)$ as desired.
+            \item If $Q$ is an open cube, the result $m_*(Q) = |Q|$ still holds. Since $Q$ is covered by its closure $|\overline{Q}|$,
+                and $|\overline{Q}| = |Q|$, we immediately see that $m_*(Q) \leq |Q|$. Now, for the reverse inequality. Note that if
+                $Q_0$ is a closed cube contained in $Q$, then $m_*(Q_0)\leq m_*(Q)$, since any covering of $Q$ by a countable number
+                of closed cubes is also a covering of $Q_0$. Hence $|Q_0|\leq m_*(Q)$, and since we can choose $Q_0$ with a volume
+                of as close as we wish to $|Q|$, we musth have $|Q|\leq m_*(Q)$.
+            \item $m_*(\mathbb{R}^d) = \infty$
+            \item $m_*(C) = 0$ where $C$ is the Cantor set
+            \item $m_*(R) = |R|$ where $R$ is a rectangle.
+        \end{enumerate}
+    \end{es}
+
+    \subsection{Properties of the exterior measure}
+
+    Now, we cover some of the properties of this exterior measure.
+
+    \begin{obs}[Monotonicity]
+        If $A_1\subseteq A_2$, then $m_*(A_1)\leq m_*(A_2)$.
+    \end{obs}
+    \begin{proof}
+        It suffices to note that any covering of $A_2$ covers $A_1$.
+    \end{proof}
+
+    \begin{obs}[Countable subadditivity]
+        If $A=\cup_{j=1}^{\infty} A_j$, then $m_*(A) \leq \sum_{j=1}^{\infty} m_*(A_j)$.
+    \end{obs}
+    \begin{proof}
+        Fix $\epsilon>0$. For each $j$, there is a countable covering $A_j\subset \cup_{j=1}^{\infty} Q_{j_k}$ by closed cubes
+        such that
+        \[ \sum_{j=1}^{\infty} |Q_{j_k}| \leq m_*(A_j) + \nicefrac{\epsilon}{2^j} \]
+        Then $A\subset \cup_{j,k=1}^{\infty} Q_{j,k}$ is a countable covering by closed cubes and:
+        \begin{align*}
+            \sum_{j,k=1}^{\infty} |Q_{j,k}| &= \sum_{j=1}^{\infty} \sum_{k=1}^{\infty} |Q_{j,k}| \\
+            &\leq \sum_{j=1}^{\infty} [m_*(A_j)+\nicefrac{\epsilon}{2^j}] \\
+            &= \sum_{j=1}^{\infty} m_*(A_j) + \epsilon \\
+            &= m_*(A) \leq \sum_{j=1}^{\infty} m_*(A_j) 
+        \end{align*}
+        where hte last equality follows from the fact that $\epsilon$ is arbitrary.
+    \end{proof}
+
+    \begin{obs}[Outer approximation]
+        $m_*(A) = \inf_{A\subset O\:\text{open}} m_*(A)$.
+    \end{obs}
+    \begin{proof}
+        $A\subset O$ open implies $m_*(A) \leq m_*(O)$ which the implies $m_*(A) \leq \inf_{A\subset O\:\text{open}} m_*(O)$.
+        To show the other inequality, we have to show $\inf_{A\subset O\:\text{open}} m_*(O) \leq m_*(A)$ i.e.
+        \[ \forall\;\epsilon>0,\;\exists\;A\subset O\;\text{open},\;\text{such that}\; m_*(O) \leq m_*(A) + \epsilon \]
+    \end{proof}
 
 \end{document}

@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 JAN 2018 12:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 FEB 2018 02:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**1847_lecture.tex
+**C37_lecture.tex
 (./C37_lecture.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
@@ -645,65 +645,66 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 )
 \c@theorem=\count103
 \c@es=\count104
-\c@definition=\count105
-\c@corollary=\count106
-\c@prop=\count107
+\c@obs=\count105
+\c@definition=\count106
+\c@corollary=\count107
+\c@prop=\count108
 
 (./C37_lecture.aux)
 \openout1 = `C37_lecture.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 43.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for LS1+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for LS1+stix on input line 43.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for LS2+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for LS2+stix on input line 43.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Try loading font information for T1+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Try loading font information for T1+stix on input line 43.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
+\scratchcounter=\count109
 \scratchdimen=\dimen115
 \scratchbox=\box28
-\nofMPsegments=\count109
-\nofMParguments=\count110
+\nofMPsegments=\count110
+\nofMParguments=\count111
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count111
+\MPscratchCnt=\count112
 \MPscratchDim=\dimen116
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
+\MPnumerator=\count113
+\makeMPintoPDFobject=\count114
 \everyMPtoPDFconversion=\toks30
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -737,65 +738,65 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 59.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 60.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
-59.
+60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS2+stixex on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixex on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
- 59.
+ 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
-59.
+60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
-LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
 
  []
 
@@ -804,24 +805,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--59
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/stix/m/sl' in size <10.95> not available
-(Font)              Font shape `T1/stix/m/it' tried instead on input line 62.
+(Font)              Font shape `T1/stix/m/it' tried instead on input line 63.
 
 [2
 
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 62.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 69.
 [3]
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 89.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 90.
  [4]
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 139.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 140.
  [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 191--193
+Underfull \hbox (badness 10000) in paragraph at lines 192--194
 
  []
 
@@ -830,33 +831,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--193
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--213
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+stix on input line 230
+LaTeX Font Info:    Try loading font information for TS1+stix on input line 231
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 ) [9]
 
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 248.
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 249.
 
 
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 250.
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 251.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--278
+Underfull \hbox (badness 10000) in paragraph at lines 277--279
 
  []
 
 [10]
-Overfull \hbox (8.28755pt too wide) in paragraph at lines 298--300
+Overfull \hbox (8.28755pt too wide) in paragraph at lines 299--301
 []\T1/stix/m/n/10.95 Let $\LS1/stix/m/it/10.95 x \LS1/stix/m/n/10.95 Ë ã[]\LS1/
 stix/m/it/10.95 ^^R[]$\T1/stix/m/n/10.95 , then there ex-ists $\LS1/stix/m/it/1
 0.95 r[]; \LS1/stix/m/n/10.95 § \LS1/stix/m/it/10.95 ; r[]$ \T1/stix/m/n/10.95 
@@ -866,15 +867,51 @@ tix/m/it/10.95 ; B[]\LS1/stix/m/n/10.95 .\LS1/stix/m/it/10.95 x\LS1/stix/m/n/10
 .95 / \LS1/stix/m/it/10.95 Ï
  []
 
-[11] (./C37_lecture.aux) ) 
+[11] <fig2.png, id=48, 506.89375pt x 390.45876pt>
+File: fig2.png Graphic file (type png)
+ <use fig2.png>
+Package pdftex.def Info: fig2.png used on input line 392.
+(pdftex.def)             Requested size: 253.44626pt x 195.2289pt.
+ [12] [13 <./fig2.png>] <fig3.png, id=59, 584.1825pt x 302.12875pt>
+File: fig3.png Graphic file (type png)
+ <use fig3.png>
+Package pdftex.def Info: fig3.png used on input line 445.
+(pdftex.def)             Requested size: 292.09053pt x 151.064pt.
+ [14 <./fig3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 458--461
+
+ []
+
+[15]
+Overfull \hbox (13.66235pt too wide) in paragraph at lines 524--525
+\T1/stix/b/n/10.95 Observation 2 \T1/stix/m/n/10.95 (Count-able sub-ad-di-tiv-i
+ty)\T1/stix/b/n/10.95 . \T1/stix/m/it/10.95 If $\LS1/stix/m/it/10.95 A \LS1/sti
+x/m/n/10.95 = ä[]\LS1/stix/m/it/10.95 A[]$\T1/stix/m/it/10.95 , then $\LS1/stix
+/m/it/10.95 m[]\LS1/stix/m/n/10.95 .\LS1/stix/m/it/10.95 A\LS1/stix/m/n/10.95 /
+ \LS2/stixcal/m/n/10.95 f [][] \LS1/stix/m/it/10.95 m[]\LS1/stix/m/n/10.95 .\LS
+1/stix/m/it/10.95 A[]\LS1/stix/m/n/10.95 /$\T1/stix/m/it/10.95 . 
+ []
+
+[16]
+Overfull \hbox (32.31967pt too wide) in paragraph at lines 544--546
+[]$\LS1/stix/m/it/10.95 A Ï O$ \T1/stix/m/n/10.95 open im-plies $\LS1/stix/m/it
+/10.95 m[]\LS1/stix/m/n/10.95 .\LS1/stix/m/it/10.95 A\LS1/stix/m/n/10.95 / \LS2
+/stixcal/m/n/10.95 f \LS1/stix/m/it/10.95 m[]\LS1/stix/m/n/10.95 .\LS1/stix/m/i
+t/10.95 O\LS1/stix/m/n/10.95 /$ \T1/stix/m/n/10.95 which the im-plies $\LS1/sti
+x/m/it/10.95 m[]\LS1/stix/m/n/10.95 .\LS1/stix/m/it/10.95 A\LS1/stix/m/n/10.95 
+/ \LS2/stixcal/m/n/10.95 f [][] \LS1/stix/m/it/10.95 m[]\LS1/stix/m/n/10.95 .\L
+S1/stix/m/it/10.95 O\LS1/stix/m/n/10.95 /$\T1/stix/m/n/10.95 .
+ []
+
+[17] (./C37_lecture.aux) ) 
 Here is how much of TeX's memory you used:
- 5285 strings out of 493089
- 67762 string characters out of 6134842
- 121373 words of memory out of 5000000
- 8642 multiletter control sequences out of 15000+600000
- 73564 words of font info for 76 fonts, out of 8000000 for 9000
+ 5302 strings out of 493089
+ 67930 string characters out of 6134842
+ 121410 words of memory out of 5000000
+ 8658 multiletter control sequences out of 15000+600000
+ 79094 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,11n,23p,333b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,23p,332b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/s
 tix/stix-ts1.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/stix/stix-
 t1.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/STIXGeneral-
@@ -886,12 +923,13 @@ tix-mathbb.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix
 athex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-math
 it.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathrm-
 bold.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathr
-m.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathsf.p
-fb>
-Output written on C37_lecture.pdf (11 pages, 192201 bytes).
+m.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathscr.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb
+>
+Output written on C37_lecture.pdf (17 pages, 277126 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 JAN 2018 17:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 JAN 2018 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,6 +622,30 @@ Package etexcmds Info: Could not find \expanded.
 )))
 \c@dirtytalk@qdepth=\count101
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+Package: tikz-cd 2014/10/30 v0.9e Commutative diagrams with tikz
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks29
+\pgfutil@tempdima=\dimen113
+\pgfutil@tempdimb=\dimen114
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box28
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2013/12/20 v3.0.0 (rcs-revision 1.28)
+))
+Package: pgf 2013/12/18 v3.0.0 (rcs-revision 1.14)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -640,71 +664,355 @@ Package graphics Info: Driver file: pdftex.def on input line 94.
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 \Gread@gobject=\count102
 ))
-\Gin@req@height=\dimen113
-\Gin@req@width=\dimen114
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
 )
-\c@theorem=\count103
-\c@es=\count104
-\c@definition=\count105
-\c@corollary=\count106
-\c@prop=\count107
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
 
-(./1847_lecture.aux)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks32
+))
+\pgf@x=\dimen117
+\pgf@y=\dimen118
+\pgf@xa=\dimen119
+\pgf@ya=\dimen120
+\pgf@xb=\dimen121
+\pgf@yb=\dimen122
+\pgf@xc=\dimen123
+\pgf@yc=\dimen124
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count103
+\c@pgf@countb=\count104
+\c@pgf@countc=\count105
+\c@pgf@countd=\count106
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+File: pgfsys-pdftex.def 2013/07/18  (rcs-revision 1.33)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count107
+\pgfsyssoftpath@bigbuffer@items=\count108
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) (/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen125
+\pgfmath@count=\count109
+\pgfmath@box=\box29
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count110
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen126
+\pgf@picmaxx=\dimen127
+\pgf@picminy=\dimen128
+\pgf@picmaxy=\dimen129
+\pgf@pathminx=\dimen130
+\pgf@pathmaxx=\dimen131
+\pgf@pathminy=\dimen132
+\pgf@pathmaxy=\dimen133
+\pgf@xx=\dimen134
+\pgf@xy=\dimen135
+\pgf@yx=\dimen136
+\pgf@yy=\dimen137
+\pgf@zx=\dimen138
+\pgf@zy=\dimen139
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen140
+\pgf@path@lasty=\dimen141
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2013/12/13  (rcs-revision 1.23)
+\pgf@shorten@end@additional=\dimen142
+\pgf@shorten@start@additional=\dimen143
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2013/10/09  (rcs-revision 1.44)
+\pgfpic=\box30
+\pgf@hbox=\box31
+\pgf@layerbox@main=\box32
+\pgf@picture@serial@count=\count111
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2013/09/19  (rcs-revision 1.11)
+\pgflinewidth=\dimen144
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2013/10/10  (rcs-revision 1.17)
+\pgf@pt@x=\dimen145
+\pgf@pt@y=\dimen146
+\pgf@pt@temp=\dimen147
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2013/11/07  (rcs-revision 1.40)
+\pgfarrowsep=\dimen148
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen149
+\pgf@sys@shading@range@num=\count112
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2013/07/15  (rcs-revision 1.20)
+\pgfexternal@startupbox=\box33
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2013/10/31  (rcs-revision 1.34)
+\pgfnodeparttextbox=\box34
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2013/07/31  (rcs-revision 1.12)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.0 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen150
+\pgf@nodesepend=\dimen151
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.0 (rcs-revision 1.1)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen152
+\pgffor@skip=\dimen153
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2013/12/13 v3.0.0 (rcs-revision 1.142)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.0 (rcs-revision 1.20)
+\pgf@plot@mark@count=\count113
+\pgfplotmarksize=\dimen154
+)
+\tikz@lastx=\dimen155
+\tikz@lasty=\dimen156
+\tikz@lastxsaved=\dimen157
+\tikz@lastysaved=\dimen158
+\tikzleveldistance=\dimen159
+\tikzsiblingdistance=\dimen160
+\tikz@figbox=\box35
+\tikz@figbox@bg=\box36
+\tikz@tempbox=\box37
+\tikz@tempbox@bg=\box38
+\tikztreelevel=\count114
+\tikznumberofchildren=\count115
+\tikznumberofcurrentchild=\count116
+\tikz@fig@count=\count117
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count118
+\pgfmatrixcurrentcolumn=\count119
+\pgf@matrix@numberofcolumns=\count120
+)
+\tikz@expandcount=\count121
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.0 (rcs-revision 1.4)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2013/08/28 v3.0.0 (rcs-revision 1.3)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2013/12/13 v3.0.0 (rcs-revision 1.12)
+\pgfarrowinset=\dimen161
+\pgfarrowlength=\dimen162
+\pgfarrowwidth=\dimen163
+\pgfarrowlinewidth=\dimen164
+)))
+\c@theorem=\count122
+\c@es=\count123
+\c@definition=\count124
+\c@corollary=\count125
+\c@prop=\count126
+ (./1847_lecture.aux)
 \openout1 = `1847_lecture.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 43.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for LS1+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for LS1+stix on input line 43.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 42.
-LaTeX Font Info:    Try loading font information for LS2+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for LS2+stix on input line 43.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Try loading font information for T1+stix on input line 42.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Try loading font information for T1+stix on input line 43.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
+ABD: EveryShipout initializing macros
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen115
-\scratchbox=\box28
-\nofMPsegments=\count109
-\nofMParguments=\count110
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen116
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count127
+\scratchdimen=\dimen165
+\scratchbox=\box39
+\nofMPsegments=\count128
+\nofMParguments=\count129
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count130
+\MPscratchDim=\dimen166
+\MPnumerator=\count131
+\makeMPintoPDFobject=\count132
+\everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -737,65 +1045,65 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 59.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 60.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
-59.
+60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS2+stixex on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixex on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
- 59.
+ 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
-59.
+60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
-LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 5
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 6
+0.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 59.
+LaTeX Font Info:    Try loading font information for U+msa on input line 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 59.
+LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 59--59
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
 
  []
 
@@ -804,46 +1112,209 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--59
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/stix/m/sl' in size <10.95> not available
-(Font)              Font shape `T1/stix/m/it' tried instead on input line 62.
+(Font)              Font shape `T1/stix/m/it' tried instead on input line 63.
 
 [2
 
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <20.74> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 62.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 66.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 68.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `T1/stix/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/stix/b/it' tried instead on input line 92.
-[3] [4] [5] (./1847_lecture.aux) ) 
+(Font)              Font shape `T1/stix/b/it' tried instead on input line 93.
+[3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 231--234
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 279--282
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--299
+
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 349--352
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--371
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 401--403
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 448--450
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 478--479
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--506
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 528--530
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 537--538
+
+ []
+
+[13] <IMG_1016.jpg, id=58, 3035.34pt x 1558.82375pt>
+File: IMG_1016.jpg Graphic file (type jpg)
+ <use IMG_1016.jpg>
+Package pdftex.def Info: IMG_1016.jpg used on input line 558.
+(pdftex.def)             Requested size: 151.7759pt x 77.94576pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--565
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 570--571
+
+ []
+
+<IMG_1017.jpg, id=59, 2825.55624pt x 1071.00125pt>
+File: IMG_1017.jpg Graphic file (type jpg)
+ <use IMG_1017.jpg>
+Package pdftex.def Info: IMG_1017.jpg used on input line 576.
+(pdftex.def)             Requested size: 141.28609pt x 53.55319pt.
+
+<IMG_1018.jpg, id=60, 2917.90125pt x 1045.9075pt>
+File: IMG_1018.jpg Graphic file (type jpg)
+ <use IMG_1018.jpg>
+Package pdftex.def Info: IMG_1018.jpg used on input line 580.
+(pdftex.def)             Requested size: 145.90361pt x 52.29843pt.
+ [14 <./IMG_1016.jpg> <./IMG_1017.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 587--589
+
+ []
+
+<IMG_1019.jpg, id=64, 2940.9875pt x 1369.115pt>
+File: IMG_1019.jpg Graphic file (type jpg)
+ <use IMG_1019.jpg>
+Package pdftex.def Info: IMG_1019.jpg used on input line 592.
+(pdftex.def)             Requested size: 147.05798pt x 68.45975pt.
+
+<IMG_1020.jpg, id=65, 3035.34pt x 1168.365pt>
+File: IMG_1020.jpg Graphic file (type jpg)
+ <use IMG_1020.jpg>
+Package pdftex.def Info: IMG_1020.jpg used on input line 597.
+(pdftex.def)             Requested size: 151.7759pt x 58.42166pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
+
+ []
+
+<IMG_1021.jpg, id=66, 1821.80624pt x 949.5475pt>
+File: IMG_1021.jpg Graphic file (type jpg)
+ <use IMG_1021.jpg>
+Package pdftex.def Info: IMG_1021.jpg used on input line 604.
+(pdftex.def)             Requested size: 91.09564pt x 47.48015pt.
+ [15 <./IMG_1018.jpg> <./IMG_1019.jpg> <./IMG_1020.jpg> <./IMG_1021.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 623--625
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 629--631
+
+ []
+
+<IMG_1023.jpg, id=70, 3624.54124pt x 1153.30875pt>
+File: IMG_1023.jpg Graphic file (type jpg)
+ <use IMG_1023.jpg>
+Package pdftex.def Info: IMG_1023.jpg used on input line 650.
+(pdftex.def)             Requested size: 181.23767pt x 57.66881pt.
+ [16]
+Underfull \hbox (badness 10000) in paragraph at lines 657--658
+
+ []
+
+<IMG_1024.jpg, id=74, 3912.6175pt x 774.895pt>
+File: IMG_1024.jpg Graphic file (type jpg)
+ <use IMG_1024.jpg>
+Package pdftex.def Info: IMG_1024.jpg used on input line 678.
+(pdftex.def)             Requested size: 195.64233pt x 38.74701pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 680--682
+
+ []
+
+[17 <./IMG_1023.jpg> <./IMG_1024.jpg>] [18] (./1847_lecture.aux) ) 
 Here is how much of TeX's memory you used:
- 5255 strings out of 493089
- 67274 string characters out of 6134842
- 120373 words of memory out of 5000000
- 8617 multiletter control sequences out of 15000+600000
- 67805 words of font info for 73 fonts, out of 8000000 for 9000
+ 16181 strings out of 493089
+ 311206 string characters out of 6134842
+ 331580 words of memory out of 5000000
+ 19307 multiletter control sequences out of 15000+600000
+ 73335 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,23p,333b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc
-/dvips/stix/stix-t1.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-stix/STIXGeneral-Bold.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
-c/stix/STIXGeneral-BoldItalic.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/stix/stix-mathbb.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/stix/stix-mathcal.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/stix/stix-mathex.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/public/stix/stix-mathit.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/stix/stix-mathrm.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/stix/stix-mathscr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/stix/stix-mathsf.pfb>
-Output written on 1847_lecture.pdf (5 pages, 190410 bytes).
+ 61i,15n,84p,456b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}</usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathbb.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathfrak.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
+Output written on 1847_lecture.pdf (18 pages, 5467392 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 122 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
