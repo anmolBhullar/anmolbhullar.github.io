@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\title{MATC34 Problem Set 4}
+\date{November 2, 2017}
+\author{Anmol Bhuller | 1002678140}
+
+\begin{document}
+    \maketitle 
+
+    \textbf{Question 1a}.\\
+    Define the function $f(z) = z + z^3$. Since this is a polynomial it is holomorphic for all $z\in\mathbb{C}$. Thus, we have that it is holomorphic
+    on the closure of $C(0,4)$. Furthermore, since $3$ is in the interior of $C(0,4)$, by Cauchy's integral formula, we obtain that:
+    \begin{align*}
+        f(3) &= \frac{1}{2\pi i}\int_{C(0,4)}\frac{f(z)}{z-3}dz \\
+        \implies 3 + 3^3 &= \frac{1}{2\pi i}\int_{C(0,4)}\frac{z+z^3}{z-3}dz \\
+        \implies 30\cdot 2\pi i &= \int_{C(0,4)}\frac{z+z^3}{z-3}dz
+    \end{align*}
+    as wanted.\hfill$\blacksquare$\\
+
+    \textbf{Question 1b}.
+    Define the function $f(z) = e^z$. Since this function is holomorphic on all of $\mathbb{C}$, we obtain that $f$ is holomorphic on the closure
+    of $C(0,2)$. Furthermore, since $1$ is in the interior of $C(0,2)$, we obtain by Cauchy's differentiation formula that:
+    \[    f^{(n)}(1) = \frac{n!}{2\pi i}\int_{C(0,2)}\frac{f(z)}{(z-3)^{n+1}}dz \]
+    By choosing $n = 9$, we get that:
+    \begin{align*}
+        f^{(9)}(1) &= \frac{9!}{2\pi i}\int_{C(0,2)}\frac{f(z)}{(z-3)^{10}}dz \\
+        \implies e^1 &= \frac{9!}{2\pi i}\int_{C(0,2)}\frac{e^z}{(z-1)^{10}}dz \\
+        \implies \frac{e\cdot 2\pi i}{9!} &= \int_{C(0,2)}\frac{e^z}{(z-1)^{10}}dz
+    \end{align*}
+    as wanted.\hfill$\blacksquare$\\
+
+    \textbf{Question 1c}.
+    Similarly to question 1a and 1b, define $f(z) = \sin{z}$ which is holomorphic everywhere. 
+    Repeating a similar process (but now choosing $n=18$), we obtain by the Cauchy differentiation
+    formula that:
+    \begin{align*}
+        f^{(18)}(1) &= \frac{18!}{2\pi i}\int_{C(0,2)}\frac{\sin{z}}{(z-1)^{19}}dz \\
+        \implies \frac{(-\sin(1))\cdot 2\pi i}{18!} &= \int_{C(0,2)}\frac{\sin{z}}{(z-1)^{19}}dz
+    \end{align*}
+    as wanted.\hfill$\blacksquare$\\
+
+    \textbf{Question 1d}.
+    Define $f(z)$ to be $z+z^3$. This is holomorphic everywhere so it is holomorphic on $C(1,4)$. Applying Cauchy's differentiation theorem
+    on $n=499$, we get that:
+    \begin{align*}
+        f^{(499)}(3) &= \frac{499!}{2\pi i}\int_{C(1,4)}\frac{z+z^3}{(z-3)^{500}}dz \\
+        0 &= \int_{C(1,4)}\frac{z+z^3}{(z-3)^{500}}dz
+    \end{align*}
+    as wanted. Note that $f^{(499)}(3)$ is the 499th derivative of a polynomial of degree 3, so it must be that $f^{(499)}$ is always 0.\hfill$\blacksquare$\\
+
+    \textbf{Question 2}.
+    Our integrand is holomorphic everywhere except at 0. Thus, we will use the function $f(z) = \frac{1}{2i}\frac{e^{iz}-1}{z}$ to integrate over a toy 
+    contour (specifically the indented semicircle on page 44 of the textbook) to get around this problem point. Note $e^{iz}$ is equal to the power series
+    $\sum_{n=0}^{\infty} \frac{(iz)^n}{n!}$ implying that $e^{iz}-1 = \sum_{n=1}^{\infty} \frac{(iz)^n}{n!}$ so that $\frac{e^{iz}-1}{z} = 
+    \sum_{n=1}^{\infty} \frac{(iz)^{n-1}}{n!}$. Thus, $f(z) = \frac{1}{2i}\sum_{n=1}^{\infty}\frac{(iz)^{n-1}}{n!}$ so that $f$ is clearly holomorphic on
+    all of $\mathbb{C}$. Thus by Cauchy's theorem, we obtain that:
+    \[ \frac{1}{2i}\big{[}\int_{[-R,-\epsilon]}\frac{e^{iz}-1}{z}dz + \int_{\gamma_{\epsilon}}\frac{e^{iz}-1}{z}dz + \int_{[\epsilon,R]}\frac{e^{iz}-1}{z}dz
+        + \int_{\gamma_R} \frac{e^{iz}-1}{z}dz\big{]} = 0\]
+    First, we consider the integral over $\gamma_{\epsilon}$. Since $f$ is holomorphic, we know there is some real number $N$ which bounds all $|f(z)|$ for
+    $z\in\gamma_{\epsilon}$. Thus:
+    \[ \Big{|}\int_{\gamma_{\epsilon}} \frac{e^{iz}-1}{z}dz\Big{|} \leq N\cdot \text{length}(\gamma_{\epsilon}) = N\epsilon\pi \]
+    Furthermore, letting $\epsilon\to 0$, we obtain that $\int_{\gamma_{\epsilon}}\frac{e^{iz}-1}{z}dz \to 0$.\hfill$\blacksquare$\\
+
+    \textbf{Question 4}.
+    Assume $f$ is a polynomial (i.e. only finite $a_n$'s are nonzero). We know all polynomials are holomorphic everywhere, thus their radius of convergence 
+    ($R$) must be infinity. Thus, it must
+    be the case that $R > 1$. Now assume $f$ is not a polynomial (only finite $a_n$'s are zero). Since $f$ is a power series, its radius of convergence is given by:
+    \[ R = \limsup_{n\to\infty} |\frac{1}{a_n}|^{\frac{1}{n}} \]
+    Note that, we are given for all $n\in\mathbb{N}$, $a_n\in\mathbb{Z}$ so that $|\frac{1}{a_n}|^{\frac{1}{n}}\leq 1$ for all $n\in\mathbb{N}$. This implies that
+    $\limsup_{n\to\infty} |\frac{1}{a_n}|^{\frac{1}{n}}\leq 1$ as wanted.\hfill$\blacksquare$\\
+
+    \textbf{Question 5}.
+    Consider a (closed) disk $D = \{z\in\mathbb{C}: |z-z_0|<R\}$ for some fixed $z_0\in\mathbb{C}$. We know $f$ is holomorphic on $D$ so we apply
+    Cauchy's inequality to get:
+    \[ |f^{(n)}(z_0)| \leq \frac{M\cdot n!}{R^n} \]
+    where $R$ is the radius of convergence of $f$ and $M$ is an upper bound of $f$ on $D$. Let $M = \sup_{z\in D}f(z)$ and choose $n=1$. Then:
+    \[ |f'(z_0)| = \frac{1}{R}\cdot M \leq \frac{1}{R}\cdot \sup_{|z|<R}|f(z+z_0)|\]
+    By our given information, we know that $sup_{|z|<R}f(z+z_0)\leq \log{(R+z_0)}$ so, we have that:
+    \[ |f'(z_0)| \leq \frac{1}{R}\log{(R+z_0)} \]
+    Since $z_0\in D^{\circ}$ (i.e. interior of $D$), we have that $|z_0|<R$, thus:
+    \[ |f'(z_0)| \leq \frac{1}{R}\log(2R) \to 0 \quad\text{as}\quad R\to\infty \]
+    Therefore, we have that $|f'(z_0)|\leq 0$, hence $f'(z_0) = 0$ so that $f$ is constant which is as we wanted.\hfill$\blacksquare$
+    
+    
+\end{document}

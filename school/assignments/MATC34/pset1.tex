@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} 
+\usepackage{amsthm} % Theorem Formatting
+\usepackage{amssymb}    % Math symbols such as \mathbb
+\usepackage{graphicx} % Allows for eps images
+\usepackage[dvips,letterpaper,margin=1in,bottom=0.7in]{geometry}
+\usepackage{tensor}
+ % Sets margins and page size
+\usepackage{amsmath}
+
+\renewcommand{\labelenumi}{(\alph{enumi})} % Use letters for enumerate
+% \DeclareMathOperator{\Sample}{Sample}
+\let\vaccent=\v % rename builtin command \v{} to \vaccent{}
+\usepackage{enumerate}
+\renewcommand{\v}[1]{\ensuremath{\mathbf{#1}}} % for vectors
+\newcommand{\gv}[1]{\ensuremath{\mbox{\boldmath$ #1 $}}}
+% for vectors of Greek letters
+\newcommand{\uv}[1]{\ensuremath{\mathbf{\hat{#1}}}} % for unit vector
+\newcommand{\abs}[1]{\left| #1 \right|} % for absolute value
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand{\dd}[2]{\frac{d^2 #1}{d #2^2}} % for double derivatives
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+% for partial derivatives
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+% for double partial derivatives
+\newcommand{\pdc}[3]{\left( \frac{\partial #1}{\partial #2}
+ \right)_{#3}} % for thermodynamic partial derivatives
+\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
+\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
+\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|
+ \left. #2 \vphantom{#1} \right>} % for Dirac brackets
+\newcommand{\matrixel}[3]{\left< #1 \vphantom{#2#3} \right|
+ #2 \left| #3 \vphantom{#1#2} \right>} % for Dirac matrix elements
+\newcommand{\grad}[1]{\gv{\nabla} #1} % for gradient
+\let\divsymb=\div % rename builtin command \div to \divsymb
+\renewcommand{\div}[1]{\gv{\nabla} \cdot \v{#1}} % for divergence
+\newcommand{\curl}[1]{\gv{\nabla} \times \v{#1}} % for curl
+\let\baraccent=\= % rename builtin command \= to \baraccent
+\renewcommand{\=}[1]{\stackrel{#1}{=}} % for putting numbers above =
+\providecommand{\wave}[1]{\v{\tilde{#1}}}
+\providecommand{\fr}{\frac}
+\providecommand{\RR}{\mathbb{R}}
+\providecommand{\NN}{\mathbb{N}}
+\providecommand{\seq}{\subseteq}
+\providecommand{\e}{\epsilon}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{p}{Problem}[section]
+\usepackage{cancel}
+\newtheorem*{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{dfn}{Definition}
+ \newenvironment{s}{%\small%
+        \begin{trivlist} \item \textbf{Solution}. }{%
+            \hspace*{\fill} $\blacksquare$\end{trivlist}}%
+% ***********************************************************
+% ********************** END HEADER *************************
+% ***********************************************************
+
+\begin{document}
+
+{\noindent\Huge\bf  \\[0.5\baselineskip] {\fontfamily{cmr}\selectfont  %
+Problem Set 1}         }\\[2\baselineskip] % Title
+{ {\bf \fontfamily{cmr}\selectfont MATC34: Complex Variables}\\ {\textit{\fontfamily{cmr}%
+\selectfont September 14, 2017}}}
+{\large \textsc{Anmol Bhullar}} % Author name
+\\[1.4\baselineskip]
+
+\begin{p}
+    For each of the following equations, describe geometrically the set of points $z$ in the
+    complex plane defined by it
+    \begin{enumerate}
+        \item $\abs{z-2} = \abs{z-3}$
+        \item $\frac{1}{z} = \overline{z}$
+        \item Re$(z) = 3$
+        \item $\abs{z} = $Re$(z) +1$
+    \end{enumerate}
+\end{p}
+\begin{s}
+    \begin{enumerate}
+        \item These are the set of points which are equidistant from both 2 and 3. This forms a line
+            equivalent to the perpendicular bisector of the straight line between $x=2$ and $x=3$.
+        \item Let $z = x+iy$ for $x,y\in\RR$. Then 
+            \[\frac{1}{z} = \overline{z} \to \frac{1}{x+iy} = x-iy \to 1 = x^2-y^2\]
+            which is just the unit circle around the origin.
+        \item This is the vertical line at $x=3$
+        \item This is equivalent to the horizontal line at Im$(z) = 1$
+    \end{enumerate}
+\end{s}
+
+\begin{p}
+    \begin{enumerate}
+        \item Find how many roots to the equation \[ z^5 = 2 \] there are in the complex
+            plane, and describe their location in the plane.
+        \item Given any $\alpha\in\mathbb{C}$ with $\alpha\neq0$ and $n\geq1$ an integer,
+            describe the set of solutions to the equation \[ z^n = \alpha \]
+    \end{enumerate}
+\end{p}
+\begin{s}
+    \begin{enumerate}
+        \item Note that there is a real root at $z = \sqrt[5]{2}$. Converting to polar
+            coordinates, we see that this root occurs at $\theta_0 = 0$. Thus, the other
+            four roots occur at: $\theta = \frac{2\pi k}{5}$ for $k = 1,\hdots,4$. So,
+            we obtain, that the roots are: $z = \sqrt[5]{2}e^{\frac{i2\pi k}{5}}$.
+        \item Repeating a similar process, we obtain that the real root is at 
+            $z = \sqrt[n]{\alpha}$. Thus, the other roots are at: 
+            $z = \sqrt[n]{\alpha}e^{\frac{i2\pi k}{n}}$ for $k = 0,\hdots,4$.
+    \end{enumerate}
+\end{s}
+
+\begin{p}
+    Let $z,w$ be two complex numbers such that $\overline{z}w\neq 1$. Prove that
+    \[ \abs{\frac{w-z}{1-\overline{w}{z}}} = 1\]
+\end{p}
+\begin{s}
+    Suppose $\abs{w} = 1$. Then:
+    \[ \abs{\frac{w-z}{1-\overline{w}{z}}} = \abs{\frac{1}{w}\cdot\frac{w-z}{1-\overline{w}{z}}}\]
+    since if $\abs{w} = 1$, then $\frac{1}{w}$ also has norm of 1. Simplifying, we obtain in the denominator:
+    \[\abs{w - \overline{w}wz} = \abs{w - z} \]
+    so the whole fraction reduces to 1. Now, suppose $\abs{z} = 1$, then $\abs{\overline{z}} = 1$, so that
+    $\frac{1}{\overline{z}}$ also has a norm of 1. Repeating a similar process as above, we obtain that:
+    \[ \abs{\frac{w-z}{1-\overline{w}z}} = \abs{\frac{w-z}{\overline{z} - \overline{w}z\overline{z}}} = \abs{\frac{w-z}{\overline{z-w}}} = \abs{\frac{w-z}{\overline{w-z}}} = \abs{\frac{w-z}{w-z}} (\abs{\overline{w-z}} = \abs{w-z})\]
+    so the fraction, again reduces down to 1 as wanted.
+\end{s}
+
+\begin{p}
+    Using only the axioms which define a field, prove that if $F$ is a field, then
+    $x\cdot 0 = 0$ for all $x\in F$.
+\end{p}
+\begin{s}
+    Note that, $0$ is the additive identity, so that $0 + 0 = 0$. Then:
+    \[ x \cdot 0 = x \cdot (0 + 0) = x\cdot 0 + x\cdot 0 \]
+    Also, $(x\cdot 0) + 0 = x\cdot 0$ so by the line above, we have that:
+    \[x\cdot 0 + 0 = x\cdot 0 + x\cdot 0\]
+    Subtracting $x\cdot 0$ from both sides and switching orders (using commutivity),
+    we obtain that:
+    \[x\cdot 0 - x\cdot 0 + 0 = x\cdot 0 - x\cdot 0 + x\cdot 0\]
+    Simplifying, we obtain that:
+    \[0 = x\cdot 0\]
+\end{s}
+
+\begin{p}
+    Show that there is no total ordering on $\mathbb{C}$ by:
+    \begin{enumerate}
+        \item By using $(-1)\cdot(-1)=1$, prove that it is impossible that $-1 > 0$.
+            Conclude that $1 > 0$.
+        \item Is it possible that $i > 0$? How about $i < 0$?
+        \item Conclude that there is no total ordering on $\mathbb{C}$.
+    \end{enumerate}
+\end{p}
+\begin{s}
+    Suppose $-1 > 0$. Then note that, by using property (iii) (of total order) and $-1 > 0$, if we multiply
+    both sides by $-1$, then the same inequality holds so:
+    \[-1 > 0 \implies (-1) \cdot (-1) > 0 \implies 1 > 0\]
+    By property (ii) of total order and that $1 > 0$, we obtain that:
+    \[ -1 > 0 \implies -1 + 1 > 0 + 1 \implies 0 > 1\] which is a contradiction so $-1 > 0$ cannot hold. By
+    property (i) of total order, then $-1 < 0$ or $-1 = 0$. If $-1 = 0$, then for any $a\in\mathbb{C}$, 
+    $-a = 0$ which is a contradiction because, we know $\abs{-2} > \abs{0}$ is true, but the equality $-a = 0$, should imply
+    that $\abs{-2} = \abs{0}$. Therefore, $-1 < 0$ by property (i) of total order. 
+    Now suppose that $i > 0$, then via property (iii) of total order, we obtain the inequality:
+    \[i > 0 \implies i \cdot i > 0 \cdot i \implies -1 > 0\]
+    which we have already shown is not true so $i > 0$ cannot be true. Thus, suppose $i < 0$. Then, $-i > 0$.
+    So, by using property (iii) of total order, we obtain that:
+    \[ 0 \cdot (-i) < (-i) \cdot (-i) = -1 \implies 0 < -1 \]
+    which is a contradiction. Thus $i < 0$ does not hold which implies $i = 0$ (by property (i)) but this is
+    obviously not true (if it were, then $3 \cdot i = 3 \cdot 0 = 2 \cdot i$, so $3i = 2i \implies 3 = 2$). Since property (i) of total order is broken, then
+    $\mathbb{C}$ does not have a total ordering on it.
+\end{s}
+\end{document}

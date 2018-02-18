@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\newcommand{\inter}[1]{int(#1)}
+
+\title{The Product Metric}
+\author{Anmol Bhullar}
+
+\begin{document}
+    \maketitle
+    The \textit{natural} metric for a product of finite sequence of metric spaces is called the \textit{product metric}. We define what this
+    is mention why it is the most natural of other choices.\\
+
+    If $(X_1,d_1),(X_2,d_2),\hdots,(X_n,d_n)$ is a finite sequence of metric spaces and $N$ is the \textit{Euclidean norm}, then:
+    \[ \big{(}X_1 \times X_2 \times \hdots \times X_n,N(d_1,\hdots,d_n)\big{)} \] 
+    is a metric space called the \textbf{product metric}. This is defined by
+    \[ N(d_1,\hdots,d_n)\big{(}(x_1,\hdots,x_n),(y_1,\hdots,y_n)\big{)} = N(d_1(x_1,y_2),\dots,d_n(x_n,y_n)) \]
+
+    This actually induces the \textit{product topology} making it the most natural choice for a product metric.
+\end{document}

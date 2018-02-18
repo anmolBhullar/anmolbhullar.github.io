@@ -1,0 +1,362 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11: Functional Analysis \\
+    Assignment 1}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \textbf{P1.}\\
+
+    Let $(X,\norm{\cdot})$ be a normed linear space over $\mathbb{R}$.
+    \begin{enumerate}
+        \item Prove that for $x,y\in X$, $|\norm{x}-\norm{y}|\geq\norm{x-y}$.
+        \item Let $\{x_n\}$ be a convergent sequence in $X$ and $\{a_n\}$ a convergent sequence in $\mathbb{R}$. Prove that
+            the sequence $\{a_nx_n\}$ is convergent.
+        \item Let $a\in X$ and $r>0$. Prove that $B(a,r) = B(0,r) + a$.
+        \item Prove that the open ball in $X$ is a convex set.
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+    
+    1. First, note that $\norm{x-y} = \norm{y-x}$ since 
+    \[ \norm{y-x} = \norm{-1(x-y)} =\\ |-1|\norm{x-y} = \norm{x-y}. \] 
+    Now, note that:
+    \begin{align*}
+        \norm{x} = \norm{(x-y)+y} \leq \norm{x-y} + \norm{y} &\implies \norm{x}-\norm{y} \leq \norm{x-y}\\
+        \norm{y} = \norm{(y-x)+x} \leq \norm{y-x} + \norm{x} &\implies \norm{y}-\norm{x} \leq \norm{y-x}\\
+        &\implies \norm{x}-\norm{y} \leq -\norm{x-y}
+    \end{align*}
+    Thus:
+    \[ -\norm{x-y} \leq \norm{x}-\norm{y} \leq \norm{x-y} \]
+    which implies,
+    \[ |\norm{x}-\norm{y}|\leq |\norm{x-y}| = \norm{x-y}\qquad (\text{positive definiteness}) \]
+    as wanted. $\hfill\blacksquare$\\
+
+    2. Claim: $\{a_nx_n\}\to ax$.
+    \[ \norm{a_nx_n - ax} = \norm{a_nx_n - x_na + x_na - ax} \leq \norm{x_n}|a_n-a| + |a|\norm{x_n-x} \]
+    We are given that $x_n\to x\in X$. Since this is a convergent series, then $x_n$ is bounded i.e. $\norm{x_n}\leq M\in\mathbb{R}^+$.
+    Now, choose some $\epsilon>0$ and write $\epsilon = \epsilon_1 + \epsilon_2$ for some $\epsilon_1>0$ and $\epsilon_2>0$. Now, 
+    we choose $\nicefrac{\epsilon_1}{M}>0$, then there must exist some $N\in\mathbb{N}$ such that if $n>N$, then 
+    $|a_n-a|<\nicefrac{\epsilon_1}{M}$. Next, we choose $\nicefrac{\epsilon_2}{|a|}>0$, then there must exist some $M\in\mathbb{N}$
+    such that if $m>M$, then $\norm{x_m-x}<\nicefrac{\epsilon_2}{|a|}$. Choose $J = max\{N,M\}$. Then, consider for all
+    $j > J$:
+    \begin{align*}
+        \norm{a_jx_j - ax} &= \norm{a_jx_j - x_ja + x_ja - ax} \\
+                            &\leq \norm{x_j}|a_j-a| + |a|\norm{x_j-x} \\
+                            &< M\frac{\epsilon_1}{M} + |a|\frac{\epsilon_2}{|a|} \\
+                            &= \epsilon_1 + \epsilon_2 \\
+                            &= \epsilon
+    \end{align*}
+    so that $a_nx_n \to ax$ as wanted. Note that if $a = 0$, then 
+    \[ \norm{a_jx_j - ax}\leq \norm{x_j}|a_j-a| < \epsilon_1 < \epsilon.\]
+    as wanted.$\hfill\blacksquare$\\
+
+    3. To solve this, we show set equality i.e. a) show $B(a,r)\subseteq B(0,r) + a$ and b) show $B(0,r)+a\subseteq B(a,r)$.\\
+    a) First, note that $d(0,x-a) = \norm{0-(x-a)} = \norm{a-x} = d(a,x)$. 
+    Now, choose $x\in B(a,r)$, then $d(a,x)<r \implies d(0,x-a)<r$.
+    Then, $x-a\in B(0,r)$ which furthermore implies $x\in B(0,r)+a$.\\
+    b) Choose $y\in B(0,r)$. Then $y+a\in B(0,r)+a$. Note, $d(a,y+a) = \norm{a-(y+a)}=\norm{y}<r$. Thus, $y+a\in B(a,r)$ so that
+    $B(0,r)+a\subseteq B(a,r)$ as wanted.$\hfill\blacksquare$\\
+
+    4. Choose $a\in X$ and $r>0$. Then $B(a,r)$ is said to be convex if for all $x,y\in B(a,r)$, the straight line connecting them
+    is in $B(a,r)$.\\
+    Choose $x,y\in B(a,r)$. Let the line connecting them be given by,
+    \[ f(t) = ty + (1-t)x \qquad\forall\:t\in(0,1) \]
+    We want to show $\norm{f(t)-a}<r$. Consider,
+    \[ \norm{f(t)-a} = \norm{ty + (1-t)x - a} = \norm{t(y-a)+(1-t)(x-a)} \]
+    By using the triangle inequality, we get:
+    \[ \norm{f(t)-a} \leq \norm{(1-t)(x-a)} + \norm{t(y-a)} \]
+    so that, we get: 
+    \[ |f(t)-a| \leq |1-t|\norm{x-a} + |t|\norm{y-a} < |1-t|r + |t|r = r\]
+    Thus, $B(a,r)$ is convex as wanted.$\hfill\blacksquare$\\
+
+    \newpage
+
+    \textbf{P2.}\\
+
+    Show the map $x\mapsto\norm{x}$ is continuous. Is it uniformily continuous?\\
+
+    \textbf{Solution.}\\
+
+    Choose $x_0\in X$. We want to show $\lim_{x\to x_0} \norm{x} = \norm{x_0}$ i.e.
+    \[ \forall\; \epsilon>0,\:\exists\:\delta>0\;\text{such that if}\;\norm{x-x_0}<\delta \implies |\norm{x}-\norm{x_0}|<\epsilon \]
+    Thus, choose a $\epsilon>0$. Let $\epsilon=\delta$. Then, by the reverse triangle inequality:
+    \[ |\norm{x}-\norm{x_0}| \leq \norm{x-x_0} < \delta = \epsilon \]
+    Therefore, $\norm{\cdot}$ is a continuous mapping. Note, even if we did not fix $x_0$ in the beginning, our proof would not 
+    have changed. Therefore, our proof does not depend on our choice of $x_0$ implying that $\norm{\cdot}$ is also
+    uniformily continuous.$\hfill\blacksquare$\\
+
+    \textbf{P3.}\\
+
+    Let $c_0$ be the set of real sequences that converge to 0. Prove that $c_0$ is complete with respect to the sup norm.\\
+
+    \textbf{Solution.}\\
+
+    Let $\{\xi_n\}$ be a Cauchy sequence of elements of $c_0$. We want to show that $\{\xi_n\}$ converges and it converges to some
+    sequence $\{a_n\}$ in $c_0$.\\
+    Choose a $\epsilon>0$, then there exists $N\in\mathbb{N}$ such that if $n,m>N$, then $\norm{\xi_n - \xi_m} < \epsilon$.
+    By the definition of the sup norm, we know that for all $j\in\mathbb{N}$,
+    \[ |\xi_n(j) - \xi_m(j)| \leq\;\text{sup}\{|\xi_n(j)-\xi_m(j)|: j\in\mathbb{N}\} = \norm{\xi_n - \xi_m} < \epsilon \]
+    Thus $\{\xi_n(j)\}_{j=1}^{\infty}$ is a sequence of real numbers and is a Cauchy sequence from the line above. 
+    Since this is a sequence of real numbers, by the completeness of the reals, we know this converges to some real 
+    number $m_j$. Therefore, we can write
+    \[ \lim_{n\to\infty} \xi_n(j) = m_j \]
+    so we can define a sequence $\{m_j\}_{j=1}^{\infty}$ using the same process for different $j$'s and then claim that 
+    \[ \{m_j\}\in c_0 \qquad \text{and} \qquad \lim_{n\to\infty} \xi_n = \{m_j\}. \]
+
+    First, we want to show that $\lim_{n\to\infty} \xi_n = \{m_j\}$.\\
+    Choose $\epsilon>0$. We know for all $n\in\mathbb{N}$, $\{\xi_m(n)\}$ is a convergent sequence (of $\mathbb{R}$), thus,
+    there exists some $M\in\mathbb{N}$ such that if $m\geq M$, then:
+    \begin{align}
+        |\xi_m(n) - m_n| < \epsilon
+    \end{align}
+    Now, to show $\lim_{n\to\infty} \xi_n = \{m_j\}$, choose the same $M$ that makes (1) hold and consider:
+    \[ \norm{\xi_m - \{m_j\}} =\:\text{max}_{n\in\mathbb{N}}|\xi_m(n) - m_n| < \epsilon \]
+    which is enough to show that $\lim_{n\to\infty} \xi_n = \{m_j\}$ as wanted.\\
+
+    Claim: $m_j \to 0$ as $j\to\infty$. Choose a $\epsilon>0$. Then:
+    We know $\xi_n$ is an element of $c_0$. Thus, for our choice of $\epsilon$, there exists a $J\in\mathbb{N}$ such that
+    if $j\geq J$, then $|\xi_n(j)| < \epsilon$. Furthermore, since $\{\xi_n(j)\}_{j=1}^{\infty} \to m_j$ as discussed earlier,
+    then for our choice of $\epsilon$, there exists $J'\in\mathbb{N}$, then if $j'\geq J'$, then $|\xi_n(j')-m_{j'}|<\epsilon$.
+    Then, define $J :=$ max$\{J,J'\}$, and for all $j\geq J$, consider:
+    \begin{align*}
+        |\xi_n(j) - m_j| = |m_j - \xi_n(j)| &< \epsilon \\
+        |m_j| - |\xi_n(j)| \leq ||m_j| - |\xi_n(j)|| &< \epsilon \qquad\text{(reverse triangle inequality)}\\
+        |m_j| &< \epsilon + |\xi_n(j)| < 2\epsilon
+    \end{align*}
+    Although $\epsilon \leq 2\epsilon$, this does not matter as we can just go back and choose $\nicefrac{\epsilon}{2}$ so that
+    in the end, we get $|m_j - 0| < \nicefrac{\epsilon}{2} + \nicefrac{\epsilon}{2} = \epsilon$ which is sufficient to show
+    that $\{m_j\}\to 0$ as $j\to\infty$ as wanted.\\
+    
+    Therefore, the Cauchy sequence $\{\xi_n\}\subseteq c_0$ converges to a sequence in $c_0$ showing that $c_0$ 
+    is complete.$\hfill\blacksquare$\\
+
+    \textbf{P4.}\\
+
+    Let $c_{00}$ be the set of all real sequences that have at most finitely many non-zero entries.
+    \begin{enumerate}
+        \item Prove that $c_{00}$ is a proper subspace of $c_0$.
+        \item Find the Hamel basis for $c_{00}$ that is a generalization of the standard basis for $\mathbb{R}^n$.
+        \item Prove that if $\mathcal{A}$ is a Hamel basis for $c_0$, then $\mathcal{A}$ is not a subset of $c_{00}$.
+        \item Prove that the closure of $c_{00}$ (with respect to the sup norm) is $c_0$.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    \begin{enumerate}
+        \item $\{\nicefrac{1}{n}\}_{n=1}^{\infty}$ is an example of a sequence of real numbers which clearly does not have
+            finitely many non-zero terms but still converges to 0. Therefore, if $c_{00} \subseteq c_0$, then $c_{00}\subsetneq c_0$.
+            Now, choose an arbitrary $\{x_n\}\in c_{00}$. Since this has finitely many non-zero terms, there exists some
+            $K\in\mathbb{N}$ such that for all $k\geq K$, then $x_k = 0$. Thus, for all $\epsilon>0$, we choose this choice
+            of $K$, and obtain for all $k\geq K$ that $|x_k| = 0 < \epsilon$. Therefore, $\{x_n\}\to 0$ implying that $\{x_n\}\in c_0$
+            which further implies that $c_{00} \subseteq c_0$. From our discussion earlier, we then obtain that
+            \[ c_{00} \subsetneq c_0 \]
+        \item Let $e_k$ be the $k$th standard basis vector of $\mathbb{R}^n$ (obviously $n\geq k$). This has only one non-zero term
+            which is located at the $k$th component of the $n$-dimensional vector and is equal to $1$ there. To generalize this,
+            let $e_k^{'} := (0,\hdots,0,1,0,\hdots)$ which has only one non-zero term located at the $k$th component of the sequence
+            (or equivalently, an $\infty$-dimensional vector). Then, the set $\{e_k^{'}\}_{k=1}^{\infty}$, we claim gives the basis
+            of $c_{00}$. It is easy to see this is linearly independent as it is just a generalization of the standard basis
+            from $\mathbb{R}^n$. To show that it spans $c_{00}$, we pick a sequence $\{x_n\}_{n=1}^{\infty}\in c_{00}$. Then,
+            there exist finitely many $n_1,\hdots,n_m$ for some $m\in\mathbb{N}$ such that $\{x_{n_i}\}_{i=1}^m$ contains the
+            only non-zero terms of $\{x_n\}$. $\{x_n\}$ can then be written as:
+            \[ \{x_n\} = (x_{n_1})e_{n_1}^{'} + \hdots + (x_{n_m})e_{n_k}^{'} \]
+            implying that the basis $\{e_k^{'}\}_{k=1}^{\infty}$ clearly spans the space $c_{00}$ as wanted and is clearly a
+            generalization of the standard basis of $\mathbb{R}^n$.
+        \item Suppose such a set $\mathcal{A}$ exists i.e. $\mathcal{A}$ is a Hamel basis of $c_0$ and also a subset of $c_{00}$.
+            Then each element $\{x_n\}$ of $\mathcal{A}$ only has finitely many non-zero terms and the rest are zero. The key to
+            recognizing the contradiction is to realize that any element $\{y_n\}$ of $c_0$ must be able to be written as a 
+            \textit{finite} combination of elements of $\mathcal{A}$. But if each element of $\mathcal{A}$ only has finitely
+            many non-zero terms, then there exist no \textit{finite} combination of elements of $\mathcal{A}$ such that the
+            combination produces a sequence which has infinitely many non-zero terms. More mathematically put, pick a
+            element $\{y_n\}$ of $c_0$ such that it has infinitely many non-zero terms (i.e. $\{\nicefrac{1}{n}\}$). Then, we can
+            write $\{y_n\}$ as a finite combintation of elements in $\mathcal{A}$ since it is a basis of $c_0$. Therefore, we write:
+            \[ \{y_n\} = a_1\{b_1(n)\} + a_2\{b_2(n)\} + \hdots + a_m\{b_m(n)\} \]
+            where each $a_i\in\mathbb{R}$ and each $\{b_i(n)\}\in\mathcal{A}$ for $1\leq i\leq m$ (also not all $a_i$'s are 0). 
+            However, since each sequence $\{b_i(n)\}$ only has finitely many non-zero terms, then their sum produces a sequence 
+            which again, only has a finite number of non-zero terms. However, this is impossible since we picked $\{y_n\}$ to be 
+            a sequence which has an infinite number of non-zero terms. Therefore, there is a contradiction
+            and no such $\mathcal{A}$ exists as wanted.
+        \item We claim that $c_0$ is the smallest closed set which contains $c_{00}$ (def'n of closure). In order to prove this, we show
+            that every element of $c_0$ is a limit point of $c_{00}$, and if there existed a smaller (closed) set than $c_0$, then
+            it would not contain all limit points of $c_{00}$ implying the set is not closed which is a contradiction. 
+            Therefore, choose some arbitrary element $\{x_n\}_{n=1}^{\infty}$ of $c_0$ and define a sequence by terms:
+            \[ \alpha_n := \{x_1,x_2,\hdots,x_n,0,0,\hdots\} \]
+            and we claim that $\{\alpha_n\}\to \{x_j\}_{j=1}^{\infty}$ as $n\to\infty$. Clearly, each $\alpha_n\in c_{00}$ and
+            so it is left to show the convergence. Choose a $\epsilon>0$. We want to show there exists some $N\in\mathbb{N}$
+            such that if $n\geq N$, then $\norm{\alpha_n - \{x_j\}} < \epsilon$. Note $\{x_j\}$ goes to 0 since it is in $c_0$.
+            Thus, for our choice of $\epsilon$, there exists some $N_1\in\mathbb{N}$ such that if $n'\geq N_1$, then $|x_{n'}|<\epsilon$.
+            Let $N = N_1$. Then for all $n\geq N$, note:
+            \begin{align*}
+                \norm{\alpha_n - \{x_j\}} &= \norm{(0,\hdots,0,x_{n+1},x_{n+2},x_{n+3},\hdots)} \\
+                &=\;\text{sup}_{k>n}|x_k| < \epsilon
+            \end{align*}
+            so that $\{\alpha_n\}\to\{x_j\}$ as $n\to\infty$ as wanted. Therefore, we have that for every point $\mathbf{x}$ of $c_0$,
+            there exists some sequence $\{\alpha_n\}$ of elements of $c_{00}$ such that this sequence converges to $\mathbf{x}$,
+            thus implying that every point of $c_0$ is a limit point of $c_{00}$. Therefore, $c_0$ is the closure
+            of $c_{00}$.$\hfill\blacksquare$
+    \end{enumerate}
+
+    \textbf{P5.}\\
+
+    Let $H$ be a Hilbert space.
+    \begin{enumerate}
+        \item Verify the second equation in Proposition 1.22 on Page 11.
+        \item Let $x,y\in H$. Prove that $x\bot y$ if and only if $\norm{x+\alpha y} = \norm{x-\alpha y}$ for all $\alpha\in\mathbb{C}$.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    \begin{enumerate}
+        \item We want to prove that for any vectors $f,g$ in a Hilbert space $\mathcal{H}$, we have the equality:
+            \[ \norm{f+g}^2 = \norm{f}^2 + 2\text{Re}\langle f,g \rangle + \norm{g}^2\]
+            Recall the definition of the induced norm by a given inner product, then:
+            \begin{align*}
+                \norm{f+g}^2 = \langle f+g, f+g \rangle &=
+                    \langle f,f\rangle + \langle g,f\rangle + \langle f,g\rangle + \langle g,g\rangle
+            \end{align*}
+            Recall that $\langle f,g\rangle = \overline{\langle g,f\rangle}$ and since $\langle f,g\rangle$ is a complex number, 
+            we can write
+            $\langle f,g\rangle = a+ib$ for $a,b\in\mathbb{R}$ and:
+            \[ \langle f,g\rangle + \overline{\langle g,f\rangle} = (a+ib) + (a-ib) = 2a \]
+            i.e.
+            \[ \norm{f+g}^2 = \langle f,f\rangle + 2\text{Re}\langle f,g\rangle + \langle g,g\rangle \]
+            which is just equal to:
+            \[ \norm{f}^2 + 2\text{Re}\langle f,g\rangle + \norm{g}^2 \]
+            as wanted.$\hfill\blacksquare$
+        \item First, assume $x\bot y$ for $x,y\in\mathcal{H}$ where $\mathcal{H}$ is a Hilbert space. Then for any $\alpha\in\mathbb{C}$:
+            \begin{align*}
+                \norm{x+\alpha y}^2 &= \langle x+\alpha y, x+\alpha y\rangle \\
+                &= \langle x,x+\alpha y\rangle + \langle \alpha y,x+\alpha y\rangle \\
+                &= \langle x,x\rangle + \bar{\alpha}\langle x,y\rangle + \alpha\langle y,x\rangle+\alpha\bar{\alpha}\langle y,y\rangle\\
+            \end{align*}
+            By recalling that for all $\alpha\in\mathbb{C}$, we have that $\alpha\bar{\alpha} = |\alpha|^2$, we obtain:
+            \begin{align*}
+                \norm{x+\alpha y}^2 &= \langle x,x\rangle + \alpha\langle x,y\rangle + \bar{\alpha}\langle y,x\rangle +
+                |\alpha|^2\langle g,g\rangle \\
+                &= \langle x,x\rangle + \alpha(0) + \bar{\alpha}(0) + |\alpha|^2\langle g,g\rangle = \langle x,x\rangle 
+                    + |\alpha|^2\langle g,g\rangle
+            \end{align*}
+            where the last line follows from the fact that if $\langle x,y\rangle = 0$, then $\langle y,x\rangle = 0$.
+            Furthermore, consider:
+            \begin{align*}
+                \norm{x-\alpha y}^2 &= \langle x,x\rangle + \langle x,-\alpha y\rangle + \langle -\alpha y, x\rangle +
+                    \langle -\alpha y,-\alpha y\rangle \\
+                &= \langle x,x\rangle + \overline{-\alpha}\langle x,y\rangle - \alpha\langle y,x\rangle + |\alpha|^2\langle y,y\rangle \\
+                &= \langle x,x\rangle + |\alpha|^2\langle y,y\rangle 
+            \end{align*}
+            implying that $\norm{x+\alpha y} = \norm{x-\alpha y}$ as wanted. Now, we prove the reverse direction. So, assume
+            $\norm{x+\alpha y} = \norm{x - \alpha y}$, and we show $x\bot y$ i.e. $\langle x,y\rangle = 0$. Consider:
+            \begin{align*}
+                \norm{x+\alpha y} &= \norm{x-\alpha y} \\
+                \norm{x+\alpha y}^2 &= \norm{x-\alpha y} \\
+                \langle x+\alpha y,x+\alpha y\rangle &= \langle x-\alpha y,x-\alpha y\rangle \\
+                \langle x,x\rangle + \langle x,\alpha y\rangle + \langle \alpha y,x\rangle + \langle \alpha y,\alpha y\rangle &= 
+                    \langle x,x\rangle + \langle x,-\alpha y\rangle + \langle -\alpha y,x\rangle + \langle -\alpha y,-\alpha y\rangle \\
+                \bar{\alpha}\langle x,y\rangle + \alpha\langle y,x\rangle &= -\bar{\alpha}\langle x,y\rangle - \alpha\langle y,x\rangle\\
+                2\bar{\alpha}\langle x,y\rangle &= -2\alpha\langle y,x\rangle \\
+                \bar{\alpha}\langle x,y\rangle &= -\alpha\langle y,x\rangle 
+            \end{align*}
+            Let $\langle x,y\rangle = a+ib$ for some $a,b\in\mathbb{R}$ and choose $\alpha = 1$. Then $\bar{\alpha} = -1$ and:
+            \[ -1(a+ib) = 1(a-ib) \implies ib - ib = a + a \implies a = 0 \]
+            i.e. Re$\langle x,y\rangle = 0$. Now, choose $\alpha = i$. Then $\bar{\alpha} = -i$ and:
+            \[ -i(a+ib) = i(a-ib) \implies -ia + b = -i(a-ib) \implies -ia + b + ia + b = 0 \implies b = 0 \]
+            which implies Im$\langle x,y\rangle = 0$. This is enough to imply that $\langle x,y\rangle = 0$ i.e. $x\bot y$ as 
+            wanted.$\hfill\blacksquare$
+    \end{enumerate}
+
+    \newpage
+
+    \textbf{P6.}\\
+
+    Let $A$ be a subset of a Hilbert space $\mathcal{H}$. Prove that $A^{\bot}$ is a closed subspace of $\mathcal{H}$.\\
+
+    \textbf{Solution.}\\
+
+    First, we prove that $A^{\bot}$ is closed. To do this, we use this fact provided in the book:
+    \[ A^{\bot} = \cap_{a\in A} a^{\bot} \]
+    Define a function $f: \{a\} \times X \to \mathbb{C}$ defined by $f(a,x) = \langle a,x\rangle$. Note the inner product function
+    is a continuous map, so when it is restricted like as in $f$, it is still continuous. Since $f$ is continuous, 
+    then the pre-image of every closed set in $\mathbb{C}$ is
+    mapped to a closed set in $\{a\}\times X$. Therefore, choose $\{0\}\subseteq\mathbb{C}$ which is clearly closed. The pre-image
+    of this set is the set of all points $x,\in X$ such that $\langle a,x\rangle = 0$ i.e. $\pi_2(f^{-1}(0)) = \{a\}^{\bot}$.
+    Therefore, $\{a\}^{\bot}$ is closed. Since the arbitrary intersection of closed sets is closed, we obtain that
+    $A^{\bot}$ is closed.\\
+
+    To show that $A^{\bot}$ is a subspace of $\mathcal{H}$, it suffices to show that $A^{\bot}$ is closed under vector addition
+    and scalar multiplication. Choose $x,y\in A^{\bot}$. We want to show $x+y\in A^{\bot}$ i.e. $\langle a,x+y\rangle = 0$.
+    Note: $\langle a,x+y\rangle = \langle a,x\rangle + \langle a,y\rangle = 0 + 0 = 0$ so that $x+y\in A^{\bot}$. Similarly,
+    choose $c\in\mathbb{C}$, we want to show $cx\in A^{\bot}$ i.e. $\langle a,cx\rangle = 0$. Note,
+    $\langle a,cx\rangle = \bar{c}\langle a,x\rangle = \bar{c}(0) = 0$ so that $cx\in A^{\bot}$. Therefore, $A^{\bot}$ is a linear
+    closed subspace of $\mathcal{H}$.$\hfill\blacksquare$\\
+
+    \textbf{P7.}\\
+
+    Verify the proper inclusions of real sequences $l^1 \subset l^p \subset l^q \subset c_0 \subset l^{\infty}$ where
+    $1 < p < q < \infty$.\\
+
+    \textbf{Solution.}\\
+
+    Let $1\leq p < q$. We want to show $l^p\subseteq l^q$. Note, this will show $l^1\subseteq l^p\subseteq l^q$. Choose
+    an element $\{x_n\}\in l^p$, we want to show $\{x_n\}\in l^q$. 
+    We know $\sum_{n=1}^{\infty} |x_n|^p < \infty$.
+    \[ L = \lim_{n\to\infty} |\frac{x_{n+1}}{x_n}|^p \implies L^{\nicefrac{q}{p}} = \lim_{n\to\infty} |\frac{x_{n+1}}{x_n}|^q \]
+    Since $L < 1$ (series converges in $l^p$ norm) and $\nicefrac{q}{p}>1$, then $L^{\nicefrac{q}{p}} < 1$ 
+    implying $\sum_{n=1}^{\infty} |x_n|^q$ converges by our elementary series tests. Therefore, $\{x_n\}\in l^q$ as wanted.
+    By the zero test for series, we know that if $\sum_{n=1}^{\infty} |a_n|^p < \infty$, then $\lim_{n\to\infty} a_n = 0$.
+    This is enough to imply that $\{a_n\}\in c_0$. Furthermore, every element of $c_0$ is a convergent sequence (in $\mathbb{R}$)
+    and therefore it is bounded implying that this sequence is also in $l^{\infty}$. More mathematically put,
+    if $\{a_n\}_{n=1}^{\infty}$ is an element of $c_0$. Then by definition of $c_0$, we know $\{a_n\}\to 0$ as $n\to\infty$
+    i.e. it converges and therefore all the terms $|a_n|$ for every $n$ is bounded by some $M\in\mathbb{R}$. Therefore,
+    sup$\{|a_n|: n\in\mathbb{N}\} < \infty$ implying that $\{a_n\}$ is also in $l^{\infty}$.\\
+    We have so far proven that:
+    \[ l^1 \subseteq l^p \subseteq l^q \subseteq c_0 \subseteq l^{\infty} \]
+    We will now show \textit{proper} inclusions. We know $\{1,1,\hdots\}$ is in $l^{\infty}$ but clearly this does not converge
+    to 0, therefore, it is not an element of $c_0$. We know by the $p$-series test that $\{\nicefrac{1}{n^{\nicefrac{1}{p}}}\}$
+    is an element of $l^q$ since:
+    \[ \sum_{n=1}^{\infty} (\frac{1}{n^{\nicefrac{1}{p}}})^q = \sum \frac{1}{n^{\nicefrac{q}{p}}} \]
+    since $\nicefrac{q}{p}>1$, we know this series converges ($p$-series test), and therefore is in $l^q$ but we claim that this
+    is not in $l^q$ since:
+    \[ \sum_{n=1}^{\infty} (\frac{1}{n^{\nicefrac{1}{p}}})^p = \sum (\frac{1}{n^1}) \]
+    which clearly does not converge as it is the Harmonic series. Therefore, $\{\nicefrac{1}{n^{\nicefrac{1}{p}}}\}$ is in $l^q$
+    but not in $l^p$. Since our proof did not rely on $p>1$, only on $p\geq 1$, we have shown in total that:
+    \[ l^1 \subsetneq l^p \subsetneq l^q \subsetneq c_0 \subsetneq l^{\infty} \]
+    as wanted.$\hfill\blacksquare$\\
+
+    \textbf{P8.}\\
+
+    Show that $C[0,1]$ in the supremum norm is not an inner product space; that is, the norm cannot be derived from an inner
+    product.\\
+
+    \textbf{Solution}\\
+
+    We know that the parallelogram law only holds in inner product spaces, therefore, we assume that $C[0,1]$ in the supremum
+    norm is an inner product space, and show that the parallelogram law does not hold thereby showing a contradiction and obtaining
+    the result we want.\\
+
+    The parallelogram law states that for all $f,g\in C[0,1]$:
+    \[ \norm{f+g}^2 + \norm{f-g}^2 = 2\norm{f}^2 + 2\norm{g}^2 \]
+
+    Choose $f(x) = x$ and $g(x) = 1+x$. Then $\norm{f+g} = \norm{x+1} = 2$, $\norm{f-g} = \norm{1} = 1$, $\norm{f} = 1$,
+    $\norm{g} = 2$. Therefore,
+    \[ 3^2 + 1^2 = 2(3+1) \implies 9 + 1 = 2(4) \implies 10 = 8 \]
+    which is clearly not true, therefore no such inner product space structure exists on $C[0,1]$ such that it induces
+    the sup norm on $C[0,1]$.$\hfill\blacksquare$
+    
+\end{document}

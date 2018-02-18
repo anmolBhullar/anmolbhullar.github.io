@@ -1,0 +1,230 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{defn}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MAT1847 OVERVIEW}
+\author{A. Wortschöpfer}
+
+\begin{document}
+    \maketitle
+
+    \section{Riemann Surfaces}
+
+    \subsection{Simply Connected Surfaces}
+
+    \begin{defn}
+        If $V\subset\mathbb{C}$ is an open set of complex numbers, a function $f:V\to\mathbb{C}$ is called \textbf{holomorphic}
+        (or \say{complex analytic}) if the first derivative
+        \[ z\mapsto f'(z) = \lim_{h\to 0}\frac{(f(z+h)-f(z))}{h} \]
+        is defined and continuous as a function from $V$ to $\mathbb{C}$, or equivalently if $f$ has a power series expansion
+        about any point $z_0\in V$ which converges to $f$ in some neighborhood of $z_0$. Such a function is \textbf{conformal}
+        if the derivative $f'(z)$ never vanishes (for all $z\in U$).
+    \end{defn}
+
+    \begin{defn}
+        By a \textbf{Riemann surface} $S$ we mean a connected complex analytic manifold of complex dimension 1. The surface
+        $S$ is \textbf{simply connected} if every map from a circle \textit{into} $S$ can be continuously deforemed to a constant
+        map. By definition, two Riemann surfaces $S$ and $S'$ are \textbf{conformally isomorphic} (or \textbf{biholomorphic}) 
+        if and only if there is a homeomorphism from $S$ onto $S'$ which is holomorphic in terms of the respective local charts.
+    \end{defn}
+
+    \begin{theorem}[Uniformization Theorem]
+        Any simply connecnted Riemann surface is conformally isomorphic either
+        \begin{enumerate}
+            \item to the plane $\mathbb{C}$ consisting of all complex nubmers $z=x+iy$
+            \item to the open disk $\mathbb{D}\subset\mathbb{C}$ consisting of all $z$ with $|z|^2 = x^2 + y^2 < 1$, or
+            \item to the Riemann sphere $\hat{\mathbb{C}}$ consisting of $\mathbb{C}$ together with a point at infinity,
+                using $\zeta = \nicefrac{1}{z}$ as a chart in a neighborhood of the point at infinity.
+        \end{enumerate}
+    \end{theorem}
+
+    These three cases are referred to as the \textbf{Euclidean}, \textbf{hyperbolic}, and \textbf{spherical} cases, respectively.\\
+
+    \subsubsection{The unit disk $\mathbb{D}$}
+    Some nice results about the surface $\mathbb{D}$ are as follows:
+    \begin{lemma}[Schwarz Lemma]
+        If $f:\mathbb{D}\to\mathbb{D}$ is holomorphic map with $f(0)=0$, then the derivative at the origin satisfies $|f'(0)|\leq 1$.
+        If equality holds, $|f'(0)| = 1$, then $f$ is a rotation about the origin. That is, $f(z)=cz$ for some constant $c=f'(0)$
+        on the unit circle. On the other hand, if $|f'(0)|<1$, then $|f(z)|<|z|$ for all $z\neq 0$.
+    \end{lemma}
+    \begin{lemma}[Maximum Modulus Principle]
+        A nonconstant holomorphic function cannot attain its maximum absolute value at any interior point of its region of definition.
+    \end{lemma}
+    \begin{lemma}[Cauchy's Derivative Estimate]
+        If $f$ maps the disk of radius $r$ about $z_0$ into some disk of radius $s$, then
+        \[ |f'(z_0)| \leq \nicefrac{s}{r} \]
+    \end{lemma}
+    A useful corollary of this is as follows:
+    \begin{theorem}[Liouville's Theorem]
+        A bounded function $f$ which is defined and holomorphic everywhere on $\mathbb{C}$ must be constant.
+    \end{theorem}
+    \begin{theorem}[Weierstrass Uniform Convergence Theorem]
+        If a sequence of holomorphic functions $f_n:U\to\mathbb{C}$ converges uniformily to the limit function $f$, then $f$ itself
+        is holomorphic. Furthermore, the sequence of derivatives $f_n'$ converges, uniformily on any compact set of $U$, to the
+        derivatives $f'$.
+    \end{theorem}
+
+    \subsubsection{Conformal Automorphism Groups}
+    For any Riemann surface $S$, the notation $\mathcal{G}(S)$ will be used for the group consisting of all conformal automorphisms
+    of $S$. The identity map will be denoted by $I = I_S\in\mathcal{G}(S)$.
+
+    \begin{lemma}[Möbius Transformations]
+        The group $\mathcal{G}(\hat{\mathbb{C}})$ of all conformal automorphisms of the Riemann sphere is equal to the group
+        of all \textbf{fractional linear transformations} (also called \textbf{Möbius transformations})
+        \[ g(z) = \frac{az+b}{cz+d} \]
+        where the coefficients are complex numbers with $ad-bc\neq 0$.
+    \end{lemma}
+
+    The identification to the complex Lie group $\mathbb{PSL}_2(\mathbb{C})$ is as follows:\\
+    Multiply the numerator and denominator by a common factor, then it is always possible to normalize so that the determinant
+    $ad-bc$ is equal to $+1$. The resulting coefficients are well defined up to a simultaneous change of sign. Thus it follows
+    that the group $\mathcal{G}(\mathbb{C})$ of conformal transformations can be identified with the complex 3-dimensional Lie
+    group $\mathbb{PSL}_2(\mathbb{C})$ consisting of all $2\times 2$ complex matrices with determinant $+1$ modulo the subgroup
+    $\{\pm I\}$.\\
+
+    Next, it is shown that both $\mathcal{G}(\mathbb{C})$ and $\mathcal{G}(\mathbb{D})$ can be considered as Lie subgroups
+    of $\mathcal{G}(\hat{\mathbb{C}})$.
+    \begin{corollary}[The Affine Group]
+        The group $\mathcal{G}(\mathbb{C})$ of all conformal automorphisms consists of all affine transformations
+        \[ f(z) = \lambda z + c \]
+        with complex coefficients $\lambda\neq 0$ and $c$.
+    \end{corollary}
+
+    Note every conformal automorphism $f$ of $\mathbb{C}$ extends uniquely to a conformal automorphism of $\hat{\mathbb{C}}$ with
+    $\lim_{z\to\infty} f(z) = \infty$.
+
+    \begin{theorem}[Automorphisms of $\mathbb{D}$]
+        The group $\mathcal{G}(\mathbb{D})$ of all conformal automorphisms of the unit disk can be identified with the subgroup
+        of $\mathcal{G}(\hat{\mathbb{C}})$ consisting of all maps
+        \[ f(z) = e^{i\theta} \frac{z-a}{1-\overline{a}z} \]
+        where $a$ ranges over the open disk $\mathbb{D}$ and where $e^{i\theta}$ ranges over the unit circle $\partial{\mathbb{D}}$.
+    \end{theorem}
+
+    This is no longer a \textit{complex} Lie group. $\mathcal{G}(\mathbb{D})$ is a \textit{real} 3-dimensional Lie group, 
+    having the topology of a \say{solid torus} $\mathbb{D}\times\partial{\mathbb{D}}$.\\
+
+    It is often more convenient to work with the \textbf{upper half-plane} $\mathbb{H}$, consisting of all complex numbers
+    $w = u + iv$ with $v>0$.
+    \begin{lemma}[$\mathbb{D}\cong\mathbb{H}$]
+        The half-plane $\mathbb{H}$ is conformally isomorphic to the disk $\mathbb{D}$ under the holomorphic mapping
+        \[ w \mapsto \frac{i-w}{i+w} \]
+        with inverse
+        \[ z\mapsto \frac{i(1-z)}{1+z} \]
+        where $z\in\mathbb{D}$ and $w\in\mathbb{H}$.
+    \end{lemma}
+
+    \begin{corollary}[Automorphisms of $\mathbb{H}$]
+        The group $\mathcal{G}(\mathbb{H})$ consiting of all conformal automorphisms of the upper half-plane can be identified
+        with the group of all fractional linear transformations $w\mapsto \nicefrac{aw+b}{cw+d}$, where the coefficients $a,b,c,d$
+        are real with determinant $ad-bc>0$.
+    \end{corollary}
+
+    If we normalize so that $ad-bc = 1$, then the coefficients are well defined up to a simultaneous change of sign. Thus
+    $\mathcal{G}(\mathbb{H})$ is isomorphic to the group $\mathbb{PSL}_2(\mathbb{R})$, consisting of all $2\times 2$ real matrices
+    with determinant +1 modulo the subgroup $\{\pm I\}$.\\
+
+    To conclude this section, we will try to say something more about the structure of these three groups. For any map
+    $f: X\to X$, it will be convenient to use the notation Fix$(f)\subset X$ for the set of all fixed points $x = f(x)$. If $f$
+    and $g$ are commuting maps from $X$ to itself, $f\circ g = g\circ f$, note that
+    \[ f(\text{Fix}(g)) \subset \text{Fix}(g) \]
+
+    Now, we find the commuting elements of $\mathcal{G}(\mathbb{C})$, $\mathcal{G}(\mathbb{D})$, $\mathcal{G}(\hat{\mathbb{C}})$.
+
+    \begin{lemma}[Commuting elements of $\mathcal{G}(\mathbb{C})$]
+        Two non-identity affine transformations of $\mathbb{C}$ commute if and only if they have the same fixed point set.
+    \end{lemma}
+
+    An affine transformation with two fixed points must be the identity map.\\
+
+    Now consider the group $\mathcal{G}(\hat{\mathbb{C}})$ of automorphisms of the Riemann sphere. By definition, an automorphism
+    $g$ is called an \textbf{involution} if $g\circ g = I$, but $g\neq I$.
+
+    \begin{theorem}[Commuting elements of $\mathcal{G}(\hat{\mathbb{C}})$]
+        For every $f\neq I$ in $\mathcal{G}(\hat{\mathbb{C}})$, the set Fix$(f) \subset \hat{\mathbb{C}}$ contains either one point
+        or two points (if $f$ has more than 2 fixed points, it must be the identity map). In general, two nonidentity elements
+        $f,g\in\mathcal{G}(\hat{\mathbb{C}})$ commute if and only if Fix$(f) =$ Fix$(g)$. The only exceptions to this statement
+        are provided by pairs of commuting involutions each of which interchanges the two fixed points of each other.
+    \end{theorem}
+
+    As an example, the involution $f(z)=-z$ with Fix$(f) = \{0,\infty\}$ commutes with the involution $g(z) = \nicefrac{1}{z}$ with
+    Fix$(g) = \{\pm 1\}$.\\
+
+    We want a corresponding statement for the open disk $\mathbb{D}$. However, it is better to work with the closed disk
+    $\overline{\mathbb{D}}$, in order to obtain a richer set of fixed points. Using Theorem 4, we see that every automorphism
+    of the open disk extends uniquely to an automorphism of the closed disk so that $\mathcal{G}(\mathbb{D})\cong
+    \mathcal{G}(\overline{\mathbb{D}})$.
+
+    \begin{theorem}
+        For every $f\neq I$ in $\mathcal{G}(\mathbb{D})\cong \mathcal{G}(\overline{\mathbb{D}})$, the set
+        Fix$(f)\subset\overline{\mathbb{D}}$ consists of either a single point of the boundary circle $\partial{\mathbb{D}}$, a
+        single point of the open disk $\mathbb{D}$, or two points of $\partial{\mathbb{D}}$. Two nonidentity automorphisms
+        $f,g\in\mathcal{G}(\mathbb{D})$ commute if and only if they have the same fixed point set in $\overline{\mathbb{D}}$.
+    \end{theorem}
+
+    \newpage
+
+    \subsection{Universal Coverings and the Poincaré Metric}
+
+    \begin{defn}
+        A map $p:M\to N$ between connected manifolds is called a \textbf{covering map} if every point of $N$ has a connected
+        open neighborhood $U$ within $N$ which is \textbf{evenly covered}; that is, each component $p^{-1}(U)$ must map onto
+        $U$ by a homeomorphism. The manifold $N$ is \textbf{simply connected} if it has no nontrivial coverings, that is,
+        if every such covering map $M\to N$ is a homeomorphism. For any connected manifold $N$, there exists a covering map
+        $\tilde{N}\to N$ such that $\tilde{N}$ is simply connected. This is called the \textbf{universal covering} of $N$
+        and is unique up to homeomorphism.
+    \end{defn}
+
+    \begin{defn}
+        By a \textbf{deck transformation} associated with a covering map $p: M\to N$ we mean a continuous map $\gamma: M\to M$ which
+        satisfies the identity $p\circ\gamma = p$. For our purposes, the \textbf{fundamental group} $\pi_1(N)$ can be defined as
+        the group $\Gamma$ consisting of all deck transformations for the universal covering $\tilde{N}\to N$. Note that this
+        universal covering is always a \textbf{normal covering} of $N$. That is, given two points $x,x'\in M=\tilde{N}$ with
+        $p(x)=p(x')$, there exists one and only one deck transformation which maps $x$ to $x'$. It follows that $N$ can be identified
+        with the quotient $\nicefrac{\tilde{N}}{\Gamma}$ of $\tilde{N}$ by this action of $\Gamma$.
+    \end{defn}
+
+    In particular, we have that a given group $\Gamma$ of homeomorphisms of a connected manifold $M$ gives rise in this way
+    to a normal covering $M\to \nicefrac{M}{\Gamma}$ if and only if
+    \begin{enumerate}
+        \item $\Gamma$ acts \textbf{properly discontinuously}; that is, any compact set $K\subset M$ intersects only finitely
+            many of its translates $\gamma(K)$ under the action of $\Gamma$; and
+        \item $\Gamma$ acts \textbf{freely}; that is, every nonidentity element of $\Gamma$ acts without fixed points on $M$
+    \end{enumerate}
+
+    \begin{theorem}[Uniformization for Arbitrary Riemann Surfaces]
+        Every Riemann surface $S$ is conformally isomorphic to a quotient of the form $\nicefrac{\tilde{S}}{\Gamma}$, where
+        $\tilde{S}$ is a simply connected Riemann surface, which is necessairly isomorphic to either $\mathbb{D}$, $\mathbb{C}$,
+        or $\hat{\mathbb{C}}$ ,and where $\Gamma\cong\pi_1(S)$ is a group of conformal automorphisms which acts freely and properly
+        discontinuously on $\tilde{S}$.
+    \end{theorem}
+
+    Since the action of $\Gamma$ on $\tilde{S}$ is properly discontinuous, $\Gamma$ must be a \textbf{discrete} subgroup of
+    $\mathcal{G}(\tilde{S})$; that is, there exists a neighborhood of the identity element in $\mathcal{G}(\tilde{S})$ which
+    intersects $\Gamma$ only in the identity element.
+
+    \begin{corollary}[$\sigma$-Compactness]
+        Every Riemann surface can be expressed as a countable union of compact subsets.
+    \end{corollary}
+
+    This follows from Theorem 7 and from the fact that this is true for all the three simply connected surfaces.
+    
+\end{document}

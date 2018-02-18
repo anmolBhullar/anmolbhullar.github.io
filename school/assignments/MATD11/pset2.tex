@@ -1,0 +1,407 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11: Functional Analysis \\
+    Assignment 2}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \textbf{P1.}\\
+
+    Let $\mathcal{H}$ be a Hilbert space and let $S\subseteq\mathcal{H}$. Prove that $S^{\perp\perp} = \overline{\text{span}(S)}$.\\
+
+    \textbf{Solution.}\\
+
+    First, we show that $\overline{\text{span}(S)}\subseteq S^{\perp\perp}$.\\
+    Let $x\in$ span$(S)$. By definition of span, we can write $x$ as some finite linear combination of elements of $S$ and scalars
+    from $\mathbb{C}$ so $x = \sum_{i=1}^N a_ix_i$ where $x_i\in S$ and $a_i\in\mathbb{C}$. We show
+    \[ \langle y, \sum_{i=1}^N a_ix_i\rangle = 0\qquad \text{for all}\; y\in S^{\perp} \]
+    So, consider the following:
+    \begin{align*}
+        \langle y,\sum_{i=1}^N a_ix_i\rangle &= \sum_{i=1}^N \langle y, a_ix_i\rangle\qquad\text{(additivity)} \\
+            &= \sum_{i=1}^N \overline{a_i}\langle y,x_i\rangle\qquad\text{(conjugate symmetry)}
+    \end{align*}
+    By definition of $S^{\perp}$, every element of $S^{\perp}$ is orthogonal to every element of $S$. Therefore, 
+    $\langle y,x_i\rangle=0$ so that $\langle y,\sum_{i=1}^N a_ix_i\rangle = 0$ as wanted. We have shown that every element of 
+    $S^{\perp}$ is orthogonal to $x$ so that $x\in S^{\perp\perp}$. Therefore, span$(S)\subseteq S^{\perp\perp}$.\\
+    Now let $x$ be any limit point of span$(S)$. Then we can write $x$ as the convergent element of a sequence of elements of span$(S)$
+    i.e. there exists some sequence $\{x_j\}_{j=1}^{\infty}\subseteq$ span$(S)$ such that $\{x_j\}\to x$. As before, we eventually want
+    to conclude $\langle x,y\rangle=0$ for $y\in S^{\perp}$. Note, $\langle x,y\rangle = \langle \lim_{j\to\infty} x_j,y\rangle =
+    \lim_{j\to\infty} \langle x_j,y\rangle$ since $\langle\cdot,\cdot\rangle$ is a continuous function. Since $x_j\in$ span$(S)$, we
+    can refer to the case above to show that $\langle x_j,y\rangle = 0$. Therefore:
+    \[ \lim_{j\to\infty} \langle x_j,y\rangle = 0 \implies \langle \lim_{j\to\infty} x_j,y\rangle = 0 = \langle x,y\rangle \]
+    as wanted. Since $\overline{\text{span}(S)}$ consists of span$(S)$ and its limit points, we have shown that
+    $\overline{\text{span}(S)}\subseteq S^{\perp\perp}$ as wanted.\\
+
+    Now, we show that $S^{\perp\perp}\subseteq\overline{\text{span}(S)}$.\\
+    In order to prove this, will need multiple results.
+
+    \begin{lemma}
+        If $A\subseteq B\subseteq \mathcal{H}$, then $B^{\perp}\subseteq A^{\perp}$ and $A^{\perp\perp}\subseteq B^{\perp\perp}$.
+    \end{lemma}
+    \begin{proof}
+        Choose an element $y$ of $B^{\perp}$, then for all $b\in B$, we have that $\langle y,b\rangle = 0$. Since $b\in A$ as well,
+        then $y\in A^{\perp}$. Therefore, $B^{\perp}\subseteq A^{\perp}$. Now, choose an element $x\in A^{\perp\perp}$, then
+        for all $a\in A^{\perp}$, we have that $\langle x,a\rangle=0$. Since $B^{\perp}\subseteq A^{\perp}$, then $a\in B^{\perp}$,
+        so that $x$ is orthogonal to every vector of $B^{\perp}$ which implies as before that $x\in B^{\perp\perp}$. Therefore,
+        $A^{\perp\perp}\subseteq B^{\perp\perp}$.
+    \end{proof}
+
+    \begin{lemma}
+        $S^{\perp\perp}\subseteq (\overline{\text{span}(S)})^{\perp\perp}$.
+    \end{lemma}
+    \begin{proof}
+        It is clear that $S\subseteq$ span$(S)$ since every element of $S$ is a (finite) linear combination of itself and also
+        span$(S)\subseteq\overline{\text{span}(S)}$ (closure $:=$ smallest closed set that \textit{contains} span$(S)$). Therefore,
+        by transitivity, we have $S\subseteq\overline{\text{span}(S)}$ and by Lemma 1, we obtain 
+        $S^{\perp\perp}\subseteq(\overline{\text{span}(S)})^{\perp\perp}$.
+    \end{proof}
+
+    For simplicity, let us remark that $\overline{\text{span}(S)}$ is a closed subspace of $\mathcal{H}$, therefore, in order to prove
+    what we want, it suffices to show $F = F^{\perp\perp}$ for a closed subspace of $\mathcal{H}$. This is because by Lemma 2 and
+    $F = F^{\perp\perp}$, we have $S^{\perp\perp}\subseteq(\overline{\text{span}(S)})^{\perp\perp} = \overline{\text{span}(S)}$ so that
+    $S^{\perp\perp}\subseteq \overline{\text{span}(S)}$.\\
+    Let $e\in F$ and $g\in F^{\perp}$, we know $\langle g,x\rangle=0$ for all $x\in F$. Since $g$ are
+    arbitrary, we can say $\langle g,e\rangle = 0$ for all $g\in F^{\perp}$. Since $\langle g,e\rangle = 
+    \overline{\langle e,g\rangle}$, and $\langle g,e\rangle$ is real, then $\langle g,e\rangle = \langle e,g\rangle = 0$ which we
+    can interpret to mean: for $e\in F\subseteq \mathcal{H}$, $\langle e,g\rangle$ for all $g\in F^{\perp}$ which implies
+    $x\in F^{\perp\perp}$. Thus $F\subseteq F^{\perp\perp}$.\\
+    Now let $r\in F^{\perp\perp}$, then by the projection theorem ($F^{\perp\perp}$ closed by problem 1), 
+    we can write $x = x_1 + x_2$ for $x_1\in F$ and $F\in F^{\perp}$
+    such that $\langle x,x_2\rangle = 0$ and $\langle x_1,x_2\rangle = 0$. Now, consider:
+    \[ 0 = \langle x_1,x_2\rangle = \langle x - x_2,x_2\rangle = \langle x,x_2\rangle - \langle x_2,x_2\rangle = 0 \]
+    which implies $\langle x_2,x_2\rangle = 0$. Thus $x_2 = 0$ and $x = x_1$ and in particular, $x\in F$ to obtain: 
+    $F^{\perp\perp}\subseteq F$.\\
+    Therefore $F = F^{\perp\perp}$ and as discussed earlier, this implies $S^{\perp\perp}\subseteq\overline{\text{span}(S)}$.\\
+    We have $S^{\perp\perp}\subseteq\overline{\text{span}(S)}$ and $\overline{\text{span}(S)}\subseteq S^{\perp\perp}$ so that
+    \[ \overline{\text{span}(S)} = S^{\perp\perp} \]
+    as wanted.$\hfill\blacksquare$\\
+
+    \newpage
+
+    \textbf{P2.}\\
+
+    Let $\mathcal{E}$ be an orthonormal set in a separable Hilbert space $\mathcal{H}$. Prove that $\mathcal{E}$ is finite or
+    countably infinite.\\
+
+    \textbf{Solution.}\\
+
+    In this proof, when we say \say{orthonormal vector}, we mean an element of $\mathcal{E}$.\\
+    First, we show that $\norm{x-y}^2 = 2$ for all $x,y\in\mathcal{E}$. To see why, note:
+    \begin{align*}
+        \norm{x-y}^2 = \langle x-y,x-y\rangle &= \langle x,x-y\rangle + \langle -y,x-y\rangle \\
+            &= \langle x,x\rangle + \langle x,-y\rangle + \langle -y,x\rangle + \langle -y,y\rangle 
+    \end{align*}
+    Using the idea that the norm of every orthonormal vector is 1, and that the inner product of two distinct orthonormal vectors
+    is 0, we obtain:
+    \begin{align*}
+        \norm{x-y}^2 = \langle x,x\rangle + \langle y,y\rangle = \norm{x}^2 + \norm{y}^2 = 1 + 1 = 2
+    \end{align*}
+    In particular, we obtain $d(x,y) = \sqrt{2}$ for any $x,y\in \mathcal{E}$ where $d$ is the induced metric from $\norm{\cdot}$. Now,
+    we show that the collection of balls $\{B_e(x): x\in \mathcal{E}\}$ (for a particular $e>0$) is a disjoint set 
+    i.e. $B_e(x)\cap B_e(y) = \emptyset$. 
+    Let $e = \nicefrac{\sqrt{2}}{2}$. To show $B_e(x)$ and $B_e(y)$ are disjoint, let $x'\in B_e(x)$ and $y'\in B_e(y)$.
+    It suffices to show $\norm{x'-y}\geq\nicefrac{\sqrt{2}}{2}$ and $\norm{x-y'}\geq\nicefrac{\sqrt{2}}{2}$. Thus, consider:
+    \begin{align*}
+        \norm{x'-y} = \norm{(x'-x) - (y-x)} &\geq |\norm{x'-x} - \norm{y-x}|\qquad\text{(reverse triangle inequality)}
+    \end{align*}
+    Now, note $\norm{x'-x}<e$ by choice of $x'$ and $\norm{x-y}=\sqrt{2}$ by discussion above. So:
+    \[ \norm{x'-y} \geq |\frac{\sqrt{2}}{2} - 2| > \frac{\sqrt{2}}{2} \]
+    as wanted and $\norm{y'-x}\geq\nicefrac{\sqrt{2}}{2}$ follows similarly. Thus $\{B_e(x): x\in \mathcal{E}\}$ is a disjoint set.\\
+
+    Recall $\mathcal{H}$ is separable, so let $\Gamma$ be our countable dense subset of $\mathcal{H}$. Since $\Gamma$ is dense,
+    then by definition every open set of $\mathcal{H}$ must intersect $\Gamma$ at least once, which implies for all $x\in 
+    \mathcal{E}$, the ball
+    $B_e(x)$ intersects at least one point of $\Gamma$ and since every $B_e(x)$ is disjoint, no two balls intersect the
+    same point of $\Gamma$. This implies an injective mapping $f: \{B_e(x): x\in \mathcal{E}\} \to \Gamma$ defined by $B_e(x)\mapsto 
+    B_e(x)\cap \Gamma$. Since $\Gamma$ is countable, then the injective mapping $f$ implies that $\{B_e(x): x\in \mathcal{E}\}$ is 
+    \textit{at most} countable. Since the set $\{B_e(x)\}$ is disjoint, we can let $g: \mathcal{E}\to \{B_e(x)\}$ be the bijective 
+    mapping defined by $x\in\mathcal{E}\mapsto B_e(x)$. The surjectivity condition is clear from the construction: 
+    $\{B_e(x): x\in\mathcal{E}\}$ and injectivity follows from the disjoint property, in particular, if $B_e(x) = B_e(y)$, the disjoint
+    property (i.e. $B_e(x)\cap B_e(y)=\emptyset$ if $x\neq y$) insures $x=y$. Thus $f\circ g$ is an injective mapping. Since
+    $\Gamma$ is a countable set, the injectivity of $f\circ g: \mathcal{E}\to \Gamma$ implies that $\mathcal{E}$ is \textit{at most}
+    countable i.e. either countable or finite as wanted.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P3.}\\
+
+    Assume a subspace $E$ of a Hilbert space $\mathcal{H}$ is not dense in $\mathcal{H}$. Prove that $E^{\perp}\neq\{0\}$.\\
+
+    \textbf{Solution.}\\
+
+    We prove this via a contradiction. Assume $E^{\perp} = \{0\}$. Recall, $E^{\perp\perp} = \{x\in\mathcal{H}: \langle x,e\rangle = 0$
+    for all $e\in E^{\perp}\}$. Using $E^{\perp}=\{0\}$, we can simplify this to: $E^{\perp\perp}=\{x\in\mathcal{H}:\langle x,0\rangle
+    = 0\}$. However, note: $\langle x,0\rangle = \langle x,0\cdot 0\rangle = 0\langle x,0\rangle = 0$ (note the term we pulled out
+    was a scalar of our field, not to be confused with the vector 0 we are taking the inner product with). This holds for all $x\in
+    \mathcal{H}$, thus: $E^{\perp\perp} = \mathcal{H}$. Using problem 1, we obtain: $E^{\perp\perp} = \overline{\text{span}(E)}$,
+    however note $E$ is a subspace so span$(E) = E$. Thus, $E^{\perp\perp} = \overline{E}$. In particular, we obtain,
+    $\mathcal{H} = \overline{E}$ which is a contradiction to our assumption of the fact that $E$ is not dense in $\mathcal{H}$.
+    Therefore, $E^{\perp}\neq\{0\}$ as wanted.$\hfill\blacksquare$\\
+
+    \textbf{P4.}\\
+
+    If $\{e_n\}_{n=1}^{\infty}$ is an orthonormal sequence in a Hilbert space $\mathcal{H}$, then the following is equivalent:
+    \begin{enumerate}
+        \item $\{e_n\}_{n=1}^{\infty}$ is an orthonormal basis
+        \item If $h\in\mathcal{H}$ and $h\perp e_n$ for all $n$, then $h=0$
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+
+    First, we prove (1)$\implies$(2).\\
+    Suppose $h\neq 0$ and $\langle h,e_n\rangle = 0$ for all $n$, then $\langle \nicefrac{h}{\norm{h}},\nicefrac{h}{\norm{h}}\rangle=1$
+    since if $h\neq 0$, then $\norm{h}\neq 0$, and:
+    \[ \langle \frac{h}{\norm{h}},\frac{h}{\norm{h}}\rangle = \frac{\langle h,h\rangle}{\norm{h}^2} = \frac{\norm{h}^2}{\norm{h}^2} = 1\]
+    Then clearly $\{e_n\}\cup \{h\}$ is an orthonormal set but this is impossible since if $\{e_n\}$ is an orthonormal basis, then
+    it is the maximal orthonormal set in $\mathcal{H}$. Therefore, if $h\perp e_n$ then $h=0$.\\
+
+    Now, we prove (2)$\implies$(1).\\
+    If $\{e_n\}$ is not an orthonormal basis, then by definition it is properly contained by some orthonormal set $A$. Then,
+    there exists $x\in A$ such that $x\not\in \{e_n\}$ but $x\perp e_n$ and $\langle x,x\rangle = 1$. However, by (2), $x\perp e_n$
+    is enough to imply $x=0$ so we obtain $0 = x$ but $\norm{x} = 1$ which is a contradiction to our axioms of a normed vector space.
+    Thus $A$ cannot exist and there exists no orthonormal set containing $\{e_n\}$. By definition, this implies that $\{e_n\}$
+    is an orthonormal basis.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P5.}\\
+
+    Let $\mathcal{H}$ be a Hilbert space. Prove that:
+    \begin{enumerate}
+        \item Every orthonormal set in $\mathcal{H}$ is linearly independent (i.e. every finite subset is linearly independent).
+        \item Suppose $\{e_1,\hdots,e_n\}$ is an orthonormal set in $\mathcal{H}$ and define
+            \[ M :=\;\text{span}\{e_1,\hdots,e_n\} \]
+            Check that $M$ is closed and show that if $P$ is the projection of $\mathcal{H}$ onto $M$, then $Px = 
+            \sum_1^n\langle x,e_j\rangle e_j$ for all $x\in\mathcal{H}$.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    \begin{enumerate}
+        \item Assume an orthonormal set $\{e_{j}\}$ (possibly uncountable) is linearly dependent. Then there exists some
+            $e_j\in \{e_j\}$ such that $e_j = a_1e_{j_1} + \hdots a_me_{j_m}$ for some $m\in\mathbb{N}$, scalar coefficients 
+            $a_1,\hdots,a_m$ and vectors $\{e_{j_i}\}_{i=1}^m\subseteq\{e_j\}$. Without loss of generalization, assume
+            $e_{j_m}\neq e_j$ and note:
+            \[0=\langle e_j,e_{j_m}\rangle = \langle a_1e_{j_1}+\hdots+a_me_{j_m},e_{j_m}\rangle = a_m\langle e_{j_m},e_{j_m}\rangle 
+                = 1\]
+            so that we $0=1$ which is clearly a contradiction. Therefore, $\{e_j\}$ is linearly independent. Note, we implicitly used
+            the fact that $\langle x_{j_i},x_{j_m}\rangle = 0$ for $i\neq m$.
+        \item First, we show that $M$ is closed. Since $M$ is an $n$-dimensional subspace (has a basis consisting of $n$ vectors),
+            by linear algebra, we know there is some isomorphism $f: M\to \mathbb{R}^n$ (only if $M$ is over $\mathbb{R}$, if it
+            is over $\mathbb{C}$, then the isomorphism is to $\mathbb{C}^n$).
+            Note that since $f$ is an isomorphism, we have $\norm{f}\neq 0$ since $0\mapsto 0$ in a linear mapping and by bijectivity,
+            no other element of $X$ maps to 0. Therefore, $\norm{f}\neq0$. Let $\{a_n\}_1^{\infty}$ be an arbitrary Cauchy sequence
+            in $X$, first, we want to show $f(\{x_n\})$ is a Cauchy sequence in $\mathbb{R}^n$. Using the fact that $\{a_n\}_1^{\infty}$
+            is Cauchy, then there exist some $N\in\mathbb{N}$ such that if $m\geq n>N$, then:
+            \[ \norm{a_m - a_n} < \frac{\epsilon}{\norm{T}} \]
+            To prove $f(\{a_n\})$ is Cauchy, we choose this $N\in\mathbb{N}$. Then:
+            \[ \norm{f(a_m) - f(a_n)} = \norm{f(a_m-a_n)} \]
+            Since $f$ is isomorphic, we have the following: $\norm{f(a_m-a_n)}\leq \norm{f}\norm{a_m-a_n}$ so that
+            \[ \norm{f(a_m)-f(a_n)} \leq \norm{f}\norm{a_m-a_n} < \norm{f}\nicefrac{\epsilon}{\norm{f}} = \epsilon. \]
+            So that, $f(\{a_m\})$ is a Cauchy sequence in $\mathbb{R}^n$ but $\mathbb{R}^n$ is complete (so is $\mathbb{C}^n$) and
+            therefore, we obtain that $f(\{a_m\})\to a\in\mathbb{R}^n$ as $m\to\infty$ i.e.
+            \[ \lim_{m\to\infty} f(a_m) = a \]
+            We can write $a$ as $f(g) = a$ ($g\in M$) by using surjectivity. 
+            Note, if a function is bijective, its inverse exists so $f^{-1}$
+            exists. In particular, we can write $a_m = f^{-1}(f(a_m))$ for all $m$. Using this, we note:
+            \[ \lim_{m\to\infty} \norm{a_m-g} = \lim_{m\to\infty} \norm{f^{-1}(f(a_m)) - f^{-1}(f(g))} = \lim_{m\to\infty} 
+                \norm{f^{-1}(f(a_m) - f(g))} \]
+            which we can do since $f$ is isomorphism, then $f^{-1}$ must be linear. Furthermore, we can also write
+            $\norm{f^{-1}}\norm{f(a_m)-f(g)}$ and finally:
+            \[ \lim_{m\to\infty} \norm{a_m-g} = \lim_{m\to\infty}\norm{f^{-1}}\norm{f(a_m)-f(g)} = 
+                \norm{f^{-1}}\lim_{m\to\infty} \norm{f(x_m)-f(g)} = 0 \]
+            so that $\lim_{m\to\infty} \norm{a_m-g} = 0$ implying that $\{a_m\}\to g\in M$ as $m\to\infty$. Therefore, $M$ is complete
+            as we wanted to show.\\
+            Now, we show $M$ is closed. We have to show if $\{x_n\}$ is a sequence in $M$, then $\{x_n\}\to x\in M$. Since $M$
+            is complete, then $\{x_n\}$ is a Cauchy sequence. But then we can just repeat the proof for completeness to show that
+            there exists some $x\in M$ such that $\{x_n\}$ converges to it. Thus, $M$ is closed.\\
+            Since $M$ is then a closed subspace of a Hilbert space $\mathcal{H}$, by Theorem 1.24, there is a unique mapping
+            $P: \mathcal{H}\to M$ and $Q: \mathcal{H}\to M$ such that for all $x\in\mathcal{H}$, $x = Px + Qx$. Since $Px\in M$,
+            we can write $Px = a_1e_1 + \hdots + a_ne_n$ for scalars $a_1,\hdots,a_n$. Note, for any $e_j\in \{e_k\}_1^n$,
+            we have
+            \[ \langle x,e_j \rangle = \langle Px,e_j\rangle + \langle Qx,e_j\rangle \]
+            Since $Qx\in M^{\perp}$, then $\langle Qx,e_j\rangle = 0$. Also, note:
+            \[ \langle x,e_j \rangle = \langle Px,e_j\rangle = \langle \sum_{i=1}^n a_ie_i,e_j\rangle = a_j\langle e_j,e_j\rangle = 
+                a_j \]
+            So, $\langle x,e_j \rangle = a_j$ for all $0\leq j\leq n$ and in particular, $a_je_j = \langle x,e_j\rangle e_j$ so that:
+            \[ Px = \sum_{i=1}^n \langle x, e_j\rangle e_j \]
+            as wanted.$\hfill\blacksquare$
+                    
+    \end{enumerate}
+
+    \newpage
+
+    \textbf{P6.}\\
+
+    Let $\mathcal{B} = \{e_n\}_{n=1}^{\infty}$ be an orthonormal basis for a Hilbert space $\mathcal{H}$. Define a function
+    $\mathcal{F}$ on $\mathcal{H}$ by $\mathcal{F}(x) = \{\langle x,e_n\rangle\}_{n=1}^{\infty}$. Prove that $\mathcal{F}$ maps
+    $\mathcal{H}$ into $c_0(\mathbb{C})$ but not onto it.\\
+
+    \textbf{Solution.}\\
+
+    By theorem 1.33(c), we can write $x = \sum_{n=1}^{\infty}\langle x,e_n\rangle e_n$. We show that 
+    $\lim_{n\to\infty} \langle x,e_n\rangle = 0$. By definition of series convergence, the sequence $\{S_N\}$ of partial sums of $x$
+    must converge. In particular, since $\mathcal{H}$ is Hilbert, it is complete, so $\{S_N\}$ is a Cauchy sequence. Thus for any
+    $\epsilon>0$, there is a number $N>0$ such that if $n\geq m>N$, then $\norm{S_N-S_M}<\epsilon$ which is equivalent to stating:
+    \[ \norm{\sum_{j=m+1}^n \langle x,e_j\rangle e_j} < \epsilon \]
+    In particular, let $m=n-1$ so we have $\norm{\langle x,e_j\rangle e_j} < \epsilon$ so that 
+    $\lim_{n\to\infty} \langle x,e_n\rangle e_n = 0$. Since by definition of orthonormal, $e_n\neq 0$, we must have that
+    $\lim_{n\to\infty} \langle x,e_n\rangle = 0$. Therefore, $\mathcal{F}(x)\to 0$ which implies $\mathcal{F}(x)\in c_0(\mathbb{C})$.
+    To prove that $\mathcal{F}$ is not onto, suppose it is. Then there exists some $x\in\mathcal{H}$ such that $\mathcal{F}(x) = 
+    \{\nicefrac{1}{\sqrt{n}}\}$ and by theorem 1.33c, when we write $x = \sum_{n=1}^{\infty}\langle x,e_n\rangle e_n$, we will
+    have that $\langle x,e_n\rangle$ is the nth term of $\mathcal{F}(x)$. But, then by Bessel's inequality:
+    \[ \sum_{n=1}^{\infty} |\langle x,e_n\rangle|^2 = \sum_{n=1}^{\infty} \frac{1}{n} \leq \norm{x}^2 \]
+    But this cannot be true since the Harmonic series does not converge and clearly $\norm{x}^2$ is a finite number. Therefore,
+    $\mathcal{F}$ is not surjective as wanted.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P7.}\\
+
+    Prove the following:\\
+    If $T:X\to Y$ is a linear from a normed linear space $X$ to a normed linear space $Y$, the following are equivalent:
+    \begin{enumerate}
+        \item $T$ is bounded
+        \item $T$ is continuous
+        \item $T$ is continuous at 0
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+
+    It suffices to prove: $(1)\implies (2)\implies (3)\implies (1)$. Proving $(2)\implies (3)$ is quite trivial since $T$ being
+    continuous means it is continuous at every point of $X$ and linear space contains 0. So, we then prove (1)$\implies$(2). Consider:
+    \[ \norm{Tx-Ty}_Y = \norm{T(x-y)}_Y \]
+    since $T$ is a linear mapping. Furthermore, since $T$ is bounded:
+    \[ \norm{Tx-Ty}_Y = \norm{T(x-y)}_Y \leq C\norm{x-y}_X < C\cdot \delta \]
+    So, if we choose $\epsilon = \delta > 0$, then if $\norm{x-y}_Y<\delta$, we obtain $\norm{Tx-Ty}_Y<\epsilon$ by the work above.
+    Therefore, $T$ is continuous on $X$ and so it is left to prove (3)$\implies$(2).\\
+
+    Let $\epsilon = 1$, so for some $\delta>0$, if $\norm{v}_X<\delta$, then $\norm{Tv}_Y<\epsilon$. Choose $x\in X$ such that
+    $\norm{x}<\delta$ and $x\neq 0$. Then note: $\norm{\nicefrac{\delta}{2}\cdot\nicefrac{x}{\norm{x}}}_X=\nicefrac{\delta}{2}<
+    \delta$ since $\nicefrac{x}{\norm{x}}$ is a unit vector. Note this implies from our choice of $\epsilon$ that
+    $\norm{T(\nicefrac{\delta}{2}\cdot\nicefrac{x}{\norm{x}})}_Y < 1$. Thus:
+    \begin{align*}
+        1 > \norm{T(\frac{\delta}{2}\cdot\frac{x}{\norm{x}})}_Y = \norm{\frac{\delta}{2}\cdot\frac{Tx}{\norm{x}}}_Y
+    \end{align*}
+    by linearity of $T$. Furthermore, this is equal to $\nicefrac{\delta}{2\norm{x}}\cdot\norm{Tx}_Y$ by linearity. So, we have that
+    \[ 1 > \frac{\delta}{2\norm{x}}\norm{Tx} \implies \frac{2\norm{x}}{\delta} > \norm{Tx} \]
+    so that every $\norm{Tx}$ is bounded by $\nicefrac{2}{x}\cdot \norm{x}$ and thus: $C = \nicefrac{2}{\delta}$. Therefore, $T$
+    is bounded as wanted. Note: If $x=0$, then since $T$ is a linear mapping, we have $T(0) = 0$ so that $\norm{Tx}\leq C\norm{x}$
+    is simply equivalent to saying $0\leq 0$ which is clearly true.\\
+
+    We have proven the chain of implications that we wanted so we are done.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P8.}\\
+
+    Define a mapping $T: c_{00}(\mathbb{R}) \to \mathbb{R}$ by $Tx = \sum_{n=1}^{\infty} x(n)$. Prove that $T$ is linear but not
+    bounded. ($c_{00}(\mathbb{R})$ has the sup norm)\\
+
+    \textbf{Solution.}\\
+
+    First, we show linearity. Let $\alpha,\beta\in\mathbb{R}$ and $x,y\in c_{00}(\mathbb{R})$. Then:
+    \[ T(\alpha x + \beta y) = \sum_{n=1}^{\infty} (\alpha x + \beta y)(n) \]
+    By definition of vector addition in $c_{00}(\mathbb{R})$, we have $(\alpha x + \beta y)(n) = (\alpha x)(n) + (\beta y)(n)$
+    and similarly, by scalar mutliplication, we have $(\alpha x)(n) = \alpha x(n)$. Thus:
+    \[ T(\alpha x + \beta y) = \alpha\sum_{n=1}^{\infty} x + \beta\sum_{n=1}^{\infty} y(n) = \alpha Tx + \beta Ty \]
+    so that $T$ is linear.\\
+    Now, assume $T$ is bounded by some $C\in\mathbb{R}$. Then, $\norm{Tx}\leq C\norm{x}$ for all $x\in X$. 
+    Note if we choose $x = (x_1,\hdots,x_k,0,0,\hdots)$ for some $k\in\mathbb{N}$ such that $k>C$ and 
+    $x_1=x_2=\hdots=x_k\neq 0$ ($x_1>0$), then $Tx = \sum_{i=1}^{\infty} x(i) = kx_1> Cx_1$. Since $x$ is a constant sequence,
+    we have that $\norm{x} = |x_1| = x_1$ so that $\norm{Tx} = kx_1 > C\norm{x} = Cx_1$ which is a contradiction as we get
+    $\norm{Tx} > C\norm{x}$. Therefore, $T$ is not bounded as wanted.$\hfill\blacksquare$\\
+
+    \newpage
+
+    \textbf{P9.}\\
+
+    Let $X$ and $Y$ be normed linear spaces and let $T\in\mathcal{L}(X,Y)$. Prove that $T$ is bounded if and only if $T(A)$ is
+    bounded for all bounded subsets of $A$ of $X$.\\
+
+    \textbf{Solution.}\\
+
+    Assume $T$ is bounded. Then by definition, for some $C\in\mathbb{R}$, $\norm{Tx}_Y \leq C\norm{x}_X$ holds for all $x\in X$.
+    Thus, this inequality holds for all subsets of $X$ and in particular, the bounded subsets of $X$. Therefore, $T$ is bounded
+    on all bounded subsets of $X$.
+
+    \textbf{P10.}\\
+    
+    Let $\phi\in l^{\infty}(\mathbb{R})$. Define a function $T_{\phi}$ on $l^{\infty}(\mathbb{R})$ by $(T_{\phi}x)(n) = \phi(n)x(n)$.
+    \begin{enumerate}
+        \item Prove that $T_{\phi}$ is a linear map into $l^{\infty}(\mathbb{R})$
+        \item Calculate $\norm{T_{\phi}}$.
+        \item Show that $T_{\phi}$ is not surjective in general
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    \begin{enumerate}
+        \item Let $\alpha,\beta\in\mathbb{R}$ and $x,y\in l^{\infty}(\mathbb{R})$. We show $T_{\phi}(\alpha x+\beta y)=
+            \alpha T_{\phi}x+\beta T_{\phi}y$. 
+            We have that $T_{\phi}(\alpha x + \beta y) = \phi(n) (\alpha x + \beta y)(n)$. By definition
+            of vector addition (i.e. adding sequences term by term), we obtain that $(\alpha x)(n) + (\beta y)(n) 
+            = (\alpha x+\beta y)(n)$. Similarly, using the definition of scalar mutliplication, we obtain: $\alpha x(n) = (\alpha x)(n)$.
+            Combining these results, we obtain: $T_{\phi}(\alpha x + \beta y) = \phi(n)(\alpha x + \beta y) = \phi(n)((\alpha x)(n) +
+            (\beta y)(n)) = \phi(n)(\alpha x)(n) + \phi(n)(\beta y)(n) = \alpha\phi(n) x(n) + \beta\phi(n) y(n) = \alpha(T_{\phi}x)(n)
+            + \beta(T_{\phi}y)(n)$ as wanted.
+        \item Recall, $\norm{T_{\phi}} =$ sup$\{\norm{T_{\phi}}: \norm{x}\geq 1\}$ and for all $x\in l^{\infty}(\mathbb{R})$, we have
+            $\norm{x} =$ sup$\{|x_n|\}$, so we only consider sequences bounded by 1. Therefore, define $x(n)$ to be a sequence
+            of real numbers such that $x(n) := 1$ for all $n$. This is clearly in $l^{\infty}$ and more importantly,
+            $T_{\phi}x = \phi$ since $\phi(n)x(n) = \phi(n)$. We claim that $\norm{\phi} = \norm{T_{\phi}}$ since if there was
+            some other real number higher than $\norm{\phi}$ which is equal to $\norm{T_{\phi}}$, then there would exist some
+            associated sequence $\{y_n\}$ such that at some $n$, $\phi(n)y(n) > \phi(n)$. However, this is only true if $y(n)>1$
+            which is impossible since we can only consider sequences bounded by 1. Therefore, $\norm{\phi} = \norm{T_{\phi}}$.
+        \item Pick $\phi = \{0,0,\hdots\}$. Then $T_{\phi}x = \{0,0,\hdots\}$ for every $x\in l^{\infty}$ since $(T_{\phi}x)(n) = 
+            \phi(n)x(n) = \phi(n)\cdot 0 = 0$ for all $n$. Thus, $T_{\phi}$ is clearly not surjective to $l^{\infty}$.
+    \end{enumerate}
+
+    \textbf{P11.}\\
+
+    Suppose that $X$ and $Y$ are normed linear spaces and that $T: X\to Y$ is a linear map. Suppose that $T$ maps $X$ onto $Y$
+    and is isometric.
+    \begin{enumerate}
+        \item Show that $T$ is one-to-one
+        \item Show that if $X$ is a Banach space, so is $Y$
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    \begin{enumerate}
+        \item Let $T(x) = T(y)$ for $x,y\in X$. Then $Tx - Ty = 0$ which implies by linearity that $T(x-y) = 0$. Furthermore,
+            since $T$ is an isometry, we have $\norm{T(x-y)} = \norm{x-y} = 0$. By our properties of a metric space (which $X$ is since
+            it is a normed linear space and norms induce a natural metric), we know that $\norm{x-y} = 0$ if and only if $x=y$ as wanted.
+        \item We want to show $Y$ is complete. So, choose a Cauchy sequence $\{x_m\}_{m=1}^{\infty}$ in $Y$, and we show it converges
+            to some $x\in Y$. Since $\{x_m\}$ is Cauchy, then for all $\epsilon>0$, there exists $N>0$ such that if $n\geq m>N$, then
+            $\norm{x_n-x_m}<\epsilon$. Since $T$ is surjective, there exists some $x_m',x_n'\in X$ such that $T(x_m') = x_m$ and
+            $T(x_n') = x_n$. Therefore, note:
+            \[ \norm{x_n - x_m} = \norm{T(x_n')-T(x_m')} = \norm{T(x_n'-x_m')} = \norm{x_n'-x_m'} < \epsilon \]
+            where we again used isometry property and linearity of $T$. This shows that $\{x_m'\}\subseteq X$ is a Cauchy sequence
+            and since $X$ is complete (Banach), we know that $\{x_n'\}\to x'\in X$. We claim that $\{x_m\}\to T(x')\in Y$. To show
+            this, pick an $\epsilon>0$, then there exists some $N>0$ (given by the $N$ for the sequence $\{x_m'\}$) such that
+            if $n>N$, then:
+            \[ \norm{x_n - T(x)} = \norm{T(x_n') - T(x)} = \norm{T(x_n'-x)} = \norm{x_n' - x} < \epsilon \]
+            so that $\{x_m\}$ is a Cauchy sequence of $Y$ which converges to some element $x$ of $Y$, thereby proving completeness
+            and showing that $Y$ is a Banach space as wanted.
+    \end{enumerate}
+
+\end{document}

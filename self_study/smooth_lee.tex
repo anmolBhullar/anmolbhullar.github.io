@@ -1,0 +1,89 @@
+\documentclass{article}
+% \usepackage{tikz}
+%\usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{Exercises}
+\author{Smooth Manifolds - Lee}
+
+\begin{document}   
+    \maketitle
+    
+    \section{Topological Manifolds}
+
+    \textbf{Exercise 1.1.}\qquad Show that equivalent definitions of locally Euclidean spaces are obtained if,
+    instead of requiring $U$ to be homeomorphic to an open subset of $\mathbb{R}^n$, we require it to be homeomorphic
+    to an open ball in $\mathbb{R}^n$, or to $\mathbb{R}^n$ itself.
+    \newline
+    \newline
+    \textbf{Solution 1.1.}\\
+
+        Let $\phi: U\to\tilde{U}$ where $p\in U\subset M$ and $\tilde{U}\subset\mathbb{R}^n$. Since $\tilde{U}$ is open,
+        we can find an open ball around $\phi(p)$ (denoted $B_r(\phi(p))$ for some $r>0$) such that $B_r(\phi(p))\subset\tilde{U}$.
+        We know $p\in \phi^{-1}(B_r(\phi(p)))$ and is open since $\phi$ and $\phi^{-1}$ is continuous. Therefore, the map
+        $\phi': \phi^{-1}(B_r(\phi(p))) \to B_r(\phi(p))$ is a homeomorphism. Using this along with the fact that open balls
+        are of course open sets in $\mathbb{R}^n$, we obtain that requiring $U$ to be homeomorphic to open subsets of $\mathbb{R}^n$
+        or open balls of $\mathbb{R}^n$ makes no difference.\\
+        \newline
+        Next, consider a ball $B_r(x)$ centered at $x\neq 0$ of radius $r>0$. The function $f: B_r(x)\to B_r(0)$ translates this
+        ball to the origin via $z\mapsto z-x$. This map is clearly bijective and linear (so it is differentiable and so, continuous)
+        with a continuous inverse, thus it is a homeomorphism. Therefore, it suffices to consider to balls centered at the origin.
+        Now, consider the map $g: B_r(0) \to B_1(0)$ defined by $z\mapsto \nicefrac{z}{r}$ which is clearly still a homeomorphism.
+        Now, consider a map $\pi: B_1(0)\to\mathbb{R}^n$ defined by $x\mapsto (\tan(\nicefrac{\pi|x|}{2})x)$.
+    \newline
+    \newline
+    \textbf{Exercise 1.2.}\qquad Show that any topological subspace of a Hausdorff space is Hausdorff, and any
+    finite product of Hausdorff spaces is Hausdorff.
+    \newline
+    \newline
+    \textbf{Solution 1.2.}\\
+
+        Let $A$ be a subspace of a Hausdorff space $T$. Let $x\neq y\in A$, since $x,y\in T$, then there exist open sets $U,V$
+        in $T$ such that $x\in U$, $y\in V$ and $V\cap U=\emptyset$. Since $x\in U$ and $x\in A$, then $x\in U\cap A$ and similarly,
+        for $y\in V\cap A$ and since $U\cap A\subset U\cap A$ and similarly for $V$, we have that $U\cap A \cap V \cap A = \emptyset$.
+        Therefore, since $U\cap A$ and $V\cap A$ are open sets in $A$, we have the existence of two disjoint sets which contain
+        $x$ and $y$ so that $A$ is also Hausdorff. A similar proof follows for finite products except we take the product of
+        the disjoint sets i.e. if $U_1\times\hdots\times U_n$ is our space, then take disjoint sets from each $U_i$ and product
+        them together.
+    \newline
+    \newline
+    \textbf{Exercise 1.3.}\qquad Show that any topological subspace of a second countable space is second countable,
+    and any finite product of second countable spaces is second countable.
+    \newline
+    \newline
+    \textbf{Solution 1.3.}\\
+
+        Let $A$ be a subspace of the second countable space $T$. Since a basis of $A$ can be given by $B_i 
+        = \{A \cap T_i: T_i\in\{T_i\}\}$, we can simply let $\{T_i\}$ be our countable basis of $T$. Thus, $A$ is second countable.
+        Note if $U_1\times\hdots\times U_n$ is a finite product of second countable space, its basis is given by
+        $B = \{U_{1_i}\times\hdots\times U_{n_i}: i\in\mathbb{N},$ $U_{k_i}$ is the $i$th basis element of $U_k\}$. 
+        From this, choosing the appropriate basis yields the fact that $U_1\times\hdots\times U_n$ is second countable.
+    \newline
+    \newline
+    \textbf{Work it out.}\qquad Show that any subset of a topological $n$-manifolds equipped with the subspace
+    topology is itself a topological $n$-manifold.
+    \newline
+    \newline
+    \textbf{Solution.}\\
+
+        Let $A\subset M$ be a subset of $M$ (non-empty), then we can equip $A$ with the subspace topology.
+        Since every subspace of a second countable space is second countable and similarly for Hausdroff, it follows that a subspace
+        of a Hausdorff and second countable space is Hausdorff and second countable. It is left to prove that $A$ is locally
+        a Euclidean space. If $p\in A$, then there exists $\phi_p: U\subset M\to \tilde{U}\subset\mathbb{R}^n$. It then follows
+        $\phi_p': U\cap A \to \phi_p'(U\cap A)$ is bijective and continuous with a continuous inverse since it is the restriction
+        of a homeomorphism. Thus, $A$ is a manifold equipped with the subspace topology.
+    \newline
+    \newline
+\end{document}
