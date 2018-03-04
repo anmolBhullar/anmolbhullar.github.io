@@ -1,0 +1,249 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATC37: Introduction to Real Analysis\\
+    Assignment 3}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \textbf{P1.}\\
+
+    Let $f: \mathbb{R}^d\to\mathbb{R}$ be measurable. Prove that (a) $-f$ is measurable and (b) $f^2$ is measurable.\\
+
+    \textbf{Solution.}
+
+    Suppose $f$ is measurable. We want to show $-f$ is measurable, thus, it suffices to show for any arbitrary
+    $a\in\mathbb{R}$, $\{-f < a\}$ is measurable. Note:
+    \begin{align*}
+        \{-f < a\} = \{x\in\mathbb{R}^d: -f(x) < a\} = \{x\in\mathbb{R}^d: f(x) > -a\} = \{f > -a\} 
+    \end{align*}
+    Since $f$ is measurable, we know $\{f > -a\}$ is measurable by a proposition covered in class. Therefore, $\{-f < a\}$
+    is measurable which lets us conclude that $-f$ is measurable.\\
+
+    Suppose $f$ is measurable. We want to show $f^2$ is measurable, thus, it suffices to show for any arbitrary $a\in\mathbb{R}$,
+    $\{f^2 > a\}$ is measurable. If $a\geq 0$, note:
+    \begin{align*}
+        \{f^2 > a\} = \{x\in\mathbb{R}^d: f^2(x) > a\} &= \{x\in\mathbb{R}^d: \pm f(x) > \sqrt{a}\} \\
+            &= \{x\in\mathbb{R}^d: f(x) > \sqrt{a}\} \cup \{x\in\mathbb{R}^d: -f(x) > \sqrt{a}\} \\
+            &= \{f > \sqrt{a}\} \cup \{f < -\sqrt{a}\}
+    \end{align*}
+    which we know is measurable because $f$ is measurable so both $\{f > \sqrt{a}\}$ and $\{f < -\sqrt{a}\}$ are measurable
+    and thus their union must be as well. Now suppose $a < 0$. Since $f^2$ is an even power, it is a positive valued function.
+    This means there exist no $x\in\mathbb{R}^d$ so that $f^2(x) < 0$. From this, we can conclude $\{f^2 > a\} = \{f^2 \geq 0\}$.
+    We have already shown from the case above that $\{f^2 \geq 0\}$ is measurable. Therefore, for all $a\in\mathbb{R}$,
+    we have that $\{f^2 > a\}$ is measurable from which we conclude that $f^2$ is measurable as wanted.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P2.}
+
+    \begin{enumerate}
+        \item[(a)] Prove that the function $f:\mathbb{R}\to\mathbb{R}$ defined by $x\mapsto\sin{(1+e^x)}+\nicefrac{1}{1+x^2}$.
+        \item[(b)] Prove that every monotone function $f:\mathbb{R}\to\mathbb{R}$ is measurable.
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+
+    (a) $\sin{1+e^x}$ is clearly a composition of continuous functions and $1/(1+x^2$ is also clearly continuous,
+    thus their sum must be continuous as well. All continuous functions are measurable by Property 2 on page 29 of the class
+    textbook. Therefore, $f$ is measurable.\\
+
+    (b) Every montone function has a countable number of discontinuities. Call this set $E$. Since $E$ is countable,
+    we have $m(E)$ exists and is equal to 0. Note $f$ is continuous, so its restriction to the set $E^c$ is also continuous.
+    Therefore, $f|_{E^c}$ is measurable by the same logic in (a). Furthermore, note for all $a\in\mathbb{R}$:
+    \[ \{f > a\} = \{f|_{E^c} > a\} \cup \{f|_{E} > a\} \]
+    $\{f|_E > a\}$ is measurable since clearly, $\{f|_E > a\} \subseteq E$ so that $m_*(\{f|_E > a\}) = 0$ and in particular,
+    it is Lebesgue measurable. Thus, $\{f > a\}$ is measurable which is enough to imply that $f$ is measurable.
+    $\hfill\blacksquare$\\
+
+    \textbf{P3.}\\
+
+    Let $f:\mathbb{R}^d\to\mathbb{R}$.
+    \begin{enumerate}
+        \item[(a)] Prove that $f$ is measurable if and only if for all $q\in\mathbb{Q}$, the set $\{f < q\}$ is measurable.
+        \item[(b)] Prove that $f$ is measurable if and only if for every compact set $C\subseteq\mathbb{R}$, the pre-image
+            $f^{-1}(C)$ is measurable.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    (a) $f$ is measurable implies for all $a\in\mathbb{R}$, $\{f < a\}$ is measurable. In particular, this holds for all
+    $a\in\mathbb{Q}$ so the forward direction is proven. Now, assume for all $q\in\mathbb{Q}$, the set $\{f < q\}$ is measurable.
+    Assume $b\not\in\mathbb{Q}$. $\overline{\mathbb{Q}}=\mathbb{R}$ implies that $b$ is a limit point of $\mathbb{Q}$ so that
+    in particular, there exists a sequence $(b_n)_1^{\infty}\subseteq\mathbb{Q}$ such that $b_n\to b$. Without loss of
+    generalization, we may assume $(b_n)$ is strictly increasing ($(b_n)$ is convergent so a monotone subsequence exists
+    either way). From this, we have 
+    \[ \{f < b_1\} \subseteq \{f < b_2\} \subset \hdots \subseteq \{f < b_n\} \subseteq \hdots \]
+    and in particular, $\{f < b_n\} \nearrow \{f < b\}$ and since from assumption, we have each $\{f < b_n\}$ is measurable, by
+    Corollary 3.3 on Page 20 of the class textbook, we have that $m(\{f < b\})$ exists so that $\{f < b\}$ is measurable.
+    Therefore, for all $b\in\mathbb{R}$, $\{f < b\}$ is measurable from which we conclude that $f$ is measurable.\\
+
+    \newpage
+
+    (b) $f$ is measurable and so from Property 1 on Page 28 of the class textbook, we have that the pre-image of every
+    closed set is measurable. Every compact set is closed by Heine-Borel, so in particular, from the measurability of $f$,
+    we have that the pre-image of every compact set is measurable. Thus the forward direction is proven. Now, assume
+    the pre-image of every compact set is measurable. Define $E_1 = [-1,0]$, $E_2 = [-2,0]$, $\hdots$, $E_n = [-n, 0]$.
+    The pre-image of each $E_n$ is measurable (since each $E_n$ is compact by Heine-Borel),
+    and so the countable union $\cup_n f^{-1}(E_n)$ is measurable.
+    However, $\cup_n f^{-1}(E_n) = \{f\leq 0\}$ so that $\{f\leq 0\}$ is measurable. We can repeat this proof for not just
+    0 but any $a\in\mathbb{R}$, and therefore, we get that $\{f\leq a\}$ is measurable which is enough to imply that $f$
+    is measurable.$\hfill\blacksquare$\\
+
+    \textbf{P4.}\\
+
+    Let $\phi:[0,1]\to[0,1]$ be the Cantor-Lebesgue function. Consider the function $\psi:[0,1]\to[0,2]$ defined by
+    $\psi(x) = \phi(x) + x$.
+
+    \begin{enumerate}
+        \item[(a)] Show that $\psi$ is continuous, strictly increasing and onto.
+        \item[(b)] Show that $\psi$ maps Borel sets to Borel sets, and conclude that there exists some subset $A\subseteq C$ of
+            the Cantor set which is not a Borel set.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    (a) $\psi$ is continuous because it is the sum of two continuous functions $\phi$ and $x\mapsto x$. Let $x_1 < x_2$ be real numbers.
+    We have since $\phi$ is monotone so that $\phi(x_1)\leq \phi(x_2)$ from which, we have $\phi(x_1) + x_1\leq \phi(x_2) + x_1$.
+    Since $x_1<x_2$, we obtain $\phi(x_1) + x_1\leq \phi(x_2)+x_1 < \phi(x_2) + x_2$ so that $\psi(x_1)<\psi(x_2)$ as wanted. Thus,
+    $\psi$ is strictly increasing. It is onto because of IVT, since $\psi(0) = 0$ and $\psi(1) = 2$ and the domain of $\psi$
+    is an interval, and thus, 
+    so is the image of its domain (IVT) and the two endpoints of the interval in the domain determine the endpoints
+    of the interval in the image. Therefore, $\psi([0,1]) = [0,2]$ as wanted. Note we can apply IVT since we have a continuous
+    strictly increasing function.\\
+
+    (b) Define $\Gamma := \{B: \psi(B)$ is a Borel set$\}$. First, we show $\Gamma$ is a $\sigma$-algebra. Since the image of $\Gamma$
+    is a Borel $\sigma$-algebra, there must exist some set $E\in\Gamma$ such that $\psi(E) = [0,2]$. Since $\psi$ is onto, we must
+    have that $E = [0,1]$, and since $E\in\Gamma$, we have that $[0,1]\in\Gamma$. Now, let $E$ be any arbitrary set in $\Gamma$. We
+    show $[0,1]\backslash E\in\Gamma$. Note $\psi(E)$ is a Borel set, so $[0,2]\backslash\psi(E)$ must be one as well. By definition
+    of $\Gamma$, there exists some $F$ such that $\psi(F) = [0,2]\backslash\psi(E) = \{x\in[0,1]: \psi(x)\not\in\psi(E)\}$. Thus,
+    by definition, $F$ and $E$ are disjoint, for if they were not, the intersecting element $y$ would map to $\psi(E)$ and $\psi(F)$
+    contradicting the disjoint property of the two sets. Note also that $E\cup F = [0,1]$ since $F$ is comprised of elements of
+    $[0,1]$ that are not mapped to $\psi(E)$. Therefore, $[0,1]\backslash E = F$ and since $F\in\Gamma$, we have that the complement
+    of any set in $\Gamma$ is in $\Gamma$. It is left to prove the countable union of sets in $\Gamma$ is in $\Gamma$. Let
+    $\cup_n E_n$ be a countable union of sets in $\Gamma$. We have that each $\psi(E_n)$ is a Borel set and since the collection
+    of all Borel sets is a $\sigma$-algebra, we have that $\cup_n \psi(E_n)$ is a Borel set. By definition, there exists some
+    set $F\in\Gamma$ such that $\psi(F) = \cup_n \psi(E_n)$. Note $\psi(\cup_n E_n) = \cup_n \psi(E_n)$ so we can just choose
+    $F = \cup_n E_n$ but then $\cup_n E_n$ is in $\Gamma$ as wanted. Thus, the countable union of sets in $\Gamma$ is in $\Gamma$.
+    Therefore, $\Gamma$ is a $\sigma$-algebra.\\
+
+    Now, we show that $\Gamma$ contains all open sets (w.r.t domain of $\psi$) so that we get that the collection of Borel sets
+    in the domain of $\psi$ is a subset of $\Gamma$. Since $\Gamma$ maps to a Borel algebra in the image, we will obtain for free
+    that all Borel sets are mapped to Borel sets. Thus, take some open set $U$ of $[0,1]$, we can write $U$ as a 
+    countable union of open intervals, so let $U = \cup_n U_n$. From the discussion of IVT in (a), we obtain that
+    each $\psi(U_n)$ is an interval clearly contained in $[0,2]$. Note $\cup_n \psi(U_n) = \psi(\cup_n \psi_n)$ so that $\psi(U)$
+    is open (countable union of open sets is open). Since $\psi(U)$ is open, we have that $\psi(U)\in\psi(\Gamma)$ i.e.
+    $\psi(U)$ is a Borel set (all open sets are Borel sets). Therefore, there exists some set $G$ of $[0,1]$ so that $\psi(G)
+    = \psi(U)$. Choosing $U = G$, we see that $U\in\Gamma$ as wanted. Therefore $\Gamma$ contains all open sets as wanted.\\
+
+    Thus, $\Gamma$ is a sigma algebra which contains or is equal to the collection of all Borel sets in $[0,1]$, and since
+    $\psi(\Gamma)$ is a collection of Borel sets in $[0,2]$, we have that $\psi$ maps Borel sets to Borel sets as wanted. The
+    next part of this proof is simple. Noting that $[0,1]\backslash C$ ($C$ being the Cantor set) is percisely the set of line
+    segments where each line segment is given by the placement of the middle third being removed and the length of the
+    line segment being removed, i.e. the line segment depends on the construction of $C$ so we can can say the line segment
+    is given by some mapping $x\mapsto C(x)$ which depends on the construction of $C$. $\phi$ is constant on this line segment
+    so $\psi$ on this line segment is given by a mapping $x\mapsto x + a$ for some constant $a$. Therefore, we can characterize
+    $\psi$ as a set of translations of line segments on $[0,1]\backslash C$. Since Lebesgue measure is translation invariant, we have
+    $m([0,1]\backslash C) = m(\psi([0,1]\backslash C)) = 1$. Since $m(\psi([0,1])) = m([0,2]) = 2$, and
+    $m(\psi([0,1]\backslash C \cup C)) = 2$, by applying countable additivity (they are disjoint sets clearly), we have that
+    $m(C) = 1$. Therefore, by Vitali, there exists a non-measurable subset of $\psi(C)$ (the measure being non-zero is important since
+    all sets of outer measure 0 are measurable). Let this set be $W$. Since it is non-measurable, it must also be non-Borel (recall
+    $\mathcal{B}\subset\mathcal{L}$). Since
+    $\psi$ only maps Borel sets to Borel sets and $W$ is not Borel, we must have that $A := \psi^{-1}(W)$ is non-Borel. Since
+    $W\subseteq\psi(C)$, we must have that $A\subseteq C$. Therefore, we have the existence of a set $A$ which is a subset of the
+    Cantor set which is not Borel.
+
+    \newpage
+
+    \textbf{P5.}\\
+
+    Let $f:[0,1]\to\mathbb{R}$ be defined by $f = \chi_{\mathbb{Q}\cap[0,1]}$.
+    \begin{enumerate}
+        \item[(a)] Show that $f$ is not Riemann integrable.
+        \item[(b)] Construct a sequence $f_n:[0,1]\to\mathbb{R}$ of Riemann integrable functions such that $\lim_n f_n(x) = f(x)$
+            for all $x\in[0,1]$.
+    \end{enumerate}
+    \textbf{Solution.}
+
+    (a) We use the hint given in 6c. It says that a bounded function is Riemann integrable if and only if its set of discontinuities
+    has measure zero. Since $f$ is given by a characteristic function which is either 0 or 1, $f$ is clearly bounded by $0$ and $1$.
+    Additionally, it is clear for all $x\not\in\mathbb{Q}$, $f(x)$ is not continuous since by density of rationals, there exists
+    some rational $y$ in any open interval containing $x$ and $y$. From this, we have that $|f(x) - f(y)| = 1$. Thus, for
+    $\epsilon = \nicefrac{1}{2}$, for all $\delta>0$, if $0<|x-y|<\delta$, we have that $|f(x)-f(y)|\geq\nicefrac{1}{2}$ implying
+    $f$ is not continuous at $x$. We can get a similar result for all $x\in\mathbb{Q}$ by applying the same technique. Thus,
+    $f$ is discontinuous everywhere and so the set of discontinuities is $[0,1]$ which clearly has positive measure. Therefore,
+    $f$ is not Riemann integrable.\\
+
+    (b) Let $(q_n)_1^{\infty}$ be a sequence of rationals in $[0,1]$. Define $Q_n = \{q_1,\hdots,q_n\}$. Using this, define
+    $f_n := \chi_{Q_n}$. Clearly $f_n$ is discontinuous only at a finite number of points so it is still Riemann integrable
+    and $\lim_n f_n = f$ follows clearly from the construction of $f_n$ as $(q_n)_1^{\infty} = \mathbb{Q}\cap[0,1]$.$\hfill\blacksquare$\\
+
+    \textbf{P6.}
+    \begin{enumerate}
+        \item[(a)] Show that for all $n\geq 1$ and all $x\in[0,1]$ we have $0\leq f_n(x)\leq 1$ and $f_{n+1}(x)\leq f_n(x)$, and
+            use this to infer that $f(x) = \lim_n f_n(x)$ exists.
+        \item[(b)] Show that the function $f$ is discontinuous at every point of $\widetilde{C}$.
+        \item[(c)] Conclude that the function $f$ is not Riemann integrable.
+    \end{enumerate}
+
+    \textbf{Solution.}
+
+    (a) We are given $0\leq F_n(x)\leq 1$ for all $x\in[0,1]$, for all $n\in\mathbb{N}$, thus $f_n(x)$ is the multiplication of
+    \textit{positive} real numbers less than 1. Therefore, it must be the case that $0\leq f_n(x)\leq 1$. Similarly,
+    note $f_n(x) = F_1(x)\cdot\hdots\cdot F_n(x) \leq F_1(x)\cdot\hdots\cdot F_n(x)\cdot F_{n+1}(x) = f_{n+1}(x)$
+    since $0\leq F_{n+1}(x)\leq 1$. Therefore, $f_n(x)\geq f_{n+1}(x)$. By the bounded monotone convergence theorem,
+    $\lim_n f_n(x)$ converges to a real number (in particular, a positive real number less than 1). 
+    Define a function $f:[0,1]\to[0,1]$ defined by $f(x) = \lim_n f_n(x)$. \\
+
+    \newpage
+
+    (b) Choose an arbitrary point $x\in\widetilde{C}$ and any open interval $U$ containing $x$. Refer to the Lemma below to obtain
+    the fact that there exists some point $y$ in $[0,1]$ distinct from $x$ so that $f(y)=0$ and $y\in U$. Therefore, we obtain that
+    if we fix $x\in\widetilde{C}$ choose any $\epsilon < 1$, for all $\delta >0$, if $0<|x-y|<\delta$, we have that
+    $|f(x)-f(y)| = 1 > \epsilon$ implying that $f$ is continuous at $x$ as wanted.\\
+
+    (c) We are given that $\widetilde{C}$ has positive measure and so since $f$ is clearly bounded by 0 and 1, it is a bounded function
+    whose set of discontinuities is of positive measure implying that $f$ is not Riemann integrable.$\hfill\blacksquare$
+
+    \begin{lemma}
+        Let $(a,b)\subset [0,1]$ for real $a,b$. We show there exists some $(c,d)\subseteq (a,b)$ such that $(c,d)$ is removed
+        at some iteration of $\widetilde{C}$. Furthermore, we have that for any $x\in\widetilde{C}$ and an open interval $(a,b)$
+        containing $x$, there exists a point $y$ in $(a,b)$ such that $f(y) = 0$.
+    \end{lemma}
+    \begin{proof}
+        Suppose not. Then $(a,b)\cap(\widetilde{C})^c = \emptyset$ since if there exists $x\in (a,b)\cap(\widetilde{C})^c$, then
+        $x$ is contained in $(a,b)$ which is open and is contained in some removed open interval $I_n$ in the construction of 
+        $\widetilde{C}$. Since $x$ lies in the intersection of two open sets, there clearly exists some open interval $I$ such that
+        $I \subseteq (a,b)\cap (I_n)$. Define $I := (c,d)$ for some $c<d$ real so we are done as $I$ was removed when $I_n$ was
+        removed at some iteration of $\widetilde{C}$. But this cannot be since we assumed that such a $(c,d)$ cannot exist. Therefore,
+        $(a,b)\cap(\widetilde{C})^c=\emptyset$. Thus, $(a,b)\subseteq\widetilde{C}$ since $(a,b)\subset [0,1]$. But $\widetilde{C}$
+        cannot contain any proper intervals (i.e. a non-empty open interval) since that would imply $\widetilde{C}$ is dense at
+        some point. Therefore, $(a,b)\cap(\widetilde{C})^c\neq\emptyset$ so that there exists $x\in(a,b)\cap(\widetilde{C})^c$
+        which as we have proved implies that the first part of this lemma is true.\\
+
+        Choose $x\in\widetilde{C}$ and an open interval $(a,b)$ containing $x$. Then there exists some interval $(c,d)$ which
+        is a subset of $(a,b)$ which was removed at some iteration of $\widetilde{C}$. Let $y$ be the center of $(c,d)$. By
+        construction of $f$, there exists some $F_n$ for some $n$ such that $F_n(y) = 0$ which implies $f(y) = 0$. 
+    \end{proof}
+    
+    
+    
+
+\end{document}

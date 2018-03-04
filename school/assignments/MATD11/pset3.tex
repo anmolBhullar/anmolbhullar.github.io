@@ -1,0 +1,109 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11: Functional Analysis\\
+    Assignment 3}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \textbf{Preface.}\\
+
+    We may say $x_n\to x$ to say that $(x_n)_{n=1}^{\infty}$ is a sequence which converges to $x$. Instead of writing 
+    $(x_n)_{n=1}^{\infty}$, we may just say $(x_n)_1^{\infty}$ or even just $(x_n)$ where context is clear.\\
+
+    \textbf{P1.}\\
+
+    Suppose $M$ is a dense subspace in a Banach space $X$ (meaning that the closure of $M$ is all of $X$) and suppose that
+    $T:M\to Y$ is linear, where $Y$ is a Banach space, with $\norm{Tm}_Y \leq K\norm{m}_X$ for some $K<\infty$ and all $m\in M$.
+    Show that $T$ extends, in a unique way, to a bounded linear operator from $X$ into $Y$.\\
+
+    \textbf{Solution.}
+
+    Note $\overline{M} = X$. Thus, by definition, we have that for all $x\in X$, there exist some sequence $(x_n)_1^{\infty}$ in $M$
+    such that $x_n\to x$. Define a mapping $T': X\to X$ by $T'(x) = \lim_{n\to\infty} T(x_n)$. Supposing this mapping is well
+    defined, it is clear that $T'$ is then a mapping from $X$ to itself. Note our definition of $T'$ does not depend on our choice
+    of $(x_n)$. To see why choose sequences $x_n\to x$ and $y_n\to x$ such that both $(x_n)_1^{\infty}$ and $(y_n)_1^{\infty}$
+    lie in $M$. Using uniqueness of limits in a Banach space (every Banach space is a metric space which are always Hausdorff),
+    we know:
+    \[ \lim_{n\to\infty} T(x_n) = T'(x)\qquad\text{and}\qquad\lim_{n\to\infty} T(y_n) = T'(x) \]
+    is always true. Thus, we have that $\lim_{n\to\infty} T(x_n) = \lim_{n\to\infty} T(y_n)$ which implies the value of $T'(x)$
+    is independent of our choice of sequence and so $T'$ is a well defined function.\\
+    
+    Now, we want to show that $T'$ is a \textit{continuous} extension of $T$. In order to do this, it suffices to show $T'|M = T$
+    is true and $T'$ is continuous on $X$. $T'|M$ is clearly a map from $M\to X$ where $T'|_M(x\in M) = \lim_{n\to\infty} T(x_n)$ for
+    some sequence $x_n\to x$ in $M$. Simply, choose the constant sequence $(x)_1^{\infty}$ since $x\in M$.  Clearly, this converges to
+    $x$. Then, note $\lim_{n\to\infty} T(x) = T(x)$ so that $T'|_M(x) = T(x)$ as wanted. It is left to show $T'$ is continuous.\\
+
+    Fix any $x\in X$. We want to show:
+    \[ \forall\;\epsilon>0,\;\exists\;\delta>0\;\text{such that if}\; 0<|x-y|<\delta,\;\text{then}\;|f(x)-f(y)|<\epsilon \]
+    Thus, choose $\epsilon > 0$, then for $\delta = \epsilon/K$ (if $K=0$, then $T$ is identically 0 (recall $T$ is bounded by $K$) 
+    so that $T'$ is identically zero which we know is continuous since it is a constant function), if $0<|x-y|<\delta$, then:
+    \begin{align*}
+        \norm{T'(x) - T'(y)}_Y &= \norm{\lim_{n\to\infty} T(x_n) - \lim_{n\to\infty} T(y_n)}_Y\qquad\text{where}\;x_n\to x,\:y_n\to y\\
+            &= \norm{\lim_{n\to\infty} [T(x_n)-T(y_n)]}_Y\qquad\text{linearity of the limit operator} \\
+            &= \norm{\lim_{n\to\infty} T(x_n-y_n)}_Y\qquad\text{linearity of $T$} \\
+            &= \lim_{n\to\infty} \norm{T(x_n-y_n)}_Y\qquad\text{continuity of} \norm{\cdot} \\
+            &= \lim_{n\to\infty} K\norm{x_n-y_n}_X < \lim_{n\to\infty} K\cdot \delta = \epsilon
+    \end{align*}
+    so that $T'$ is continuous at $x$ and since $x$ was arbitrarily chosen, we have that $T'$ is continuous everywhere. Note this also
+    implies that $T'$ is a bounded mapping by Proposition 2.2.\\
+
+    In order to show $T'$ is a bounded linear operator from $X\to Y$, it is left to show $T'$ is linear.
+
+    Uniquness of $T'$ follows from the Hausdorff property of $Y$.
+    
+    \newpage
+
+    \textbf{P2.}\\
+
+    Let $\Lambda:X\to\mathbb{C}$ is a bounded linear functional on a normed linear space $X$. Recall that $\norm{\Lambda}$ is defined
+    as sup$\{|\Lambda(x)|: \norm{x}\leq 1\}$. Show that
+    \begin{align*}
+        \norm{\Lambda} &=\sup\{|\Lambda(x)|: \norm{x}=1\} \\
+            &=\sup\{|\Lambda(x)/\norm{x}|: x\neq 0\}
+    \end{align*}
+
+    \textbf{P3.}\\
+
+    Let $X,Y$ and $V$ be normed linear spaces and let $A\in\mathcal{B}(X,Y)$ and $B\in\mathcal{B}(Y,V)$. Prove that
+    $BA\in\mathcal{B}(X,V)$ and $\norm{BA}\leq \norm{B}\norm{A}$.\\
+
+    \textbf{P4.}\\
+
+    Let $X$ be a Banach space. Let $\{A_n\}$ be a sequence in $\mathcal{B}(X)$ such that $\sum_{n=1}^{\infty} \norm{A_n}$
+    converges. Prove that the series $\sum_{n=1}^{\infty} A_n$ converges to an operator $A\in\mathcal{B}(X)$ and
+    $\norm{A}\leq\sum_{n=1}^{\infty} \norm{A_n}$.\\
+
+    \textbf{P5.}\\
+
+    Let $X$ be a Banach space and let $A\in\mathcal{B}(X)$. Explain how to define $e^A$ and prove that $e^A\in\mathcal{B}(X)$.\\
+
+    \textbf{P6.}\\
+
+    A sequence $\{h_n\}$ in a Hilbert space $\mathcal{H}$ is said to \textbf{converge weakly} to $h\in\mathcal{H}$ if
+    \[ \lim_{n\to\infty} \langle h_n,g\rangle = \langle h,g\rangle \]
+    for every $g\in\mathcal{H}$.
+    \begin{enumerate}
+        \item[(a)] If $\{e_n\}$ is an orthonormal sequence in $\mathcal{H}$, show that $e_n\to 0$ weakly.
+        \item[(b)] Show that if $h_n\to h$ in norm, then $h_n\to h$ weakly. Show that the converse is false, but that if
+            $h_n\to h$ weakly and $\norm{h_n}\to\norm{h}$, then $h_n\to h$ in norm.
+    \end{enumerate}
+
+\end{document}
