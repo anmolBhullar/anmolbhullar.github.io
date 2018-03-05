@@ -26,7 +26,8 @@
     \textbf{Preface.}\\
 
     We may say $x_n\to x$ to say that $(x_n)_{n=1}^{\infty}$ is a sequence which converges to $x$. Instead of writing 
-    $(x_n)_{n=1}^{\infty}$, we may just say $(x_n)_1^{\infty}$ or even just $(x_n)$ where context is clear.\\
+    $(x_n)_{n=1}^{\infty}$, we may just say $(x_n)_1^{\infty}$ or even just $(x_n)$ where context is clear.
+    We may say $fx$ instead of $f(x)$ for any operator $f$.\\
 
     \textbf{P1.}\\
 
@@ -37,24 +38,31 @@
     \textbf{Solution.}
 
     Note $\overline{M} = X$. Thus, by definition, we have that for all $x\in X$, there exist some sequence $(x_n)_1^{\infty}$ in $M$
-    such that $x_n\to x$. Define a mapping $T': X\to X$ by $T'(x) = \lim_{n\to\infty} T(x_n)$. Supposing this mapping is well
-    defined, it is clear that $T'$ is then a mapping from $X$ to itself. Note our definition of $T'$ does not depend on our choice
+    such that $x_n\to x$. Using this, define a mapping $T': X\to Y$ by $T'(x) = \lim_{n\to\infty} T(x_n)$. Supposing this mapping is well
+    defined, it is clear that $T'$ is then a mapping from $X$ to $Y$ because $Y$ is a Banach space so if $\lim_n (T(x_n))$ converges,
+    it converges to a point in $Y$ and $\lim_n (T(x_n))$ converges since $T$ is a continuous map (prop. 2.2).
+    Note our definition of $T'$ does not depend on our choice
     of $(x_n)$. To see why choose sequences $x_n\to x$ and $y_n\to x$ such that both $(x_n)_1^{\infty}$ and $(y_n)_1^{\infty}$
     lie in $M$. Using uniqueness of limits in a Banach space (every Banach space is a metric space which are always Hausdorff),
     we know:
+    \[ \lim_{n\to\infty} T(x_n) \]
+    only converges to one point, which is $T'(x)$. Thus $x\mapsto T'(x)$ is actually a function. Furthermore, 
     \[ \lim_{n\to\infty} T(x_n) = T'(x)\qquad\text{and}\qquad\lim_{n\to\infty} T(y_n) = T'(x) \]
     is always true. Thus, we have that $\lim_{n\to\infty} T(x_n) = \lim_{n\to\infty} T(y_n)$ which implies the value of $T'(x)$
-    is independent of our choice of sequence and so $T'$ is a well defined function.\\
+    is independent of our choice of sequence and so $T'$ is a well defined function (i.e. does not depend on our choice of sequence).\\
     
-    Now, we want to show that $T'$ is a \textit{continuous} extension of $T$. In order to do this, it suffices to show $T'|M = T$
-    is true and $T'$ is continuous on $X$. $T'|M$ is clearly a map from $M\to X$ where $T'|_M(x\in M) = \lim_{n\to\infty} T(x_n)$ for
+    Now, we want to show that $T'$ is a \textit{continuous} extension of $T$. In order to do this, it suffices to show $T'|_M = T$
+    is true and $T'$ is continuous on $X\backslash M$. 
+    $T'|_M$ is clearly a map from $M\to Y$ (recall $T':X\to Y$) where $T'|_M(x\in M) = \lim_{n\to\infty} T(x_n)$ for
     some sequence $x_n\to x$ in $M$. Simply, choose the constant sequence $(x)_1^{\infty}$ since $x\in M$.  Clearly, this converges to
-    $x$. Then, note $\lim_{n\to\infty} T(x) = T(x)$ so that $T'|_M(x) = T(x)$ as wanted. It is left to show $T'$ is continuous.\\
+    $x$. Then, note $\lim_{n\to\infty} T(x) = T(x)$ so that $T'|_M(x) = T(x)$ as wanted. It is left to show $T'$ is continuous on
+    $X\backslash M$.\\
 
-    Fix any $x\in X$. We want to show:
+    Fix any $x\in X\backslash M$. We want to show:
     \[ \forall\;\epsilon>0,\;\exists\;\delta>0\;\text{such that if}\; 0<|x-y|<\delta,\;\text{then}\;|f(x)-f(y)|<\epsilon \]
     Thus, choose $\epsilon > 0$, then for $\delta = \epsilon/K$ (if $K=0$, then $T$ is identically 0 (recall $T$ is bounded by $K$) 
-    so that $T'$ is identically zero which we know is continuous since it is a constant function), if $0<|x-y|<\delta$, then:
+    so that $T'$ is identically zero because each $T'(x)$ would then be a limit of zero's. Since $T'$ is then
+    identically 0, it is constant, therefore continuous), if $0<|x-y|<\delta$, then:
     \begin{align*}
         \norm{T'(x) - T'(y)}_Y &= \norm{\lim_{n\to\infty} T(x_n) - \lim_{n\to\infty} T(y_n)}_Y\qquad\text{where}\;x_n\to x,\:y_n\to y\\
             &= \norm{\lim_{n\to\infty} [T(x_n)-T(y_n)]}_Y\qquad\text{linearity of the limit operator} \\
@@ -62,14 +70,36 @@
             &= \lim_{n\to\infty} \norm{T(x_n-y_n)}_Y\qquad\text{continuity of} \norm{\cdot} \\
             &= \lim_{n\to\infty} K\norm{x_n-y_n}_X < \lim_{n\to\infty} K\cdot \delta = \epsilon
     \end{align*}
-    so that $T'$ is continuous at $x$ and since $x$ was arbitrarily chosen, we have that $T'$ is continuous everywhere. Note this also
-    implies that $T'$ is a bounded mapping by Proposition 2.2.\\
+    so that $T'$ is continuous at $x$ and since $x$ was arbitrarily chosen, we have that $T'$ is continuous on $X\backslash M$. 
 
-    In order to show $T'$ is a bounded linear operator from $X\to Y$, it is left to show $T'$ is linear.
+    In order to show $T'$ is a bounded linear operator from $X\to Y$, we first to show $T'$ is linear. Choose $a,b$ scalars and
+    $x,y\in X$. Then, we show $T'(ax + by) = aT'(x) + bT'(y)$. We know since $x\in X$ and $\overline{M}=X$, then there exists
+    a sequence $x_n\to x$ and similarly $y_n \to y$, so that $ax_n \to ax$ and $by_n \to b$. In particular,
+    $ax_n + by_n \to ax + by$ by elementary sequence properties. Therefore, we write:
+    \begin{align*}
+        T'(ax_n + by_n) = \lim_{n\to\infty} T(ax_n + by_n)
+    \end{align*}
+    By linearity of $T$, $T(ax_n + by_n) = aT(x_n) + bT(y_n)$. Since $x_n\to x$, then $T'(x) = \lim_n T(x_n)$ and similarly,
+    $\lim_n T(y_n) = T(y)$. Thus by linearity of the limit operator:
+    \begin{align*}
+        T'(ax_n + by_n) &= \lim_{n\to\infty} [aT(x_n)+bT(y_n)] \\
+                        &= a\lim_{n\to\infty}T(x_n)+b\lim_{n\to\infty}T(y_n) \\
+                        &= aT'(x)+bT'(y)
+    \end{align*}
+    so that $T'$ is linear. Furthermore, since $T'|_M = T$, $T'|_M$ is bounded and so it is continuous (prop. 2.2). Also,
+    since if $x$ not in $M$, then it is already shown that $T'$ is continuous on $X\backslash M$. Therefore, $T'$ is continuous
+    on both $M$ and $X\backslash M$ implying that $T'$ is continuous everywhere on $X$ and so it is bounded on $X$ (prop. 2.2).\\
 
-    Uniquness of $T'$ follows from the Hausdorff property of $Y$.
-    
-    \newpage
+    Therefore, $T'\in\mathcal{B}(X,Y)$. Finally, $T'$ extends $T$ in a unique manner. Consider two distinct (don't agree on at least 1
+    point) maps $T'$ and $T^{(2)}$ which extend $T$ in a continuous manner such that it is linear and bounded. 
+    Then, since $T^{(2)}$ is continuous, we have that
+    \[ \lim_{n\to\infty} x_n = x \implies \lim_{n\to\infty} T^{(2)}(x_n) = T^{(2)}(x) \]
+    So, choose some sequence $x_n\to x$ lying in $M$ ($x\in M$ not required). Then since $T^{(2)}$ extends $T$, we have that
+    $T(x_n) = T^{(2)}(x_n)$, so we have that
+    \[ x_n\to x\implies \lim_{n\to\infty} T(x_n) = T^{(2)}(x) \]
+    but this is percisely the definition of $T'$, so we obtain: $T'(x) = T^{(2)}(x)$. Since $x$ is arbitrary, but $T'$ and $T^{(2)}$
+    must differ on at least one point, we have a contradiction. Thus, $T^{(2)}$ does not exist and $T'$ is then
+    a uniquely defined function.$\hfill\blacksquare$\\
 
     \textbf{P2.}\\
 
@@ -80,10 +110,39 @@
             &=\sup\{|\Lambda(x)/\norm{x}|: x\neq 0\}
     \end{align*}
 
+    \textbf{Solution.}
+
+    Let $\Lambda_1 = \sup\{|\Lambda(x)|:\norm{x}=1\}$ and $\Lambda_2 = \sup\{|\Lambda(x)/\norm{x}|:x\neq 0\}$. First note,
+    $\{|\Lambda x|: \norm{x}=1\}\subseteq\{|\Lambda x|:\norm{x}\leq1\}$ and since the supremum of both sets exist, we obtain that
+    $\Lambda\geq\Lambda_1$. Now, note for all $x\in X$ (not 0), $x/\norm{x}$ has norm 1 and by linearity of $\Lambda$:
+    \[ |\Lambda(\frac{x}{\norm{x}})| = |\frac{1}{\norm{x}}\Lambda(x)| = \frac{|\Lambda(x)|}{\norm{x}} \]
+    Thus, we see that $\{|\Lambda(x)/\norm{x}|:x\neq 0\}$ consists of vectors $|\Lambda(y)|$ where $\norm{y}=1$. Thus,
+    $\{|\Lambda(x)/\norm{x}|:x\neq 0\}\subseteq\{|\Lambda(x)|:\norm{x}=1\}$. As before, we get that $\Lambda_2\leq\Lambda_1$.
+    So far, we have that $\Lambda\geq\Lambda_1\geq\Lambda_2$. To obtain that $\Lambda = \Lambda_1 = \Lambda_2$, it suffices to show
+    that $\Lambda_2\geq\Lambda$. Note, for $x\neq 0$, we have $|\Lambda(x)/\norm{x}|\leq\Lambda_2$ and so
+    $|\Lambda(x)|\leq\Lambda_2\norm{x}$ which implies $\Lambda_2$ is an upper bound of $\{|\Lambda(x):\norm{x}\leq 1\}$ and
+    since $\Lambda$ is the \textit{least} upper bound, it follows that $\Lambda_2\geq\Lambda$. Thus, we obtain
+    \[ \Lambda = \Lambda_1 = \Lambda_2 \]
+    as wanted for $x\neq 0$. If $x=0$, we still have $\Lambda_2\geq\Lambda$ since for $x=0$, $\Lambda(x)=0$ (recall $0\mapsto 0$
+    in linear maps) so if the least upper bound is 0 and $\Lambda\geq\Lambda_2$, then it must be that $\Lambda_2 =0$ so we still
+    obtain the equality stated above regardless.$\hfill\blacksquare$\\
+
     \textbf{P3.}\\
 
     Let $X,Y$ and $V$ be normed linear spaces and let $A\in\mathcal{B}(X,Y)$ and $B\in\mathcal{B}(Y,V)$. Prove that
     $BA\in\mathcal{B}(X,V)$ and $\norm{BA}\leq \norm{B}\norm{A}$.\\
+
+    \textbf{Solution.}
+
+    Choose any $x\in X$. Then $Ax\in Y$. Since $Ax\in Y$, then $B(Ax)\in V$. Since $x$ arbitrary, we obtain that $BA$ is a mapping
+    $X\to V$. Choose $x,y\in X$ and scalars $a,b$. Then $BA(ax+by) = B(aA(x)+bA(y))$ by linearity of $A$ and applying by linearity
+    of $B$, we obtain: $BA(ax+by) = B(aA(x)) + B(bA(y)) = aB(A(x))+bB(A(y)) = aBA(x) + bBA(y)$. Therefore, $BA$ is a linear
+    map. Now, note that $\norm{BAx} = \norm{B(Ax)} \leq \norm{B}\norm{Ax}$ and we know $\norm{B}$ exists since $B\in\mathcal{B}(Y,V)$.
+    Furthermore, $\norm{B}\norm{Ax}\leq \norm{B}(\norm{A}\norm{x})$ for similar reasons. So we obtain that:
+    \[ \norm{BAx} \leq \norm{B}\norm{A}\norm{x} \]
+    which implies $\norm{BA}\leq\norm{B}\norm{A}$ (recall $x$ arbitrary). 
+    In particular, this implies $\norm{BA}$ exists so that $BA$ is a bounded linear operator. Thus, $BA\in\mathcal{B}(Y,V)$.
+    $\hfill\blacksquare$\\
 
     \textbf{P4.}\\
 
@@ -91,9 +150,89 @@
     converges. Prove that the series $\sum_{n=1}^{\infty} A_n$ converges to an operator $A\in\mathcal{B}(X)$ and
     $\norm{A}\leq\sum_{n=1}^{\infty} \norm{A_n}$.\\
 
+    \textbf{Solution.}\\
+
+    Define $Ax = \sum_{n=1}^{\infty} A_n(x)$. Claim: $A_n\to A\in\mathcal{B}(X)$. Therefore, the first property we show
+    is that $\sum_{n=1}^{\infty} A_n(x)$ converges, i.e. $Ax$ exists. Recall Cauchy Criterion for series, the sequence of partial
+    sums of $\sum A_nx$ must be Cauchy. We prove this. Fix $x\in X$. $\sum_{n=1}^{\infty} \norm{A_n}$ converges so, for any choice
+    of $\epsilon>0$, there exists $N$ such that if $n'>n>N$, then $|\sum_{m=n}^{n'}\norm{A_m}|<\epsilon$. From this, we get our
+    choice of $N$ to prove $\sum A_nx$ is Cauchy. Observe: Pick an $\epsilon'>0$, then pick an $N>0$ so that
+    $|\sum_{m=N}^{N'} \norm{A_m}|<\epsilon'/\norm{x}$ for $N'>N$. Then for any $n'>n>N$:
+    \begin{align*}
+        \norm{\sum_{m=n}^{n'} A_mx} \leq \sum_{m=n}^{n'} \norm{A_m(x)}
+    \end{align*}
+    by the triangle inequality. Also, $\norm{A_m(x)} \leq \norm{A_m}\norm{x}$ since $A_m\in\mathcal{B}(X)$. Thus:
+    \begin{equation}
+        \norm{\sum_{m=n}^{n'} A_mx} \leq \sum_{m=n}^{n'} \norm{A_m}\norm{x} = \norm{x}[\sum_{m=n}^{n'} \norm{A_m}]
+    \end{equation}
+    Since the sum in the square bracket is less than $\epsilon'/\norm{x}$, we have that:
+    \[ \norm{\sum_{m=n}^{n'} A_m(x)} < \epsilon' \]
+    so that the sequence of partial sums Cauchy converges. $X$ is a Banach space so this sum converges to an element of $X$, thus
+    $Ax$ exists. It is left to show $A\in\mathcal{B}(X)$. To show $\norm{A}$ exists, recall each $A_n\in\mathcal{B}(X)$ and consider:
+    \begin{align*}
+        \norm{A(x)} = \norm{\lim_{n\to\infty} \sum_{i=1}^n A_n(x)} &= \lim_{n\to\infty}\norm{\sum_{i=1}^n A_n(x)} \\
+            &\leq \lim_{n\to\infty} \sum_{i=1}^n \norm{A_n(x)} \\
+            &\leq \lim_{n\to\infty} \sum_{i=1}^n \norm{A_n}\norm{x} < \infty
+    \end{align*}
+    since $\sum_{i=1}^{\infty} \norm{A_i}$ converges so a constant $\norm{x}$ multiplied by the sum should also converge,
+    thus, $\norm{x}(\sum_{i=1}^{\infty} \norm{A_i}) = \sum_{i=1}^{\infty} \norm{A_i}\norm{x}$ should also converge. 
+    (note we actually used absolute convergence here). Thus,
+    \[ \norm{Ax} \leq \sum_{i=1}^{\infty} \norm{A_i}\norm{x} < \infty \]
+    which implies that $\norm{A}$ exists so that $A$ is bounded. In particular, it shows $\norm{A}\leq\sum_{i=1}^{\infty}\norm{A_i}$.
+    Now, we show that $A$ is linear. This is done simply through
+    definition, using the fact that each $A_n$ is linear. Consider for scalars $a,b$ and vectors $x,y\in X$:
+    \begin{align*}
+        A(ax + by) &= \sum_{i=1}^{\infty} A_i(ax+by) \\
+            &= \lim_{n\to\infty} \sum_{i=1}^n A_i(ax+by) \\
+            &= \lim_{n\to\infty} \sum_{i=1}^n [aA_i(x) + bA_i(y)] \\
+            &= a[\lim_{n\to\infty}\sum_{i=1}^n A_i(x)] + b[\lim_{n\to\infty}\sum_{i=1}^n A_i(y)] \\
+            &= aA(x) + bA(y)
+    \end{align*}
+    as wanted. Thus, $A\in\mathcal{B}(X)$.$\hfill\blacksquare$
+    
+    \newpage
+
     \textbf{P5.}\\
 
     Let $X$ be a Banach space and let $A\in\mathcal{B}(X)$. Explain how to define $e^A$ and prove that $e^A\in\mathcal{B}(X)$.\\
+
+    \textbf{Solution.}
+
+    Define $e^A: X\to X$ by $e^A = I + A + 1/2!A^2 + 1/3!A^3 + \hdots = \sum_{n=0}^{\infty} A^n/n!$ where $I$ (or $A^0$) is the identity 
+    mapping and $A^n$ is the composition
+    of $A$ with itself $n$ times. As is usually the case, we first show $e^A$ exists, i.e. the infinite sum converges to some element 
+    of $\mathcal{B}(X)$. Define the sequence $(e^A_n)_{n=1}^{\infty}$ to be the $n$th term in the sum $e^A$. By problem 3 and induction,
+    we obtain that $A^n$ is an operator in $\mathcal{B}(X)$. Since $I$ is the identity map, it is clearly bounded and linear so
+    $I\in\mathcal{B}(X)$. Note since $\mathcal{B}(X)$ is a vector space, we have that for any scalar $a$, and an
+    operator $A$, $aA\in\mathcal{B}(X)$ and also that $\sum_{i=1}^k A^i\in\mathcal{B}(X)$ for all $k$ (VS. closed over scalar mult. and 
+    vector addition). Combining all these facts, we get that for every $k$, $\sum_{i=1}^k e^A_i\in\mathcal{B}(X)$. Before going
+    further, We show $\sum_{n=1}^{\infty} \norm{e^A_n}$ converges. We prove this via the technique of Cauchy Criterion as was
+    done in the last problem. Choose $\epsilon>0$. Recall that the factorial function $n\mapsto n!$ increases much faster than
+    a exponential function $x\mapsto e^x$, thus $\lim_{n\to\infty} \norm{A}^n/n! = 0$. In fact, we can say for $N>0$ such that
+    $N!>2^N$ (this implies $n!>2^n$ for subsequent $n>N$), there exists some $N'>N$ such that for all 
+    $n>N'$: $\norm{A}^n/n! < \epsilon/2^n$. Now, consider for all $n'>n>N'$:
+    \begin{equation}
+        |\sum_{i=n}^{n'} \norm{e^A_i}| = \sum_{i=n}^{n'} \norm{e^A_i}
+    \end{equation}
+    which is true since the norm function always outputs non-negative values. Now,
+    By problem 3, if $A\in\mathcal{B}(X)$, then $A^2\in\mathcal{B}(X)$ and $\norm{A^2} \leq \norm{A}^2$. Thus $\norm{e^A_n}
+    = \norm{A^n/n!} \leq \norm{A}^n/n!$. Thus:
+    \begin{align*}
+        |\sum_{i=n}^{n'} \norm{e^A_i}| &= \sum_{i=n}^{n'} \norm{A^i/i!} \\
+            &= \sum_{i=n}^{n'} \norm{A}/i! \\
+            &< \sum_{i=n}^{n'} \epsilon/2^i = \epsilon[\sum_{i=n}^{n'} 1/2^i]
+    \end{align*}
+    By our geometric series knowledge, we know $\epsilon[\sum_{i=0}^{\infty} 1/2^i] = 2\epsilon$. Since this infinite sum is clearly
+    larger than the finite sum from $n$ to $n'$. We have that: $|\sum_{i=n}^{n'} \norm{e^A_i}| < 2\epsilon$. This is sufficient to
+    show that the sequence of partial sums Cauchy converge (if one wishes, they can easily make the desired sum less than $\epsilon$
+    but it is quite trivial as it amounts to re choosing our original $\epsilon$). Thus, $\sum_{n=1}^{\infty} \norm{e^A_i}$ converges
+    as wanted.\\
+
+    We then have that for all $k$, 
+    $\sum_{i=1}^k e^A_i\in\mathcal{B}(X)$, and the sequence $(s_n)_1^{\infty} = (\sum_{i=1}^k e^A_i)_{k=1}^{\infty}$ of elements
+    in $\mathcal{B}(X)$ such that $\sum_{i=1}^{\infty} \norm{e^A_i}$ converges. Thus, by problem 4, $(s_n)$ converges to an operator
+    in $\mathcal{B}(X)$. Since $s_n$ consists of the partial sums of $e^A$, it is clear $s_n \to e^A$ and by uniqueness of limits
+    in Banach spaces (which $\mathcal{B}(X)$ is), we have that $e^A\in\mathcal{B}(X)$ as wanted.$\hfill\blacksquare$\\
 
     \textbf{P6.}\\
 
@@ -105,5 +244,148 @@
         \item[(b)] Show that if $h_n\to h$ in norm, then $h_n\to h$ weakly. Show that the converse is false, but that if
             $h_n\to h$ weakly and $\norm{h_n}\to\norm{h}$, then $h_n\to h$ in norm.
     \end{enumerate}
+
+    \textbf{Solution.}
+
+    The claim we want to prove is: $\lim_{n\to\infty} \langle e_n,g\rangle = \langle 0,g\rangle$. But $\langle 0,g\rangle = 0$,
+    so we have to show $\lim_{n\to\infty} \langle e_n,g\rangle = 0$. Choose any $\epsilon>0$ and fix any $g\in\mathcal{H}$.
+    By Bessell's inequality, we have that
+    \[ \sum_{n=1}^{\infty} \langle e_n,g\rangle \leq \norm{g}^2 \]
+    which implies that the sum on the left side converges. By the zero test for series, we have that the sequence where the $n$th
+    term is the $n$th term in the sum above goes to zero i.e. $\lim_{n\to\infty} \langle e_n,g\rangle = 0$. This is what we wanted
+    to show.\\
+
+    Recall, $h_n\to h$ in norm means that $\norm{h_n-h}\to 0$. To do this, we need to establish a few small results. First, recall
+    by Proposition 1.22 that $\norm{h_n-h}^2 = \norm{h_n}^2 - 2\text{Re}\langle h_n,h\rangle + \norm{h}^2$. Next,
+    we are given $\norm{h_n} \to h$ so it follows by elementary properties of sequences that $\norm{h_n}^2 \to \norm{h}^2$.
+    Finally, we are given $h_n\to h$ weakly. So, choose $g = h$, then $\langle h_n,h\rangle \to \langle h,h\rangle$. Finally,
+    we are ready to prove (b). Note we use (the just now) established results without stating them:
+    \begin{align*}
+        \norm{h_n-h}^2 &= \norm{h_n}^2 - 2\text{Re}\langle h_n,h\rangle + \norm{h}^2 \\
+            \implies \lim_{n\to\infty} \norm{h_n-h}^2 &= \norm{h}^2 + 2\text{Re}\langle h,h\rangle + \norm{h}^2 \\
+            &= 2\norm{h}^2 - 2\norm{h}^2 = 0
+    \end{align*}
+    Thus, $\norm{h_n-h}^2\to 0$ and by taking the square root of both sides (each term in $\norm{h_n-h}^2$ is clearly positive),
+    we obtain the desired result.$\hfill\blacksquare$
+
+    \newpage
+
+    \textbf{P7.}\\
+
+    Let $S$ be the forward shift on $l^2$. Verify that $S^*$ is the backward shift on $l^2$.\\
+
+    \textbf{Solution.}
+
+    Let $x,y\in l^2$. By Theorem 2.12, since $S\in\mathcal{B}(l^2)$, there exists $S^*$ so that $\langle Sx,y\rangle =
+    \langle x,S^* y\rangle$. We prove this $S^*$ is the backward shift. Let $B$ denote the backward shift on $l^2$.\\
+
+    If $x = (x_1,x_2,\hdots)$, then $Sx = (0,x_1,x_2,\hdots)$ so if $\langle x,y\rangle = \sum_{i=1}^{\infty} x_j\overline{y_j}$
+    (definition of inner product in $l^2$), then $\langle Sx,y\rangle = \sum_{i=1} x_{j-1}\overline{y_j}$ where $x_0 := 0$. Thus,
+    $\langle Sx,y\rangle = \sum_{i=2}^{\infty} x_{j-1}\overline{y_j}$.\\
+
+    Similar to before, if $y = (y_1,y_2,\hdots)$, then $By = (y_2,y_3,\hdots)$. So, $\langle x,By\rangle = 
+    \sum_{i=1}^{\infty}x_j\overline{y_{j+1}}$. This is the same as saying, $\sum_{i=2}^{\infty} x_{j-1}\overline{y_j}$.\\
+
+    Thus, $\langle Sx,y\rangle = \sum_{i=2}^{\infty} x_{j-1}\overline{y_j} = \langle x,By\rangle$ so that the adjoint of the forward
+    shift is the backward shift as wanted.$\hfill\blacksquare$\\
+
+    \textbf{P8.}\\
+
+    Let $\mathcal{H}$ be a Hilbert space and let $S,T\in\mathcal{B}(\mathcal{H})$. Determine whether $\langle Tx,x\rangle 
+    =\langle Sx,x\rangle$ for all $x\in\mathcal{H}$, implies $S = T$.\\
+
+    \textbf{Solution.}
+
+    Consider:
+    \begin{align*}
+        \langle Sx,x\rangle = \langle Tx,x\rangle &\implies \langle Sx,x\rangle - \langle Tx,x\rangle = 0 \\
+            &\implies \langle Sx-Tx,x\rangle = 0
+    \end{align*}
+    Choose $x\neq 0$. Then since $\langle Sx-Tx,x\rangle = 0$, we must have that at least one of $Sx-Tx$ or $x$ must be 0. We chose
+    $x\neq 0$, thus, $Sx-Tx=0$. Therefore, $Sx = Tx$. For $x=0$, since $S$ and $T$ are linear maps, so is $S-T$, thus, $S-T$
+    maps $0\to 0$ (property of all linear maps). Therefore, $S0 = T0$.
+    Therefore, for every $x\in\mathcal{H}$, we have that $Sx=Tx$. thus, $S = T$.$\hfill\blacksquare$\\
+
+    \newpage
+
+    \textbf{P9.}\\
+
+    Let $\mathcal{H}$ be a Hilbert space and let $P:\mathcal{H}\to M$ be the orthogonal projection of $\mathcal{H}$ onto a closed
+    subspace $M$ of $\mathcal{H}$. Verify that $P$ is self-adjoint and that $P^2 = P$.\\
+
+    \textbf{Solution.}
+
+    We know that the projection map $P\in\mathcal{B}(\mathcal{H})$. Thus, by theorem 2.12, there exists some map $P^*\in\mathcal{B}
+    (\mathcal{H})$ such that $\langle Px,y\rangle = \langle x,P^* y\rangle$. We show $P^* = P$.\\
+    By the projection theorem, there exists another projection $Q:\mathcal{H}\to M^{\perp}$ such that,
+    $x = Px + Qx$ for every $x\in\mathcal{H}$. Choose $x,y\in\mathcal{H}$. Then:
+    \[ \langle Px,y\rangle = \langle Px, Py + Qy\rangle = \langle Px,Py\rangle + \langle Px,Qy\rangle \]
+    and,
+    \[ \langle x,Py\rangle = \langle Px + Qx,Py\rangle = \langle Px,Py\rangle + \langle Qx,Py\rangle \]
+    Note that $Qx\in M^{\perp}$ so that by definition since $Py\in M$, we have $\langle Qx,Py\rangle = 0$ and similarly,
+    $\langle Px,Qy\rangle = 0$. Thus, we have that $\langle Px,y\rangle = \langle Px,Py\rangle = \langle x,Py\rangle$ as wanted.
+    Thus, $P$ is self-adjoint.\\
+
+    To show $P^2 = P$, it suffices to note that if $x\in M$, then $Px = x$. Thus, $P^2(x\in \mathcal{H}) = P(Px)$ where $Px$ is then
+    in $M$ since $P:\mathcal{H}\to M$. Thus, $P(Px) = Px$. Since $x$ is arbitrary, we have $P^2 = P$.$\hfill\blacksquare$\\
+
+    \textbf{P10.}\\
+
+     For $A$ and $B$ in $\mathcal{B}(\mathcal{H})$ we have (c) $(\alpha A)^* = \overline{\alpha}A^*$ for $\alpha\in\mathbb{C}$ and
+     (d) $(AB)^* = B^* A^*$.\\
+
+     \textbf{Solution.}
+
+     (c) By theorem 2.12, there exists $A^*\in\mathcal{B}(\mathcal{H})$ such that for $h,k\in\mathcal{H}$:
+     $\alpha\langle Ah,k\rangle = \alpha\langle h,A^* k\rangle$. Recall the property of inner product that:
+     $\langle x,\alpha y\rangle = \overline{\alpha}\langle x,y\rangle$ and $\alpha\langle x,y\rangle =\langle\alpha x,y\rangle$.
+     From this, consider:
+     \begin{align*}
+         \alpha\langle Ah,k\rangle = \langle \alpha(Ah),k\rangle = \langle (\alpha A)k,\rangle
+     \end{align*}
+     and
+     \[ \alpha\langle Ah,k\rangle = \alpha\langle h,A^* k\rangle = \langle h,\overline{\alpha}(A^*(k))\rangle
+         = \langle h,(\overline{\alpha} A^*)k\rangle \]
+     Thus, we have that $\langle (\alpha A)h,k\rangle = \langle h,(\overline{\alpha}A^*)k\rangle$ implying that the adjoint
+     of $\alpha A$ is $\overline{\alpha} A^*$ i.e. $(\alpha A)^* = \overline{\alpha} A^*$ as wanted.
+
+     \newpage
+
+     (d) By problem 3, we know that $AB\in\mathcal{B}(\mathcal{H})$, thus by theorem 2.12, it follows that there exists a mapping
+     $(AB)^*$ such that it is the adjoint of $AB$. Note since $Bh\in\mathcal{H}$ for arbitrary $h\in\mathcal{H}$, we have that
+     for any $k\in\mathcal{H}$:
+     \[ \langle A(Bh),k\rangle = \langle Bh,A^*k\rangle \]
+     and as noted before, we have
+     \[ \langle (AB)h,k\rangle = \langle h,(AB)^*k\rangle \]
+     Since $A(Bh) = (AB)h$ just by definition of $AB$, we obtain from the two equalities above,
+     \[ \langle Bh, A^* k\rangle = \langle h,(AB)^*k\rangle \]
+     Furthermore, note since $B^*$ and $A^*$ are in $\mathcal{B}(\mathcal{H})$, so there exists an adjoint for the map
+     $B^* A^*$. Thus, we can say:
+     \[ \langle B^*(A* k),h\rangle = \langle A^* k, (B^*)^* h\rangle = \langle A^*k,Bh\rangle \]
+     where $(B^*)^*$ by Prop. 2.13. Note for the above equality, we have:
+     \begin{align*}
+         \overline{\langle h, B^*(A^* k)\rangle} &= \overline{\langle Bh, A^*k\rangle} \\
+         \implies \langle h,B^*(A^*k)\rangle &= \langle Bh,A^*k\rangle
+     \end{align*}
+     because the conjugate of a conjugate of a complex number is the complex number itself. Thus, we obtain:
+     \[ \langle h,B^*(A^*k)\rangle = \langle h,(B^*A^*)k\rangle \]
+     so that $\langle ABh,k\rangle = \langle h,(AB)^*k\rangle = \langle h,B^*A^*k\rangle$ so that $(AB)^* = B^* A^*$ as wanted.\\
+
+     \textbf{P11.}\\
+
+     Show that $T^{-1}$ is linear given a linear bijective mapping $T$ between vector spaces $X$ and $Y$.\\
+
+     \textbf{Solution.}\\
+
+     $T$ is bijective so $T^{-1}$ exists. We want to show for $a,b$ scalars, $x,y\in Y$, that $T^{-1}(ax+by) = aT^{-1}(x)+T^{-1}(y)$.
+     Since $T$ is surjective, we have that there exist some $x'\in X$ such that $T(x') = x$ and similarly,
+     $T(y'\in X) = y$. In particular, $T(ax') = aT(x') = ax$ and $T(by') = bT(y') = by$ since $T$ is linear. Thus, we can
+     write $T^{-1}(ax+by)$ as $T^{-1}(aT(x') + bT(y'))$. Since $T$ is linear, we have that,
+     \[ T^{-1}(ax+by) = T^{-1}(T(ax') + T(by')) = T^{-1}(T(ax'+by')) \]
+     since $T$ and $T^{-1}$ are inverses, we have that $T^{-1}(T(ax'+by')) = ax' + by'$. However, $T^{-1}(x) = x'$ and similarly,
+     $T^{-1}(y) = y'$ so,
+     \[ T^{-1}(ax+by) = aT^{-1}(x) + bT^{-1}(y) \]
+     as wanted.$\hfill\blacksquare$
+
 
 \end{document}
