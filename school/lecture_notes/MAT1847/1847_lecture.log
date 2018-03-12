@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 JAN 2018 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 MAR 2018 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1274,47 +1274,73 @@ File: IMG_1023.jpg Graphic file (type jpg)
 Package pdftex.def Info: IMG_1023.jpg used on input line 650.
 (pdftex.def)             Requested size: 181.23767pt x 57.66881pt.
  [16]
-Underfull \hbox (badness 10000) in paragraph at lines 657--658
-
- []
-
 <IMG_1024.jpg, id=74, 3912.6175pt x 774.895pt>
 File: IMG_1024.jpg Graphic file (type jpg)
  <use IMG_1024.jpg>
-Package pdftex.def Info: IMG_1024.jpg used on input line 678.
+Package pdftex.def Info: IMG_1024.jpg used on input line 687.
 (pdftex.def)             Requested size: 195.64233pt x 38.74701pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--682
+Underfull \hbox (badness 10000) in paragraph at lines 689--691
 
  []
 
-[17 <./IMG_1023.jpg> <./IMG_1024.jpg>] [18] (./1847_lecture.aux) ) 
+[17 <./IMG_1023.jpg> <./IMG_1024.jpg>]
+LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 721.
+ [18]
+Underfull \hbox (badness 10000) in paragraph at lines 753--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 755--757
+
+ []
+
+
+Overfull \hbox (9.9681pt too wide) in paragraph at lines 790--794
+[]\T1/stix/m/n/10.95 It suf-fices to show the Fa-tou set is in-vari-ant. Fur-th
+er-more, we have $\LS1/stix/m/n/10.95 .\LS1/stix/m/it/10.95 f[]\LS2/stixex/m/n/
+10.95 ð[]\LS1/stix/m/n/10.95 /[]$
+ []
+
+[19]
+Overfull \hbox (4.59225pt too wide) detected at line 831
+\LS2/stixcal/m/n/10.95 A \LS1/stix/m/n/10.95 = ^\LS1/stix/m/it/10.95 z \LS1/sti
+x/m/n/10.95 Ë [] [] \LS1/stix/m/it/10.95 f[]\LS1/stix/m/n/10.95 .\LS1/stix/m/it
+/10.95 z\LS1/stix/m/n/10.95 /\LS1/stix/m/it/10.95 ; f[]\LS1/stix/m/n/10.95 .\LS
+1/stix/m/it/10.95 z\LS1/stix/m/n/10.95 /\LS1/stix/m/it/10.95 ; f[]\LS1/stix/m/n
+/10.95 .\LS1/stix/m/it/10.95 z\LS1/stix/m/n/10.95 /\LS1/stix/m/it/10.95 ; \LS1/
+stix/m/n/10.95 §  [] \LS1/stix/m/it/10.95 z[]\LS1/stix/m/n/10.95 `
+ []
+
+[20] (./1847_lecture.aux) ) 
 Here is how much of TeX's memory you used:
- 16181 strings out of 493089
- 311206 string characters out of 6134842
+ 16216 strings out of 493089
+ 311696 string characters out of 6134842
  331580 words of memory out of 5000000
- 19307 multiletter control sequences out of 15000+600000
- 73335 words of font info for 75 fonts, out of 8000000 for 9000
+ 19340 multiletter control sequences out of 15000+600000
+ 92526 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,15n,84p,456b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/t
-exlive/2015/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}</usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathbb.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathcal.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathfrak.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on 1847_lecture.pdf (18 pages, 5467392 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/
+stix/stix-t1.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/ST
+IXGeneral-Bold.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/
+STIXGeneral-BoldItalic.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/stix/stix-mathbb.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/stix/stix-mathcal.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/stix/stix-mathex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/stix/stix-mathfrak.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/stix/stix-mathit.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+stix/stix-mathrm.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/sti
+x/stix-mathscr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/stix/
+stix-mathsf.pfb>
+Output written on 1847_lecture.pdf (20 pages, 5483405 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

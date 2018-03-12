@@ -1,0 +1,289 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{MATC37 Assignment 4}
+\author{Anmol Bhullar}
+ 
+\maketitle
+
+
+\begin{problem}{1}
+    Given a collection of Lebesgue measurable sets $F_1,\hdots,F_n\subset\R^d$, construct another collection
+    $F_1^*,\hdots,F_N^*$ of Lebesgue measurable sets with $N = 2^n - 1$ such that $\cup_1^n F_k = \cup_1^N F_j^*$, the
+    $F_j^*$'s are disjoint and $F_k = \cup_{F_j^*\subset F_k} F_j^*$.
+\end{problem}
+
+
+\begin{solution}{}
+
+    The collection $A:= \{F_1^{'} \cap \hdots \cap F_n^{'}: F_i^{'} = F_i$ or $F_i^{'} = F_i^c\}$ is clearly of
+    cardinality $2^n$ since in each element of $A$, there are $n$ intersections of elements from 
+    $\{F_1,\hdots,F_n,F_1^c,\hdots,F_n^c\}$ where each element 
+    can be one of two choices $F_i^c$ or $F_i$. Remove $F_1^c \cap F_2^c \cap \hdots \cap F_n^c$ from $A$ so 
+    that $A$ then has cardinality of $2^n-1$. We claim that $A$ is the desired collection of Lebesgue measurable 
+    sets. First, of all it is clear that each element of $A$ is measurable since it is the intersection of
+    measurable sets with intersections of the complement of a measurable set (which is still measurable).
+    \newline
+    
+    First, we show that the union of all elements in $A$ is equal to $\cup_1^n F_k$.\\
+    Choose $x\in F_k\subseteq \cup_1^n F_k.$ If $x\in F_k$, then for all $1\leq i\leq n$, $x\in F_i$ or $x\in F_i^c$
+    (recall $B \cup B^c = \R^d$ for any $B\subseteq\R^d$). Thus, we can find an element in $A$ such that
+    $x\in F_1^{'} \cap F_2^{'} \cap \hdots \cap F_n^{'}$ with the property that for each $F_i^{'}$, if $x\in F_i$,
+    then $F_i^{'}=F_i$ and similarly for the complement case. Therefore, $x\in\cup A$.\\
+    Now, choose $x\in F_j^{*}\subseteq \cup A$. Write $F_j^{*} = F_1^{'}\cap\hdots\cap F_n^{'} = F_j^{*}$. 
+    Since we removed the set $F_1^c \cap \hdots \cap F_n^c$ from $A$, there exists some $i$ such that
+    $F_i^{'} = F_i$ and so $x\in F_i$. But then since $F_i\in\cup_1^n F_k$, we have that $x\in\cup_1^n F_k$.\\
+    Therefore, $\cup_1^n F_k = \cup A$ as wanted.
+    \newline
+    
+    Now, we show $A$ is a collection of pairwise disjoint elements. Pick $F_j^{*}$ and $F_k^{*}$ in $A$ such that $j\neq k$.
+    Write $F_j^{*} = a_1 \cap \hdots \cap a_n$ and $F_k^{*} = b_1 \cap \hdots \cap b_n$ where for each $a_i, b_i$, we have that
+    $a_i = F_i^c$ or $a_i = F_i$ and similarly for each $b_i$. If $F_j^{*}\neq F_k^{*}$, then by this construction, there
+    exists some $1\leq i\leq n$ such that $a_i\neq b_i$. Thus, if $x\in F_k^{*}$, then $x\in b_i$ and consequently $x\not\in a_i$
+    so that $x\not\in a_1\cap \hdots\cap a_n$. In particular, for every $x\in F_k^{*}$, $x\not\in F_j^{*}$ and a quick repetition
+    of this argument shows that if $x\in F_j^{*}$, then $x\not\in F_k^{*}$ implying that $F_j^{*}\cap F_k^{*}=\empty$ as wanted.
+    Thus, all the $F_j^{*}$ (i.e. elements of $A$) are disjoint.\\
+    
+    It is left to show $F_k = \cup_{F_j^{*}\subset F_k} F_j^{*}$ for all $k\neq n$. For any $F_j^{*}$ in $A$, $F_j^{*}\subset F_k$
+    if and only if the $k$th intersecting element of $F_j^{*}$ is equal to $F_k$ i.e. if we can write
+    $F_j^{*} = F_1^{'} \cap \hdots \cap F_n^{*}$, then $F_k^{'} = F_k$. Choose some $x\in F_k$. If $x\in F_j^{*}$, then we're done.
+    So, assume $x\not\in F_j^{*}$ which implies for some $i$, $x\not\in F_i^{'}$. Note $i\neq k$ by the discussion above.
+    Thus, choose some element $F_q^{*} = a_1\cap\hdots\cap a_n$ such that $F_q^{*} = F_j^{*}$ except at all choices of $i$ for
+    which $x\not\in F_i^{'}$, let $a_i = (F_i^{'})^c$. Then $x\in F_q^{*}$ and $F_q^{*}\subset F_k$ since $a_k = F_k$. Thus,
+    $F_k\subseteq \cup_{F_j^{*}\subset F_k} F_j^{*}$ and the subset containment for the other direction follows directly from the
+    fact that $\cup_{F_j^*\subset F_k} F_j^*$ is a union of sets contained in $F_k$. Thus, $\cup_{F_j^*\subset F_k} F_j^* = F_k$
+    as wanted.
+\end{solution}
+
+\begin{problem}{2}
+
+    Let $\phi:\R^d\to\R$ be a simple function, and let $\phi = \sum_1^n \hat{a_i}\chi_{\hat{E_i}}$ be its canonical
+    representation.
+    
+    \begin{enumerate}
+        \item Prove that if $\phi = \sum_1^N a_k\chi_{E_k}$ is another representation of the simple function $\phi$, where
+        the $E_k$'s are disjoint finite measure sets, but the $a_k$'s are not necessarily distinct or nonzero, then
+        $\sum_1^N a_km(E_k) = \sum_1^n \hat{a_i}m(\hat{E_i})$.
+        
+        \item Prove that if $\phi = \sum_1^N a_k\chi_{E_k}$ is another representation of the simple function $\phi$, where
+        the $E_k$'s are finite measure sets but not necessarily disjoint and the $a_k$'s are not necessarily distinct or
+        nonzero, then $\sum_1^N a_km(E_k) = \sum_1^n \hat{a_i}m(\hat{E_i})$. 
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    sLet $\phi = \sum_{k=1}^N a_k\chi_{E_k}$ where the collection $E_1,\hdots,E_k$ of lebesgue measurable sets are disjoint but
+    not all $a_k$'s are distinct and some may be zero. If some $a_i$ is zero, then we can simply remove the set $E_i$ and the constant
+    $a_i$ from our summation since it does not impact the sum. Thus, we have a new collection $E_1,\hdots,E_M$ of disjoint Lebesgue
+    measurable sets (for $M\leq N$) such that $\phi = \sum_{k=1}^M a_k\chi_{E_k}$. Next, since every $E_k$ is disjoint from $E_j$
+    ($j\neq k$), then $\phi(x)$ for $x\in\R^d$ is in some specific $E_i$ for some $i$ i.e. $\phi(x) = a_i\chi_{E_i}$. Now, suppose
+    that there is some $a_i = a_j$ for $i\neq j$. We can again simplify our summation by setting $E_i := E_{i'} \cup E_{j'}$ and
+    $a_i = a_{i'}$
+    (the apostrophe signifies that we are referring to the previous, unsimplified collection) and completely removing $E_j$ and $a_j$.
+    Clearly the function is not affected since for any $y\in E_{j'}$, $y\in E_i$ so that $\phi(y) = a_i\chi_{E_i} = a_{j'}\chi_{E_{j'}}$
+    and $a_i = a_{j'}$ from assumption that $a_{i'} = a_{j'}$. We can repeat this process until every $a_i$ is distinct. Thus,
+    we have that every $a_i$ is distinct and non-zero and every $E_k$ is disjoint. Thus, $\phi = \sum_{k=1}^F a_k\chi_{E_k}$ (for
+    some $F$ given by removal of non-distinct constants) is a canonical representation of $\phi$ but the canonical representation 
+    of a simple function is unique. Thus, the collection $a_1,\hdots,a_F$ and $\hat{a_1},\hdots,\hat{a_n}$ are equivalent (perhaps
+    upto reordering of indices) and similarly for the collections $E_1,\hdots,E_F$ and $\hat{E_1},\hdots,\hat{E_n}$. Thus, it follows
+    that the following equality holds:
+    \[ \sum_{k=1}^F a_km(E_k) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
+    To see that the sum on the left side is equal to the sum where we hadn't removed the non-distinct constants, it suffices to
+    notice that $a_k m(E_k) = a_k m(E_{k'} + E_{j'})$ and since $E_{k'}$ and $E_{j'}$ are disjoint, then: $a_km(E_k) =
+    a_k(m(E_{k'} + E_{j'})) = a_km(E_{k'}) + a_km(E_{j'}) = a_{k'}m(E_{k'}) + a_{j'}m(E_{j'})$. And this sum is equivalent to the
+    summation where we hadn't removed zero-valued constants because 0 is the additive identity and does not affect summations. Thus,
+    \[ \sum_{k=1}^N a_km(E_k) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
+    as wanted.\\
+
+    For the second part, we know $E_1,\hdots, E_N$ are lebesgue measurable sets (otherwise $m(E_k)$ is meaningless). By question 1,
+    we know there exists some other collection of lebesgue measurable sets $E_1^{'},\hdots,E_F^{'}$ where $F = 2^{N} -1$ and has all of
+    the properties question 1 requires. We can then write $\phi = \sum_{i=1}^F g_i m(E_i^{'})$ for constants $g_i$ which are yet to
+    be defined.\\
+
+    We know $E_k = \cup_{E_j^{'}\subset E_k} E_j^{'}$ so $m(E_k) = \sum_{j: E_j^{'}\subset E_k} E_j^{'}$. Thus,
+    \[ \phi = \sum_{k=1}^{N} a_km(E_k) = \sum_{k=1}^{N} a_k\Big{(}\sum_{j: E_j^{'}\subset E_k} m(E_j^{'})\Big{)} 
+        = \sum_{k=1}^N \Big{(}\sum_{j: E_j^{'}\subset E_k} a_km(E_j^{'})\Big{)}\]
+    In the right side of the equation above, we are summing over finitely many indices, thus, we can rewrite this as
+    \[ \sum_{j=1}^R a_jm(E_j^{'}) \]
+    where this new collection of all $E_j^{'}$ is not disjoint. However, if for some $k\neq j$, $E_j^{'}\cap E_j^{'}\neq\emptyset$,
+    then $E_j^{'} = E_k^{'}$. Thus, we can write this as $(a_j + a_k)m(E_j^{'})$ since $m(E_k^{'}) = m(E_j^{'})$. Thus, we can
+    again rewrite the sum above as
+    \[ \phi = \sum_{j=1}^{R'} a_jE_j^{'} \]
+    where then all $E_1^{'},\hdots,E_{R'}^{'}$ are all disjoint but the constants $a_j$ are not and may not be all non-zero.
+    By the previous part of this question, this is enough to imply that
+    \[ \sum_{j=1}^{R'} a_jm(E_j^{'}) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
+    
+\end{solution}
+\pagebreak
+
+\begin{problem}{3}
+    Let $E\subset\R$ be a measurable set wtih $m(E)<\infty$. Recall from class that if $f:E\to\R$ is a measurable function
+    with $|f|\leq M$, then we defined $\int_E f := \int_E \phi_n$ where $\phi_n$ is any sequence of simple functions which
+    converges point wise to $f$ and satisfies $|\phi_n|\leq M$.
+    
+    \begin{enumerate}
+        \item Prove that if $f,g:E\to\R$ are bounded measurable functions with $f\leq g$ then $\int_E f\leq \int_E g$
+        \item Prove that $f:E\to\R$ is a bounded Lebesgue measurable function then $|\int_E f|\leq \int_E |f|$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    FFor the first part, take some sequence of functions $\phi_n \to f$ and $\psi_n \to g$. Fix $x\in E$. If $f(x) < g(x)$,
+    then let $r = (g-f)(x)$. Then, for any $0 < \epsilon < r$, there exists some $N>0$ such that $|\psi_n(x) - g(x)|<\epsilon$
+    and $|\phi_n(x) - f(x)|<\epsilon$ (take $N$ to be the max of the integers which makes the inequalities of both sequences hold).
+    By choice of $\epsilon$, we know that for all $n>N$, $\phi_n(x) < \psi_n(x)$ (if $f(x)=g(x)$ i.e. $r = 0$, then we can simply
+    let $\phi_n = \psi_n$ for all $x\in E$. Thus, for all $n>N$ we have that $\phi_n(x)\leq \psi_n(x)$ for all $x\in E$. Since
+    $\phi_n$ and $\psi_n$ are simple functions, then $\int_E \phi_n \leq \int_E \psi_n$. Limits preserves inequalities so we
+    know the following holds:
+    \[ \lim_{n\to\infty} \int_E \phi_n \leq \lim_{n\to\infty} \int_E \psi_n \]
+    But by our choice of $\phi_n$ and $\psi_n$, we know this is just equivalent to saying:
+    \[ \int_E f \leq \int_E g \]
+    as wanted.\\
+
+    Let $\phi_n$ be a sequence of functions so that $\phi_n \to f$. Then by a simple $\epsilon-N$ proof, we know $|\phi_n|\to |f|$ since
+    \[ ||\phi_n(x)|-|f(x)|| \leq |\phi_n(x) - f(x)|\]
+    by the reverse triangle inequality. Therefore, if $\lim_{n\to\infty} \int_E \phi_n = \int_E f$, we know that
+    $\lim_{n\to\infty} \int_E |\phi_n| = \int_E |f|$. Additionally, note for simple functions we have that:
+    \[ |\int_E \phi_n| \leq \int_E |\phi_n| \]
+    Thus,
+    \[ |\int_E f| = \lim_{n\to\infty} |\int_E \phi_n| \leq \lim_{n\to\infty} \int_E |\phi_n| = \int_E |f| \]
+    as wanted.
+    
+\end{solution}
+\pagebreak
+
+\begin{problem}{4}
+    Let $f:E\to\R$ be a bounded measurable function defined on a measurable domain $E\subset\R^d$ with $m(E)<\infty$.
+    \begin{enumerate}
+        \item Show that if $g:E\to\R$ is bounded and $g(x)=f(x)$ for a.e. $x\in E$, then $\int_E g = \int_E f$.
+        \item Show that if $f\geq 0$ and $\int_E f = 0$, then $f(x) = 0$ for a.e. $x\in E$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    FFor the first part, define $h(x) := f(x) - g(x)$. Then $h(x) = 0$ for a.e. $x\in E$ by choice of $f$ and $g$.
+    If $\phi_n \to f$ and $\psi_n \to g$, then 
+    \[ h(x) = f(x) - g(x) = (\lim_n \phi_n(x)) - (\lim_n \psi_n(x)) = \lim_n (\phi_n - \psi_n)(x) \]
+    so that $\phi_n - \psi_n \to h$. In particular, by Lemma 1.2 in Chapter 2, we have that since $h$ is 0 a.e. for every $x\in E$,
+    then:
+    \[ \lim_n \int_E (\phi_n - \psi_n) \to 0 \quad \implies \quad \int_E h = 0 \]
+    Since $\phi_n$ and $\psi_n$ are simple functions, we know that $\int_E (\phi_n - \psi_n) = \int_E \phi_n - \int_E \psi_n$ so
+    in particular,
+    \[ \lim_n [(\int_E \phi_n) - (\int_E \psi_n)] \to 0 \quad \implies \lim_n \int_E \phi_n - \lim_n \int_E \psi_n \to 0\]
+    so that in particular, $\int_E f - \int_E g = 0$ so that $\int_E f = \int_E g$ as wanted.\\
+
+    For the second part, we know $f$ is non-negative so if we write $E = E' \cup E^2$ where $E^2$ is the set where
+    $f$ is non-zero and $E'$ is the set where $f$ is identically zero, then we have $\int_E f = \int_{E'} f + \int_{E^2} f$. 
+    Clearly, we have $\int_{E'} f = 0$ since $f$ is exactly zero on $E'$ (if one wishes to be rigorous in this, 
+    then choose the sequence of identically zero simple functions, these converge to $f$ on $E'$ and all have integral zero). 
+    Thus, we obtain $\int_{E^2} f = 0$ since $\int_E f = 0$. Find some sequence of functions $\{\phi_n\} \to f$ on $E^2$ such that
+    each $\phi_n$ is non-negative, and the sequence is increasing (possible by Theorem 4.1 in Chapter 1). Since $f$ is non-zero
+    (and thus, positive) on $E^2$, if we assume $m(E^2)>0$, then by the Lemma below, we obtain: $\int_{E^2} f > 0$. This is absurd
+    as we have already established $\int_{E^2} f = 0$. Thus $m(E^2) = 0$. This implies $f(x) = 0$ for a.e. $x\in E$.
+\end{solution}
+\pagebreak
+
+\begin{problem}{5}
+    Compute the following limits and justify the calculations:
+    \begin{enumerate}
+        \item $\lim_{n\to\infty} \int_0^1 n\sin(x/n)/x dx$
+        \item $\lim_{n\to\infty} \int_0^{\infty} (1-x/n)^nx^2 dx$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    FFor the first calculation: Recall that for Lebesgue integrals: $\int_E \lim_{n\to\infty} f_n = \lim_{n\to\infty} \int_E f_n$.
+    Thus, it suffices to compute $\int_0^1 \lim_{n\to\infty} n\sin(x/n)/xdx$. First, we compute the limit. Note that we can write
+    this as: $\lim_{n\to\infty} \sin(x/n)/(x/n)$ where then both sides of the fraction go to zero. Thus, by L'hopital's rule,
+    we have that this limit is equivalent to: $\lim_{n\to\infty} \cos(x/n)(x/n)'/(x/n)'$ where the $'$ denotes the derivative opeartor.
+    Cancelling out terms, we arrive at $\int_0^1 \lim_{n\to\infty} n\sin(x/n)/xdx = \int_0^1 \lim_{n\to\infty} \cos(x/n)dx =
+    \int_0^1 \cos(0)dx = \int_0^1 1 = 1$.\\
+
+    Again as before, we switch the limit and integral operator to arrive at the computation:
+    \[ \int_0^{\infty} \lim_{n\to\infty} (1-x/n)^n x^2dx = \int_0^{\infty} x^2e^xdx \]
+    Recalling that the Riemann and Lebesgue integrals agree on finite domains, we write the integral above as:
+    \[ \int_0^{\infty} e^xx^2dx = \lim_{n\to\infty} \int_0^n e^xx^2dx \]
+    and then compute the integral on the right side using techniques from first year Calculus.
+\end{solution}
+\pagebreak
+
+\begin{problem}{6}
+    Let $f:\R^d\to\R$ be an integrable function such that $\int_E f(x)dx \geq 0$ for every measurable set $E$
+    \begin{enumerate}
+        \item Prove that $f(x)\geq 0$ for a.e. $x$
+        \item Prove that if we assume in addition that $f$ is continuous, then $f(x)\geq 0$ for all $x$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    FFor the first part, the proof is done in a somewhat similar style to question 4.2. Thus, write $E = E' \cup E^2$ where
+    $f$ is non-negative on $E'$ and negative on $E^2$. Note that $f$ is measurable on $E'$ and $E^2$ because $f$ is measurable on
+    $\{f \geq 0\}$ and $\{f < 0\}$. Thus, we have that $0 \leq \int_E f = \int_{E'} f + \int_{E^2} f$. Note since $f$ is non-negative
+    on $E'$, it follows that $0\leq \int_{E'} f$ so we must have that $0\leq \int_{E^2} f$. Intuitively, we must have that
+    $m(E^2) = 0$ since if it were not, then $f$ is negative on every $x\in E^2$ but $\int_{E^2} f\geq 0$ which is absurd.
+    Assume $m(E^2)\neq 0$. We know that $f$ is negative on $E^2$ so that $-f$ is positive on $E^2$. By the lemma, it follows
+    that $\int_{E^2} -f > 0$. By linearity, $-(\int_{E^2} f) > 0$ so that $\int_{E^2} f < 0$ which is absurd. Thus, $m(E^2) = 0$
+    so that $f\geq 0$ for a.e. $x\in E$.\\
+
+    We know $m(E^2) = 0$ so in particular, $E^2$ does not contain any intervals (not including the trivial $[x,x]$). Thus,
+    if $f$ is continuous on $E$, then it is continuous on $x\in E^2$. Thus, for any neighborhood $N_1(f(x))$, there is a neighborhood
+    $N_2(x)$ such that $f(y)\in N_1(f(x))$ whenever $y\in N_2(x)$. Since $E^2$ does not contain any intervals, we have that
+    $N_1(f(x))$ is not contained in $E^2$. In particular, there exists some $y\in N_1(x)$ such that $f(y)\geq 0$. Thus,
+    $|f(x)-f(y)|\geq |f(x)-0| = |f(x)|$. Thus, choose $0 < \epsilon < |f(x)|$ to get that $|f(x)-f(y)|\geq \epsilon$ which is absurd
+    since we have established that $f$ is continuous on $x$. Thus, no such $x\in E^2$ exists. Thus, $E^2 = \emptyset$ and so
+    $f(x)\geq 0$ for all $x\in E$ as wanted.
+\end{solution}
+
+\begin{lemma}
+    IIf $f$ is positive on some measurable domain $F$ (with $m(F)>0$), then $\int_F f > 0$.
+\end{lemma}
+\begin{proof}
+    Let $F_n = F \cap \{f > 1/n\}$. Then $\cup_n F_n = F$ since as $n\to\infty$, we know $\{f > 1/n\}\to \{f>0\} = F$
+    since $f$ is positive on $F$. We know $m(F)>0$ so it follows for some $n$, $m(F_n)>0$. For this $n$, we have that
+    if $x\in F_n$, then $f(x) \geq 1/n$ just by definition of $\{f > 1/n\}$. Thus, $\int_{F_n} f \geq 1/n\cdot m(F_n) > 0$.
+    Since $F_n\subseteq F$ with both $F_n$ and $F$ being measurable, then by monotonicity $\int_F f \geq \int_{F_n} f > 0$ as wanted.
+\end{proof}
+
+
+\end{document}

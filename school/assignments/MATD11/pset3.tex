@@ -255,6 +255,26 @@
     term is the $n$th term in the sum above goes to zero i.e. $\lim_{n\to\infty} \langle e_n,g\rangle = 0$. This is what we wanted
     to show.\\
 
+    To show that if $h_n\to h$ in norm, then $h_n\to h$ converges weakly, first fix $g\in\mathcal{H}$. Since $h_n\to h$ in norm,
+    then for any choice of $\epsilon>0$, there exists an $N>0$ such that if $n>N$, then $\norm{h_n-h}<\epsilon$. Now, consider,
+    for any $n>N$:
+    \[
+        |\langle h_n,g\rangle - \langle h,g\rangle|^2 = |\langle h_n-h,g\rangle|^2
+    \]
+    By Cauchy-Schwarz: $|\langle h_n-h,g\rangle|^2 = \norm{h_n-h}\cdot\norm{g}<\epsilon\cdot\norm{g}$. Note, this $\norm{g}$ is
+    simply a constant so we can re choose our $N$ so that if $n>N$, then $\norm{h_n-h}<\epsilon^2/\norm{g}$. Thus, we have that
+    $|\langle h_n,g\rangle-\langle h,g\rangle|^2 < \epsilon^2$ which of course, implies that:
+    \[ |\langle h_n,g\rangle-\langle h,g\rangle| < \epsilon \]
+    so that $\langle h_n,g\rangle$ converges to $\langle h,g\rangle$ for all $g\in\mathcal{H}$ proving that $h_n\to h$ weakly.\\
+
+    To show the converse does not hold, examine any orthonormal sequence in a given Hilbert space\footnote{It is a fact that an 
+    orthnormal sequence exists for every non-trivial Hilbert space, but the reader may choose a space for which they know one exists}
+    (e.g. $l^2$). We know that
+    for any $n\geq 1$, $\norm{e_n - 0} = \norm{e_n} = 1$. This shows that for $0 < \epsilon < 1$, for all choices of $N>0$,
+    if $n>N$, then $\norm{e_n}\geq \epsilon$ implying that $e_n$ does \textit{not} converge to $0$ in norm. Thus, the converse fails.
+    In fact, using the idea of Cauchy sequences and the Parallelogram law, one can prove that $\{e_n\}$ does not converge to any
+    point of the given Hilbert space.\\
+
     Recall, $h_n\to h$ in norm means that $\norm{h_n-h}\to 0$. To do this, we need to establish a few small results. First, recall
     by Proposition 1.22 that $\norm{h_n-h}^2 = \norm{h_n}^2 - 2\text{Re}\langle h_n,h\rangle + \norm{h}^2$. Next,
     we are given $\norm{h_n} \to h$ so it follows by elementary properties of sequences that $\norm{h_n}^2 \to \norm{h}^2$.
@@ -296,15 +316,13 @@
 
     \textbf{Solution.}
 
-    Consider:
-    \begin{align*}
-        \langle Sx,x\rangle = \langle Tx,x\rangle &\implies \langle Sx,x\rangle - \langle Tx,x\rangle = 0 \\
-            &\implies \langle Sx-Tx,x\rangle = 0
-    \end{align*}
-    Choose $x\neq 0$. Then since $\langle Sx-Tx,x\rangle = 0$, we must have that at least one of $Sx-Tx$ or $x$ must be 0. We chose
-    $x\neq 0$, thus, $Sx-Tx=0$. Therefore, $Sx = Tx$. For $x=0$, since $S$ and $T$ are linear maps, so is $S-T$, thus, $S-T$
-    maps $0\to 0$ (property of all linear maps). Therefore, $S0 = T0$.
-    Therefore, for every $x\in\mathcal{H}$, we have that $Sx=Tx$. thus, $S = T$.$\hfill\blacksquare$\\
+    $S$ and $T$ are in $\mathcal{B}(\mathcal{H})$ so by Theorem 2.12, there exists adjoints $S^*$ and $T^*$ in 
+    $\mathcal{B}(\mathcal{H})$. We first show $S^* = T^*$. Note for all $x,k\in\mathcal{H}$, we have:
+    \[ \langle Sx,h\rangle = \langle x,S^*h\rangle\qquad\text{and}\qquad\langle Tx,h\rangle = \langle x,T^*h\rangle \]
+    In particular, if we choose $x=h$, we have that $\langle Sx,x\rangle = \langle Tx,x\rangle$. In particular, this equality
+    shows that for all $x=h$, we have $S^*(x) = T^*(x)$. Since $S^{**} = S$, we obtain:
+    \[ \text{For all}\;x=h,\;S(x) = T(x) \]
+    Since this holds for all $x\in\mathcal{H}$, we have that $S = T$ as wanted.$\hfill\blacksquare$
 
     \newpage
 
@@ -336,18 +354,18 @@
 
      \textbf{Solution.}
 
-     (c) By theorem 2.12, there exists $A^*\in\mathcal{B}(\mathcal{H})$ such that for $h,k\in\mathcal{H}$:
-     $\alpha\langle Ah,k\rangle = \alpha\langle h,A^* k\rangle$. Recall the property of inner product that:
+     (c) By theorem 2.12, there exists $(\alpha A)^*\in\mathcal{B}(\mathcal{H})$ such that for $h,k\in\mathcal{H}$:
+     $\langle \alpha Ah,k\rangle = \langle h,(\alpha A)^* k\rangle$. Recall the property of inner product that:
      $\langle x,\alpha y\rangle = \overline{\alpha}\langle x,y\rangle$ and $\alpha\langle x,y\rangle =\langle\alpha x,y\rangle$.
      From this, consider:
      \begin{align*}
          \alpha\langle Ah,k\rangle = \langle \alpha(Ah),k\rangle = \langle (\alpha A)k,\rangle
      \end{align*}
-     and
+     where we can say $\alpha(Ah) = (\alpha A)h$ since $A$ lies in a linear space and
      \[ \alpha\langle Ah,k\rangle = \alpha\langle h,A^* k\rangle = \langle h,\overline{\alpha}(A^*(k))\rangle
          = \langle h,(\overline{\alpha} A^*)k\rangle \]
-     Thus, we have that $\langle (\alpha A)h,k\rangle = \langle h,(\overline{\alpha}A^*)k\rangle$ implying that the adjoint
-     of $\alpha A$ is $\overline{\alpha} A^*$ i.e. $(\alpha A)^* = \overline{\alpha} A^*$ as wanted.
+     Thus, we have that $\langle (\alpha A)h,k\rangle = \langle h,(\overline{\alpha}A^*)k\rangle$ implying that the since adjoints
+     are unique, the adjoint of $\alpha A$ is $\overline{\alpha} A^*$ i.e. $(\alpha A)^* = \overline{\alpha} A^*$ as wanted.
 
      \newpage
 
@@ -369,7 +387,8 @@
      \end{align*}
      because the conjugate of a conjugate of a complex number is the complex number itself. Thus, we obtain:
      \[ \langle h,B^*(A^*k)\rangle = \langle h,(B^*A^*)k\rangle \]
-     so that $\langle ABh,k\rangle = \langle h,(AB)^*k\rangle = \langle h,B^*A^*k\rangle$ so that $(AB)^* = B^* A^*$ as wanted.\\
+     so that $\langle ABh,k\rangle = \langle h,(AB)^*k\rangle = \langle h,B^*A^*k\rangle$ so that $(AB)^* = B^* A^*$ by uniquness
+     of adjoints.$\hfill\blacksquare$\\
 
      \textbf{P11.}\\
 
@@ -386,6 +405,5 @@
      $T^{-1}(y) = y'$ so,
      \[ T^{-1}(ax+by) = aT^{-1}(x) + bT^{-1}(y) \]
      as wanted.$\hfill\blacksquare$
-
 
 \end{document}

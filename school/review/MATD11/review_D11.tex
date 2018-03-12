@@ -1,0 +1,500 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+
+\theoremstyle{definition}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem*{defn}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem*{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11 OVERVIEW}
+\author{A. Wortschöpfer}
+
+\begin{document}
+    \maketitle
+
+    \section{Hilbert Space Preliminaries}
+
+    \subsection{Normed Linear Spaces}
+
+    \begin{defn}
+        Let $X$ be a vector space over either the scalar field $\mathbb{R}$ of real numbers or the scalar field $\mathbb{C}$ of
+        complex numbers. Suppose we have a function $\norm{\cdot}:X\to[0,\infty)$ such that
+        \begin{enumerate}
+            \item $\norm{x} = 0$ if and only if $x=0$.
+            \item $\norm{x+y} \leq \norm{x}+\norm{y}$ for all $x,y\in X$, and
+            \item $\norm{\alpha x} = |\alpha|\norm{x}$ for all scalars $\alpha$ and vectors $x$.
+        \end{enumerate}
+        We call $(X,\norm{\cdot})$ a \textbf{normed linear space}.
+    \end{defn}
+
+    From property 2, we can derive the reverse triangle inequality
+    \[ \norm{x+y}\geq |\norm{x}-\norm{y}| \]
+
+    \begin{example}
+        Let $X = \mathbb{C}^n$ with $\norm{(z_1,z_2,\hdots,z_n)} = (\sum_{j=1}^{\infty} |z_j|^2)^{1/2}$; this is called the
+        \textbf{Euclidean norm}. The Euclidean space $\mathbb{R}^n$ is similarly defined.
+    \end{example}
+
+    \begin{example}
+        Let $X=\mathbb{C}^n$ with $\norm{(z_1,z_2,\hdots,z_n)} =$ max$\{|z_j|:1\leq j\leq n\}$.
+    \end{example}
+
+    \begin{example}
+        Let $Y=[0,1]$, or more generally any compact Hausdorff space, and let $C(Y)$ be the vector space of continuous, complex-valued
+        functions on $Y$, under pointwise addition and scalar multiplication. Define a norm on $C(Y)$ by
+        $\norm{f} =$ max$\{|f(y)|:y\in Y\}$.
+    \end{example}
+
+    \begin{example}
+        Choose a value $p\geq 1$, and let $\ell^p = \ell^p(\mathbb{N})$ denote the set of all sequences $\{a_n\}_1^{\infty}$ of all
+        complex numbers for which $\sum_1^{\infty} |a_n|^p<\infty$. Define the norm of $\{a_n\}\in \ell^p$ by
+        \[ \norm{a_n}_p = (\sum_1^{\infty} |a_n|^p)^{1/p} \]
+        We can include the choice $p=\infty$ by saying:
+        \[ \ell^{\infty} = \{\{a_n\}_1^{\infty}:\;\text{sup}_n|a_n|<\infty\},\quad \norm{a_n} =\;\text{sup}_n|a_n| \]
+        The triangle inequality for $1<p<\infty$ is non trivial and is called \textbf{Minkowski's inequality}:
+        \[ (\sum_1^n |a_j+b_j|^p){1/p} \leq (\sum_1^n |a_j|^p)^{1/p} + (\sum_1^n |b_j|^p)^{1/p} \]
+        which is proven from Hölder's inequality:
+        \[ (\sum_1^n |a_i b_i|^p) \leq (\sum_1^n |a_i|^p)^{1/p} (\sum_1^n|b_i|^q)^{1/q} \]
+        where $p$ and $q$ are \textbf{conjugate indicies} i.e. $1/p + 1/q = 1$.
+    \end{example}
+
+    \begin{example}
+        We can generalize $\ell^p$ spaces as follows. Consider a positive measure space $(Y,M,\mu)$, where $Y$ is a non-empty
+        set, $M$ is a $\sigma$-algebra of $Y$ and $\mu$ is a positive measure. Choose $1\leq p<\infty$ and denote $L^p(Y,\mu)$
+        the collection of $\mu$-measurable functions such that $\int_Y |f|^pd\mu<\infty$ and its norm is given by
+        \[ \norm{f}_p = (\int_Y |f|^p d\mu)^{1/2} \]
+        We can also define $L^{\infty}(X,\mu)$ of \textbf{essentially bounded functions}. We say that a measurable function
+        is essentially bounded if there exists $M<\infty$ such that $\mu(\{x:|f(x)|>M\})=0$. To prove the triangle inequality
+        for $1<p<\infty$, we need Minkowski's inequality:
+        \[ (\int_Y |f+g|^pd\mu)^{1/p} \leq (\int_Y |f|^pd\mu)^{1/p} + (\int_Y |g|^pd\mu)^{1/p} \]
+        which follows from Hölder's inequality
+        \[ (\int_Y |fg|d\mu) \leq (\int_Y |f|^pd\mu)^{1/p}(\int_Y |g|^qd\mu)^{1/q} \]
+        for conjugate indices $p,q$.
+    \end{example}
+
+    \begin{example}
+        Let $X=\mathbb{N}$, $M = \mathcal{P}(\mathbb{N})$, and let $\mu$ assign to each finite subset of $\mathbb{N}$ its
+        cardinality, and to each infinite subset of $\mathbb{N}$, the value $\infty$. This is called the \textbf{counting measure} on
+        the positive integers. With the convention $a+\infty = \infty+a$, we have countable additivity.\\
+
+        The $L^p$ spaces then generalize $\ell^p$ spaces as follows: Choose $Y=\mathbb{N}$ and $\mu =$ counting measure on $\mathbb{N}$.
+        Then $L^p(\mathbb{N},\mathcal{P}(\mathbb{N}),\mu) = \ell^p(\mathbb{N})$.
+    \end{example}
+
+    \begin{defn}
+        A \textbf{metric space} is a set $X$ with a function $d(\cdot,\cdot):X\to[0,\infty)$ satisfying for $x,y,z\in X$:
+        \begin{enumerate}
+            \item $d(x,y) = 0$ if and only if $x=y$
+            \item $d(x,y) = d(y,x)$
+            \item $d(x,y)+d(y,z)\geq d(x,z)$
+        \end{enumerate}
+        On every normed linear space, we can define a metric via $d(x,y) = \norm{x-y}$.
+    \end{defn}
+
+    \begin{defn}
+        A metric space is said to be \textbf{complete} if every Cauchy sequence in $X$ converges in $X$.
+    \end{defn}
+
+    \begin{defn}
+        Let $X$ be a normed space. If $X$ is complete in the metric $d$ defined by the norm $d(x,y)=\norm{x-y}$, we call $X$
+        a \textbf{Banach space}.
+    \end{defn}
+
+    \begin{theorem}[Riesz-Fischer Theorem]
+        For every positive measure $\mu$ and $1\leq p\leq \infty$, $L^p(\mu)$ is a Banach space.
+    \end{theorem}
+
+    $C(Y)$ and $\mathbb{C}^n$ with the max and Euclidean norm are also complete.
+
+    \begin{defn}
+        Let $X$ be a vector space over $\mathbb{C}$. An \textbf{inner product} is a map 
+        $\langle\cdot,\cdot\rangle:X\times X\to\mathbb{C}$ satisfying, for $x,y\in X$ and $z\in X$ and scalars $\alpha\in\mathbb{C}$:
+        \begin{enumerate}
+            \item $\langle x,y\rangle = \overline{\langle y,x\rangle}$
+            \item $\langle x,x\rangle \geq 0$ with $\langle x,x\rangle = 0$ if and only if $x=0$
+            \item $\langle x+y,z\rangle = \langle x,z\rangle + \langle y,z\rangle$
+            \item $\alpha\langle x,y\rangle = \langle \alpha x,y\rangle$
+        \end{enumerate}
+        The bar denotes complex conjugation.
+    \end{defn}
+
+    \begin{example}
+        Define an inner product on $L^2(X,\mu)$ for a positive measure space $(X,\mu)$ by
+        \[ \langle f,g\rangle = \int_X f\overline{g}d\mu \]
+        On $\mathbb{C}^n$, we have:
+        \[ \langle z = (z_1,\hdots,z_n),w = (w_1,\hdots,w_n)\rangle = \sum_1^n z_j\overline{w_j} \]
+        On $\ell^2$:
+        \[ \langle z,w\rangle = \sum_1^{\infty} z_j\overline{w_j} \]
+    \end{example}
+
+    \begin{proposition}[Cauchy-Schwarz Inequality]
+        If $\langle \cdot,\cdot\rangle$ is an inner product on a vector space $X$, then for all $x,y\in X$, we have
+        \[ |\langle x,y\rangle|^2 \leq \langle x,x\rangle\langle y,y\rangle \]
+    \end{proposition}
+
+    \begin{proof}
+        For all $t\in\mathbb{R}$ and $\xi\in\mathbb{C}$, with $|\xi|=1$ compute 
+        $\langle x+t\xi y,x+t\xi y\rangle$ to get a polynomial of order 2
+        $p(t) = \langle x,x\rangle + 2t|\langle x,y\rangle| + t^2\langle y,y\rangle$\\
+
+        Argue $p(t)\geq 0$ and $p(0) = 0$ and show this implies the discriminant is,
+        \[ (2t|\langle x,y\rangle|)^2 - 4t^2\langle y,y\rangle\langle x,x\rangle \leq 0 \]
+        From this, derive the inequality.
+    \end{proof}
+
+    \begin{proposition}
+        If $\langle \cdot,\cdot\rangle$ is an inner product on a vector space $X$, then
+        \[ \norm{x}^2 = \langle x,x\rangle \]
+        is a norm on $X$.
+    \end{proposition}
+    \begin{proof}
+        Expand $\norm{x+y}^2$ to prove the triangle inequality.
+    \end{proof}
+
+    \begin{defn}
+        A (complex) \textbf{Hilbert space} $\mathcal{H}$ is a vector space over $\mathbb{C}$ with an inner product such that
+        $\mathcal{H}$ is complete in the metric,
+        \[ d(x,y) = \norm{x-y} = \langle x-y,x-y\rangle^{1/2} \]
+    \end{defn}
+
+    \begin{example}
+        $L^2(X,\mu)$ is a Hilbert space, thus so is $\mathbb{C}^n$ and $\ell^2$.
+    \end{example}
+
+    \subsection{Orthogonality}
+
+    \begin{defn}
+        Given vectors $f,g$ in a Hilbert space $\mathcal{H}$, we say that $f$ is \textbf{orthogonal} to $g$ written $f\perp g$,
+        if $\langle f,g\rangle = 0$. For sets $A,B$ in $\mathcal{H}$ we write $A\perp B$ if $\langle f,g\rangle = 0$ for all
+        $f\in A$ and $g\in B$. Finally, $A^{\perp}$ is the set of all vectors of $f\in\mathcal{H}$ such that $f\perp g$ for all
+        $g\in A$; for any set $A$ this is always a subspace of $\mathcal{H}$, moreover $A^{\perp} = \cap_{a\in A} \{a\}^{\perp}$,
+        $A^{\perp}$ is a closed subspace by continuity of the inner product.
+    \end{defn}
+
+    We have $A\cap A^{\perp}=\{\emptyset\}$.
+
+    \begin{example}
+        An example of a subspace which is not closed: In $\ell^2$, the set of all sequences with finitely many non-zero terms.
+    \end{example}
+
+    \begin{proposition}
+        In $f_1,f_2,\hdots,f_n$ are pairwise orthogonal vectors in a Hilbert space, then
+        \[ \norm{f_1+f_2+\hdots+f_n}^2 = \norm{f_1}^2 + \hdots + \norm{f_n}^2 \]
+        In general, for any vectors $f$ and $g$ in a Hilbert space, we have
+        \[ \norm{f+g}^2 = \norm{f}^2 + 2\text{Re}\langle f,g\rangle + \norm{g}^2 \]
+        and
+        \[ \norm{f-g}^2 = \norm{f}^2 - 2\text{Re}\langle f,g\rangle + \norm{g}^2 \]
+        The \textbf{Parallelogram equality} is then obtain:
+        \[ \norm{f+g}^2 + \norm{f-g}^2 = 2\norm{f}^2 + 2\norm{g}^2 \]
+        In any inner product space, the inner product can be recovered from the norm:
+        \[ \langle f,g\rangle = 1/4\sum_1^3 i^k\norm{f+i^kg}^2 \]
+        which is called the \textbf{polarization identity}.
+    \end{proposition}
+
+    Given a normed linear space in which the parallelogram equality holds, there is an inner product that gives the norm.
+
+    \subsection{Hilbert Space Geometry}
+
+    A \textbf{convex set} in a vector space $V$ is a subset $S$ of $V$ with the property that whenever $a,b$ are in $S$, so is
+    $ta+(1-t)b$ for any $0\leq t\leq 1$. Clearly every subspace is convex, every ball in a normed linear space is also convex,
+    and any translate $x+S$ of a convex set is also convex. 
+    
+    \begin{theorem}[Nearest Point Property]
+        Every nonempty, closed convex set $K$ in a Hilbert space $\mathcal{H}$ contains a unique element of smallest norm. Moreover,
+        given any $h\in\mathcal{H}$, there is a unique $k_0$ in $K$ such that
+        \[ \norm{h-k_0} =\:\text{dist}(h,K) =\:\inf\{\norm{h-k}:k\in K\} \]
+    \end{theorem}
+
+    \begin{proof}
+        Let $d =\inf\{\norm{y}:y\in K\}$ so that $\norm{x_n}\to d$ for $x_n\in K$. Then, by parallelogram equality:
+        \[ \norm{x_n-x_m/2}^2 = \norm{x_n/2}^2 + \norm{x_m/2}^2 - \norm{x_n+x_m/2}^2 \]
+        for $n,m$. Show $1/2(x_n + x_m)$ is in $K$ and thus, it implies
+        \[ \norm{x_n+x_m/2}^2 \geq d^2 \]
+        and,
+        \[ 0 \leq \norm{x_n-x_m}^2 \leq 2(\norm{x_n}^2 + \norm{x_m}^2) - 4d^2 \]
+        so that $\{x_n\}$ is a Cauchy sequence and thus it converges to some $x\in H$ and importantly, it converges to some
+        $x\in K$. Show $d = \norm{x}$. Continuity says that if $x_n\to x$, then $\norm{x_n} \to \norm{x}$ so that $\norm{x} =d$.
+        Now, prove uniqueness by using parallelogram equality again i.e. for $\norm{x}=\norm{z}$, take $\norm{x+z/2}^2$ and show
+        $d^2 - \norm{x+z/2}^2 \leq 0$.\\
+
+        Second part, find the point $x$ of smallest norm in $K-h$ for any $h\in H$. Then $x+h$ has the smallest norm in $K$, so that
+        $\norm{x+h-h} = \norm{x}$ is the closest point to $h$.
+    \end{proof}
+
+    \begin{theorem}[Projection Theorem]
+            Let $M$ be a closed subspace of a Hilbert space $\mathcal{H}$. There is a unique pair of mappings $P:\mathcal{H}\to M$
+            and $Q:\mathcal{H}\to M^{\perp}$ such that $x = Px + Qx$ for all $x\in\mathcal{H}$. Furthermore, $P$ and $Q$ have the
+            following additional properties:
+            \begin{enumerate}
+                \item $x\in M\implies Px = x$ and $Qx = 0$.
+                \item $x\in M^{\perp}\implies Px = 0$ and $Qx = x$.
+                \item $Px$ is the closest vector in $M$ to $x$.
+                \item $Qx$ is the closest vector in $M^{\perp}$ to $x$.
+                \item $\norm{Px}^2 + \norm{Qx}^2 = \norm{x}^2$ for all $x$.
+                \item $P$ and $Q$ are linear maps.
+            \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        Let $Px$ be the closest point to $x$ in $M$. Let $Qx = x - Px$.
+    \end{proof}
+
+    \begin{corollary}
+        If $M$ is a closed, proper, subspace of $\mathcal{H}$, then there exists a non-zero vector $y\in\mathcal{H}$ with
+        $y\perp M$.
+    \end{corollary}
+
+    \subsection{Linear Functionals}
+
+    \begin{defn}
+        If $X$ is a normed linear space over $\mathbb{C}$, a \textbf{linear functional} on $X$ is a map $\Lambda:X\to\mathbb{C}$
+        satisfying $\Lambda(\alpha x + \beta y) = \alpha \Lambda(x) + \beta \Lambda(y)$ for all vectors $x$ and $y$ in $X$ and
+        all scalars $\alpha$ and $\beta$.
+    \end{defn}
+
+    \begin{defn}
+        A \textbf{bounded linear functional} on a normed linear space $X$ is a linear functional $\Lambda:X\to\mathbb{C}$ for
+        which there exists a finite constant $C$ satisfying $|\Lambda(x)|\leq C\norm{x}$ for all $x\in X$.
+    \end{defn}
+
+    \begin{example}
+        The set of all bounded linear functionals on $X$ forms a normed linear space with norm
+        \[ \norm{\Lambda} =\:\sup\{|\Lambda(x)|:\norm{x}\leq 1\} \]
+    \end{example}
+
+    \begin{proposition}
+        If $X$ is a normed linear space, and $\Lambda:X\to\mathbb{C}$ is a linear functional, then the following are
+        equivalent:
+        \begin{enumerate}
+            \item $\Lambda$ is continuous
+            \item $\Lambda$ is continuous at 0
+            \item $\Lambda$ is bounded
+        \end{enumerate}
+    \end{proposition}
+
+    \begin{theorem}[Riesz Representation Theorem]
+        Every bounded linear functional $\Lambda$ on a Hilbert space $\mathcal{H}$ is given by inner product with a (unique) fixed
+        vector $h_0$ in $\mathcal{H}$: $\Lambda(h) = \langle h,h_0\rangle$. Moreover, the norm of the linear functional is $\norm{h_0}$.
+    \end{theorem}
+    \begin{proof}
+        1. Handle the case for $\Lambda = 0$.\\
+        2. Consider the kernel of $M$ and choose some non-zero vector from the orthogonal of the kernel (why should one exist?)\\
+        3. Argue that $\Lambda(h)z - h$ is perpendicular to $z$ for any $h\in\mathcal{H}$.\\
+        4. Derive $\Lambda(h) = \langle h,z/\norm{z}^2\rangle$ and choose an appropriate $h_0$ from this.\\
+        5. Argue uniqueness.
+    \end{proof}
+
+    \begin{example}
+        The dual space of $L^p[a,b]$ for $1\leq p<\infty$ is $L^q[a,b]$ where $p$ and $q$ are conjugate indices. If $p=1$, we set
+        $q = \infty$. There are no continuous linear functionals on $L^p[a,b]$ for $0 < p < 1$.
+    \end{example}
+
+    \begin{lemma}
+        Let $P:\mathcal{H}\to M$ be the orthogonal projection of a Hilbert space $\mathcal{H}$ onto a closed subspace $M$ of
+        $\mathcal{H}$. We have $\langle f,Pg\rangle = \langle Pf,g\rangle$ for all vectors $f$ and $g$ in $\mathcal{H}$.
+    \end{lemma}
+
+    \subsection{Orthonormal Bases}
+
+    \begin{defn}
+        An \textbf{orthonormal set} in a Hilbert space $\mathcal{H}$ is a set $\epsilon$ with the properties:
+        \begin{enumerate}
+            \item for every $e\in\epsilon$, $\norm{e} = 1$, and
+            \item for distinct vectors $e$ and $f$ in $\epsilon$, $\langle e,f\rangle = 0$.
+        \end{enumerate}
+    \end{defn}
+
+    \begin{defn}
+        An \textbf{orthonormal basis} for a Hilbert space $\mathcal{H}$ is a maximal orthonormal set; that is, an orthonormal set that
+        is not properly contained in any orthonormal set.
+    \end{defn}
+
+    \begin{example}
+        For the Hilbert space $\ell^2$, take the set of all vectors $\{e_j: j\geq 1\}$ where $e_j$ has 1 in the $j$th coordinate
+        and zeros elsewhere. As a second example, consider the Hilbert space $L^2[0,2\pi]$, with respect to normalized Lebesgue
+        measure $dt/(2\pi)$. The collection of functions $e^{int}$ for any integer $n$ forms an orthonormal set in this Hilbert space.
+    \end{example}
+
+    It is a fact that every Hilbert space has an orthonormal basis.\\
+
+    Given a linearly independent sequence $\{f_n\}_1^{\infty}$ in a Hilbert space $\mathcal{H}$, there always exists an orthonormal
+    sequence $\{e_n\}_1^{\infty}$ such that
+    \[ \text{span}\{f_1,\hdots,f_k\} =\;\text{span}\{e_1,\hdots,e_k\} \]
+    for each positive integer $k$.\\
+
+    \begin{theorem}[Bessel's inequality]
+        When $\{e_k\}$ is a finite or countably infinite orthonormal set in $\mathcal{H}$, then for every vector $h\in\mathcal{H}$
+        we have
+        \[ \sum |\langle h,e_k\rangle|^2 \leq \norm{h}^2 \]
+    \end{theorem}
+    \begin{proof}
+        Let $r_n = x - \sum_1^n \langle x,e_k\rangle e_k$ and compute $\langle r_n,e_j\rangle = 
+        \langle x-\sum_1^n\langle x,e_k\rangle e_k,e_j\rangle$ and show it is equal to 0 for all $j\in\mathbb{N}$.\\
+
+        Write $x = r_n + (\sum_1^n \langle x,e_k\rangle e_k)$ and compute the squared norm of both sides and conclude the inequality
+        holds.
+    \end{proof}
+
+    \begin{theorem}
+        If $\{e_n\}_1^{\infty}$ is an orthonormal sequence in a Hilbert space $\mathcal{H}$, then the following conditions
+        are equivalent:
+        \begin{enumerate}
+            \item $\{e_n\}_1^{\infty}$ is an orthonormal basis
+            \item If $h\in\mathcal{H}$ and $h\perp e_n$ for all $n$, then $h = 0$.
+            \item For every $h\in\mathcal{H}$, $h = \sum_1^{\infty} \langle h,e_n\rangle e_n$
+            \item For every $h\in\mathcal{H}$, there exist complex numbers $a_n$ so that $h = \sum_1^{\infty} a_ne_n$.
+            \item For every $h\in\mathcal{H}$, $\sum_1^{\infty}|\langle h,e_n\rangle|^2 = \norm{h}^2$.
+            \item For all $h$ and $g$ in $\mathcal{H}$, $\sum_1^{\infty} \langle h,e_n\rangle\langle e_n,g\rangle = \langle h,g\rangle$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        Equivalence of (1) and (2) follows from the fact that if $0\neq h$ and $h\perp e_n$ for all $n$, then $\{e_n\}\cup\{h/\norm{h}\}$
+        is an orthonormal sequence.
+    \end{proof}
+
+    \section{Operator Theory Basics}
+
+    \subsection{Bounded Linear Operators}
+
+    \begin{defn}
+        If $X$ and $Y$ are normed linear spaces, a map $T:X\to Y$ is \textbf{linear} if
+        \[ T(\alpha x_1 + \beta x_2) = \alpha T(x_1) + \beta T(x_2) \]
+        for all $x_1,x_2$ in $X$ and scalars $\alpha$ and $\beta$. We say the linear map $T$ is \textbf{bounded linear operator}
+        from $X$ to $Y$ if there is a finite constant $C$ such that $\norm{Tx}_Y \leq C\norm{x}_X$ for all $x\in X$.
+    \end{defn}
+
+    \begin{proposition}
+        If $T:X\to Y$ is a linear map from a normed linear space $X$ to a normed linear space $Y$, the following are equivalent:
+        \begin{enumerate}
+            \item $T$ is bounded
+            \item $T$ is continuous
+            \item $T$ is continuous at 0
+        \end{enumerate}
+    \end{proposition}
+
+    \begin{proposition}
+        The collection $\mathcal{B}(X,Y)$ of all bounded linear operators from a normed linear space $X$ to a Banach space
+        $Y$ forms a Banach space with norm
+        \[ \norm{T} = \sup\{\norm{Tx}_Y: \norm{x}_X\leq 1\} \]
+    \end{proposition}
+
+    \begin{example}
+        Suppose $M$ is a closed subspace in a Hilbert space $\mathcal{H}$. Let $P_M:\mathcal{H}\to M$ be the orthogonal projection 
+        of $\mathcal{H}$ onto $M$. This is a bounded linear operator with norm 1.
+    \end{example}
+
+    \begin{example}
+        The \textbf{forward shift} is a bounded linear operator $S:\ell^2\to \ell^2$ with
+        \[ S(x_1,x_2,\hdots) = (0,x_1,x_2,\hdots) \]
+        This has norm 1 and is clearly linear. In fact, it is an isometry with $\norm{Sx} = \norm{x}$. The \textbf{backward shift}
+        is the operator $\ell^2$ to $\ell^2$ which takes $(x_1,x_2,\hdots) \mapsto (x_2,x_3,\hdots)$. It has norm 1 but is not an
+        isometry.
+    \end{example}
+
+    \begin{defn}
+        If $\mathcal{H}$ and $\mathcal{K}$ are both Hilbert spaces, a \textbf{sesquilinear form} 
+        $u:\mathcal{H}\times\mathcal{K}\to\mathbb{C}$ is a mapping satisfying
+        \begin{enumerate}
+            \item $u(\alpha h + \beta g, k) = \alpha u(h,k) + \beta u(g,k)$, and
+            \item $u(h,\alpha k + \beta f) = \overline{\alpha} u(h,k) + \overline{\beta} u(h,f)$
+        \end{enumerate}
+        for all $h,g\in\mathcal{H}$, all $k,f\in\mathcal{K}$ and all scalars $\alpha$ and $\beta$. A sesquilinear form $u$ is
+        bounded if there is a finite constant $M$ such that $|u(h,k)|\leq M\norm{h}\norm{k}$ for all $h\in\mathcal{H}$ and
+        $k\in\mathcal{K}$.
+    \end{defn}
+
+    \begin{theorem}
+        Let $\mathcal{H}$ and $\mathcal{K}$ be Hilbert spaces and suppose that $u:\mathcal{H}\times\mathcal{K}\to\mathbb{C}$
+        is a bounded sesquilinear form. There exists a unique $A\in\mathcal{B}(\mathcal{H},\mathcal{K})$ such that
+        \[ u(h,k) = \langle Ah,k\rangle_{\mathcal{K}} \]
+        for all $h\in\mathcal{H}$ and $k\in\mathcal{K}$.
+    \end{theorem}
+
+    \begin{theorem}
+        Given Hilbert spaces $\mathcal{H}$ and $\mathcal{K}$ and $A\in\mathcal{B}(\mathcal{H},\mathcal{K})$, there is a unique
+        $A^*\in\mathcal{B}(\mathcal{K},\mathcal{H})$ so that
+        \[ \langle Ah,k\rangle_{\mathcal{K}} = \langle h,A^* k\rangle_{\mathcal{H}} \]
+        for all $h\in\mathcal{H}$ and $k\in\mathcal{K}$.
+    \end{theorem}
+    \begin{proof}
+        Claim that $\langle k, Ah\rangle$ is a sesquilinear form. Use the previous theorem to claim that the sesquilinear form
+        is equal to $\langle A^*k,h\rangle$. Thus, $\langle k,Ah\rangle = \langle A^*k,h\rangle$ and take conjugates.
+    \end{proof}
+
+    \begin{proposition}
+        For $A$ and $B$ in $\mathcal{B}(\mathcal{H})$ we have
+        \begin{enumerate}
+            \item $A^{**} = A$ where $A^{**} = (A^*)^*$.
+            \item $(A+B)^* = A^* + B^*$
+            \item $(\alpha A)^* = \overline{\alpha}A^*$ for $\alpha\in\mathbb{C}$
+            \item $(AB)^* = B^* A^*$
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        1. Combine $\langle A^*x,y\rangle = \langle x,A^{**}y\rangle$ and $\langle Ay,x\rangle = \langle y,A^*x\rangle$ so that
+        $\langle x,A^{**}y\rangle = \langle x,Ay\rangle$ which shows that for all $x,y$: $\langle x,A^{**}y-Ay\rangle = 0$.
+        Choose $x = A^{**}y-Ay$, so that we get $A^{**}y = A^*y$ as wanted.
+    \end{proof}
+
+    \begin{proposition}
+        If $A\in\mathcal{B}(\mathcal{H})$, then $\norm{A}=\norm{A^*}$ and $\norm{A^*A} = \norm{A}^2$.
+    \end{proposition}
+    \begin{proof}
+        \[ \norm{Ah}^2 = \langle Ah, Ah\rangle = \langle h, A^*Ah\rangle \leq \norm{h}\norm{A^*Ah} \leq \norm{A^*A} \leq 
+            \norm{A}\norm{A^*} \]
+        This shows $\norm{A}^2 \leq \norm{A*}\norm{A}$ which shows $\norm{A}\leq \norm{A^*}$. Then, apply this for the operator
+        $\norm{A*}$ to get, $\norm{A*}\leq \norm{A^{**}} = \norm{A}$ to get that $\norm{A} = \norm{A^*}$. We know,
+        $\norm{AA^*} \leq \norm{A}\norm{A^*} = \norm{A}\norm{A} = \norm{A}^2$ already. 
+    \end{proof}
+
+    \begin{defn}
+        An operator $A$ in $\mathcal{B}(\mathcal{H})$ is \textbf{normal} if $AA^* = A^*A$, and \textbf{self adjoint} if $A=A^*$.
+        If $U:\mathcal{H}\to\mathcal{K}$ is a linear surjection that preserves inner products i.e. $\langle Uh_1,Uh_2\rangle =
+        \langle h_1,h_2\rangle$ for all $h_1,h_2$ in $\mathcal{H}$, we say that $U$ is a \textbf{Hilbert space isomorphism}.
+    \end{defn}
+
+    \begin{proposition}
+        If $U:\mathcal{H}\to\mathcal{H}$ is an isomorphism, then $U^*U= I_{\mathcal{H}}$ and $UU^* = I_{\mathcal{K}}$.
+    \end{proposition}
+
+    \begin{defn}
+        An operator $A$ in $\mathcal{B}(\mathcal{H},\mathcal{K})$ is said to be \textbf{invertible} if there exists $B$ in
+        $\mathcal{B}(\mathcal{K},\mathcal{H})$ with $AB = I_{\mathcal{K}}$ and $BA = I_{\mathcal{H}}$. We write $B = A^{-1}$.
+    \end{defn}
+
+    We can then rephrase the last proposition as: If $U$ is an isomorphism, then $U^* = U^{-1}$.
+
+    \begin{defn}
+        If $H$ and $K$ are Hilbert spaces and if $U:H\to K$ is bijective linear map with
+        \[ \langle Uh_1,Uh_2\rangle_K = \langle h_1,h_2\rangle \]
+        for all $h_1$ and $h_2$ in $H$, then $U$ is said to be a \textbf{Unitary operator}.
+    \end{defn}
+
+    A linear and surjective isometry is always unitary.
+
+    \begin{proposition}
+        If $A$ is invertible, then so is $A^*$, and $(A^*)^{-1} = (A^{-1})^*$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $U\in\mathcal{B}(H,K)$ with $U$ invertible and $U^{-1} = U^*$, then $U$ is an isomorphism.
+    \end{proposition}
+
+\end{document}

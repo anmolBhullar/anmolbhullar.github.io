@@ -654,19 +654,28 @@
         has a hole that can be filled.
     \end{proof}
 
-    We now begin discussion on Fatou and Julia sets.\\
+    We now begin discussion on Fatou and Julia sets.
+
+    \section{Montel's Theorem}
 
     \begin{definition}
+        Let $S$ and $S'$ be Riemann surfaces.
         A family $\mathfrak{F}$ of holomorphic functions $f:S\to S'$ (with $S'$ compact) is \textbf{normal} if every sequence
         of functions in $\mathfrak{F}$ which converge uniformily on compact sets. Note: the limit of such sequences is holomorphic.
+    \end{definition}
+
+    If $S'$ is non-compact:
+
+    \begin{definition}
+        A collection $\mathcal{F}$ of maps from a Riemann surface $S$ to a (possibly noncompact) Riemann surface $T$ will be called
+        \textbf{normal} if every infinite sequence of maps from $\mathcal{F}$ contains either a subsequence which converges locally
+        uniformily or a subsequence which diverges locally uniformaly from $T$.
     \end{definition}
 
     \begin{theorem}[Montel's theorem]
         If $S$ is a Riemann surface and $S'\subseteq\hat{\mathbb{C}}-\{0,1,\infty\}$, then every family of holomorphic functions
         $f: S\to S'$ is normal.
     \end{theorem}
-
-    This is somewhat similar to Arzelà-Ascoli theorem.
 
     \begin{remark}
         A limit $g$ of such convergent family need not take values in $S'$.
@@ -709,4 +718,131 @@
         as $k\to\infty$.
     \end{lemma}
 
+    \subsection{Julia and Fatou Sets}
+
+    We consider rational maps $f(z)=p(z)/q(z)$ without common factors. Such a map can be considered as a dynamical system
+    on the sphere $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$.
+
+    \begin{definition}
+        deg$f$ = max$\{$deg$p$,deg$q\}$.
+    \end{definition}
+
+    \begin{remark}
+        Note: If $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ is rational, then for $z\in\hat{\mathbb{C}}$:
+        \[ \#f^{-1}(z) =\:\text{deg}f \]
+        except for finitely many values of $z$.
+    \end{remark}
+
+    \begin{proof}
+        $f^{-1}(z) = \{w\in\hat{\mathbb{C}}:p(w)/q(w) = z\} = \{w:p(z)-zq(w)=0\}$ which is a polynomial of degree
+        max$\{$deg$p$,deg$q\}$.
+    \end{proof}
+
+    \begin{definition}[Fatou Set]
+        A point $z\in\hat{\mathbb{C}}$ lies in the \textbf{Fatou set} $\Omega(f)$ if there exists an open set $U$ with $z\in U$,
+        then $(f^n|_U)_{n\geq 0}$ is normal where $f^n$ is the $n$-fold iterate i.e. the Fatou set is the domain of normality
+        for the collection of iterates $\{f^n\}$. We can also say that the Fatou set of $f$ is the largest open subset of
+        $\hat{\mathbb{C}}$ on which the family $\{f^n\}_{n\geq 0}$ is equicontinuous at every point. We can think of this as
+        saying that any orbit which starts near $z_0$ remains \say{close} to $z_0$ as it iterates.
+    \end{definition}
+
+    The \textbf{Julia set} $J(f)$ is the complement of the Fatou set and can be thought of as the set of points of which the orbits
+    exhibit \say{sensitive dependence on initial conditions} \footnote{Holomorphic Dynamics and Hyperbolic Geometry by Shaun Bullett}.
+
+    \begin{example}
+        Let $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ with $f(z) = z^2$.\\
+
+        Then $f(0) = 0$ with $f'(0) = 0$ so that $f^n(z) = z^{2^n}$. Thus, if $|z|<1$, then $\lim_n f^n(z) = 0$. Therefore,
+        $\mathbb{D}$ is inside the Fatou set, i.e. $\mathbb{D}\subset\Omega(f)$.\\
+
+        If $|z|>1$, then $\lim_{n\to\infty} |f^n(z)| = \pm\infty$ so that $\{z:|z|>1\}\subseteq\Omega(f)$ and finally,
+        $J(f) = \{z: |z|=1\}$.
+    \end{example}
+
+    \begin{remark}
+        By definition of the Fatou set, it is open and so the Julia set is closed.
+    \end{remark}
+
+    We now ask if $J(f) = \emptyset$ or if $\Omega(f)=\emptyset$. The answer is that if deg$f\geq 2$, then $J(f)\neq\emptyset$. A
+    proof of this can be found in [1] 
+    
+    \begin{remark}
+        There exist rational maps $f$ with $J(f) = \hat{\mathbb{C}}$ (see $z\mapsto (z^2+1)/4z(z^2-1)$)\footnote{Lattès 1918} but
+        if $f$ is to be say polynomial then $\infty\in \Omega(f)$ always.
+    \end{remark}
+
+    We can also ask if $J(f)$ is connected or more generally what is its topology.
+
+    \begin{definition}[Mandelbrot Set]
+        The Mandelbrot set is the set of values of $c$ in the complex plane for which the orbit of 0 under iteration of the rational
+        map $z_{n+1} = z_n^2 + c$ remains bounded. Equivalently,
+        \[ \mathcal{M} = \{c\in\mathbb{C}: J(z^2+c)\;\text{is connected}\} \]
+    \end{definition}
+
+    \begin{lemma}
+        Both Fatou and Julia sets are fully invariant. This is to say,
+        \[ f^{-1}(J(f)) = J(f) \]
+        and
+        \[ f^{-1}(\Omega(f)) = \Omega(f) \]
+        This implies $f(J)\subseteq J$ and $f(\Omega)\subseteq \Omega$.
+    \end{lemma}
+    \begin{proof}
+        It suffices to show the Fatou set is invariant. Furthermore, we have $(f^{n+1}|_V)_{n\geq 0}$ is normal if and only if
+        $(f^n|_U)_{n\geq 0}$ is invariant since for any open set $U\subseteq\hat{\mathbb{C}}$, some sequence of iterates $f^{n_j}$
+        converges uniformily on compact subsets of $U$ if and only if the corresponding sequence of iterates $f^{n_j+1}$ converges
+        uniformily on compact subsets of the open set $V = f^{-1}(U)$.
+    \end{proof}
+
+    \begin{lemma}
+        $J(f^n) = J(f)$ for all $n\geq 1$ and $\Omega(f^n) = \Omega(f)$.
+    \end{lemma}
+    \begin{proof}
+        As before, it suffices to show that $\Omega(f^n) = \Omega(f)$. It suffices to note that $(f^{k_n})_k$ is normal implies
+        $(f^{k_n+h})_k$ is normal for $h=0,\hdots,n-1$ and $(f^{k_n})_k$ normal implies $(f^{k_n+1})_k$ normal.
+    \end{proof}
+
+    \begin{definition}
+        Consider a \textbf{periodic orbit} or \textbf{cycle}
+        \[ f: z_0\mapsto z_1\mapsto \hdots \mapsto z_{m-1} \mapsto z_m = z_0 \]
+        for a holomorphic map $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$. The smallest $n$ such that $f^n(z)=z$ is the \textbf{period}
+        of $z$. The \textbf{multiplier} is the number $\lambda:= (f^n)'(z)$. The cycle is called:
+        \begin{enumerate}
+            \item \textbf{attracting} if $|\lambda|<1$; \textbf{superattracting} if $\lambda =0$.
+            \item \textbf{repelling} if $|\lambda|\geq 1$
+            \item \textbf{indifferent} if $|\lambda| = 1$
+            \item \textbf{parabolic} if $|\lambda|=1$ but no iteration $f^n$ is the identity map
+        \end{enumerate}
+        Attracting and superattracting cycles are in the Fatou set, i.e. $z\in\Omega(f)$. Repelling, indifferent cycles and
+        parabolic cycles are in the Julia set.
+    \end{definition}
+
+    \begin{definition}[Grand Orbit]
+        Given $z\in\hat{\mathbb{C}}$, for $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$, the \textbf{grand orbit} is
+        \[ GO(z,f) = \{w:\exists\;n,m\geq 0\;\text{such that}\;f^n(w)=f^m(z)\} \]
+        Equivalently, we can say that the grand orbit of a point $z$ under $f$, we mean a set $GO(z,f)$ consisting
+        of all points $z\in\hat{\mathbb{C}}$ whose orbits intersect the orbit of $z$.
+    \end{definition}
+
+    Note: if $z\in J(f)$, then $GO(z,f)\subseteq J(f)$.
+
+    \begin{definition}
+        The \textbf{basin of attraction} of an attracting periodic point $z_0$ of period $p$ is defined to be the set
+        \[ \mathcal{A}=\{z\in\hat{\mathbb{C}}: f^{p}(z),f^{2p}(z),f^{3p}(z),\hdots\;\text{converges to some point in the 
+                orbit of}\;z_0\} \]
+    \end{definition}
+
+    \begin{theorem}
+        Every attracting periodic orbit is in the Fatou set. In fact, the entire basin of attraction
+        $\mathcal{A}$ for an attracting periodic orbit is contained in the Fatou set. However, the boundary of the
+        basin lies in the Julia set.
+    \end{theorem}
+
+    \begin{proof}
+        Suppose $p$ is the period. Consider $(f^{pn})_{n\geq 0}$. If $z$ is a periodic point, then $|(f^p)'(z)|<1$. Hence
+        for $z'$ close to $z$, we have $(f^{pn})(z')\to z$ by Banach fixed point theorem.
+        If $z\in\partial{U}$, then $f^{pz}|_U\to z_0$ the fixed point. If $z$ is in the boundary, i.e. if $z\in\partial{U}$, then
+        $f^{pn}\not\to z_0$. Hence the family $(f^{pn})$ is not normal at $z$, because if we want existence, then it would be
+        discontinuous. One part approaches 0, and the other, $\infty$.
+    \end{proof}
+    
 \end{document}
