@@ -844,5 +844,231 @@
         $f^{pn}\not\to z_0$. Hence the family $(f^{pn})$ is not normal at $z$, because if we want existence, then it would be
         discontinuous. One part approaches 0, and the other, $\infty$.
     \end{proof}
+
+    \begin{lemma}
+        If $z$ is a repelling periodic point, then it lies in the Julia set.
+    \end{lemma}
+    \begin{proof}
+        Suppose $p = 1$. Then $f(z_0) = z_0$ and $\lambda = |f'(z_0)| > 1$. If $z\in\Omega(f)$, then $f^n|_U$ is normal so 
+        $f^{nk}|_U \to g: U \to \hat{\mathbb{C}}$ is holomorphic.\\
+        Hence, $(f^{nk})'|_U \to g'$. This is a contradiction because
+        \[ |(f^n)'(z_0)| = |\lambda^n| \to \infty \]
+    \end{proof}
+
+    \begin{lemma}
+        Parabolic periodic points lie in the Julia set.
+    \end{lemma}
+    \begin{proof}
+        Assume $f(z_0) = 0$, $f'(z_0) = 1$. If you expand $f$ in power series near $z_0$, $f(w) = w + a_kw^k + a_{k+1}w^{k+1}+\hdots$\\
+        Hence, $f^p$ correspods to the power series $w\mapsto w+a_kw^k + O(w^{k+1})$ and so $f^{pk}$ corresponds to the power
+        series $w \mapsto w + ka_qw^q + \hdots$. Thus the $q$th derivative of $f^{pk}$ at 0 equal $q!ka_q$ which diverges to infinity as
+        $k\to\infty$. Since no subsequences $f^{pk_j}$ can converge locally uniformily as $k_j\to\infty$, we are done.
+    \end{proof}
+
+    Now, we cover dynamics on Riemann surfaces other than $\hat{\mathbb{C}}$ and we start with the Euclidean case.
+
+    \subsection{Dynamics on Euclidean Surfaces}
+
+    $\mathbb{C}$ has hard dynamics since we are not only dealing with polynomial maps but transcendental ones as well.\\
+
+    For the $\mathbb{C}/\mathbb{Z}$ and $\mathbb{C}/wedge$ (Cylinder and Torus) case, we have the theorem:
+
+    \begin{theorem}
+        Every holomorphic function $f: \mathbb{C}/\wedge \to \mathbb{C}/\wedge$ is of the form $f(z) = \alpha z + c$ 
+        (mod $\wedge$), with degree of $f$ being $d = |\alpha|^2$. The Julia set if $|\alpha|\leq 1$ is the empty set and if
+        $|\alpha|>1$ is equal to $\mathbb{C}/\wedge$.
+    \end{theorem}
+
+    In particular, $|\alpha|^2\in\mathbb{N}$. In fact, if $|\alpha|\neq 1$, then $\alpha$ must be a root of
+    $\alpha^2 + p\alpha + d = 0$, then $p,d\in\mathbb{Z}$, $p^2 < 4d$, $d = |\alpha|^2$.\\
+
+    Such lattices $\wedge$ are said to have complex multiplication. This is important for number theory.
     
+    \begin{proof}
+        Pick $\wedge$ so that the lattice $\wedge\subset\mathbb{C}$ is spanned by two numbers 1 and non-real $\tau$. Lift
+        $f:\mathbb{C}/\wedge\to\mathbb{C}/\wedge$ to a holomorphic map $F:\mathbb{C}\to\mathbb{C}$ on the universal covering surface.
+        Then, for all $z\in\mathbb{C}$:
+         \[ F(z+1) - F(z) = \alpha\in\wedge\quad\text{otherwise it is not commutative} \]
+         which implies,
+         \[ F(z+\tau) - F(z) = \beta\in\wedge \]
+         Consider: $G(z) = F(z) - \alpha z$. Then,
+         \[ g(z+1) = F(z+1) - \alpha z - \alpha = F(z) - \alpha z = g(z) \]
+         and,
+         \[ g(z+\tau) = F(z+\tau) - \alpha z - \alpha\tau = F(z) + \beta - \alpha z - \alpha z = g(z) + (\beta - \alpha z) \]
+         so we get a function
+         \[ g: \mathbb{C}/\wedge \to \mathbb{C}/[\mathbb{Z}(\beta-\alpha\tau)] \]
+         Then either,
+         \[ \beta - \alpha\tau = 0,\quad g:\mathbb{C}/\wedge \to\mathbb{C}\;\text{or}\; \beta-\alpha\tau\neq 0\quad g:\mathbb{C}/\wedge\to
+             \mathbb{C}/\wedge \]
+         Remember $\mathbb{C}/\mathbb{Z}$ is compact, so by the open mapping theorem, $g(\mathbb{C}/\mathbb{Z})$ is compact and open
+         in $\mathbb{C}$. Thus $g$ must be constant and so,
+         \[ g(z) = F(z) - \alpha z \equiv c \]
+         Note if $\alpha\neq 1$, then
+         \[ f(z) = \alpha z + c = z \]
+         has a fixed point at $z_0 = c/(1-\alpha)$.\\
+         Then $f(z+z_0) = \alpha z$, thus, define $\hat{F}(z) := \alpha z$.\\
+         We can assume $f(z) = \alpha z$ (mod $\wedge$). Remember, $f:\mathbb{C}/\wedge\to \mathbb{C}/\wedge$ so the $\alpha$ we
+         choose must preserve $\wedge$ so that we choose
+         \[ \alpha\wedge \leq \wedge \implies \wedge \mapsto \wedge \]
+         Hence, there exists $a,b,c,d\in\mathbb{Z}$ such that $\alpha \cdot 1 = a + b\tau$ and $\alpha\cdot\tau = c+d\tau$.
+         Now, it is an exercise to check if $\alpha$ is a quadratic.
+         \begin{align*}
+             \tau = (\alpha - a)/b \\
+             \alpha(\alpha - a)/b = c + d(\alpha - a)/b \\
+             \implies \alpha^2 -a\alpha = cb + d\alpha - da\\
+             \implies \alpha^2 - (a+d)\alpha + (ad-bc) = 0
+         \end{align*}
+         (or you can recognize $\tau$ is an eigenvalue which implies the characteristic polynomial)
+         \[ |\alpha|^2 = ad - bc\]
+         Note, $|\alpha|^2$ is degree of $f(z) = \alpha z$ because Area$(\alpha P) = |\alpha|^2$Area$(P)$ where
+         \[ P = \{u + vz: 0\leq u\leq 1, 0\leq v\leq 1\} \]
+         Note if $\alpha = 2$, you have 4 pre-images of a point so $\#\{f^{-1}(z)\} = |\alpha|^2$
+         Thus, $\alpha^2 + p\alpha + d =0$. Then, $p^2 -4d < 0$ because $\alpha\not\in\mathbb{R}$ (unless it is $\mathbb{Z}$).\\
+
+         Now we want to compute $J(f)$. If $|\alpha|>1$, why is $J(f)$ everything?\\
+         Take $(f^n)'(z) = |\alpha|^n \to +\infty$ so $J(f) = \mathbb{C}/\wedge$. Note periodic points are dense in $\mathbb{C}/\wedge$
+         and if $|\alpha|<1$, then $|(f^n)'(z)|\leq 1$ for all $n$, for all $\tau$. This implies,
+         \[ (f^n)'\quad\text{is a normal family} \]
+         which implies that the family of functions is normal ($\mathbb{C}/\wedge$ compact). This concludes the proof.
+    \end{proof}
+
+    \subsection{Dynamics on Hyperbolic Surfaces}
+
+    If $S$ is compact and hyperbolic, then each automorphism $f$ has finite order i.e. there exists $n$ such that $f^n \equiv$ id.
+
+    \begin{lemma}
+        If $S$ is hyperbolic and $f:S\to S$ holomorphic then $J(f) = \emptyset$.
+    \end{lemma}
+
+    Note: In general for a holomorphic map $f: S\to S$ of any arbitrary (not necessairly compact) Riemann surface, the family
+    $(f^n)$ is normal if $f$ is either:
+    \begin{itemize}
+        \item it contains a locally uniformily convergent subsequence or
+        \item contains a subsequence which diverges locally uniformily.
+    \end{itemize}
+    In this sense, $f_n(z) = z + n$ with $f:\mathbb{C}\to\mathbb{C}$ is normal.
+
+    \begin{proof}
+        By Montel, if $S$ is hyperbolic, any family of functions $S\to S$ is normal and so it is hyperbolic.
+    \end{proof}
+
+    \begin{theorem}[Classification of Hyperbolic Surfaces]
+        Let $f:S\to S$ be holomorphic with $S$ hyperbolic. Then either:
+        \begin{enumerate}
+            \item \textbf{Attracting case:} if $f$ has an attracting fixed point $z_0$, then all orbits converge (uniformily on compact
+                subsets) to $z_0$.
+            \item \textbf{Escape:} if some orbit has no accumulation point in $S$, then for any compact $K\subseteq S$, there exists
+                $n_k$ such that $K\cap f^n(K) = \emptyset$.
+            \item \textbf{Finite Order:} if $f$ has 2 distinct periodic points, then $f$ has finite order.
+            \item \textbf{Irrational Rotation:} $S$ is an isomorphic to either $\mathbb{D}$, $\mathbb{D}/\{0\}$ or $A_r =
+                \{z: 1<|z|<r\}$, and $f$ is conjugate to $z\mapsto e^{2\pi i\theta}$ with $\theta\not\in\mathbb{Q}/\mathbb{Z}$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{corollary}
+        If $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ has a rational map and $U$ is a component of the Fatou set which contains
+        $z_0\in U$ which is an indifferent fixed point, then $U$ is isomorphic to $\mathbb{D}$ and $f|_U$ is conjugate to an
+        irrational rotation. In this case, $U$ is called a \textbf{Siegel Disk}.
+    \end{corollary}
+
+    \begin{proof}[Proof of corollary]
+        We are not in finite order case since indifferent fixed point. Thus, it must be case 4 by exclusion.
+    \end{proof}
+
+    Note if a component $U$ of the Fatou set is such that $f|_U$ is conjugate to an irrational rotation, then $U$ is called a
+    \textbf{Herman Ring}.\\
+
+    Note this corollary does not offer existence of such disks or rings. If $f_{\theta}:e^{2\pi i\theta}z + z^2$ and
+    $\theta$ has bounded continued fraction expansion, then $f_{\theta}$ has Siegel disk at 0.\\
+
+    If $S = \mathbb{D}$ (case 2), then
+    \begin{theorem}[Wolff-Denjoy]
+        Let $f:\mathbb{D}\to\mathbb{D}$ be holomorphic. Then either:
+        \begin{enumerate}
+            \item $f$ is conjugate to a rotation (i.e. an isometry for Poincaré metric with one fixed point)
+            \item $(f^n)$ converge, uniformily on compact subsets to a constant $z_0\in\mathbb{D}\cup\partial{(\mathbb{D})}$.
+        \end{enumerate}
+    \end{theorem}
+
+    In general, we have:
+    \begin{lemma}
+        If $U$ is a hyperbolic subset of a non-compact Riemann surface and the map $f:U\to U$ extends continuously to a neighborhood
+        of $\partial U$, then if some orbit of $f$ does not have an accumulation point in $U$, then $(f^n)$ converges locally
+        uniformily to some $z_0\in U$ such that $f(z_0) = z_0$.
+    \end{lemma}
+
+    Now we prove Wolff-Denjoy using the classification of Hyperbolic Surfaces.
+    \begin{proof}
+        Suppose we are in case 2, the escape case. We know there exists some $(f^n(z))$ unbounded orbit. Consider for
+        $\epsilon>0$:
+        \[ f_{\epsilon}(z) = (1-\epsilon) f(z) \]
+        Then, $f_{\epsilon}(\overline{\mathbb{D}})\subsetneq \overline{\mathbb{D}}$.\\
+        Since this is a map $\mathbb{D}\to\mathbb{D}$, by Brauwer fixed point theorem, there exists $z_{\epsilon}\in\mathbb{D}$
+        such that 
+        \[ f_{\epsilon}(z_{\epsilon}) = z_{\epsilon}. \]
+        Since $f_{\epsilon}$ weakly contracts in the Poincaré metric, $z_{\epsilon}$ is unique. If $z_{\epsilon}\to z_0\in\mathbb{D}$,
+        then $f(z_0) = z_0$ so we are in case (1), (3) or (4) so there  must be a sequence $\epsilon_k\to 0$ such that
+        $z_{\epsilon_k}\to z_0\in\partial\mathbb{D}$.\\
+
+        Consider,
+        \[ B_k = \{z\in\mathbb{D}: d_{\mathbb{H}}(z,z_{\epsilon_k}) \leq d_{\mathbb{H}}(0,z_{\epsilon_k})\} \]
+        Each $B_k$ is in fact a round disk for the Euclidean metric (but center is not $z_{\epsilon_k}$. Note $f_{\epsilon_k}\to f$,
+        hence $f(B_{\infty})\subseteq B_{\infty}$. Now your orbit is trapped in the disk. The only limit point of
+        $(f^n(z))$ must be in $B_{\infty}\cap\partial\mathbb{D} = \{z_0\}$. Hence,
+        \[ \lim_{n\to\infty} f^n(z) = z_0 \]
+    \end{proof}
+
+    \begin{definition}
+        If $(X,d)$ is a compact metric space, define
+        \[ d_{\text{Haus}}(K_1,K_2) = \inf\{\delta>0:K_1\subseteq N_{\delta}(K_2),K_2\subseteq N_{\delta}(K_1)\} \]
+        with $K_1,K_2\subseteq X$ compact subsets. $N_{\delta}(A) = \{x:d(x,A)<\delta\}$. Thus space of compact subsets of
+        $(X,d)$ is then a compact metric space.
+    \end{definition}
+
+    Finally, we now prove the Classification of Hyperbolic Surfaces theorem. However, we only cover the first two cases.
+
+    \begin{proof}
+        Pick $p_0\in S$. Consider $p_n = f^n(p_0)$. Either, (1)
+        $\lim_{n\to\infty} d_S(p_0,p_n) = +\infty$. Then pick $q_0\in S$ such that $d_S(p_0,q_0)\leq r$
+        \[ d_S(p_0,q_n)\geq d_S(p_0,p_n)-d_S(p_n,q_n) \geq d_S(p_0,p_n) -r \to \infty \]
+        so we are in the escape case.\\
+
+        (2) Otherwise, there exists $n_j\to\infty$ such that $p_n(j)\to\hat{p}\in S$. Now, consider
+        \[ g_j = f^{n(j+1)-n(j)} \]
+        which implies
+        \[ g_j(p_n(j)) = p_n(j+1) \]
+        If we take the distance,
+        \[ r_j = d_S(\hat{p},p_{n(j)})\leq r_j \]
+        then,
+        \[ d_S(g_j(\hat{p}),g_j(p_{n(j)})) \leq r_j \]
+        which implies,
+        \[ d_S(g_j(\hat{p}),p_{n(j+1)})\leq r_j \]
+        so that,
+        \[ d_S(g_j(\hat{p}),\hat{p}) \leq d_S(g_i(\hat{p}),p_{n(j+1)}+d_S(p_{n(j+1)},\hat{p})) \leq r_j + r_{j+1} \to 0 \]
+        Hence $(g_j(\hat{p}))\subseteq B_r$ compact. Hence, $(g_j)$ is locally uniformily bounded because $\hat{p}$ maps to a
+        bounded set. Hence, there is a limit function $g:S\to S$ with $g(\hat{p}) = \hat{p}$ so that $\hat{p}$ is fixed.\\
+
+        Then there are two cases, (1) Distance-Decreasing case and (2) Distance-Preserving Case.\\
+
+        (1) If $f$ decreases Poincaré distance, then $g$ also does. Also, $f,g$ commute ($g$ an iterate of $f$). Hence,
+        $f$ maps fixed points of $g$ to itself: $f($Fix$(g))\subseteq$ Fix$(g)$ because,
+        \begin{align*}
+            z\in\;\text{Fix}(f),\qquad f(z) = z \\
+            f(g(z)) = g(f(z)) = g(z) \\
+            \implies g(z) \in\;\text{Fix}(f)
+        \end{align*}
+        Since $f,g$ strictly decreases the metric,
+        \[ \#\text{Fix}f = 1,\qquad \#\text{Fix}g = 1 = \{\hat{p}\} \]
+        which implies $f(\hat{p}) = \hat{p}$ so $f$ does have a fixed point and so it must contract the Poincaré metric.
+        Therefore, $\hat{p}$ is an attracting fixed point.\\
+
+        (2) Suppose $f$ is a local isometry for the Poincaré metric. There is a sequence $g_j = f^{n(j+1)-n(j)}$ such that
+        $g_j\to g$ and also $g(\hat{p}) = \hat{p}$. Then,
+        \[ |g'(\hat{p})| = 1 \implies \hat{g}'(p) = e^{2\pi i\alpha} \]
+        Now, we can find powers of this such that the function gets closer to id i.e.
+        \begin{center}
+            \includegraphics[scale=0.08]{IMG_1127}
+        \end{center}
+    \end{proof}
+
 \end{document}
