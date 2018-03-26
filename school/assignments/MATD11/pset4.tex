@@ -1,0 +1,320 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{mathrsfs}
+\usepackage{dirtytalk}
+\usepackage{exercise}
+\usepackage{csquotes}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11: Functional Analysis\\
+    Assignment 4}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \begin{Exercise}
+        For an operator $T$ in $\mathscr{B}(\mathscr{H})$ where $\mathscr{H}$ is a Hilbert space, show that ker $T$ = (ran $T^*)^{\perp}$, where
+        ker $T = \{h:Th=0\}$ and ran $T^* \equiv$ range $T^* = \{T^*h: h\in\mathscr{H}\}$. 
+    \end{Exercise}
+
+    \begin{Answer}
+        Choose $h\in$ ker $T$. Then $Th = 0$. Note, $h\in$ (ran $T^*)^{\perp}$ if and only if for all $g\in$ ran $T^*$, we have $\langle g, h\rangle = 0$.
+        Since $g\in$ ran $T^*$, we can write $T^* k = g$ for some $k\in\mathscr{H}$. Then, consider:
+        \[ \langle T^* k, h\rangle = \langle k, (T^*)^* h\rangle = \langle k, Th\rangle = \langle k,0\rangle = 0\]
+        so that $h\in$ (ran $T^*)^{\perp}$. Thus, ker $T \subseteq ($ran $T^*)^{\perp}$.\\
+
+        Choose $h\in ($ran $T^*)^{\perp}$. Then $h\in$ ker $T$ if and only if $Th=0$.
+        \[ 0 = \langle h, g\rangle = \langle h, T^* k\rangle = \langle (T^*)^* h, k\rangle = \langle Th, k\rangle \]
+        so that for all $k\in\mathscr{H}$, we have $\langle Th, k\rangle = 0$. In particular, for the identically zero operator $G$, we have that
+        $\langle Th, k\rangle = \langle Gh, k\rangle$, thus $Th = Gh$ by a question on the previous assignment. Thus, $Th = 0$ so that $h\in$ ker $T$ and we
+        have set containment both ways. Therefore, ker $T = ($ran $T^*)^{\perp}$.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Show that a diagonal operator on a Hilbert space is an orthogonal projection if and only if its diagonal consists of 0's and 1's.
+    \end{Exercise}
+
+    \begin{Answer}
+        Suppose $A$ is a diagonal operator and an orthogonal projection. We show its diagonal consists only of 0's and 1's. Since $A$ is
+        a diagonal operator, for any $h\in\mathscr{H}$, we write 
+        \[ Ah = \sum_1^{\infty} \langle h,e_n\rangle \alpha_n e_n = \sum_1^{\infty} \langle \alpha_n h, e_n\rangle e_n \]
+        so that $A(Ah) = \sum_1^{\infty} \langle \alpha_n h,e_n\rangle \alpha_n e_n = \sum_1^{\infty} \langle h,e_n\rangle \alpha_n^2 e_n$.
+        Recall, for all orthogonal projections $P$, we have $P^2 = P$. Thus, $A(Ah) = A(h)$, so that we have,
+        \begin{equation}
+            \sum_1^{\infty} \langle h,e_n\rangle \alpha_n e_n = \sum_1^{\infty} \langle h,e_n\rangle \alpha_n^2 e_n
+        \end{equation}
+        Thus, $\alpha_n = \alpha_n^2$ for all $n$. Clearly 1 and 0 are the only complex numbers which fulfill this equation. Thus,
+        $\alpha_n = 0$ or $\alpha_n = 1$. Thus, the diagonal sequence of $A$ consists of 0's and 1's as wanted.\\
+
+        Suppose $A$ is a diagonal operator and its diagonal sequence consists of 0's and 1's. Thus, $\alpha_n = \alpha_n^2$. From this,
+        we get that (1) still holds. Thus, $A(Ah) = Ah$ so that $A^2 = A$. Now, we show $A$ is self-adjoint. Consider for $h,g\in\mathscr{H}$:
+        \begin{align*}
+            \langle Ah,g\rangle &= \langle \sum_{n=1}^{\infty} \langle h,e_n\rangle \alpha_n e_n,g\rangle  \\
+                &= \sum_{n=1}^{\infty} \langle \alpha_n h,e_n\rangle \langle e_n,g\rangle 
+        \end{align*}
+        By theorem 1.33(f) (recall, we are working in a Hilbert space), 
+        we have that the last line above is equal to $\langle \alpha_n h, g\rangle$ which is then
+        equal to, $\langle h, \overline{\alpha_n} g\rangle$. Noting that all $\alpha_n$'s are real, we have
+        from basic complex number properties that $\alpha_n = \overline{\alpha_n}$. Thus,
+        \[ \langle Ah,g\rangle = \langle h,\alpha_n g\rangle\]
+        Since $\mathscr{H}$ is Hilbert, we can of course write $g = \sum_{n=1}^{\infty} \langle g,e_n\rangle e_n$ so that,
+        \begin{align*}
+            \langle Ah, g\rangle &= \langle h,\alpha_n (\sum_{n=1}^{\infty} \langle g,e_n\rangle e_n)\rangle \\
+                &= \langle h, \sum_{n=1}^{\infty} \langle g,e_n\rangle \alpha_n e_n\rangle \\
+                &= \langle h, Ag\rangle
+        \end{align*}
+        so that $A$ is also self-adjoint. By problem 2.17, this is enough to imply that $A$ is an orthogonal projection.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Show that if $S$ is the forward shift operator on $\ell^2$, then $S^n\to 0$ in the weak operator topology but $S^n$ does not converge to
+        0 in the norm topology or the strong operator topology.
+    \end{Exercise}
+
+    \begin{Answer}
+        First, note that in $\ell^2$, the adjoint of $S^n$ is $B^n$ where $B$ is the backward shift. 
+        We can prove this quickly using that $S^* = B$, note:
+        \[ (S^n)^* = S^* \circ S^* \circ \hdots \circ S^* = B \circ B \circ \hdots \circ B = B^n \]
+        where we used proposition 2.13 to expand $(S^n)^*$. Then, for $h,g\in\ell^2$, we have:
+        \[ \langle S^n h, g\rangle = \langle h, B^n g\rangle \]
+        We show that $\lim_{n\to\infty} \norm{B^n g} = 0$. Since $g\in\ell^2$, we can write $g = (x_n)_1^{\infty}$ for $x_n\in\mathbb{C}$
+        such that $(\sum_1^{\infty} |x_n|^2)^{1/2} < \infty$ and so, $\norm{B^n g} = (\sum_{i=n}^{\infty} |x_i|^2)^{1/2}$ by definition
+        of the backward shift. Thus, in order to prove $\lim_{n\to\infty} \norm{B^ng} = 0$, it suffices to prove the tail of the sum
+        $(\sum_{n=N}^{\infty} |x_n|^2)^{1/2}$ goes to zero i.e. $\lim_{N\to\infty} (\sum_{n=N}^{\infty} |x_n|^2)^{1/2} = 0$. 
+        We already know this is true since the tail of \textit{any} convergent series goes to zero so we are done. Therefore,
+        $\lim_{n\to\infty} \norm{B^n g} = 0$ and using continuity of norms, we have $\norm{\lim_{n\to\infty} B^n g} = 0_{\mathbb{R}}$ so that
+        $\lim_{n\to\infty} B^n g = 0_{\ell^2}$. Noting that the inner product is continuous in \textit{both} arguements, we have,
+        \[ \lim_{n\to\infty} \langle S^nh,g\rangle = \lim_{n\to\infty} \langle h,B^ng\rangle = \langle h,\lim_{n\to\infty} B^n g\rangle = 0 \]
+        so that $S^n \to 0$ in the weak operator topology as wanted.\\
+
+        We show $S^n \to 0$ is not true in the norm operator topology. Note,
+        \[ \norm{S^n} = \sup\{\norm{S^n x}_{\ell^2}: \norm{x}_{\ell^2} = 1\} \]
+        Writing $x$ as $(x_n)_1^{\infty}$ for $x_n\in\mathbb{N}$, we have $S^nx = (\sum_{i=1}^{\infty} |(S^nx)_i|^2)^{1/2}$. However, the first
+        $n$ terms are simply zero, so we have $S^n x = (\sum_{i=n+1}^{\infty} |x|^2)^{1/2}$ and also, since $(S^n x)_n = x_1$,
+        $(S^n x)_{n+2} = x_2$ and so on, we have that $S^n x = (\sum_{i=1}^{\infty} |x_i|^2)^{1/2}$ for all $n\in\mathbb{N}$. Thus,
+        \[ \norm{S^n} = \sup\{\norm{S^n x}_{\ell^2}: \norm{x}_{\ell^2} = 1\} = \sup\{\norm{x}_{\ell^2}: \norm{x}_{\ell^2} = 1\} = 1 \]
+        so that $\norm{S^n} = 1$ for all $n\in\mathbb{N}$ so that in particular, $S^n \to 0$ is not true in the norm operator topology.\\
+
+        We show $S^n \to 0$ is not true in the strong operator topology. In the previous paragraph, we have shown $\norm{S^n x}_{\ell^2} =
+        \norm{x}_{\ell^2}$ for all $n\in\mathbb{N}$. Thus, $\norm{S^n x} \to 0$ is not true for all $x\in \ell^2$ (pick an $x\in\ell^2$
+        such that $\norm{x}_{\ell^2} > 0$) and so $S^n\to 0$ is not true in the strong operator topology.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Let $\mathscr{H}$ be a Hilbert space. Prove that $U\in\mathscr{B}(\mathscr{H})$ is a self-adjoint unitary operator if and only if
+        $U = 2P-I$ for some projection $P\in\mathscr{B}(\mathscr{H})$.
+    \end{Exercise}
+
+    \begin{Answer}
+        Assume $U$ is a self-adjoint unitary operator. Define the map $P:\mathscr{H}\to\mathscr{H}$ by $P := (U+I)/2$. We show
+        $P\in\mathscr{B}(\mathscr{H})$, $P^2 = P$ and $P$ is self-adjoint to get that $P$ is an orthogonal projection. Thus, by solving
+        for $U$, we get that $U = 2P - I$ as wanted. Since $\mathscr{B}(\mathscr{H})$ is a vector space and they are closed under
+        vector addition and scalar multiplication, we have that since $P = (U+I)/2$ and $U,I\in\mathscr{B}(\mathscr{H})$, then
+        $P\in\mathscr{B}(\mathscr{H})$. Now, we show $P^2 = P$. Pick $x\in\mathscr{H})$, then
+        \begin{align*}
+            P^2(x) = P(\frac{(U+I)x}{2}) &= P(\frac{Ux + Ix}{2}) \\
+                &= \frac{U((Ux+Ix)/2) + I((Ux+Ix)/2)}{2} \\
+                &= \frac{U^2x/2 + (U\circ Ix)/2 + (I\circ Ux)/2 + I^2x/2}{2}
+        \end{align*}
+        Noting that since $I$ is the identity map, then $U = U\circ I = I \circ U$ and since $U$ is unitary, we have $U^2 = I$, we get:
+        \[ P^2(x) = \frac{Ix/2 + (U\circ Ix)/2 + (U\circ Ix)/2 + Ix/2}{2} = \frac{Ux + Ix}{2} = Px \]
+        as wanted. Thus, $P^2 = P$. Now, it is left to show $P$ is self-adjoint. Let $h,g\in\mathscr{H}$. Then,
+        \begin{align*}
+            \langle Ph,g\rangle &= \langle \frac{Uh + Ih}{2},g\rangle \\
+                &= \langle Uh,g/2\rangle + \langle h,g/2\rangle \\
+                &= \langle h, U(g/2)\rangle + \langle h,g/2\rangle \\
+                &= \langle h,(1/2)(Ug + g)\rangle = \langle h,(Ug+Ig)/2\rangle = \langle h,Pg\rangle
+        \end{align*}
+        where in the second last line, we use the fact that $U$ is self-adjoint and in the last line that $U$ and $I$ are linear. Thus,
+        $P$ is self adjoint so that by problem 2.17, $P$ is an orthogonal projection. Therefore, we can write $U = 2P - I$ for some
+        orthogonal projection $P$.\\
+
+        Now, assume $U = 2P-I$ for some orthogonal projection $P$, we prove that $U$ is self-adjoint and unitary. For $h,g\in\mathscr{H}$:
+        \begin{align*}
+            \langle Uh, g\rangle &= \langle (2P-I)h, g\rangle \\
+                &= \langle Ph, 2g\rangle - \langle Ih,g\rangle \\
+                &= \langle h,P(2g)\rangle - \langle h,Ig\rangle \\
+                &= \langle h,2Pg - Ig\rangle \\
+                &= \langle h,Ug\rangle 
+        \end{align*}
+        where we used the fact that $P$ is self adjoint and linear in the third and fourth line respectively. Thus, $U$ is self-adjoint and
+        so it is left to show $U$ is unitary, i.e. show $UU^* = I = U^*U$. Note, we showed $U$ is self adjoint, so it suffices to show
+        $U^2 = I$. Note, for any $x\in\mathscr{H}$:
+        \[ U^2(x) = U(2Px - Ix) = 2P(2Px - Ix) - I(2Px - Ix) = 4P^2x - 2P\circ Ix - I\circ 2Px + I^2x \]
+        Since $I$ is the identity map, we have that $2P\circ Ix = 2Px = I\circ 2Px$. Also, $I^2 = I$ and since $P$ is the projection map,
+        $P^2 = P$. Thus, we can simplify the equation above to:
+        \[ U^2(x) = 4Px - 4Px + Ix = x \]
+        so that $U^2 = I$ as wanted.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        In $c_{00}(\mathbb{C})$ with the sup norm, find a nested sequence of non-empty closed sets with diameters approaching zero that has
+        an empty intersection. Sufficiently justify your findings. Explain why your solution does not contradict the Nested Set Theorem.
+    \end{Exercise}
+
+    \begin{Answer}
+        Define,
+        \begin{align*}
+            D_1 &:= D_1((1,0,0,\hdots)) = \{x: \norm{x-(1,0,0,\hdots)}_{c_{0}}\leq 1\} \\
+            D_2 &:= D_{1/4}((1,1/4,0,0,\hdots)) = \{x: \norm{x-(1,1/4,0,0,\hdots)}_{c_0}\leq 1/2\} \\
+            D_3 &:= D_{1/9}((1,1/4,1/9,0,0,\hdots)) \\
+            &\vdots
+        \end{align*}
+        so that $D_n$ is defined to the closed ball of radius $1/n^2$ whose center is 
+        \[ (1,1/4,1/9,\hdots,1/n^2,0,0,\hdots) \]
+        We claim that $D := \{D_1,D_2,D_3,\hdots\}$ is our desired sequence of non-empty closed sets with diameters approaching zero that has
+        an empty intersection. It is clear that this collection has diameters which approach zero and also that each point in this
+        collection is closed since each closed ball is closed. It is left to prove $\cap_n D_n = \emptyset$ and $D_{n+1}\subseteq D_n$. We prove
+        the latter first.\\
+
+        It is clear each $D_n$ is non-empty. Thus, choose $x\in D_{n+1}$ and write $x = (x_1,x_2,x_3,\hdots)$ for $x_i\in\mathbb{C}$.
+        Let $C_n$ denote the center of $D_n$. Then, given $\norm{x-C_{n+1}}\leq 1/(n+1)^2$, we have to show $\norm{x-C_n}\leq 1/n^2$.
+        Note, it suffices to prove that for all $k\in\mathbb{N}$, $|x_k - (C_n)_k|\leq 1/n^2$.
+        Note, we have that for all $k\geq 1$, since $(C_{n+1})_{n+k}=0$, we have $|x_{n+k} - 0|\leq 1/(n+1)^2 < 1/n^2$
+        and also, since $(C_n)_k = (C_{n+1})_k$ agree for all $k<n$, we also, have $|x_k - (C_n)_k|<1/n^2$. Thus, the only non-trivial case
+        is $k = n$. Note, we have $|x_k - (C_{n+1})_k| < 1/(n+1)^2$ so that since $(C_{n+1})_k = 1/(n+1)^2$, we have
+        $|x_k - 1/(n+1)^2| \leq 1/(n+1)^2$ and in particular, $|x_k|\leq 2/(n+1)^2\leq 2/n^2$. So that by the reverse triangle inequality, we have
+        $|x_k - 1/n^2| \leq ||x_k|-1/n^2| \leq 1/n^2$ as wanted. Therefore, $|x_k-(C_n)_k|\leq 1/n^2$ so that $\norm{x - C_n}\leq 1/n^2$ as wanted.
+        Therefore, $x\in D_n$ so that our collection $D$ is a nested sequence of closed sets. We now prove $\cap_n D_n = \emptyset$.\\
+
+        Suppose instead that there exists $x\in c_{00}$ such that $x\in \cap_n D_n$. But $x\in c_{00}$, so in particular, $x$ only contains
+        $i$-many non-zero terms for finite integer $i$. This is a contradiction since $D_{i+1}$ clearly contains elements which contain 
+        \textit{at least} $i+1$ many non-zero terms. Thus, $\cap_n D_n = \emptyset$ as wanted.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Let $J$ be the set of irrational numbers in $[0,1]$. Show that it is impossible to write $J = \cup_1^{\infty} F_n$ where for each
+        $n\in\mathbb{N}$, $F_n$ is a non-empty, closed subset of $\mathbb{R}$.
+    \end{Exercise}
+
+    \begin{Answer}
+        Suppose we exist in perfect world where if someone writes down something, then it must be true. Then consider the following:
+        \begin{displayquote}
+            We can write $J = \cup_n F_n$ where each $F_n$ is closed and non-empty.
+        \end{displayquote}
+        Thus, we can write $J = \cup_n F_n$ for non-empty closed $F_n$'s. 
+        Note $[0,1]$ equipped with the Euclidean norm is complete. We have that if $\{q_1,q_2,\hdots\}$ is an enumeration of the rationals
+        in $[0,1]$, we we can write:
+        \[ [0,1] = J^c \cup J = \{q_1,q_2,\hdots\} \cup \bigcup_{n=1}^{\infty} F_n = \bigcup_{n=1}^{\infty} \{q_n\} \cup F_n \]
+        Note, each $A_n := \{q_n\}\cup F_n$ is closed since $F_n$ and $\{q_n\}$ are closed. Furthermore, $A_n$ does not contain a non-trivial
+        interval (e.g. not $(i,i)$ or $[i,i]$) since all non-trivial intervals contain infinitely many rationals and irrational numbers. By
+        the Baire-Category theorem, at least one of the $A_n$'s has the proprety that $A_n^{\circ}\neq \emptyset$. Thus, there exists some
+        non-trivial interval $(a,b)\subseteq[0,1]$ such that $(a,b)\subseteq A_n$. However, this is impossible as $A_n$ contains no non-trivial
+        intervals. Therefore, we have a contradiction and made an assumption that was not true. This assumption is the fact the world is
+        in fact, \textit{not} perfect, and we cannot write $J = \cup_n F_n$.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Let $X$ be a Banach space and consider sequences $\{B_n\}$ and $\{A_n\}$ in $\mathscr{B}(X)$. Assume $A,B:X\to X$ are the pointwise
+        limits of $\{A_n\}$ and $\{B_n\}$ respectively. Prove that the sequence $\{B_nA_n\}$ converges pointwise to $BA$.
+    \end{Exercise}
+
+    \begin{Answer}
+        Choose any $x\in X$ and any $\epsilon>0$. We know $B\in\mathscr{B}(X)$ so that for some non-zero real number $M$, $\norm{B}\leq M$.
+        
+        We know $A_n\to A$ pointwise so for $\epsilon/[2M]>0$, we know there exists some $N_1>0$ such that if 
+        $n>N_1$, then $\norm{A_nx - Ax}_X<\epsilon$. Similarly, we know $B_n\to B$ pointwise, thus for $\epsilon/2>0$, there exists $N_2$
+        such that if $n>N_2$, then $\norm{B_n(Ax) - B(Ax)} < \epsilon/2$. Choose $N =$ max$\{N_1,N_2\}$. Then, for all $n>N$:
+        \begin{align*}
+            \norm{B_nA_nx - BAx}_X &= \norm{B_nA_nx - B_nAx + B_nAx - BAx} \\
+                &= \norm{B_nA_nx - B_nAx} + \norm{B_nAx - BAx} \\
+                &= \norm{B_n(A_nx) - B_n(Ax)} + \norm{B_n(Ax) - B(Ax)} \\
+                &= \norm{B_n(A_nx - Ax)} + \norm{B_n(Ax) - B(Ax)} \\
+                &\leq \norm{B_n}\norm{A_nx - Ax} + \epsilon/2 \\
+                &< M(\epsilon/[2M]) + \epsilon/2 \\
+                &= \epsilon
+        \end{align*}
+        so that $\norm{B_nA_nx - BAx}\to 0$. Thus, $B_nA_n\to BA$ as wanted. Note, the existence $B$ and $A$ are given by the fact that
+        $X$ is Banach.
+    \end{Answer}
+
+    \newpage
+    \begin{Exercise}
+        Let $F$ be the set of \say{eventually zero} sequences, in the supremum norm; this means that a sequence $\{a_n\}\in\ell^{\infty}$ belongs
+        to $F$ if there is an $N$ with $a_n = 0$ for all $n\geq N$. Define the linear maps $T_n:F\to\mathbb{C}$ by
+        \[ T_n(\{a_k\}) = \sum_{k=1}^n a_k \]
+        Show that each $T_n$ is linear and bounded and for any fixed sequence $x = \{a_k\}$ in $F$, $\sup\{|T_n(x)|:n=1,2,3,\hdots\}$ is finite.
+        Is $\sup\{\norm{T_n}:n=1,2,3,\hdots\} < \infty$?
+    \end{Exercise}
+
+    \begin{Answer}
+        Let $x,y\in F$ and $a,b$ scalars. Then, write $x = (x_1,\hdots)$ and $y = (y_1,\hdots)$. Note, by definition of vector addition in
+        $\ell^p$, we have $ax + by = (ax_1 + by_1,ax_2+by_2,\hdots)$. Then, consider:
+        \begin{align*}
+            T_n(ax+by) &= \sum_{k=1}^{n}  (ax_k+by_k) \\
+                &= \sum_{k=1}^{n} ax_k + \sum_{k=1}^{\infty} by_k \\
+                &= a\sum_{k=1}^{n} x_k + b\sum_{k=1}^{\infty} y_k \\
+                &= aT_n(x) + bT_n(y)
+        \end{align*}
+        so that each $T_n$ is linear. Each $T_n$ is bounded as seen by:
+        \[ \norm{T_n} = \sup\{|T_nx|: \norm{x}_{F}=1\} = n \]
+        since $\norm{x}_F = 1$ implies that the first $n$ terms of $x$ are \textit{at most} 1. Then clearly, the supremum is achieved if
+        \textit{all} of the first $n$ terms are 1 which implies $|T_nx| = n$. This also implies that $\sup\{\norm{T_n}:n=1,2,\hdots\}$ is
+        not finite.\\
+
+        Now, fix any sequence $x = (a_k)$ in $F$. Note by definition of $T_n$, we have that $T_nx \leq T_{n+1}x$. Thus, it follows
+        $\norm{T_n}\leq \norm{T_{n+1}}$. Therefore, $\sup\{\norm{T_n}:n=1,2,3,\hdots\}=\lim_{n\to\infty} T_n$. This just a limit of partial
+        sums and we know this converges since $x\in\ell^{\infty}$. Therefore, $\sup\{\norm{T}:n=1,2,3,\hdots\}$ exists and is finite.
+    \end{Answer}
+
+    \begin{Exercise}
+        Let $X$ and $Y$ be normed linear spaces and suppose $T:X\to Y$ is linear. Show that $T$ is continuous if $\phi\circ T$ is continuous
+        for all $\phi\in Y^*$.
+    \end{Exercise}
+    \begin{Answer}
+        By corollary 3.5, since $Tx$ for any $x\in X$ is an element of $Y$, we have that,
+        \[ \norm{Tx}_Y = \sup\{|\phi(Tx)|: \phi\in Y^*,\norm{\phi}=1\} \]
+        and that there exists some specific $\phi_0\in Y^*$ for which this supremum is attained so that,
+        \[ \norm{Tx}_Y = |\phi_0(Tx)| = |(\phi_0 \circ T)x| \leq \norm{\phi_0\circ T}\norm{x}_X \]
+        where we used the fact that composition is associative and $\phi_0\circ T$ is continuous and thus, bounded. Thus, $\norm{T}$
+        is bounded by $\norm{\phi_0\circ T}$ so that $T$ is bounded and so, continuous.
+    \end{Answer}
+
+    \begin{Exercise}
+        Let $X$ be a normed linear space and let $Y$ be a closed subspace of $X$. Given any $x_0\in X$ where $x_0\not\in Y$, prove that there is
+        some $f\in X^*$ such that $f(Y) = 0$ and $f(x_0) = 1$.
+    \end{Exercise}
+    \begin{Answer}
+        Note, we have that span$\{x_0\}\cap Y = \{0\}$. Since $Y$ is closed and $x_0\not\in Y$, we have that $x_0\in Y^c$ and $Y^c$ open so that
+        by definition, there exists some ball around $x_0$ which does not intersect $Y$. Thus, $d(x_0,Y)>0$. Take some $\alpha x_0\in$ span$(Y)$
+        such that $\alpha\in\mathbb{C}-\{0\}$, then $d(x_0,Y)>0$ implies,
+        \begin{align*}
+            0 < \inf\{|\alpha|\norm{x_0-z}: z\in Y\} &= \inf\{\norm{\alpha x_0 - \alpha z}:z/|\alpha|\in Y\} \\
+                &= \inf\{\norm{\alpha x_0 - y}:y\in Y\}
+        \end{align*}
+        so that $d(\alpha x_0, Y)>0$. In particular, this implies span$\{x_0\}\cap Y = \{0\}$. Now, define a mapping 
+        $f':$ span$\{x_0\}\cup Y\to \mathbb{C}$ by $x\in$ span$\{x_0\} \mapsto \alpha\norm{x}/\norm{x_0}$ (clearly $x_0\neq 0$ since $0\in Y$)
+        and $x\not\in$ span$\{x_0\}\mapsto 0$. span$\{x_0\}\cap Y=0$ ensures this is a well defined mapping. We show $f$ is linear
+        and bounded. Choose $x,y\in$ span$\{x_0\}\cup Y$ and $a,b$ scalars. Then, if $x,y\in$ span$\{x_0\}$, we have:
+        \[ f'(ax) = a\norm{x}/\norm{x_0} = a(\norm{x}/\norm{x_0}) = af'(x) \]
+        and since $x,y\in$ span$\{x_0\}$, we have for some $\alpha\in\mathbb{C}$, $x = \alpha y$. Thus, 
+        \[ f'(x+y) = f'((\alpha+1)x) = (\alpha+1)f'(x) = \alpha f'(x) + f'(x) = f'(\alpha x) + f'(x) = f'(y) + f(x) \]
+        so that $f'$ is linear for $x,y\in$ span$\{x_0\}$. If $y$ in $Y$, then either $y$ is not in span$\{x_0\}$ (assuming $x$, $y$ not 0) so that:
+        $f'(by) = 0 bf'(y)$ and $f(x+y) = 0$ (since $x+y\not\in$ span$\{x_0\}$). The case is even more trivial if both $x,y\not\in$ span$\{x_0\}$. Thus,
+        $f'$ is linear. Clearly, $f$ is bounded by $1/\norm{x_0}$ and $f'(Y) = 0$. Note, $f'(x_0) = \norm{x_0}/\norm{x_0} = 1$. We
+        can apply the Hahn-Banach theorem to get a mapping $f:X\to\mathbb{C}$ such that $f\in X^*$ and $f$ restricted to 
+        span$\{x_0\}\cup Y$ is equal to $f'$. Thus, $f(Y) = 0$ and $f(x_0) = 1$ as wanted.
+    \end{Answer}
+
+\end{document}

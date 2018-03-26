@@ -1071,4 +1071,162 @@
         \end{center}
     \end{proof}
 
+    \section{Fatou and Julia Sets}
+
+    Now, consider a mapping $f$ is a rational mapping from $\hat{\mathbb{C}}\to\hat{\mathbb{C}}$. Recall $\Omega(f)$ is open and
+    $J(f)$ is closed. We can ask what properties of these two sets are fully invariant.
+    \begin{enumerate}
+        \item Attracting periodic cycles lie in $\Omega(f)$
+        \item Repelling cycles in $J(f)$
+        \item Indifferent cycles. If this has a rational multiplier, we have that it is parabolic and so it lies in $J(f)$. If it has an
+            irrational multiplier, the case is more complicated. There are two subcases so we can not know in general if it lies in $J(f)$
+            and $\Omega(f)$. If it lies in $J(f)$, we say it is a \textit{Cremer Pit} and for other case, a \textit{Siegel Disk}. Wherever it
+            lies depends on the conjugacy of the dynamics.
+    \end{enumerate}
+
+    If $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ of degree 1, then what is $J(f)$? If it of degree 1, then write,
+    \[ f(z) = (az+b)/(cz+b) \]
+    In the hyperbolic case, we have that is conjugated to $f(z) = \lambda z$, in the parabolic case, we have $f(z)=z+1$, in the elliptic case,
+    we have $f(z) = e^{i\theta} z$.\\
+
+    In the rotation/elliptic case, we know that it depends on $\theta$. If $\theta = 0$, then $J(f)=\emptyset$ (identity map), if $\theta\in\mathbb{Q}$,
+    we have again, that $J(f) = \emptyset$. If $\theta\not\in\mathbb{Q}$ i.e. if $\theta\not\in 2\pi\mathbb{Q}$, then $\{n\theta\}$ is dense in
+    $[0,1]$. Hence, there exists $(n_k)\to\infty$ such that $\{n_k\theta\}\to 0$ as $k\to\infty$ so $f^{n_k}\to$ the identity map on $\hat{\mathbb{C}}$.
+    \newline
+
+    In parabolic case:\\
+    $f^{n}(z) = z+n$ converges locally uniformily on $\mathbb{C}$ (fix compact set in $\mathbb{C}$, but take $n$ to be very large) so that
+    $\mathbb{C}\subseteq \Omega(f)$. Intuitively, $z=\infty$ should be in $\Omega(f)$ but if it is parabolic then it is in $J(f)$. So, we can
+    check if it is parabolic,
+    \begin{align*}
+        w &= 1/z \\
+        f^{n}(w) &= 1/(f^n(1/z)) = 1/((1/z) + n) \\
+        &= z/(1+nz) = z(1-zn + O(z^2) = z - nz^2 + O(z^3)
+    \end{align*}
+    so $\hat{f}(0)=1$ i.e. parabolic = 0 is the point of $\infty$ for this map $f$.\\
+
+    The reason parabolic points are not in $\Omega(f)$ is because their higher derivatives do not converge. Therefore, $z=\infty\in J(f)$.\\
+
+    This dicussion was done with the assumption of degree = 1. However, we have the following fact for degree bigger than or equal to 2:
+
+    \begin{lemma}
+        The Julia set of a rational map of degree $\geq 2$ is never empty.
+    \end{lemma}
+    \begin{proof}
+        Suppose $\Omega(f) = \hat{\mathbb{C}}$. Hence, $f^{n_j}\to g$ for some sequence $n\to\infty$. Note, deg$(f^{n_j}) = n_j\text{deg}(f)$ since
+        if $f:\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ continuous, then 
+        \[ f_k: H_2(\hat{\mathbb{C}},\mathbb{Z}) \to H_2(\hat{\mathbb{C}},\mathbb{Z}) \]
+        (where, $\hat{\mathbb{C}}$ can be interpreted as $\mathbb{S}^2$ and $H_2(\hat{\mathbb{C}},\mathbb{Z})$ can be interpreted as $\mathbb{Z}$)
+        so we get a map $f_{\alpha}:\mathbb{Z}\to\mathbb{Z}$ which implies there exists $d\in\mathbb{Z}$ such that $f_{\alpha}(x) = dx$ where
+        $d$ is then the degree of $f$.
+        \begin{remark}
+            In particular, if $f$ and $g$ are two maps $\hat{\mathbb{C}}\to\hat{\mathbb{C}}$ which are homotopic to each other, then
+            deg$(f)$ = deg$(g)$. (they use the same map from the Homology)
+        \end{remark}
+        Hence, $f^{n_j}\to g$ is uniformily on the sphere $\hat{\mathbb{C}}$, then $f^{n_j}$ is homotopic to $g$ for $j$ large i.e.
+        \say{(deg$f^{n_j} \to$ deg$g$)}. As soon as $\sup_{z\in\hat{\mathbb{C}}} d((f^n)(z),g(z))<$ diam$(\hat{\mathbb{C}})$, then you can
+        deform $f^n(z)$ continuously to $g(z)$. Hence, deg$(f^{n_j})\to$ deg$g$ which is a contradiction.
+    \end{proof}
+
+    \begin{remark}
+        If $S$ is a compact Riemann surface of genus $g>1$, then there are \textit{at most} $84(g-1)$ holomorphic $f:S\to S$.
+    \end{remark}
+
+    \begin{definition}
+        A point $z\in\hat{\mathbb{C}}$ is \textbf{grand orbit finite} if,
+        \[ GO(z,f) = \{w\in\hat{\mathbb{C}}:\;\exists\:n,m\geq 0\;\text{such that}\;f^n(z) = f^m(w)\} \]
+        is finite.
+    \end{definition}
+
+    \begin{lemma}
+        If deg$f\geq 0$, then the set $\mathcal{E}(f)$ of grand orbit finite points contains at most two points.
+    \end{lemma}
+
+    Also, $\mathcal{E}(f)\subseteq \Omega(f)$.
+
+    \begin{proof}
+        (1). If $z\in\mathcal{E}(f)$, then $z$ is purely periodic and critical for $f$. This means that $z$ must be critical as $\#\{w:f(w)=z\}=1$.
+        Hence, every point in the orbit of $z$ must be \textbf{critical}. Hence, $\mathcal{E}(f)$ is finite since there are finitely many critical
+        points. Furthermore, $\mathcal{E}(f)\subseteq\Omega(f)$. If,
+        \[ \#\mathcal{E}(f)\geq 3 \implies f:\hat{\mathbb{C}}-\mathcal{E}(f)\to\hat{\mathbb{C}} \]
+        Then, $\hat{\mathbb{C}}-\mathcal{E}(f)$ must be contained in the Fatou set by Montel's theorem. But then, $\Omega(f) = \hat{\mathbb{C}}$ which
+        is a contradiction to the previous lemma.
+    \end{proof}
+
+    \begin{corollary}
+        \begin{enumerate}
+            \item[L1] If $z\in J(f)$ and $N$ is a sufficiently small nbd of $z$, then
+                \[ \cup_{n\geq 0} f^n(N) = \hat{\mathbb{C}}-\mathcal{E}(f) \]
+            \item[L2] If $z\in J(f)$ then the set
+                \[ \{w: f^n(w)=z\;\text{for some}\;n\geq 0\}\;\text{is \textit{dense} in}\;J(f) \]
+            \item[L3] If deg$(f)\geq 2$, then $J(f)$ has no isolated points
+            \item[L4] For \textbf{generic} $z\in J(f)$, the forward orbit $\{f^n(z)\}_{n\geq 0}$ is dense in $J(f)$.
+        \end{enumerate}
+    \end{corollary}
+
+    generic := if belongs to countable intersection of open dense sets. We can apply Baire-Category theorem to get nice results.\\
+
+    \begin{remark}
+        Note, it may be the forward orbit of a point $\{f^n(z)\}_{n\geq 0}$ is not dense in $J(f)$ for some $z\in J(f)$. For example,
+        $f(z) = z^2 - 2$ with $J(f) = [-2,2]$.
+    \end{remark}
+
+    \section{Smooth Julia Sets}
+
+    When are Julia sets smooth for $f:\mathbb{C}\to\mathbb{C}$?
+
+    \begin{theorem}[Hamilton]
+        A Julia set of a rational map which is a topological 1-manifold, then either it is:
+        \begin{enumerate}
+            \item a segment
+            \item circle (= line $\cup \{\infty\}$)
+        \end{enumerate}
+        up to a Möbius transformation or its Hausdorff dimension is $\geq 1$ (not smooth if H. dimension $>1$) 
+    \end{theorem}
+
+    \begin{remark}
+        If a Julia set is not smooth at one point then it is not smooth or equivalently, if $z_0\in J(f)$ is a smooth point then each $w$
+        such that $f^n(w)=z_0$ is also a smooth point. Also, $\{w:f^n(w)=z_0$ for some $n\} = J(f)$.
+    \end{remark}
+
+    \begin{example}
+        $J(f) =$ circle with $f(z) = z^{\pm n}$ where $n\in\mathbb{N}-\{0\}$. Note, $\mathbb{R}\cup\{\infty\}$ is equivalent to a circle
+        up to Möbius transformation. Now, let
+        \[ \mathbb{H}\to \mathbb{D}\quad\text{for}\;z\mapsto z^2\quad \phi(z) = (z-i)/(z+i) \]
+        Now, we can find a map $g$ which is a conjugate of $\phi$.
+        \begin{align*}
+            g(w) &= \phi^{-1}((\phi(w))^2) = \phi^{-1}((\frac{z-i}{z+i})^2) \\
+                 &= \phi^{-1}(\frac{z^2-2iz-1}{z^2+2iz-1}) \\
+                 &= \frac{i+i(\frac{z^2-2iz-1}{z^2+2iz-1})}{1-\frac{z^2-2iz-1}{z^2+2iz-1}} \\
+                 &= i\frac{2z^2-2}{4iz} = \frac{z^2-1}{2z} = (z-1/z)1/2
+        \end{align*}
+        so $J(g) = \phi^{-1}(J(z\mapsto z^2)) = \phi^{-1}(|z|=1) = \mathbb{R}\cup\{\infty\}$ Recall Newton's method:\\
+        For $f:\mathbb{C}\to\mathbb{C}$ polynomial, the tangent line at $(z_0,f(z_0))$ is $y-f(z_0)=f'(z_0)(x-z_0)$. Then, to solve $y=0$:
+        \[  x = -\frac{f(z_0)}{f'(z_0)} + z_0 \]
+        so that $N_f(z) := z-f(z)/f'(z) = (zf'(z)-f(z))/(f'(z))$ which implies,
+        \[ \text{deg}(N_f) = \text{deg}f \]
+        where $N_f$ refers to newton's method. Applying $N(z^3+1) = z-\frac{z^2+1}{2z} = \frac{2z^2-z^2-1}{2z} = \frac{z^2-1}{2z}$
+        which we've already seen earlier. Therefore, by applying Newton's method, we may obtain the Julia set.
+    \end{example}
+
+    \begin{example}
+        $f(z) = z^2 -2$. Then 2 is a repelling fixed point which implies $2\in J(f)$. If $z\in[-2,2]$, then $f^{-1}(z)\subseteq [-2,2]$ which
+        implies $J(f)\subseteq [-2,2]$.\\
+
+        Define $\mathcal{A}(\infty)$ := basin of $\infty$ is a height of $\infty$.
+        \[ \partial{\mathcal{A}(\infty)} \subseteq J(f) \subseteq [-2,2] \]
+        so that $\hat{\mathbb{C}}-[-2,2]\subseteq \mathcal{A}(\infty)$.\\
+
+        If $z\in[-2,2]$, then $f^{(n)}(z) \in [-2,2]$ for all $n$, then
+        \begin{align*}
+            &\implies [-2,2]\cap \mathcal{A}(\infty) = \emptyset \\
+            &\implies \mathcal{A}(\infty) = \hat{\mathbb{C}}-[-2,2] \\
+            &\implies J(f) = [-2,2]
+        \end{align*}
+    \end{example}
+
+    \section{Local Theory of Attracting Fixed points and Repelling Fixed Points}
+
+    Let $f(z) = \Lambda z + a_2z^2 + z_3z^3 + \hdots$.
+
 \end{document}

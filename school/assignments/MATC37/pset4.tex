@@ -58,13 +58,12 @@
 \begin{solution}{}
 
     The collection $A:= \{F_1^{'} \cap \hdots \cap F_n^{'}: F_i^{'} = F_i$ or $F_i^{'} = F_i^c\}$ is clearly of
-    cardinality $2^n$ since in each element of $A$, there are $n$ intersections of elements from 
-    $\{F_1,\hdots,F_n,F_1^c,\hdots,F_n^c\}$ where each element 
+    cardinality $2^n$ since in each element of $A$, there are intersections of $n$ elements from 
+    $\{F_1,\hdots,F_n,F_1^c,\hdots,F_n^c\}$ where each element of the intersection
     can be one of two choices $F_i^c$ or $F_i$. Remove $F_1^c \cap F_2^c \cap \hdots \cap F_n^c$ from $A$ so 
     that $A$ then has cardinality of $2^n-1$. We claim that $A$ is the desired collection of Lebesgue measurable 
     sets. First, of all it is clear that each element of $A$ is measurable since it is the intersection of
-    measurable sets with intersections of the complement of a measurable set (which is still measurable).
-    \newline
+    measurable sets with intersections of complements of a measurable set (which is still measurable).\\
     
     First, we show that the union of all elements in $A$ is equal to $\cup_1^n F_k$.\\
     Choose $x\in F_k\subseteq \cup_1^n F_k.$ If $x\in F_k$, then for all $1\leq i\leq n$, $x\in F_i$ or $x\in F_i^c$
@@ -74,24 +73,26 @@
     Now, choose $x\in F_j^{*}\subseteq \cup A$. Write $F_j^{*} = F_1^{'}\cap\hdots\cap F_n^{'} = F_j^{*}$. 
     Since we removed the set $F_1^c \cap \hdots \cap F_n^c$ from $A$, there exists some $i$ such that
     $F_i^{'} = F_i$ and so $x\in F_i$. But then since $F_i\in\cup_1^n F_k$, we have that $x\in\cup_1^n F_k$.\\
-    Therefore, $\cup_1^n F_k = \cup A$ as wanted.
-    \newline
+    Therefore, $\cup_1^n F_k = \cup A$ as wanted.\\
     
     Now, we show $A$ is a collection of pairwise disjoint elements. Pick $F_j^{*}$ and $F_k^{*}$ in $A$ such that $j\neq k$.
     Write $F_j^{*} = a_1 \cap \hdots \cap a_n$ and $F_k^{*} = b_1 \cap \hdots \cap b_n$ where for each $a_i, b_i$, we have that
-    $a_i = F_i^c$ or $a_i = F_i$ and similarly for each $b_i$. If $F_j^{*}\neq F_k^{*}$, then by this construction, there
+    $a_i = F_i^c$ or $a_i = F_i$ and similarly for each $b_i$. If $F_j^{*}\neq F_k^{*}$, then by this construction of $F_j^*,F_k^*$, there
     exists some $1\leq i\leq n$ such that $a_i\neq b_i$. Thus, if $x\in F_k^{*}$, then $x\in b_i$ and consequently $x\not\in a_i$
     so that $x\not\in a_1\cap \hdots\cap a_n$. In particular, for every $x\in F_k^{*}$, $x\not\in F_j^{*}$ and a quick repetition
-    of this argument shows that if $x\in F_j^{*}$, then $x\not\in F_k^{*}$ implying that $F_j^{*}\cap F_k^{*}=\empty$ as wanted.
+    of this argument shows that if $x\in F_j^{*}$, then $x\not\in F_k^{*}$ implying that $F_j^{*}\cap F_k^{*}=\emptyset$ as wanted.
     Thus, all the $F_j^{*}$ (i.e. elements of $A$) are disjoint.\\
     
-    It is left to show $F_k = \cup_{F_j^{*}\subset F_k} F_j^{*}$ for all $k\neq n$. For any $F_j^{*}$ in $A$, $F_j^{*}\subset F_k$
+    It is left to show $F_k = \cup_{F_j^{*}\subset F_k} F_j^{*}$ for all $k$. For any $F_j^{*}$ in $A$, $F_j^{*}\subset F_k$
     if and only if the $k$th intersecting element of $F_j^{*}$ is equal to $F_k$ i.e. if we can write
-    $F_j^{*} = F_1^{'} \cap \hdots \cap F_n^{*}$, then $F_k^{'} = F_k$. Choose some $x\in F_k$. If $x\in F_j^{*}$, then we're done.
-    So, assume $x\not\in F_j^{*}$ which implies for some $i$, $x\not\in F_i^{'}$. Note $i\neq k$ by the discussion above.
-    Thus, choose some element $F_q^{*} = a_1\cap\hdots\cap a_n$ such that $F_q^{*} = F_j^{*}$ except at all choices of $i$ for
-    which $x\not\in F_i^{'}$, let $a_i = (F_i^{'})^c$. Then $x\in F_q^{*}$ and $F_q^{*}\subset F_k$ since $a_k = F_k$. Thus,
-    $F_k\subseteq \cup_{F_j^{*}\subset F_k} F_j^{*}$ and the subset containment for the other direction follows directly from the
+    $F_j^{*} = F_1^{'} \cap \hdots \cap F_n^{'}$, then $F_k^{'} = F_k$. Choose some $x\in F_k$, we find some $F_i^*\in A$ such that
+    $F_k\subseteq F_i^{*}$. Consider 
+    $F_i^{*} = F_1^{'} \cap F_2^{'} \cap \hdots \cap F_n^{'}$ 
+    where $F_k^{'} = F_k$ and for other indices $i$,
+    the choice of $F_i^{'}$ is arbitrary. If $x\in F_i^{*}$, we are done. So assume $x\not\in F_i^{*}$, then $x\not\in F_t^{'}$ for some
+    $1\leq t\leq n$ but $t\neq k$. For these choices of $t$, pick a new element from $A$ where $F_k^{'}$ is the same but
+    we set $F_t^{'}$ to its complement. Then $x$ is an element of this new choice of element of $A$. This implies 
+    $F_k\subseteq\cup_{F_j^*\subset F_k} F_j^*$. The subset containment for the other direction follows directly from the
     fact that $\cup_{F_j^*\subset F_k} F_j^*$ is a union of sets contained in $F_k$. Thus, $\cup_{F_j^*\subset F_k} F_j^* = F_k$
     as wanted.
 \end{solution}
@@ -113,47 +114,49 @@
 \end{problem}
 
 \begin{solution}
-    sLet $\phi = \sum_{k=1}^N a_k\chi_{E_k}$ where the collection $E_1,\hdots,E_k$ of lebesgue measurable sets are disjoint but
-    not all $a_k$'s are distinct and some may be zero. If some $a_i$ is zero, then we can simply remove the set $E_i$ and the constant
+    sLet $\phi = \sum_{k=1}^N a_k\chi_{E_k}$ where the collection $E_1,\hdots,E_k$ of Lebesgue measurable sets are disjoint but
+    not all $a_k$'s are distinct and some may be zero. If some $a_i$ are zero, then we can simply remove the set $E_i$ and the constant
     $a_i$ from our summation since it does not impact the sum. Thus, we have a new collection $E_1,\hdots,E_M$ of disjoint Lebesgue
     measurable sets (for $M\leq N$) such that $\phi = \sum_{k=1}^M a_k\chi_{E_k}$. Next, since every $E_k$ is disjoint from $E_j$
     ($j\neq k$), then $\phi(x)$ for $x\in\R^d$ is in some specific $E_i$ for some $i$ i.e. $\phi(x) = a_i\chi_{E_i}$. Now, suppose
-    that there is some $a_i = a_j$ for $i\neq j$. We can again simplify our summation by setting $E_i := E_{i'} \cup E_{j'}$ and
-    $a_i = a_{i'}$
-    (the apostrophe signifies that we are referring to the previous, unsimplified collection) and completely removing $E_j$ and $a_j$.
-    Clearly the function is not affected since for any $y\in E_{j'}$, $y\in E_i$ so that $\phi(y) = a_i\chi_{E_i} = a_{j'}\chi_{E_{j'}}$
-    and $a_i = a_{j'}$ from assumption that $a_{i'} = a_{j'}$. We can repeat this process until every $a_i$ is distinct. Thus,
-    we have that every $a_i$ is distinct and non-zero and every $E_k$ is disjoint. Thus, $\phi = \sum_{k=1}^F a_k\chi_{E_k}$ (for
-    some $F$ given by removal of non-distinct constants) is a canonical representation of $\phi$ but the canonical representation 
-    of a simple function is unique. Thus, the collection $a_1,\hdots,a_F$ and $\hat{a_1},\hdots,\hat{a_n}$ are equivalent (perhaps
-    upto reordering of indices) and similarly for the collections $E_1,\hdots,E_F$ and $\hat{E_1},\hdots,\hat{E_n}$. Thus, it follows
-    that the following equality holds:
-    \[ \sum_{k=1}^F a_km(E_k) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
-    To see that the sum on the left side is equal to the sum where we hadn't removed the non-distinct constants, it suffices to
-    notice that $a_k m(E_k) = a_k m(E_{k'} + E_{j'})$ and since $E_{k'}$ and $E_{j'}$ are disjoint, then: $a_km(E_k) =
-    a_k(m(E_{k'} + E_{j'})) = a_km(E_{k'}) + a_km(E_{j'}) = a_{k'}m(E_{k'}) + a_{j'}m(E_{j'})$. And this sum is equivalent to the
-    summation where we hadn't removed zero-valued constants because 0 is the additive identity and does not affect summations. Thus,
-    \[ \sum_{k=1}^N a_km(E_k) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
+    that there is some $a_i = a_j$ for $i\neq j$. Thus, even if $y\in E_j$ and $x\in E_i$, we have that $\phi(x) = \phi(y)$.
+    We can then simplify our summation by unioning $E_i$ and $E_j$ (call it $E_{i'}$) with constant $a_{i'}=a_i=a_j$. Thus, we have
+    \[ \phi = \sum_{k=1}^{M-2} a_k\chi_{E_k} + a_{i'}\chi_{E_{i'}} \]
+    For aesthetic purposes, we can just write $\phi = \sum_{k=1}^{M-1} a_k\chi_{E_k}$. Repeat this process until every $a_k$
+    is distinct. Thus, we obtain for some $J\leq M$: $\phi = \sum_{k=1}^J a_k\chi_{E_k}$. Note,
+    \[ \sum_{i=1}^N a_im(E_i) = \sum_{k=1}^J a_km(E_k) \]
+    where the summation in the left side is the summation over the old not necessarily non-zero, distinct constants and the right
+    side is the new simplified summation over the new collection of distinct, non-zero constants. The equality holds because
+    if $a_j = a_i$ as discussed above, then $a_{i'}m(E_{i'}) = a_{i'}m(E_i + E_j) = a_im(E_i) + a_jm(E_j)$.
+    where the apostrophe is again used to signify we are referring to the indices from the new simplified representation of $\phi$.
+    Thus, the equality above holds. Note, then $\phi = \sum_1^J a_k\chi_{E_k}$ is a representation where all constants are
+    non-zero and distinct and the sets $E_k$ are all disjoint. Thus, this is a canonical representation of $\phi$. However,
+    canonical representations of $\phi$ are clearly unique since we would have $a_i = \hat{a_j}$ (up to reordering of indices) and
+    $E_i = \phi^{-1}\{a_i\}$ which is exactly how the collection $\hat{E_1},\hdots,\hat{E_n}$ is defined. Since these are then the same
+    collection (up until reordering), we have that,
+    \[ \sum_{i=1}^N a_im(E_i) = \sum_{k=1}^J a_km(E_k) = \sum_{e=1}^n \hat{a_e}m(\hat{E_e}) \]
     as wanted.\\
 
-    For the second part, we know $E_1,\hdots, E_N$ are lebesgue measurable sets (otherwise $m(E_k)$ is meaningless). By question 1,
-    we know there exists some other collection of lebesgue measurable sets $E_1^{'},\hdots,E_F^{'}$ where $F = 2^{N} -1$ and has all of
+
+    For the second part, we know $E_1,\hdots, E_N$ are Lebesgue measurable sets (otherwise $m(E_k)$ is meaningless). By question 1,
+    we know there exists some other collection of Lebesgue measurable sets $E_1^{'},\hdots,E_F^{'}$ where $F = 2^{N} -1$ and has all of
     the properties question 1 requires. We can then write $\phi = \sum_{i=1}^F g_i m(E_i^{'})$ for constants $g_i$ which are yet to
     be defined.\\
 
-    We know $E_k = \cup_{E_j^{'}\subset E_k} E_j^{'}$ so $m(E_k) = \sum_{j: E_j^{'}\subset E_k} E_j^{'}$. Thus,
+    We know $E_k = \cup_{E_j^{'}\subset E_k} E_j^{'}$ so $m(E_k) = m(\cup_{E_j^{'}\subset E_k} E_j^{'})$ and this is equal to
+    $\sum_{j:E_j^{'}\subset E_k} m(E_j^{'})$ because of countable additivity and disjoint property of the new collection. Thus,
     \[ \phi = \sum_{k=1}^{N} a_km(E_k) = \sum_{k=1}^{N} a_k\Big{(}\sum_{j: E_j^{'}\subset E_k} m(E_j^{'})\Big{)} 
         = \sum_{k=1}^N \Big{(}\sum_{j: E_j^{'}\subset E_k} a_km(E_j^{'})\Big{)}\]
-    In the right side of the equation above, we are summing over finitely many indices, thus, we can rewrite this as
+    In the right side of the equation above, we are summing over finitely many indices, thus, we can rewrite this as (for some $R$)
     \[ \sum_{j=1}^R a_jm(E_j^{'}) \]
-    where this new collection of all $E_j^{'}$ is not disjoint. However, if for some $k\neq j$, $E_j^{'}\cap E_j^{'}\neq\emptyset$,
-    then $E_j^{'} = E_k^{'}$. Thus, we can write this as $(a_j + a_k)m(E_j^{'})$ since $m(E_k^{'}) = m(E_j^{'})$. Thus, we can
-    again rewrite the sum above as
+    where this new summation is not over disjoint $E_j^{'}$'s. However, if for some $k\neq j$, $E_j^{'}\cap E_j^{'}\neq\emptyset$,
+    then $E_j^{'} = E_k^{'}$. Thus, we can write this as $a_jm(E_j^{'}) + a_km(E_k^{'}) = (a_j + a_k)m(E_j^{'})$ 
+    since $m(E_k^{'}) = m(E_j^{'})$. Thus, we can again rewrite the sum above as (for some $R'$)
     \[ \phi = \sum_{j=1}^{R'} a_jE_j^{'} \]
     where then all $E_1^{'},\hdots,E_{R'}^{'}$ are all disjoint but the constants $a_j$ are not and may not be all non-zero.
     By the previous part of this question, this is enough to imply that
     \[ \sum_{j=1}^{R'} a_jm(E_j^{'}) = \sum_{i=1}^n \hat{a_i}m(\hat{E_i}) \]
-    
+
 \end{solution}
 \pagebreak
 
@@ -169,18 +172,24 @@
 \end{problem}
 
 \begin{solution}
-    FFor the first part, take some sequence of functions $\phi_n \to f$ and $\psi_n \to g$. Fix $x\in E$. If $f(x) < g(x)$,
-    then let $r = (g-f)(x)$. Then, for any $0 < \epsilon < r$, there exists some $N>0$ such that $|\psi_n(x) - g(x)|<\epsilon$
-    and $|\phi_n(x) - f(x)|<\epsilon$ (take $N$ to be the max of the integers which makes the inequalities of both sequences hold).
-    By choice of $\epsilon$, we know that for all $n>N$, $\phi_n(x) < \psi_n(x)$ (if $f(x)=g(x)$ i.e. $r = 0$, then we can simply
-    let $\phi_n = \psi_n$ for all $x\in E$. Thus, for all $n>N$ we have that $\phi_n(x)\leq \psi_n(x)$ for all $x\in E$. Since
-    $\phi_n$ and $\psi_n$ are simple functions, then $\int_E \phi_n \leq \int_E \psi_n$. Limits preserves inequalities so we
-    know the following holds:
-    \[ \lim_{n\to\infty} \int_E \phi_n \leq \lim_{n\to\infty} \int_E \psi_n \]
-    But by our choice of $\phi_n$ and $\psi_n$, we know this is just equivalent to saying:
-    \[ \int_E f \leq \int_E g \]
-    as wanted.\\
 
+    For the first part, take some sequence of simple functions $\phi_n \to f$ and $\psi_n \to g$. We first, want to show that
+    for some $N>0$, we have for all $n>N$ that $\phi_n \leq \psi_n$. To show this, suppose this is not the case. Then for all $N$,
+    there exists some $n>N$ such that $\phi_n > \psi_N$. Then for all $x\in E$, we have $\phi_n(x) > \psi_N(x)$. However, this is
+    a contradiction because of the following: Not considering the case where $f=g$ for all $x\in E$, we have that for some
+    $x\in E$, $f(x) < g(x)$. Choose any positive $\epsilon$ less than $[g(x)-f(x)]/2$. Then, since $\phi_n \to f$, 
+    there exists some $N_1>0$ such that for all $n_1>N_1$, we have $|\phi_{n_1}(x) - f(x)|<\epsilon$ and 
+    similarly for $\psi_n \to g$, we have for some $N_2>0$ such that for all $n_2>N_2$, we have $|\psi_{n_2}(x) - g(x)|<\epsilon$. 
+    Choose $N = \max\{N_1,N_2\}$. Then, for all $n\geq N$:
+    \[ |\phi_n(x) -f(x)| < \epsilon \qquad |\psi_n(x) - g(x)| < \epsilon \]
+    which implies from our choice of $\epsilon$ that $\psi_{N}(x) > \phi_n(x)$ which is absurd. Thus, either $f(x) = g(x)$ for all $x$
+    or there exists some $N>0$ such that for all $n>N$, we have $\phi_n \leq \psi_n$. \\
+    If the former is true, then the question is trivial, so assume the latter. Since each $\phi_n$ and $\psi_n$ are simple functions,
+    from a result in class that, \[ \int_E \phi_n \leq \int_E \psi_n \]
+    Combining this with the fact that this inequality holds for all $n>N$, we have:
+    \[ \lim_{n\to\infty} \int_E \phi_n \leq \lim_{n\to\infty} \int_E \psi_n \]
+    which is enough to imply $\int_E f \leq \int_E g$ from our definition of lebesgue integration for bounded measurable functions.\\
+    
     Let $\phi_n$ be a sequence of functions so that $\phi_n \to f$. Then by a simple $\epsilon-N$ proof, we know $|\phi_n|\to |f|$ since
     \[ ||\phi_n(x)|-|f(x)|| \leq |\phi_n(x) - f(x)|\]
     by the reverse triangle inequality. Therefore, if $\lim_{n\to\infty} \int_E \phi_n = \int_E f$, we know that
@@ -214,13 +223,16 @@
     so that in particular, $\int_E f - \int_E g = 0$ so that $\int_E f = \int_E g$ as wanted.\\
 
     For the second part, we know $f$ is non-negative so if we write $E = E' \cup E^2$ where $E^2$ is the set where
-    $f$ is non-zero and $E'$ is the set where $f$ is identically zero, then we have $\int_E f = \int_{E'} f + \int_{E^2} f$. 
+    $f$ is non-zero and $E'$ is the set where $f$ is identically zero, then we have by proposition 1.3 (chapter 2) that 
+    $\int_E f = \int_{E'} f + \int_{E^2} f$ (since $E' = \{f = 0\}$ and $E^2 = \{f > 0\}$ are clearly disjoint).
     Clearly, we have $\int_{E'} f = 0$ since $f$ is exactly zero on $E'$ (if one wishes to be rigorous in this, 
     then choose the sequence of identically zero simple functions, these converge to $f$ on $E'$ and all have integral zero). 
     Thus, we obtain $\int_{E^2} f = 0$ since $\int_E f = 0$. Find some sequence of functions $\{\phi_n\} \to f$ on $E^2$ such that
     each $\phi_n$ is non-negative, and the sequence is increasing (possible by Theorem 4.1 in Chapter 1). Since $f$ is non-zero
     (and thus, positive) on $E^2$, if we assume $m(E^2)>0$, then by the Lemma below, we obtain: $\int_{E^2} f > 0$. This is absurd
-    as we have already established $\int_{E^2} f = 0$. Thus $m(E^2) = 0$. This implies $f(x) = 0$ for a.e. $x\in E$.
+    as we have already established $\int_{E^2} f = 0$. Thus $m(E^2) = 0$. This implies $f(x) = 0$ for a.e. $x\in E$. As a side
+    note, we used proposition 1.3 without showing that $f$ is supported by a set of finite measure. However, this is proven later
+    when we show $m(E^2) = 0$ without the assumption of proposition 1.3 holding.
 \end{solution}
 \pagebreak
 
@@ -233,18 +245,29 @@
 \end{problem}
 
 \begin{solution}
-    FFor the first calculation: Recall that for Lebesgue integrals: $\int_E \lim_{n\to\infty} f_n = \lim_{n\to\infty} \int_E f_n$.
-    Thus, it suffices to compute $\int_0^1 \lim_{n\to\infty} n\sin(x/n)/xdx$. First, we compute the limit. Note that we can write
-    this as: $\lim_{n\to\infty} \sin(x/n)/(x/n)$ where then both sides of the fraction go to zero. Thus, by L'hopital's rule,
-    we have that this limit is equivalent to: $\lim_{n\to\infty} \cos(x/n)(x/n)'/(x/n)'$ where the $'$ denotes the derivative opeartor.
-    Cancelling out terms, we arrive at $\int_0^1 \lim_{n\to\infty} n\sin(x/n)/xdx = \int_0^1 \lim_{n\to\infty} \cos(x/n)dx =
-    \int_0^1 \cos(0)dx = \int_0^1 1 = 1$.\\
+    LLet $\{n\sin(x/n)/x\}_{n=1}^{\infty}$ be a sequence of functions on $0\leq x\leq1$. This converges, by the following computation:
+    \[
+        \lim_{n\to\infty} \frac{n\sin(x/n)}{x} = \lim_{n\to\infty} \frac{\sin(x/n)}{x/n}
+    \]
+    which clearly goes to $0/0$. Applying L'hopital's rule, we get:
+    \[ \lim_{n\to\infty} \frac{n\sin(x/n)}{x} = \lim_{n\to\infty} \frac{\cos(x/n)(d/dn)(x/n)}{d/dn(x/n)} = \cos(0) = 1 \]
+    Thus, $\{n\sin(x/n)/x\}_n \to \mathbb{1}$ where $\mathbb{1}$ is the constant function mapping to 1. Note also that each
+    function in the sequence is bounded and has finite support since $\sin(x/n)/(x/n) \leq 1/(x/n) \leq 1$ (since $E = [0,1]$).
+    Thus, we can say by the bounded convergence theorem that,
+    \[ \int_0^1 \lim_{n\to\infty} \frac{n\sin(n/x)}{x} = \int_0^1 1 = 1\]
+    We know $\int_0^1 = 1$ since the Riemann integral and the Lebegue integral agree on closed intervals 
+    Thus, they agree on $[0,1]$ and since the Riemann integral tells us $\int_0^1 1 = 1$, we have 
+    that $\int_0^1 1 = 1$ in the Lebesgue integral so that,
+    \[ \lim_{n\to\infty} \int_0^1  \frac{n\sin(x/n)}{x} = 1 \]
+    as wanted.\\
 
-    Again as before, we switch the limit and integral operator to arrive at the computation:
-    \[ \int_0^{\infty} \lim_{n\to\infty} (1-x/n)^n x^2dx = \int_0^{\infty} x^2e^xdx \]
-    Recalling that the Riemann and Lebesgue integrals agree on finite domains, we write the integral above as:
-    \[ \int_0^{\infty} e^xx^2dx = \lim_{n\to\infty} \int_0^n e^xx^2dx \]
-    and then compute the integral on the right side using techniques from first year Calculus.
+    We show that $\int_0^{\infty} (1-x/n)^nx^2dx$ does not exist, even in the Lebesgue integral sense. Note that if $n$ is odd,
+    we have that for all $x\geq n$, $(1-x/n)^n$ goes to $-\infty$. Since we are taking $n$ to $\infty$, we know that for a large
+    enough $n$, $(1-x/n)^nx^2$ would then also go to $-\infty$. Thus, this function does not have finite support so it's
+    Lebesgue integral is not defined. Similarly, for $n$ even, we have that for all $x>n$, $(1-x/n)^n$ goes to $+\infty$, and so
+    for large enough $n$, $(1-x/n)^nx^2$ would also go to $+\infty$ and so it also does not have finite support. Thus, its
+    Lebesgue integral is also not defined. Therefore, the expression $\lim_{n\to\infty} \int_0^{\infty} (1-x/n)^nx^2dx$ cannot
+    be computed as it is absurd.
 \end{solution}
 \pagebreak
 
@@ -266,13 +289,11 @@
     that $\int_{E^2} -f > 0$. By linearity, $-(\int_{E^2} f) > 0$ so that $\int_{E^2} f < 0$ which is absurd. Thus, $m(E^2) = 0$
     so that $f\geq 0$ for a.e. $x\in E$.\\
 
-    We know $m(E^2) = 0$ so in particular, $E^2$ does not contain any intervals (not including the trivial $[x,x]$). Thus,
-    if $f$ is continuous on $E$, then it is continuous on $x\in E^2$. Thus, for any neighborhood $N_1(f(x))$, there is a neighborhood
-    $N_2(x)$ such that $f(y)\in N_1(f(x))$ whenever $y\in N_2(x)$. Since $E^2$ does not contain any intervals, we have that
-    $N_1(f(x))$ is not contained in $E^2$. In particular, there exists some $y\in N_1(x)$ such that $f(y)\geq 0$. Thus,
-    $|f(x)-f(y)|\geq |f(x)-0| = |f(x)|$. Thus, choose $0 < \epsilon < |f(x)|$ to get that $|f(x)-f(y)|\geq \epsilon$ which is absurd
-    since we have established that $f$ is continuous on $x$. Thus, no such $x\in E^2$ exists. Thus, $E^2 = \emptyset$ and so
-    $f(x)\geq 0$ for all $x\in E$ as wanted.
+    We know $m(E^2) = 0$ so in particular, $E^2$ does not contain any open neighbourhoods (as they are all of positive Lebesgue measure).
+    Having noted this, now assume $f$ is continuous on $E$ and so it is continuous on $E^2$. Assume $x\in E^2$ exists. We note
+    that $E^2$ is open since $E^2 = \{f < 0\} = f^{-1}((-\infty,0))$ (we are using the topological definition of continuity here).
+    Since $E^2$ is open, we then have the existence of an open neighbourhood centered around $x$ entirely contained in $E^2$. This
+    is a contradiction as discussed above. Thus, we have that $E^2 = \emptyset$, so in particular, $f(x)\geq 0$ for all $x\in E$.
 \end{solution}
 
 \begin{lemma}
