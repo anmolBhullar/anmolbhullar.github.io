@@ -1,0 +1,441 @@
+\documentclass[12pt,a4paper]{amsart}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage[latin2]{inputenc}
+\usepackage{t1enc}
+\usepackage[mathscr]{eucal}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{pict2e}
+\usepackage{epic}
+\numberwithin{equation}{section}
+\usepackage[margin=2.9cm]{geometry}
+\usepackage{epstopdf} 
+\usepackage{hyperref}
+
+ \def\numset#1{{\\mathbb #1}}
+
+ 
+
+\theoremstyle{plain}
+\newtheorem{Th}{Theorem}[section]
+\newtheorem{Lemma}[Th]{Lemma}
+\newtheorem{Cor}[Th]{Corollary}
+\newtheorem{Prop}[Th]{Proposition}
+
+ \theoremstyle{definition}
+\newtheorem{Def}[Th]{Definition}
+\newtheorem{Conj}[Th]{Conjecture}
+\newtheorem{Rem}[Th]{Remark}
+\newtheorem{?}[Th]{Problem}
+\newtheorem{Ex}[Th]{Example}
+
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Hom}{{\rm{Hom}}}
+\newcommand{\diam}{{\rm{diam}}}
+\newcommand{\ovl}{\overline}
+%\newcommand{\M}{\mathbb{M}}
+
+\begin{document}
+
+\title{Linearization of Analytic Germs of Diffeomorphisms of $(\mathbb{C},0)$}
+
+
+\author{Anmol Bhullar}
+
+\email{anmol.bhullar@mail.utoronto.ca}
+
+\begin{abstract} We attempt to give an exposé on the Siegel Center problem. Starting from the very beginning, we cover some basic definitions to get the reader acquainted with said
+problem. We then state the Koenigs-Poincaré theorem which gives a positive answer for the $|\lambda|\neq 1$ case and also, we give an answer for when $\lambda$ is a 
+root of unity. The situation becomes more nuanced with these conditions removed (i.e. $|\lambda|=1$, $\lambda$ is not a root of unity). We state (without proofs) 
+necessary conditions for linearization via the Diophantine numbers. We then generalize this to the Brjuno numbers which gives necessary \textit{and} sufficient
+conditions for linearization. Here, we give the proof from [1] which gives a tight lower bound on the radius of convergence of the conjugate linearizing map.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction} 
+Let $z\mathbb{C}\{z\}$ be the ring of convergent power series with no constant term. Let $\mathcal{G}$ denote the group of germs of holomorphic diffeomorphisms of $(\mathbb{C},0)$
+i.e. let 
+\[ \mathcal{G} = \{f\in z\mathbb{C}\{z\},f'(0)\neq 0\}. \] 
+In particular, let 
+\[ \mathcal{G}_{\lambda} = \{f(z) = \sum_{n=1}^{\infty} f_nz^n\in z\mathbb{C}\{z\}, f_1 = \lambda\}. \]
+
+\begin{Def}
+Let $f\in\mathcal{G}$. We say that a germ $g$ is  \textit{conjugate} to $f$ if there exists $h\in\mathcal{G}_1$ such that $g = h^{-1}fh$.
+\end{Def}
+
+Let $\lambda\in\mathbb{C}$. Let $R_{\lambda}$ be defined by $R_{\lambda}(z) := \lambda z$. Clearly $R_{\lambda}\in G_{\lambda}$.
+
+\begin{Def}
+$f\in\mathcal{G}_{\lambda}$ is linearizable if there exists $h_f\in G_1$ (in this case, $h_f$ is said to be a \textit{linearization} of $f$) such that $h^{-1}fh = R_{\lambda}$. If such a condition
+holds for all $f\in\mathcal{G}_{\lambda}$, we say $\mathcal{G}_{\lambda}$ is linearizable.
+\end{Def}
+
+For which $\lambda$, do we have linearization of $\mathcal{G}_{\lambda}$? The first important result comes from the following theorem:
+
+\section{Linearization For Simple(r) Cases}
+
+\subsection{When $|\lambda|\neq1$}
+\begin{Th}[Koenigs-Poincaré]
+	If $|\lambda|\neq 1$, then all $f\in \mathcal{G}_{\lambda}$ are linearizable.
+\end{Th}
+
+The reader may find a proof of this in $\S$8 of [3].
+
+\subsection{The case when $\lambda$ is a primitive root of unity.}
+
+First, we consider the case when we can write $\lambda = e^{2\pi i\xi}$ for $\xi$ rational. We have the following answer when $\lambda$ is a \textit{primitive} root of unity. Recall:
+
+\begin{Def}
+	Assume $z$ is a root of unity. Then $z$ is \textit{primitive} of order $n$ if and only if $z$ is not a root of unity for $k$ smaller than $n$.
+\end{Def}
+
+We can now prove the following nice result:
+
+\begin{Th}
+	Assume $\lambda$ is a primitive root of unity of order $n$. A germ $f\in\mathcal{G}_{\lambda}$ is linearizable if and only if $f^n =$ id. ($f^n$ refers to composition).
+\end{Th}
+\begin{proof}[Proof Sketch]
+	Assume $f$ linearizable. Then $z = \lambda^n z = (h_f^{-1}\circ f\circ h_f)^n(z) = (h_f^{-1}\circ f^n \circ h_f)(z)$ from which one gets that $f^n(z) = z$. Conversely,
+	if $f^n$ = id, then defining $h_f^{-1} = (1/n)(\sum_{j=0}^{n-1} (\lambda^{-j} f_j))$. Then $h_f^{-1}\in\mathcal{G}_1$ if $f\in\mathcal{G}_{\lambda}$ and $R_{\lambda} =
+	h_f^{-1}\circ f\circ h_f$ as wanted.
+\end{proof}
+
+Thus, if $\lambda$ is a root of unity i.e. $\lambda^q = 1$, provided we have $f^q \neq$ id, we have that $f$ is not linearizable (and so $\mathcal{G}_{\lambda}$ is not either).
+In particular, if our fixed point is parabolic, we do not have linearization.
+
+\section{Some Difficulties} 
+
+The remaining case that is left is, when we can write $\lambda = e^{2\pi i\xi}$ where $\xi$ is real and \textit{irrational}. Here, the situation is even more delicate than in the
+root of unity case.\\
+
+Is such a linearization ever possible one may ask? Gaston Julia [1919] claimed that for all rational functions of degree 2 or more, it is not possible. Unfortunately, (or fortunately depending
+on your viewpoint), their proof was wrong. The true answer is much more subtle than a simple yes or no as we will now see.
+
+\subsection{Generic Points}
+
+The next few claimed results will not be given proofs, instead the reader will be referred to papers where such proofs may be found. At the end of this paper, we prove (due to
+[1]) a much more definitive result which will be much stronger statements than the following few results.\\
+
+Hubert Cremer was able to classify some class of numbers for which linearization was not possible. This put the situation in more clarity. The following is from [6] and [1]:
+
+\begin{Th}[Cremer's Nonlinearizability Theorem]
+	Let $|\lambda|=1$ and $d\geq 2$. If the sequence $(\sqrt[d^q]{1/|\lambda^q-1})_1^{\infty}$ is unbounded as $q\to\infty$, then no rational function $f$ with a fixed point of multiplier
+	$\lambda$ and having a degree of $d$ is linearizable.
+\end{Th}
+
+We can now give an even broader classification. The following definition is from [1]:
+
+\begin{Def}
+	If $\lambda = e^{2\pi i\xi}$ with $\xi$ real and irrational, then $\xi\in\mathbb{R}/\mathbb{Z}$ is said to the \textit{rotation number} for the tangent space at the fixed point.
+	It is convenient to say that a property of an angle $\xi\in\mathbb{R}/\mathbb{Z}$ is true for \textit{generic} $\xi$ if the set of $\xi$ for which it is true contains a countable
+	intersection of dense open subsets of $\mathbb{R}/\mathbb{Z}$.
+\end{Def}
+
+We now have a nice classification of numbers for which linearization is not possible.
+
+\begin{Th}
+	If $\lambda = e^{2\pi i\xi}$ and $\xi$ is a generic choice of rotation number where $\xi \in \mathbb{R}/\mathbb{Z}$ (for an arbitrary $f$ with the same restrictions 
+	as in the above theorem), then linearization is not possible.
+\end{Th}
+
+As discussed before, this statement does not extend to all $\xi$ as seen from the following theorem of Carl Ludwig Siegel [7]
+
+\begin{Th}[Siegel]
+	If $1/|\lambda^q-1|$ is less than some polynomial function of $q$, then every $f\in\mathcal{G}_{\lambda}$ is locally linearizable.
+\end{Th}
+
+A proof of this can be most easily found in [7]. We now get a clearer picture of \textit{just} how many numbers are linearizable and how many are not.\\
+
+Consider the following as a remark:
+
+\begin{Th}
+	The set of $\xi$ ($e^{2\pi i\xi} = \lambda$, $\xi\in\mathbb{R}/\mathbb{Q}$) for which every holomorphic germ in $\mathcal{G}_{\lambda}$ is linearizable is of full Lebesgue measure
+	(equal to 1).
+\end{Th}
+
+We then have the intuitive picture that there if $\xi$ were to be chosen randomly (true random), there there is a 100\% that it can be linearized. The reader should note
+the contrast between the behaviours of \textit{generic} and non-generic $\xi$ (for almost every $\xi$).
+
+\section{Diophantine Numbers}
+
+We will now give a more concrete classification of irrational numbers for which linearization is possible. This will be done through the \textit{Diophantine} numbers. Later on, we will actually
+\textit{prove} results for an even bigger classification of numbers, called the \textit{Brjuno} numbers.\\
+
+The following discussion is taken mostly from the discussion of Diophantine numbers in [1] page 128-129.\\
+
+\begin{Def}
+	Let $\gamma>0$ and $\tau\geq 0$ be real numbers. We say that an irrational number $\xi$ is \textit{Diophantine of order} $\leq\gamma$ if for every
+	rational number written as $p/q$, we have:
+	\[ \Big{|}\xi - \frac{p}{q}\Big{|} > \frac{\tau}{q^{\gamma}} \]
+	The set of Diophantine numbers of order $\leq \gamma$ is denoted by $\mathcal{D}(\gamma)$. We have such classification of Diophantine numbers has monotonic properties, i.e.
+	if $\gamma < \Gamma$, then $\mathcal{D}(\gamma)\subset D(\Gamma)$.\\
+\end{Def}
+
+We now show that Siegel's theorem (Theorem 3.4) can be restated in terms of Diophantine numbers. Consider:\\
+	
+Let $\lambda = e^{2\pi i\xi}$ as usual. Furthermore, we want to choose a $p$ so that it is the closest integer to $q\xi$ so that $|q\xi - p|\leq 1/2$. Note:
+\[ |\lambda^q - 1| = |2\sin(\pi(q\xi - p))| \approx 2\pi |q\xi - p| \]
+More precisely,
+\[ 4|q\xi - p| \leq |\lambda^q -1| \leq 2\pi |q\xi - p|. \]
+Thus, the Diophantine condition (the condition an irrational number must satisfy in order to be Diophantine) is equivalent to stating:
+\[ |\lambda^q -1| > \tau' / q^{\gamma - 1} \quad\Leftrightarrow \quad 1/|\lambda^q - 1| < cq^{\gamma - 1} \]
+for some $\tau' > 0$ and $c = 1/\tau'$. Thus, we can restate Theorem 3.4 as:
+
+\begin{Th}
+If $e^{2\pi i\xi} = \lambda$ and $\xi\in\mathbb{R}/\mathbb{Q}$ is irrational  and Diophantine of any order, then any $f\in\mathcal{G}_{\lambda}$ is linearizable.
+\end{Th}
+
+We also then obtain that Theorem 3.5 is equivalent to stating:
+
+\begin{Th}
+	The set of all Diophantine (real) has full measure. In particular, the set $\mathcal{D}(2+)$ has full measure in the circle $\mathbb{R}/\mathbb{Z}$.
+\end{Th}
+
+This proof is due can be found at in [1].\\
+
+Irrational numbers which are not Diophantine are called \textit{Liouville numbers}. In the next section, we introduce \textit{Brjuno numbers} from which we prove
+sharper results (than the ones in this section). In general, Brjuno numbers are a (strict) superset of Diophantine numbers, that means that there are some Liouville numbers
+for which linearization is possible but in general, it is not possible \textit{for all} Liouville numbers.
+
+\section{Brjuno Numbers}
+
+First, we introduce continued fractions and introduce some basic results about them. Then, we define the Brjuno numbers using what is called the Brjuno function. This section
+summarizes or attempts to summarize Appendix A [1]. For more complete discussion, the reader may want to read Appendix A from [1] instead.
+
+\begin{Def}
+Let $\omega$ be a real number. Let $\lfloor \omega \rfloor$ be the \textit{integer} part of $\omega$ and denote $\{w\}$ to be $w - \lfloor \omega \rfloor$ i.e. its \textit{fractional} part.
+For example, the integer part of 3.14 is 3 and its fractional part is 0.14.
+\end{Def}
+
+We can then represent every real number via its \textit{continued fraction} using the Gauss continued fraction algorithm. Define,
+\[ a_0 = \lfloor w\rfloor \qquad\text{and}\qquad \omega_0 = \{\omega\}; \]
+and for all $n\geq 1$:
+\[ a_n = \lfloor\frac{1}{\omega_{n-1}}\rfloor \qquad\text{and}\qquad \omega_n = \{\frac{1}{\omega_{n-1}}\} \]
+Thus, we have the following representation for $\omega$:
+\[ \omega = a_0 + \omega_0 = a_0 + \frac{1}{a_1 + \omega_1} = \hdots \]
+We denote this representation by, $\omega = [a_0,a_1,\hdots,a_n,\hdots]$.\\
+
+In the converse direction, it is a well known result that \textit{every} representation $[a_0,a_1,\hdots,a_n,\hdots]$ corresponds to a unique irrational number. Consider now,
+the two sequences $(p_n)_1^{\infty}$ and $(q_n)_1^{\infty}$ defined as follows:
+\begin{align*}
+	q_{-2} = 1,\quad q_{-1} = 0,\qquad q_n = a_nq_{n-1} + q_{n-2} \\
+	p_{-2} = 0,\quad p_{-1} = 1,\qquad p_n = a_np_{n-1} + p_{n-2}
+\end{align*}
+These sequences are defined so that we have $p_n/q_n = [a_0,a_1,\hdots,a_n]$ for all $n\in\mathbb{N}$.\\
+
+How fast $(q_n)_1^{\infty}$ can approximate $\omega$ is determined by the growth rate of the sequence $(q_n)_1^{\infty}$. The \textit{Brjuno condition} attempts to
+give a limitation on the growth rate of $(q_n)_1^{\infty}$ i.e. how fast it can approximate $\omega$.
+
+\begin{Def}
+	For every $\omega\in\mathbb{R}/\mathbb{Q}$, we have its unique convergents $(q_n)_1^{\infty}$. Thus, define
+	\[ B(\omega) = \sum_{n=0}^{\infty} \frac{\log q_{n+1}}{q_n} \]
+	and say that this is the \textit{Brjuno function} evaluated at $\omega$. If $B(\omega)<\infty$, we say that $\omega$ is a \textit{Brjuno number} or equivalently,
+	that is satisfies the \textit{Brjuno condition}.
+\end{Def}
+
+The Brjuno condition is \textit{strictly} weaker than the Diophantine condition. For example, if $a_{n+1}\leq ce^{a_n}$ is true for some constant $c>0$ and all $n\geq 0$, then
+$\omega = [a_0,a_1,\hdots,a_n,\hdots]$ is a Brjuno number but not Diophantine. This can be readily seen through the fact that  that $\omega$ is a Diophantine number if and 
+only if for constant $\tau\geq 1$ $q_{n+1}\leq cq_n^{\tau}$ for all $n\geq 0$.
+
+\section{Yoccoz's Theorem}
+
+Define $S_{\lambda}$ to be the set of germs consisting of $F\in z\mathbb{C}\{z\}$ which are analytic and injective in the unit disk $\mathbb{D} = \{z\in\mathbb{C}: |z|<1\}$ such that if 
+\[ F = \sum_{n=1}^{\infty} f_nz^n, \]
+then $f_1 = \lambda$. Assume $\lambda = e^{2\pi i \omega}$ where $\omega$ is real
+and irrational. Let $H_F$ denote the (unique) tangent to the identity linearization of $F$ i.e. the solution to $F\circ H = H\circ R_{\lambda}$. Note, since $H_F$ is tangent to
+the identity, we have that if we write
+\[ H = \sum_{n=1}^{\infty} h_nz^n, \]
+then $h_1 = 1$ and $h_0 = 0$. Define $R(F)$ to be the radius of convergence of $H_F$. Clearly all $F\in S_{\lambda}$ linearizable if and only if $R(\omega)>0$ where
+\[ R(\omega) = \inf_{F\in S_{\omega}} R(F) \]
+Since $\lambda$ is not a root of unity, the equation $F\circ H = H\circ R_{\lambda}$ has a unique solution for $H$ (when it exists). 
+In particular, we can write out the coefficients of $H$ using a recurrence relation:
+
+\begin{Lemma}
+\begin{align}
+	h_1 = 1,\quad h_n = \frac{1}{\lambda^n - \lambda}\sum_{m=2}^n f_m\Big{(}\sum_{n_1+\hdots+n_m=n, n_i\geq 1} h_{n_1}\cdot\cdot\cdot h_{n_m}\Big{)}
+\end{align}
+\end{Lemma}
+\begin{proof}
+	$h$ is tangent to the identity so $h_1 = 1$. $h_2$ can be computed as follows. We know:
+	\begin{align}
+		f &= \lambda z + \sum_{n=2}^{\infty} f_n z^n \\
+		h &= z + \sum_{n=2}^{\infty} h_n z^n
+	\end{align}
+	so that:
+	\begin{align*}
+	h \circ R_{\lambda} &= h \circ \lambda z = \lambda z + \sum_{n=2}^{\infty} (h_n\lambda^n)z^n  = \lambda z + (h_2\lambda^2) z^2 + \mathcal{O}(z^3),\\
+	f\circ h &= \lambda(z+\sum_{n=2}^{\infty} h_nz^n) + \sum_{n=2}^{\infty} f_n(z+h\sum_{n=2}^{\infty} h_nz^n)^n \\
+		&= \lambda z + \lambda h_2 z^2 + \mathcal{O}(z^3) + f_2z^2 + \mathcal{O}(z^3)
+	\end{align*}
+	so in particular, we have:
+	\begin{align*}
+		&\lambda z + (\lambda^2 h_2)z^2 = \lambda z + (\lambda h_2)z^2 + f_2z^2 \\
+		&\implies (\lambda^2 h_2)z^2 = (\lambda h_2 + f_2)z^2 \\
+		&\implies (\lambda^2 - \lambda)(h_2) = f_2 \\
+		&\implies h_2 = \frac{f_2}{\lambda^2-\lambda} 
+	\end{align*}
+	Now, evaluating (6.1) for $n=2$, we get $h_2 = [1/(\lambda^2-\lambda)] f_2( h_1 \cdot h_1) = f_2/(\lambda^2-\lambda)$ as wanted. \\
+	
+	We compute some more terms to see that (6.1) holds (by no means rigorous but it gives enough intuition for the recurrence relation). Thus, now we compute $h_3$:
+	Referring back to 6.2 and 6.3, we repeat the same steps to get:
+	\begin{align*}
+		h\circ R_{\lambda} &= \lambda z + (h_2\lambda^2)z^2 + (h_3\lambda^3)z^3 + \mathcal{O}(z^4) \\
+		f\circ h &= \lambda z + (\lambda h_2)z^2 + (\lambda h_3)z^3 + f_2z^2 + (2f_2 h_2)z^3 + \mathcal{O}(z^4)
+	\end{align*}
+	We can then solve for $h_3$:
+	\begin{align*}
+		\lambda z + (h_2\lambda^2)z^2 + (h_3\lambda^3)z^3 &= \lambda z + (\lambda h_2)z^2 + (\lambda h_3)z^3 + f_2z^2 + (2f_2 h_2)z^3 \\
+		(\lambda^2 h_2 - \lambda h_2)z^2 + (\lambda^3 - \lambda h_3)z^3 &= f_2z^2 + 2(f_2h_2)z^3 + f_3z^3 \\
+		h_3z^3 &= (\lambda^3 - \lambda)^{-1}(f_2z^2 + 2f_2h_2z^3 + f_3z^3 - (\lambda^2 - \lambda)h_2z^2) \\
+		h_3z^3 &= (\lambda^3 - \lambda)^{-1}(2f_2h_2z^3 + f_3z^3) \\
+		h_3 &= (\lambda^3-\lambda)^{-1}(2f_2^2(\lambda^2-\lambda)^{-1} + f_3)
+	\end{align*}
+	which one can check satisfies (6.1) for $n=3$. For $n=4$:
+	\begin{align*}
+		h\circ R_{\lambda} &= \lambda z + (h_2\lambda^2)z^2 + (h_3\lambda^3)z^3 + (h_4\lambda^4)z^4 + \mathcal{O}(z^4) \\
+		f\circ h &= \lambda(z + \sum_{n=2}^{\infty} h_nz^n) + \sum_{n=2}^{\infty} f_n(z + \sum_{n=2}^{\infty} h_nz^n)^n \\	
+			&= \lambda(z + h_2z^2 + h_3z^3 + h_4z^4 + \mathcal{O}(z^5))
+	\end{align*}
+	Note,
+	\begin{align}
+		f_2(z+h_2z^2 + h_3z^3 + \mathcal{O}(z^4))^2 &= f_2(z^2 + 2h_2z^3 + 2h_3z^4 + h_2^2z^4 + \mathcal{O}(z^5))
+	\end{align}
+	and,
+	\begin{align}
+		f_3(z+h_2z^2 + \mathcal{O}(z^3))^3 &= f_3(z^3 + 3h_2z^4 + \mathcal{O}(z^5))
+	\end{align}
+	so we have to solve for $h_4$ in the equation:
+	\begin{align*}
+		\lambda z + (h_2\lambda^2)z^2 + (h_3\lambda^3)z^3 + (h_4\lambda^4)z^4 &= \lambda(z + h_2z^2 + h_3z^3 + h_4z^4) \\
+			&+ f_2(z^2 + 2h_2z^3 + 2h_3z^4 + h_2^2z^4) \\
+			&+ f_3(z^3 + 3h_2z^4)
+	\end{align*}
+	Indeed, we get:
+	\begin{align*}
+	h_4 = (\lambda^4-\lambda)^{-1}[f_4+3f_3f_2(\lambda^2-\lambda)^{-1} &+ 2f_2f_3(\lambda^3-\lambda)^{-1}\\
+		&+ 4f_2^3(\lambda^3-\lambda)^{-1}(\lambda^2-\lambda)^{-1}+f_2^3(\lambda^2-\lambda)^{-1}]
+	\end{align*}
+	which satisfies (6.1) for $n=4$.
+\end{proof}
+We will also need de Brange's theorem so it is stated here:
+\begin{Th}
+	If $F:\mathbb{D}\to\mathbb{C}$ is a univalent (injective) holomorphic function with $f_1 = 1$ and $f_0 = 0$, then $|f_n|\leq n$ for all $n\geq 2$.
+\end{Th}
+For a proof of this theorem, we refer the reader to [4].\\
+
+J.C. Yoccoz [5] proved that a \textit{necessary and sufficient condition} to have $R(F)>0$ for all $F\in S_{\lambda}$ is if $\omega$ satisfies the Brjuno condition. In particular,
+there exists $C>0$ such that
+\[ |\log(R(\omega) + B(\omega)| \leq C \]
+In particular, we have the lower bound on $R(\omega)$:
+\[ \log(R(\omega)) \geq -B(\omega) - C \]
+Yoccoz's proof according to Stefan Marmi and Timoteo Carletti was based on a geometric renormalization argument and Yoccoz posed the question whether or not
+it was possible to obtain the same bound via direct manipulation of the power series expansion of $H$. Using Davie's lemma, Stefan Marmi and Timoteo Carletti give a
+positive answer. First, we introduce said lemma, and then give the proof given in their paper.
+
+\subsection{Davie's Lemma}
+
+The full setup can be found in Appendix B of [1] so we only give the parts important to the theorem.
+
+\begin{Lemma}[Davie's lemma]
+	Let $K(n) = n\log 2 + \sum_{k=0}^{k(n)} g_k(n)\log(2q_{k+1})$. The function $K(n)$ has the properties:
+	\begin{enumerate}
+		\item[(1)] There exists a universal constant $\gamma_3>0$ such that
+		\[ \frac{K(n)}{n} \leq \sum_{k=0}^{k(n)} \frac{\log q_{k+1}}{q_k} + \gamma_3;\]
+		\item[(2)] $K(n_1) + K(n_2) \leq K(n_1 + n_2)$ for all $n_2$ and $n_2$.
+		\item[(3)] $-\log|\lambda^n - 1| \leq K(n) - K(n-1)$
+	\end{enumerate}
+\end{Lemma}
+
+\section{Proof of Yoccoz}
+
+\begin{Th}[Yoccoz's Lower Bound]
+	One has $\log(R(\omega)) \geq -B(\omega) - C$ where $C$ is a universal constant (i.e. independent of $\omega$).
+\end{Th}
+
+Using equation 9.1 and de Brange's theorem, we deduce:
+\begin{align}
+	|h_n| \leq \frac{1}{|\lambda^n - \lambda|} \sum_{m=2}^n m\Big{(}\sum_{n_1+\hdots+n_m=m,n_i\geq 1} |h_{n_1}|\cdot\cdot\cdot|h_{n_m}|\Big{)}
+\end{align}
+We now, need to estimate $|h_{n_i}|$. Consider a function,
+\[ s(z) = \sum_{n=1}^{\infty} s_nz^n \]
+to be the unique (analytic) solution at $z=0$ of the functional equation
+\[ s(z) = z + \sigma(s(z)) \]
+where,
+\[ \sigma(z) = \frac{z^2(2-z)}{(1-z)^2} = \sum_{n=2}^{\infty} nz^n \]
+Similarly, to 6.1, the coefficients of $s(z)$ satisfy the following recurrence relation. The proof of this follows similarly to that of 6.1.
+\begin{align}
+	s_1 = 1,\qquad s_n = \sum_{m=2}^{\infty} m\Big{(}\sum_{n_1+\hdots+n_m=n,n_i\geq 1} s_{n_1}\cdot\cdot\cdot s_{n_m}\Big{)}
+\end{align}
+This is a convergent power series so in particular, its coefficients increase \textit{at most} exponentially. This is most readily seen through the formula for radius of convergence:
+\[ \limsup_{n\to\infty} |h_n|^{1/n} = 1/R \]
+Thus,
+\begin{align}
+	|s_n| \leq \gamma_1 \gamma_2^n
+\end{align}
+Now, by strong induction we will prove that for all $n\geq 1$:
+\[ |h_n| \leq s_ne^{K(n-1)} \]
+The base case ($n=1$) follows from the fact that $h_1 = s_1 = 1$ and $K(0)=0$. 
+If we assumed strong induction, using the fact that $|h_j| \leq s_je^{K(j-1)}$ holds for all $j < n$, then we have:
+\begin{align}
+	|h_n| \leq \frac{1}{|\lambda^n - \lambda|} \sum_{m=2}^n m \sum_{n_1+\hdots+n_m=n,n_i\geq 1} s_{n_1}\cdot\cdot\cdot s_{n_m}e^{K(n_1-1)+\hdots+K(n_m-1)}
+\end{align}
+Recalling our discussion of Davie's lemma, we may obtain:
+\[ K(n_1 - 1) + \hdots + K(n_m - 1) \leq K(n-2) \leq K(n-1) + \log|\lambda^n - 1| \]
+since $K(a) + K(b) \leq K(a+b)$ gives the l
+Thus:
+\begin{align*}
+	|h_n| &\leq \frac{\exp(K(n-1)+\log(|\lambda^n-1|))}{|\lambda^n - \lambda|}(\sum_{m=2}^n m\sum_{n_1+\hdots n_m=n, n_i\geq 1} s_{n_1}\cdot\cdot\cdot s_{n_m}) \\
+		&= \frac{\exp(K(n-1))\exp(\log(|\lambda^n-1|))}{|\lambda^n - \lambda|}(\sum_{m=2}^n m\sum_{n_1+\hdots+n_m=n,n_i\geq 1} s_{n_1}\cdot\cdot\cdot s_{n_m}) \\
+		&= e^{K(n-1)}\sum_{m=2}^n m\sum_{n_1+\hdots+n_m=n,n_i\geq 1} s_{n_1}\cdot\cdot\cdot s_{n_m} \\
+		&= s_ne^{K(n-1)}
+\end{align*}
+Using this and the fact that $K(n)/n \leq \sum_{k=0}^{k(n)} \frac{\log q_{k+1}}{q_k} + \gamma_3\leq B(\omega)+\gamma_3$ for some universal constant $\gamma_3>0$, we prove
+the desired theorem. Consider:
+\begin{align*}
+	|h_n| &\leq s_ne^{K(n-1)} \\
+	\Leftrightarrow R(\omega) = \limsup_{n\to\infty} |h_n|^{1/n} &\leq \limsup_{n\to\infty} |s_ne^{K(n-1)}|^{1/n}
+\end{align*}
+Recall $|s_n| \leq \gamma_1 \gamma_2^n$, then:
+\[ 1/R(\omega) \leq \limsup_{n\to\infty} |\gamma_1 \gamma_2^n e^{K(n-1)}|^{1/n} = \gamma_2\cdot \limsup_{n\to\infty} |e^{K(n-1)}|^{1/n}\]
+so that,
+\[ 1/R(\omega) \leq \gamma_2\cdot\limsup_{n\to\infty} |\exp((n-1)(B(\omega) - \gamma_3))|^{1/n} = \gamma_2\cdot e^{B(\omega)} \]
+So, we finally obtain:
+\begin{align}
+	R(\omega) \geq e^{-B(\omega) - \log(\gamma_2)}
+\end{align}
+or equivalently,
+\[ \log(R(\omega)) \geq -B(\omega) - \gamma_2 \]
+Thus completing the proof.\\
+
+In particular, we have that if $\omega$ is a Brjuno number, then $R(\omega)>0$ (we know $B(\omega)$ finite so the right side of (7.5) is positive) 
+so that $R(F)>0$ for all $F\in S_{\lambda}$ so that if the Brjuno condition is fulfilled
+then $S_{\lambda}$ is linearizable as wanted.
+
+\begin{thebibliography}{99} 
+
+\bibitem{carMarm} Timoteo Carletti, Stefano Marmi: \textit{Linearization of analytic and non-analytic germs of diffeomorphisms of $(\mathbb{C},0)$,
+Bulletin de la Société Mathématique de France, Volume 128 (2000) no. 1 , p. 69-85}
+
+\bibitem{marm} Stefano Marmi: \textit{An Introduction to Small Divisor Problems} \begin{verbatim} https://arxiv.org/pdf/math/0009232.pdf \end{verbatim}
+
+\bibitem{miln} John Milnor: \textit{Dynamics in One Complex Variable, Third Edition} - Princeton University Press
+
+\bibitem{carlCh} Carl H. Fitzgerald, Ch. Pommeranke: \textit{The de Branges theorem on univalent functions, Trans Amer. Math. Soc. \textbf{290} (1985), 683-690}
+
+\bibitem{yo} J.C- Yoccoz: \textit{Théo\'erema de Siegel, polynômes quadratiques et nombres de Brjuno, Astérique, 231, 1995, p. 3-88}
+
+\bibitem{crem} Hubert Cremer: \textit{Zum Zentrumproblem, Math. Ann. \textbf{98} 151-163}
+
+\bibitem{sieg} Carl Ludwig Siegel: \textit{Iteration of Analytic Functions, Ann. of Math. \textbf{43}, 607-612.}
+
+
+\end{thebibliography}
+
+
+
+\end{document}

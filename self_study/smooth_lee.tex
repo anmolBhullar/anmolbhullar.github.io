@@ -1,89 +1,100 @@
-\documentclass{article}
-% \usepackage{tikz}
-%\usetikzlibrary{cd}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\documentclass[12pt]{article}
+\usepackage[a4paper]{geometry}
+\usepackage{mhchem}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{nicefrac}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{es}{Examples}
+\usepackage[lastexercise]{exercise}
 
-\newcommand{\inter}[1]{int(#1)}
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\begin{document}
+\section{Smooth Manifolds}
 
-\title{Exercises}
-\author{Smooth Manifolds - Lee}
-
-\begin{document}   
-    \maketitle
-    
-    \section{Topological Manifolds}
-
-    \textbf{Exercise 1.1.}\qquad Show that equivalent definitions of locally Euclidean spaces are obtained if,
-    instead of requiring $U$ to be homeomorphic to an open subset of $\mathbb{R}^n$, we require it to be homeomorphic
-    to an open ball in $\mathbb{R}^n$, or to $\mathbb{R}^n$ itself.
-    \newline
-    \newline
-    \textbf{Solution 1.1.}\\
-
-        Let $\phi: U\to\tilde{U}$ where $p\in U\subset M$ and $\tilde{U}\subset\mathbb{R}^n$. Since $\tilde{U}$ is open,
+\begin{ExerciseList}
+  \Exercise
+ 	Show that equivalent definitions of locally Euclidean spaces are obtained if, instead of requiring $U$ to be homeomorphic to an open subset of $\mathbb{R}^n$, we require it to be 
+  	homeomorphic to an open ball in $\mathbb{R}^n$, or to $\mathbb{R}^n$ itself. 
+  \Answer
+  	Let $\phi: U\to\tilde{U}$ where $p\in U\subset M$ and $\tilde{U}\subset\mathbb{R}^n$. Since $\tilde{U}$ is open,
         we can find an open ball around $\phi(p)$ (denoted $B_r(\phi(p))$ for some $r>0$) such that $B_r(\phi(p))\subset\tilde{U}$.
         We know $p\in \phi^{-1}(B_r(\phi(p)))$ and is open since $\phi$ and $\phi^{-1}$ is continuous. Therefore, the map
         $\phi': \phi^{-1}(B_r(\phi(p))) \to B_r(\phi(p))$ is a homeomorphism. Using this along with the fact that open balls
         are of course open sets in $\mathbb{R}^n$, we obtain that requiring $U$ to be homeomorphic to open subsets of $\mathbb{R}^n$
         or open balls of $\mathbb{R}^n$ makes no difference.\\
-        \newline
+        
         Next, consider a ball $B_r(x)$ centered at $x\neq 0$ of radius $r>0$. The function $f: B_r(x)\to B_r(0)$ translates this
         ball to the origin via $z\mapsto z-x$. This map is clearly bijective and linear (so it is differentiable and so, continuous)
         with a continuous inverse, thus it is a homeomorphism. Therefore, it suffices to consider to balls centered at the origin.
         Now, consider the map $g: B_r(0) \to B_1(0)$ defined by $z\mapsto \nicefrac{z}{r}$ which is clearly still a homeomorphism.
-        Now, consider a map $\pi: B_1(0)\to\mathbb{R}^n$ defined by $x\mapsto (\tan(\nicefrac{\pi|x|}{2})x)$.
-    \newline
-    \newline
-    \textbf{Exercise 1.2.}\qquad Show that any topological subspace of a Hausdorff space is Hausdorff, and any
-    finite product of Hausdorff spaces is Hausdorff.
-    \newline
-    \newline
-    \textbf{Solution 1.2.}\\
-
-        Let $A$ be a subspace of a Hausdorff space $T$. Let $x\neq y\in A$, since $x,y\in T$, then there exist open sets $U,V$
+        Now, consider a map $\pi: B_1(0)\to\mathbb{R}^n$ defined by $x\mapsto (\tan(\nicefrac{\pi|x|}{2})x)$.$\hfill\blacksquare$
+  
+  \Exercise
+  	Show that any topological subspace of a Hausdorff space is Hausdorff, and any finite product of Hausdorff spaces is Hausdorff.
+  \Answer
+  	Let $A$ be a subspace of a Hausdorff space $T$. Let $x\neq y\in A$, since $x,y\in T$, then there exist open sets $U,V$
         in $T$ such that $x\in U$, $y\in V$ and $V\cap U=\emptyset$. Since $x\in U$ and $x\in A$, then $x\in U\cap A$ and similarly,
         for $y\in V\cap A$ and since $U\cap A\subset U\cap A$ and similarly for $V$, we have that $U\cap A \cap V \cap A = \emptyset$.
         Therefore, since $U\cap A$ and $V\cap A$ are open sets in $A$, we have the existence of two disjoint sets which contain
         $x$ and $y$ so that $A$ is also Hausdorff. A similar proof follows for finite products except we take the product of
         the disjoint sets i.e. if $U_1\times\hdots\times U_n$ is our space, then take disjoint sets from each $U_i$ and product
-        them together.
-    \newline
-    \newline
-    \textbf{Exercise 1.3.}\qquad Show that any topological subspace of a second countable space is second countable,
-    and any finite product of second countable spaces is second countable.
-    \newline
-    \newline
-    \textbf{Solution 1.3.}\\
-
-        Let $A$ be a subspace of the second countable space $T$. Since a basis of $A$ can be given by $B_i 
+        them together.$\hfill\blacksquare$
+  
+  \Exercise
+  	Show that any topological subspace of a second countable space is second countable, and any finite product of second countable spaces is second countable.
+  \Answer
+  	 Let $A$ be a subspace of the second countable space $T$. Since a basis of $A$ can be given by $B_i
         = \{A \cap T_i: T_i\in\{T_i\}\}$, we can simply let $\{T_i\}$ be our countable basis of $T$. Thus, $A$ is second countable.
         Note if $U_1\times\hdots\times U_n$ is a finite product of second countable space, its basis is given by
         $B = \{U_{1_i}\times\hdots\times U_{n_i}: i\in\mathbb{N},$ $U_{k_i}$ is the $i$th basis element of $U_k\}$. 
-        From this, choosing the appropriate basis yields the fact that $U_1\times\hdots\times U_n$ is second countable.
-    \newline
-    \newline
-    \textbf{Work it out.}\qquad Show that any subset of a topological $n$-manifolds equipped with the subspace
-    topology is itself a topological $n$-manifold.
-    \newline
-    \newline
-    \textbf{Solution.}\\
+        From this, choosing the appropriate basis yields the fact that $U_1\times\hdots\times U_n$ is second countable.$\hfill\blacksquare$
+  
+  \Exercise
+  	Show that $\mathbb{P}^n$ is Hausdorff and second countable, and is therefore a topological $n$-manifold.
+  \Answer
+  	Let $x\neq y\in \mathbb{P}^n$. We show there exists $U,V\in\mathbb{P}^n$ such that $U\cap V=\emptyset$ with $x\in U$ and $y\in V$. Since $x\neq y$, we have that $\varphi_i[x]\neq \varphi_i[y]$
+	for any $1\leq i\leq (n+1)$. Note $\varphi_i[x]$ and $\varphi_i[y]$ are points in $\mathbb{R}^n$ and so we can abuse the fact that $\mathbb{R}^n$ is Hausdorff. There exist open $U'\subset\mathbb{R}^n$
+	 and $V'\subset\mathbb{R}^n$ disjoint sets that contain $\varphi_i[x]$ and $\varphi_i[y]$ respectively. Using the fact that $\varphi_i$ is a homeomorphism, we get that $U := \phi_i^{-1}(U')$ and 
+	 $V := \varphi_i^{-1}(V')$ are disjoint and they contain $x$ and $y$ respectively. Furthermore, $U$ and $V$ are open since their images are open. Thus, $\mathbb{P}^n$ is Hausdorff.\\
+	 
+	 It is left to show that $\mathbb{P}^n$ is second countable. We know that all of the $U_i$'s for $i = 1,\hdots,n+1$ cover $\mathbb{P}^n$. Let $\{X_i\}_{i=1}^{n+1} = \{\phi_i(U_i)\}_{i=1}^{n+1}$.
+	 Each $X_i\subset\mathbb{R}^d$ which is second countable, so each $X_i$ as a subspace is second countable. Let $\{Y_{i_j}\}_{j=1}^{\infty}$ be a countable basis for $X_i$.
+	 We claim,
+	 \[ M := \bigcup_{i=1}^{n+1} \{\phi_i^{-1}(Y_{i_j}): j=1,2,3\hdots\}\]
+	 is a countable basis of $\mathbb{P}^n$. Clearly $M$ is countable because each $\cup_{j=1}^{\infty} \phi_i^{-1}(Y_{i_j})$ is countable and the finite union of countable sets is countable. Let
+	 $O$ be an open set of $\mathbb{P}^n$. Then note $O = \cup_{i=1}^{n+1} (U_i\cap O)$. Note, each $\phi_i(U_i\cap O)$ can be written as a countable union of elements of $\{Y_{i_j}\}$ and so
+	 $U_i\cap O$ can be written as a countable union of elements of $\{\phi_i^{-1}(Y_{i_j}): j=1,2,3,\hdots\}$. Thus, we can write each $U_i\cap O$ as a countable union of elements of $M$ and so
+	 we can write $\cup_{i=1}^{n+1} (U_i\cap O)$ as a countable union of elements of $M$. Since $M$ only contains open sets of $\mathbb{P}^n$ (i.e. cannot generate a topology bigger than $M$), 
+	 we have that $M$ is a countable basis of $\mathbb{P}^n$ as wanted.$\hfill\blacksquare$
+	 
+  \Exercise
+  	Let $M$ be a topological manifold. Two smooth atlases for $M$ determine the same maximal smooth atlas if and only if their union is a smooth atlas.
+   \Answer
+   	Let $\mathcal{X},\mathcal{Y}$ be two smooth maximal smooth atlases containing $\mathcal{A}$ and $\mathcal{B}$ respectively.
+	Let $\mathcal{A}$ and $\mathcal{B}$ be two smooth atlases for $M$ such that $\mathcal{A} \cup \mathcal{B}$ is a smooth atlas for $M$. Since $\mathcal{A}\subset\mathcal{X}$, it follows
+	$(\mathcal{A}\cup\mathcal{B})\cap\mathcal{X}\neq\emptyset$. Thus, if $\mathcal{X}$ is to be the unique maximal smooth atlas determined by $\mathcal{A}$, 
+	we must have that $\mathcal{A}\cup\mathcal{B}\subset\mathcal{X}$. For if this were not the case, we would have the existence of a chart smoothly compatible with $\mathcal{A}$ which is not
+	in $\mathcal{X}$. Similarly, we obtain $\mathcal{A}\cup\mathcal{B} \subset \mathcal{Y}$. From the uniqueness of both $\mathcal{X}$ and $\mathcal{Y}$, we obtain $\mathcal{X}=\mathcal{Y}$ i.e.
+	$\mathcal{A}$ and $\mathcal{B}$ determine the same smooth atlas. Now, suppose instead $\mathcal{A}$ and $\mathcal{B}$ determine the same maximal smooth atlas $\mathcal{X}$. Let
+	$(U,\phi)\in\mathcal{A}$ and $(V,\psi)\in\mathcal{B}$. Since $(V,\psi)\in\mathcal{X}$, it follows $(U,\phi)$ and $(V,\psi)$ are smoothly compatible. Similarly, the converse holds i.e. every chart
+	in $\mathcal{A}$ is smoothly compatible with charts in $\mathcal{B}$. Thus, $\mathcal{A}\cup\mathcal{B}$ is a smooth atlas.$\hfill\blacksquare$
+	
+   \Exercise
+   	If $k$ is an integer between 0 and min$(m,n)$, show that the set of $m\times n$ matrices whose rank is at least $k$ is an open submanifold of M$(m\times n,\mathbb{R})$.
 
-        Let $A\subset M$ be a subset of $M$ (non-empty), then we can equip $A$ with the subspace topology.
-        Since every subspace of a second countable space is second countable and similarly for Hausdroff, it follows that a subspace
-        of a Hausdorff and second countable space is Hausdorff and second countable. It is left to prove that $A$ is locally
-        a Euclidean space. If $p\in A$, then there exists $\phi_p: U\subset M\to \tilde{U}\subset\mathbb{R}^n$. It then follows
-        $\phi_p': U\cap A \to \phi_p'(U\cap A)$ is bijective and continuous with a continuous inverse since it is the restriction
-        of a homeomorphism. Thus, $A$ is a manifold equipped with the subspace topology.
-    \newline
-    \newline
+   \Exercise
+   	By identifying $\mathbb{R}^2$ with $\mathbb{C}$ in the usual way, we can think of the unit circle $\mathbb{S}^1$ as a subset of the complex plane. An \textit{angle function} on
+	a subset $U\subset\mathbb{S}^1$ is a continuous function $\theta:U\to\mathbb{R}$ such that $e^{i\theta(p)} = p$ for all $p\in U$. Show that there exists an angle function on an
+	open subset $U\subset\mathbb{S}^1$ if and only if $U\neq\mathbb{S}^1$. For any such angle function, show that $(U,\theta)$ is a smooth coordinate chart for $\mathbb{S}^1$ with its
+	standard smooth structure.
+	
+   \Exercise
+   	Let $0<k<n$ be integers, and let $P,Q\subset\mathbb{R}^n$ be the subspaces spanned by $(e_1,\hdots,e_k)$ and $(e_{k+1},\hdots,e_n)$, respectively, where $e_i$ is the $i$th standard
+	basis vector. For any $k$-dimensional subspace $S\subset\mathbb{R}^n$ that has the trivial intersection with $Q$, show that the coordinate representation $\phi(S)$ constructed in the
+	example on Grassmannian manifolds is the unique $(n-k)\times k$ matrix $B$ such that $S$ is spanned by the columns of the matrix $\bigl( \begin{smallmatrix} I_k \\ B\end{smallmatrix}\bigr)$, where
+	$I_k$ denotes the $k\times k$ identity matrix.
+   	
+\end{ExerciseList}
+
 \end{document}

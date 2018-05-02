@@ -1,0 +1,177 @@
+\documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{nicefrac}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{es}{Examples}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\inter}[1]{int(#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\title{MATD11: Functional Analysis\\
+    Assignment 5}
+\author{Anmol Bhullar - 1002678140}
+
+\begin{document}
+    \maketitle
+
+    \textbf{P1.}\\
+
+    Assume all of the notation of the Closed Graph Theorem. You may also assume that $X\times Y$ is a vector space with the vector operations we discussed
+    in lectures.
+    \begin{enumerate}
+        \item[(a)] Prove that $G(T)$ is a subspace of $X\times Y$
+        \item[(b)] Prove that $X\times Y$ is complete with respect to the norm $\norm{(x,y)} = \norm{x}_X + \norm{y}_Y$
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+
+    First, we show that $G(T)$ is a subspace of $X\times Y$. Let $x,y\in G(T)$ and $a,b$ scalars. We show $ax+by\in G(T)$ where the scalar multiplication and
+    vector addition operations are given by that of $X\times Y$. By construction of $G(T)$, we know that there exists $h\in X$ such that $(h,T(h))=x$ and similarly,
+    the existence of $g\in X$ such that $(g,T(g))=y$. Thus:
+    \[ ax+by = a(h,Th) + b(g,Tg) = (a\cdot h, a\cdot Th) + (b\cdot g,b\cdot Tg) \]
+    Using linearity of $T$, we have:
+    \begin{align}
+        ax+by = (a\cdot h, T(a\cdot h)) + (b\cdot g, T(b\cdot g)) = (a\cdot h + b\cdot g, T(a\cdot h + b\cdot g))
+    \end{align}
+    Using the fact that $X$ is a vector space, we know that $a\cdot h + b\cdot g\in X$. Similarly, $T(a\cdot h) + T(b\cdot g)\in Y$.
+    Thus, the left side of (1) is an element of $G(T)$ as wanted.\\
+
+    Now, we show that $X\times Y$ is complete with respect to the norm $\norm{x,y} = \norm{x}_X + \norm{y}_Y$. Let $(h_n)_{n=1}^{\infty}$ be a Cauchy sequence
+    in $X\times Y$. By definition of $X\times Y$, we can write $(h_n)_1^{\infty}$ as $(x_n,y_n)_{n=1}^{\infty}$ where $((x_n,y_n))=h_n$ for some $x_n\in X$ and $y_n\in Y$.
+    We know from topology that in a metric space, $(h_n)_1^{\infty}$ is Cauchy if and only if both $(x_n)_1^{\infty}$ and $(y_n)_1^{\infty}$ are.
+    Now, choose an $\epsilon>0$ of your liking.
+    Now since $X$ and $Y$ are complete, we know $x_n\to x\in X$ and $y_n\to y\in Y$. We claim: $(h_n)_1^{\infty} \to (x,y)\in X\times Y$.
+    Let $N_1\in\mathbb{N}$ be chosen so that for all $n>N_1$, $\norm{x_n-x}_X<\epsilon/4$ and $N_2\in\mathbb{N}$ be chosen so that for all $n>N_2$, we have
+    $\norm{y_n-y}_Y < \epsilon/4$. Finally, let $N_3\in\mathbb{N}$ be chosen so that $\norm{h_n-h_m}<\epsilon/2$. Now, 
+    let $N =$ max$\{N_1,N_2,N_3\}$. Consider for $m\geq n>N$:
+    \begin{align*}
+        \norm{(x_n,y_n)-(x,y)} &= \norm{(x_n,y_n)-(x_m,y_m)+(x_m,y_m)-(x,y)} \\
+            &\leq \norm{(x_n,y_n)-(x_m,y_m)} + \norm{(x_m,y_m)-(x,y)} \\
+            &< \epsilon/2 + \norm{(x_m-x,y_m-y)} \\
+            &= \epsilon/2 + \norm{x_m-x}_Y + \norm{y_m-y}_Y \\
+            &< \epsilon/2 + \epsilon/2 = \epsilon
+    \end{align*}
+    so that $(h_n)_1^{\infty}$ converges to some point in $X\times Y.\hfill\blacksquare$\\
+
+    \textbf{P2.}\\
+
+    Let $X = \{\{x_n\}_{n=1}^{\infty}: x_n\in\mathbb{C}\;\text{and}\; \sum_{n=1}^{\infty} |x_n|<\infty\}$.
+    \begin{enumerate}
+        \item[(a)] Prove that the mapping $I: (X,\norm{\cdot}_1)\to(X,\norm{\cdot}_{\infty})$ is bounded and bijective, but not open.
+        \item[(b)] Explain why the last assertion in Part (a) does not contradict Two-Norm Theorem or the Open Mapping Theorem.
+    \end{enumerate}
+
+    \textbf{Solution.}\\
+
+    (a). $I$ is clearly bijective since it is the identity map. We show $I$ is bounded. Note that $\norm{x}_{\infty} = \sup_n\{|x_n|\}$ and
+    $\norm{x}_1 = \sum_1^{\infty} |x_n|$ so that $\norm{x}_{\infty} \leq \norm{x}_1$. Thus, $\norm{Ix}_{\infty} \leq \norm{x}_1$. Since,
+    $\norm{I} = \sup\{\norm{Ix}_{\infty}: \norm{x}_1 = 1\}$, we have $\norm{I} \leq 1$ so that in particular, $I$ is bounded. It is left to show
+    $I: (X,\norm{\cdot}_1)\to (X,\norm{\cdot}_{\infty})$. To do this, we show $(X,\norm{\cdot}_1)$ and $(X,\norm{\cdot}_{\infty})$ do not have the same
+    topology. For now, assume $(X,\norm{\cdot}_{\infty})$ is not complete (to be proven later), but clearly $X$ with the $\ell^1$ norm is complete (Riesz-Fischer)
+    so in particular, the norm $\ell^1$ and $\ell^{\infty}$ are not equivalent on $X$. Thus, they do not induce the same topology i.e. there exists some open set $U$
+    in $(X,\norm{\cdot}_1)$ which is not in $(X,\norm{\cdot}_{\infty})$. Thus, $I(U) = U$ is not open in $(X,\norm{\cdot}_{\infty})$ as wanted.\\
+
+    We now show that $(X,\norm{\cdot}_{\infty})$ is not complete. Construct a sequence where the $n$th term is the truncation (at $n$) of the Harmonic sequence.
+    Clearly each term is in $X$ but the harmonic sequence (which is what the sequence converges to) is not in $X$ since it is not summable. Thus, $X$ with the $\ell^{\infty}$
+    is not complete as wanted.\\
+
+    (b). By the previous paragraph, $X$ with the $\ell^{\infty}$ norm is not complete, thus we can not apply the Two-Norm theorem or the Closed Graph
+    Theorem.$\hfill\blacksquare$\\
+
+    \newpage
+    \textbf{P3.}\\
+
+    Suppose $X,Y$ are Banach spaces and $T:X\to Y$ is linear. Suppose further that whenever $x_n\to 0$ and $Tx_n\to y$ then $y=0$. Show that $T$ is continuous.\\
+
+    \textbf{Solution.}\\
+
+    By the sequence definition of continuity, we know this $T$ is continuous at 0. We also know that for a linear map to be continuous at 0, it is equivlent to the notion
+    that a linear map is continuous on its domain. Thus, $T$ is continuous.$\hfill\blacksquare$\\
+
+    \textbf{P4.}\\
+    
+    Let $T$ be a linear operator from a Hilbert space $\mathscr{H}$ into itself satisfying $\langle Tx,y\rangle = \langle x,Ty\rangle$ for all $x,y\in\mathscr{H}$. Prove
+    that $T$ is bounded.\\
+
+    \textbf{Solution.}\\
+
+    $\mathscr{H}$ is a Hilbert space, so in particular, it is Banach. Therefore, we can apply the Closed Graph Theorem on $\mathscr{H}\times\mathscr{H}$ and $T$
+    to obtain: If $G(T)$ closed, then $T$ bounded. So, we prove that $G(T)$ is bounded. It suffices to show that if $(x_n,Tx_n)\to (x,y)\in G(T)$, then $Tx = y$
+    for all convergent sequences $(x_n)_1^{\infty}$. We have that if $(x_n,Tx_n)\to (x,y)$, then $x_n\to x$ and $Tx_n \to y$ in $\mathscr{H}$. Since norm convergence
+    implies weak convergence, we have for all $t\in\mathscr{H}$:
+    \[ \lim_{n\to\infty} \langle Tx_n,t\rangle = \langle y,t\rangle \]
+    Using the fact that $T$ is self-adjoint and the continuity of the inner product: we have that:
+    \[ \lim_{n\to\infty} \langle x_n,T(t)\rangle = \langle x,T(t)\rangle = \langle T(x),t\rangle \]
+    Thus, for all $t\in\mathscr{H}$, we have $\langle Tx,t\rangle = \langle y,t\rangle$ which implies that $\langle Tx-y,t\rangle=0$ for all $t\in\mathscr{H}$. Thus,
+    by Theorem 1.33(b) (apply $t=e_n$ where $e_n$ is an element of an orthonormal basis), we get that $Tx-y=0$.$\hfill\blacksquare$\\
+
+    \newpage
+    \textbf{P5.}\\
+
+    Suppose that $X$ is an $n$-dimensional normed linear space over $\mathbb{C}$. Show that there is a linear bijection $T:X\to\mathbb{C}^n$ such that $T$ and $T^{-1}$
+    are continuous (in your choice of a norm for $\mathbb{C}^n$); in short, every $n$-dimensional normed linear space over $\mathbb{C}$ is isomorphic to $\mathbb{C}^n$.\\
+
+    \textbf{Solution.}\\
+
+    First, we show every 2-dimensional normed linear space $X$ (over $\mathbb{C}$) is isomorphic to $\mathbb{C}^2$. 
+    We will see that it is easy to generalize to the $n$-dimensional case.
+    Every normed linear space has a basis, so in particular, we say $\{e_1,e_2\}$ is a basis of $X$. Let $\{r_1,r_2\}$ be a basis of $\mathbb{C}^2$.
+    We define a mapping $f:X\to\mathbb{C}^2$ first by letting $e_1\mapsto r_1$ and $e_2\mapsto r_2$. We can then extend to \textit{all} of $X$ by first writing
+    (for any $x\in X$) $x = ae_1 + be_2$ for scalars $a,b\in\mathbb{C}$. Then, let $x\mapsto ar_1 + br_2$ which is clearly in $\mathbb{C}^2$ since it is closed under
+    vector addition. Note also that $f$ is well defined since for a given basis, a linear combination is unique.
+    Through this, we see that $f^{-1}$ is defined by (for $c\in\mathbb{C}^2$, $c = ar_1+br_2$ for scalars $a,b\in\mathbb{C}$)
+    $c\mapsto ae_1 + be_2$. To check $f^{-1}$ is an inverse of $f$, it suffices to check $f^{-1}(f(x)) = x$ for all $x\in X$. Write $x = ae_1 + be_2$. Then,
+    $f(x) = ar_1 + br_2$ but then $f^{-1}(f(x)) = ae_1 + be_2$ so that $x = f^{-1}(f(x))$. Similarly, $f(f^{-1}(y)) = y$ for all $y\in\mathbb{C}^2$.
+    Therefore, $f^{-1}$ is an inverse for $f$ so we get for free that $f$ is a bijection.\\
+
+    Now, we show $f$ is linear. This is more or less follows from the definition but we attempt to give the details here. Let $x+y\in X$ where
+    $x,y\in X$ and write $x = g_1e_1 + g_2e_2$, $y = g_3e_1 + g_4e_2$ for scalars $g_1,\hdots,g_4$. Thus,
+    $x+y = (g_1+g_3)e_1 + (g_2+g_4)e_2$ and so $f(x+y) = (g_1+g_3)r_1 + (g_2+g_4)r_2 = g_1r_1 + g_2r_2 + g_3r_1 + g_4r_2 = f(x) + f(y)$. Now, let $a\in\mathbb{C}$
+    and consider $f(ax) = f((ag_1)e_1 + (ag_2)e_2) = (ag_1)r_1 + (ag_2)r_2 = a(g_1r_1 + g_2r_2) = a(f(x))$ so that $f$ is linear. Similarly, it follows
+    $f^{-1}$ is linear.\\
+    
+    The fact that $f$ is continuous follows from the fact that $f$ is linear and the fact that Proposition 4.4 exists. Thus, $f$ is
+    continuous (if I am not allowed to use Prop. 4.4, then go to page 80 of Barbara MacCluer's \textit{Elementary Functional Analysis} and assume I have written lines 
+    7-14 here and ignore the fact that it is Academic Plaigarism). Similarly, $f^{-1}$ is continuous.\\
+    
+    Thus, $X$ and $\mathbb{C}^2$ are isomorphic.$\hfill\blacksquare$\\
+
+    \newpage
+    \textbf{P6.}\\
+
+    Let $X$ and $Y$ be normed linear spaces where $X\neq\{0\}$. If both $X$ and $\mathscr{B}(X,Y)$ are complete, prove that $Y$ is complete.\\
+
+    \textbf{Solution.}\\
+
+    $X\neq 0$ so in particular, we have the existence of unit vectors. By corollary 3.3, there exists a linear functional $\phi$ such that $\phi(x_0) = \norm{x_0}$.
+    Let $x_0$ be a unit vector and define a function $f_n\in\mathscr{B}(X,Y)$ via $f_{n}(x) = \phi(x)y_n$. Linearity follows from the fact that $\phi$ is linear.
+    Boundedness follows from the fact that $\norm{f_n(x)}_Y = \norm{\phi(x)y_n} \leq \norm{\phi(x)}\norm{y_n}$. So if $\norm{x}=1$, we have 
+    $\norm{f_n}\leq \norm{\phi}\norm{y_n}$ so that $f_n$ is bounded. Next, we show that $(f_n)_1^{\infty}$ is Cauchy given $(y_n)_1^{\infty}$ is Cauchy.
+    Choose $\epsilon>0$ so that there exists some $N\in\mathbb{N}$ such that if $n,m\geq N$, then $\norm{y_n-y_m}<\epsilon/\norm{\phi}$. Note $\norm{\phi}\neq 0$
+    since $\phi(x_0) =1$ for choice of $\norm{x_0}=1$. Then, consider for all $n,m\geq N$:
+    \begin{align*}
+        \norm{f_n - f_m} &= \sup\{\norm{(f_n-f_m)(x)}: \norm{x}_X = 1\}  \\
+            &= \sup\{\norm{\phi(x)[y_n-y_m]}: \norm{x}=1\} \\
+            &= \norm{y_n-y_m}\sup\{|\phi(x)|: \norm{x}=1\} \\
+            &= \norm{y_n-y_m}\norm{\phi}
+            &< \epsilon
+    \end{align*}
+    Thus, $(f_n)_1^{\infty}$ is Cauchy, thus $f_n\to f$ for some $f\in \mathscr{B}(X,Y)$. We then have that $\lim_{n\to\infty} f_n(x_0) = f(x_0)$ (uniform convergence
+    implies pointwise convergence). But $f_n(x_0) = \phi(x_0)y_n = y_n$ since $x_0$ is a unit vector and $\phi(x_0) = \norm{x_0}$. Therefore,
+    $\lim_{n\to\infty} y_n = f(x_0)$ i.e. $(y_n)_1^{\infty}$ converges to some element of $Y$. Thus, $Y$ is complete.$\hfill\blacksquare$\\
+
+    \textbf{Parting Words.}\\
+
+    Thank you for the amazing course $:)$
+
+\end{document}

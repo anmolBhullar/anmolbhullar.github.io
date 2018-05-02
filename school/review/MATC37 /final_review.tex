@@ -1,0 +1,356 @@
+\documentclass[6pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+
+\usepackage[landscape, scale=0.9, margin={0.05cm,0.05cm}]{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=0.05mm,
+ top=1mm,
+ bottom=1mm
+ }
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+
+\usepackage{multicol}%
+\usepackage{lipsum}% 
+\begin{document}
+\setlength{\parindent}{0pt}
+\footnotesize
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{multicols*}{3}
+
+\textbf{Outer Measure}
+
+\textbf{Definition}: The \textit{Lebesgue Outer Measure} of $E\subseteq \mathbb{R}^d$ is equal to $\inf(\sum_1^{\infty} |Q_j|)$ where the infimum is taken over all countable collections
+of closed cubes which cover $E$.
+
+By definition, for every $\epsilon>0$, there exists a covering $E\subseteq \cup_{j=1}^{\infty} Q_j$ with $\sum_{j=1}^{\infty} m_*(Q_j) \leq m_*(E) + \epsilon$.
+
+\textbf{Observation 1: Monotonicity}: If $E_1\subseteq E_2$, then $m_*(E_1) \leq m_*(E_2)$.
+
+\textbf{Observation 2: Countable sub-additivity} If $E = \cup_{j=1}^{\infty} E_j$, then $m_*(E) \leq \sum_{j=1}^{\infty} m_*(E_j)$.
+
+\textbf{Observation 3} If $E\subseteq\mathbb{R}^d$, then $m_*(E) = \inf m_*(\mathcal{O})$, where the infimum is taken over all open sets $\mathcal{O}$ containing $E$.
+
+\textbf{Observation 4} If $E = E_1\cup E_2$, and $d(E_1,E_2)>0$, then $m_*(E) = m_*(E_1) + m_*(E_2)$.
+
+\textbf{Observation 5} If a set $E$ is the countable union of almost disjoint cubes $E = \cup_{j=1}^{\infty} Q_j$, then $m_*(E) = \sum_{j=1}^{\infty} |Q_j|$.\\
+
+\textbf{Measurable sets and the Lebesgue measure}
+
+\textbf{Lebesgue Measurable} A subset $E$ of $\mathbb{R}^d$ is \textit{Lebesgue measurable}, if for any $\epsilon>0$ there exists an open set $\mathcal{O}$ with $E\subseteq\mathcal{O}$ and $m_*(\mathcal{O}-E)\leq \epsilon$.
+
+\textbf{Lebesgue Measure} If $E$ is measurable, we define its \textit{Lebesgue measure} $m(E)$ by $m(E) = m_*(E)$.
+
+\textbf{Property 1} Every open set in $\mathbb{R}^d$ is measurable.
+
+\textbf{Property 2} If $m_*(E)=0$, then $E$ is measurable. In particular, if $F$ is a subset of a set of exterior measure 0, then $F$ is measurable.
+
+\textbf{Property 3} A countable union of measurable sets is measurable.
+
+\textbf{Property 4} Closed sets are measurable.
+
+\textbf{Lemma 3.1} If $F$ is closed, $K$ is compact, and these sets are disjoint, then $d(F,K)>0$. 
+
+\textbf{Property 5} The complement of a measurable set is measurable.
+
+\textbf{Property 6} A countable intersection of measurable sets is measurable.
+
+\textbf{Theorem 3.2} If $E_1,E_2,\hdots$, are disjoint measurable sets, and $E = \cup_{j=1}^{\infty} E_j$, then $m(E) = \sum_{j=1}^{\infty} m(E_j)$.
+
+\textbf{Arrow Notation} If $E_1,E_2,\hdots$ is a countable collection of subsets of $\mathbb{R}^d$ that increases to $E$ in the sense that $E_k\subseteq E_{k+1}$ for all $k$, and
+$E = \cup_{k=1}^{\infty} E_k$, then we write $E_k\nearrow E$. Similarly, if $E_1,E_2,\hdots$ decreases to $E$ in the sense that $E_k \supset E_{k+1}$ for all $k$, and
+$E = \cap_{k=1}^{\infty} E_k$, we write $E_k \searrow E$.
+
+\textbf{Corollary 3.3} Suppose $E_1,E_2,\hdots$ are measurable subsets of $\mathbb{R}^d$.
+\begin{enumerate}
+	\item If $E_k\nearrow E$, then $m(E) = \lim_{N\to\infty} m(E_N)$.
+	\item If $E_k\searrow E$ and $m(E_k)<\infty$ for some $k$, then $m(E) = \lim_{N\to\infty} m(E_N)$.
+\end{enumerate}
+
+\textbf{Symmetic Difference} The notation $E\triangle F$ stands for the symmetric difference between the sets $E$ and $F$, defined by $E\triangle F = (E-F)\cup (F-E)$ which consists
+of those points that belong to only one of the two sets $E$ or $F$.
+
+\textbf{Theorem 3.4} Suppose $E$ is a measurable subset of $\mathbb{R}^d$. Then, for every $\epsilon>0$:
+\begin{enumerate}
+	\item There exists an open set $\mathcal{O}$ with $E\subseteq \mathcal{O}$ and $m(\mathcal{O}-E)\leq \epsilon$.
+	\item There exists a closed set $F$ with $F\subseteq E$ and $m(E-F)\leq \epsilon$.
+	\item If $m(E)$ is finite, there exists a compact set $K$ with $K\subseteq E$ and $m(E-K)\leq \epsilon$.
+	\item If $m(E)$ is finite, there exists a finite union $F = \cup_{j=1}^N Q_j$ of closed cubes such that $m(E\triangle F)\leq \epsilon$.
+\end{enumerate}
+
+\textbf{Invariance properties of Lebesgue measure} If $E$ is a measurable set and $h\in\mathbb{R}^d$, then the set $E_h := \{x+h: x\in E\}$ is also measurable, and $m(E_h) = m(E)$.
+Also, suppose $\delta>0$, and denote $\delta E$ the set $\{\delta x: x\in E\}$. We can then assert $\delta E$ is measurable whenever $E$ is, and $m(\delta E) = \delta^d m(E)$. Whenever
+$E$ measurable, so is $-E = \{-x: x\in E\}$ and $m(-E) = m(E)$. 
+
+\textbf{$\sigma$-algebras and Borel sets}\\
+
+\textbf{Definition} A $\sigma$-algebra of sets is a collection of subsets of $\mathbb{R}^d$ that is closed under countable unions, countable intersections, and complements.
+
+The collection of all subsets of $\mathbb{R}^d$ is a $\sigma$-algebra. The collection of all Lebesgue measurable sets forms a $\sigma$-algebra.
+
+\textbf{Borel $\sigma$-algebra} Denoted $\mathcal{B}_{\mathbb{R}^d}$, the Borel $\sigma$-algebra is the smallest $\sigma$-algebra which contains all open sets. We may also define
+$\mathcal{B}_{\mathbb{R}^d}$ as the intersection of all $\sigma$-algebras that contain the open sets.
+
+\textbf{Completion of the Borel algebra} From the point of view of Borel sets, the Lebesgue sets arise as the \textit{completion} of the $\sigma$-algebra, that is, by adjoining all subsets of Borel sets of measure zero. This is an
+immediate consequence of the corollary below.
+
+\textbf{The $G_{\delta}$ and $F_{\sigma}$ sets} $G_{\delta}$ is the set of all countable intersections of open sets. $F_{\sigma}$ is the set of all countable union of closed sets. Both of these
+collections are in $\mathcal{B}_{\mathbb{R}^d}$.
+
+\textbf{Corollary 3.5} A subset $E$ of $\mathbb{R}^d$ is measurable if and only if $E$ differs from a $G_{\delta}$ by a set of measure zero. A subset $E$ of $\mathbb{R}^d$ is measurable
+if and only if $E$ differs from a $F_{\sigma}$ by a set of measure zero.\\
+
+\textbf{Measurable functions}
+
+\textbf{Characteristic function} A characteristic function of a set $E$ is defined by the function $\chi_E(x) = 1$ if $x\in E$ and $\chi_E(x) = 0$ if $x\not\in E$.
+
+\textbf{Step functions} A function $f$ is a step function if it can be written in the form $f = \sum_{k=1}^N a_k\chi_{R_k}$ where $a_k$'s are constants and $R_k$'s are rectangles.
+
+\textbf{Simple functions} A function $f$ is a simple function if it can be written in the form $f = \sum_{k=1}^N a_k\chi_{E_k}$ where $a_k$'s are constants and each $m(E_k)<\infty$.
+
+\textbf{Measurable functions} A function $f$ defined on a measurable set $E$ of $\mathbb{R}^d$ is \textbf{measurable} if for all $a\in\mathbb{R}$, the set
+\[ f^{-1}((-\infty,a)) = \{x\in E: f(x) < a\} \]
+is measurable. We denote the set above by $\{f < a\}$. This definition is equivalent to requiring $\{f < a\}$, $\{f\geq a\}$ or even $\{f\leq a\}$ being measurable.
+
+\textbf{Property 1} $f$ is measurable if and only if $f^{-1}(\mathcal{O})$ is measurable for every open set $\mathcal{O}$, and if and only if $f^{-1}(F)$ is measurable for every closed
+set $F$.
+
+\textbf{Property 2} If $f$ is continuous on $\mathbb{R}^d$, then $f$ is measurable. If $f$ is measurable and finite-valued, and $\phi$ continuous, then $\phi\circ f$ is measurable.
+
+\textbf{Property 3} Suppose $\{f_n\}_{n=1}^{\infty}$ is a sequence of measurable functions. Then $\sup_n f_n(x)$, $\inf_n f_n(x)$, $\limsup_{n\to\infty} f_n(x)$ and
+$\liminf_{n\to\infty} f_n(x)$ are measurable.
+
+\textbf{Property 4} Suppose $\{f_n\}_{n=1}^{\infty}$ is a sequence of measurable functions and $\lim_{n\to\infty} f_n(x) = f(x)$, then $f$ is measurable.
+
+\textbf{Property 5} If $f$ and $g$ are measurable, then the integer powers $f^k$, $k\geq 1$ are measurable. Additionally, $f+g$ and $fg$ are also measurable.
+
+\textbf{Almost everywhere notation} We shall say two functions $f$ and $g$ defined on a set are equal almost everywhere and write $f(x)=g(x)$ a.e. $x\in E$ if the set
+$m(\{x: f(x)\neq g(x)\}) = 0$.
+
+\textbf{Property 6} Suppose $f$ is measurable, and $f(x)=g(x)$ for a.e. $x$. Then $g$ is measurable.\\
+
+\textbf{Approximation by simple functions or step functions}
+
+\textbf{Theorem 4.1} Suppose $f$ is a non-negative measurable function on $\mathbb{R}^d$. Then there exist an increasing sequence of non-negative simple functions 
+$\{\phi_k\}_{k=1}^{\infty}$  that converge pointwise to $f$, namely $\phi_k(x) \leq \phi_{k+1}(x)$ and $\lim_{k\to\infty} \phi_k(x) = f(x)$ for all $x$.
+
+\textbf{Theorem 4.2} Suppose $f$ is measurable on $\mathbb{R}^d$. Then there exist a sequence of simple functions $\{\phi_k\}_{k=1}^{\infty}$ that satisfies
+$|\phi_k(x)|\leq |\phi_{k+1}(x)|$ and $\lim_{k\to\infty} \phi_k(x) = f(x)$ for all $x$.
+
+\textbf{Theorem 4.3} Suppose $f$ is measurable on $\mathbb{R}^d$. Then there exist a sequence of step functions $\{\psi_k\}_{k=1}^{\infty}$ that converges pointwise to $f(x)$ for almost
+every $x$.
+
+\textbf{Littlewood's three principles}\\
+
+\textbf{The three principles}
+\begin{enumerate}
+	\item Every set is nearly a finite union of intervals.
+	\item Every function is nearly continuous.
+	\item Every convergent sequence is nearly uniform convergent.
+\end{enumerate}
+
+\textbf{First principle} Given by Theorem 3.4 (4).
+
+\textbf{Second principle (Lusin)} Suppose $f$ is measurable and finite valued on $E$ with $E$ of finite measure. Then for every $\epsilon>0$ there exist a closed set $F_{\epsilon}$, with
+$F_{\epsilon}\subseteq E$ and $m(E-F_{\epsilon})\leq \epsilon$ and such that $f|_{F_{\epsilon}}$ is continuous.
+
+\textbf{Third principle (Egorov)} Suppose $\{f_k\}_{k=1}^{\infty}$ is a sequence of measurable functions defined on a measurable set with $m(E)<\infty$, and assume
+that $f_k\to f$ a.e. on $E$. Given $\epsilon>0$, we can find a closed set $A_{\epsilon}\subseteq E$ such that $m(E-A_{\epsilon})\leq \epsilon$ and $f_k\to f$ uniformily on $A_{\epsilon}$.\\
+
+\textbf{Integration Theory}
+
+The lebesgue integral is defined successively in four distinct stages: (1) Simple functions, (2) Bounded functions supported on a set of finite measure, (3) non-negative functions and
+(4) Integrable functions (the general case).\\
+
+\textbf{Stage one: simple functions}
+
+\textbf{Canonical form} The canonical form of a simple function $\phi$ is when we can write $\phi = \sum_{k=1}^N a_k\chi_{E_k}$ where all $a_k$'s are distinct and non-zero. Furthermore,
+all $E_k$'s are disjoint. This is a unique representation.
+
+\textbf{Lebesgue integral of simple functions} Define the Lebesgue integral of simple functions to be the value $\int \phi := \sum_{k=1}^N a_km(E_k)$.
+
+\textbf{Proposition 1.1} The integral of simple functions defined above satisfies the following: Independence of representation, linearity, additivity ($\int_{E\cup F} \phi = \int_E \phi + \int_F \phi$
+whenever $E\cap F = \emptyset$), monotonicity (If $\phi\leq \psi$, then $\int \phi \leq \int \psi$) and the triangle inequality: If $\phi$ is a simple function, so is $|\phi|$ and also, 
+$|\int \phi | \leq \int |\phi|$.\\
+
+\textbf{Stage two: Bounded functions supported on a set of finite measure}
+
+\textbf{Support} The support of a measurable function is defined to be $\{x: f(x)\neq 0\}$. We shall say $f$ is supported on $E$ if $f(x)=0$ whenever $x\not\in E$. We say $f$ is supported
+on a set of finite measure if $m(E) <\infty$.
+
+\textbf{Lemma 1.2} Let $f$ be a bounded function supported on a set $E$ of finite measure. If $\{\phi_k\}_{k=1}^{\infty}$ is any sequence of simple functions bounded by $M$,
+supported on $E$, and with $\phi_k(x) \to f(x)$ for a.e. $x$, then the limit $\lim_{n\to\infty} \int \phi_k$ exists and if $f=0$, then the limit $\lim_{n\to\infty} \int \phi_k = 0$.
+
+\textbf{Lebesgue integral of bounded functions with finite support} Let $f$ be such a function. Then it's lebesgue integral is defined by $\int f = \lim_{n\to\infty} \int \phi_k$.
+
+\textbf{Proposition 1.3} Let $f$ be a bounded function with finite support. Then the Lebesgue integral over such functions have the properties: Linearity, additivity, monotonicity and
+the triangle inequality.
+
+\textbf{Theorem 1.4 (Bounded convergence theorem)} Suppose that $\{f_n\}$ is a sequence of measurable functions that are all bounded by $M$, are supported on a set of finite
+measure, and $f_n(x) \to f(x)$ for a.e. $x$. Then $f$ is measurable, bounded and supported on a set of finite measure for a.e. $x$ and $\int |f_n-f| \to 0$. In particular, $\int f_n \to \int f$.\\
+
+\textbf{Return to Riemann integrable functions}
+
+\textbf{Theorem 1.5} Suppose $f$ is Riemann integrable on the closed interval $[a,b]$. Then $f$ is measurable, and $\int_{[a,b]}^{\mathcal{R}} f(x) = \int_{[a,b]}^{\mathcal{L}} f(x)dx$ where the
+integral denoted by $\mathcal{R}$ represents the standard Riemann integral and the integral on the right hand side represents the Lebesgue integral.
+
+\textbf{Stage three: non-negative functions}\\
+
+\textbf{Lebesgue integral of non-negative functions} Let $f$ be a non-negative function. Then we define its Lebesgue integral by $\int f(x)dx = \sup_g \int g(x)dx$ where the supremum is taken
+over all $0\leq g\leq f$, and where $g$ is bounded and supported on a set of finite measure. We shall say that $f$ is Lebesgue integral if $\int f(x)dx < \infty$.
+
+\textbf{Proposition 1.6} The integral of non-negative measurable functions enjoy the following properties: (1) Linearity, (2) Additivity, (3) Monotonicity (iv) If $g$ integrable and $0\leq f\leq g$, then
+$f$ integrable (vi) If $\int f = 0$ then $f(x)=0$ for a.e. $x$.
+
+\textbf{Is the limit of an integrable always the integral of a limit?} No. Consider $f_n(x) = n$ if $0<x<1/n$ and 0 otherwise. Then $f_n(x)\to 0$ for all $x$, yet $\int f_n(x) = 1$ for all $n$.
+
+\textbf{Lemma 1.7 (Fatou)} Suppose $\{f_n\}_{n=1}^{\infty}$ is a sequence of measurable functions with $f_n\geq 0$. If $\lim_{n\to\infty} f_n(x) = f(x)$ for a.e. $x$, then $\int f \leq \liminf_{n\to\infty} \int f_n$.
+
+\textbf{Corollary 1.8} Suppose $f$ is a non-negative measurable function, and $\{f_n\}$ a sequence of non-negative measurable functions with $f_n(x)\leq f(x)$ and $f_n(x)\to f(x)$ for almost every $x$. Then
+$\lim_{n\to\infty} \int f_n = \int \lim_{n\to\infty} f_n$.
+
+\textbf{Arrow notation for sequences of functions} We shall write $f_n\nearrow f$ whenever $\{f_n\}_{n=1}^{\infty}$ is a sequence of measurable functions that satisfies $f_n(x)\leq f_{n+1}(x)$ a.e. $x$,
+all $n\geq 1$ and $\lim_{n\to\infty} f_n(x) = f(x)$ for a.e. $x$. Similarly, we shall write $f_n\searrow f$ whenever $f_n(x)\geq f_{n+1}(x)$ a.e. $x$, all $n\geq 1$ and $\lim_{n\to\infty} f_n(x) = f(x)$ a.e. $x$.
+
+\textbf{Corollary 1.9 (Monotone convergence theorem)} Suppose $\{f_n\}_{n=1}^{\infty}$ is a sequence of non-negative measurable functions with $f_n\nearrow f$. Then $\lim_{n\to\infty} \int f_n = \int f$.
+
+\textbf{Corollary 1.10} Consider a series $\sum_{k=1}^{\infty} a_k(x)$, where $a_k\geq 0$ is measurable for every $k\geq 1$. Then $\int \sum_{k=1}^{\infty} a_k(x)dx = \sum_{k=1}^{\infty} \int a_k(x)dx$.\\
+
+\textbf{Stage four: general case}
+
+\textbf{Lebesgue integral of measurable functions} Given a measurable function $f$, we define its Lebesgue integral to be $\int f = \int f^{+} - \int f^{-}$ where $f^{+}(x)$ := max$\{f(x),0\}$ and
+$f^{-}(x) :=$ min$\{f(x),0\}$. We say $f$ is Lebesgue integrable if $\int |f| < \infty$.
+
+\textbf{Proposition 1.11} The integral of Lebesgue integrable functions is linear, additive, monotonic and satisfies the triangle inequality.
+
+\textbf{Proposition 1.12} Suppose $f$ is integrable on $\mathbb{R}^d$. Then for every $\epsilon>0$, we have (1) There exists a set of finite measure $B$ (a ball, for example) such that 
+$\int_{B^c} |f| < \epsilon$ and (2) There is a $\delta>0$ such that $\int_E |f|<\epsilon$ whenever $m(E)<\delta$.
+
+\textbf{Theorem 1.13 (Dominated Convergence Theorem)} Suppose $\{f_n\}$ is a sequence of measurable functions such that $f_n(x) \to f(x)$ a.e. $x$. If $|f_n(x)|\leq g(x)$, where $g$ is integrable,
+then $\int |f_n-f| \to 0$ and consequently, $\int f_n \to \int f$.\\
+
+\textbf{Complex-valued functions}\\
+
+\textbf{The space $L^1$ of integrable functions}\\
+
+\textbf{Definition} $L^1(E)$ is a vector space consisting of all Lebesgue integrable functions on $E\subseteq\mathbb{R}^d$ quotiented by the 
+equivalence relation $\sim$. If $f,g\in L^1$, we say $f\sim g$ if $f=g$ a.e. $x$.
+
+\textbf{Norm on $L^1$} For any integrable function $f$ on $E\subseteq \mathbb{R}^d$ we define the norm of $f$,
+\[ \norm{f} = \norm{f}_{L^1} = \norm{f}_{L^1(E)} = \int_E |f(x)|dx \]
+
+\textbf{Proposition 2.1} Suppose $f$ and $g$ are two functions in $L^1(E)$. Then,
+\begin{enumerate}
+	\item $\norm{af}_{L^1(E)} = |a|\norm{f}_{L^1(E)}$ for all $a\in\mathbb{C}$
+	\item $\norm{f+g}_{L^1(E)} \leq \norm{f}_{L^1(E)} + \norm{g}_{L^1(E)}$
+	\item $\norm{f}_{L^1(E)} = 0$ if and only if $f\sim 0$.
+	\item $d(f,g) = \norm{f-g}_{L^1(E)}$
+\end{enumerate}
+
+\textbf{Theorem 2.2 (Riesz-Fischer)} The vector space $L^1(E)$ is complete in its metric.
+
+\textbf{Theorem 2.4} The following families of functions are dense in $L^1(E)$:
+\begin{enumerate}
+	\item The simple functions
+	\item The step functions
+	\item The continuous functions of compact support
+\end{enumerate}
+
+\textbf{Invariance Properties} If is a function defined on $\mathbb{R}^d$, the translation of $f$ by a vector $h\in\mathbb{R}^d$ is the function $f_h$ defined by $f_h(x) = f(x-h)$. We have
+translation invariance of the integral: $\int_{\mathbb{R}^d} f(x-h)dx = \int_{\mathbb{R}^d} f(x)dx$. We have relative invariance of the Lebesgue integral under dilation and reflection:
+$\delta^d \int_{\mathbb{R}^d} f(\delta x)dx = \int_{\mathbb{R}^d} f(x)dx$ and $\int_{\mathbb{R}^d} f(-x)dx = \int_{\mathbb{R}^d} f(x)dx$.
+
+\textbf{Convolution product} The integral $\int_{\mathbb{R}^d} f(x-y)g(y)dy$ is denoted by $(f * g)(x)$ and is defined as the convolution of $f$ and $g$.
+
+\textbf{Proposition 2.5} Suppose $f\in L^1(\mathbb{R}^d)$. Then $\norm{f_h-f}_{L^1} \to 0$ as $h\to 0$.\\
+
+\textbf{Differentiation and Integration}
+    
+Question 1: Suppose $f:[a,b]\to \mathbb{R}$ is integrable, $F(x) := \int_a^x f(t)dt$. Under what conditions is $F$ differentiable (for a.e. $x$) with $F' = f$.
+
+Question 2: What conditions on $F:[a,b]\to\mathbb{R}$ guarantee that $F'$ exists (for a.e. $x$), $F'$ is integrable and $F(b)-F(a) = \int_a^b F'(t)dt$.
+
+Consider the Cantor-Lebesgue function $F$. $F'(x)=0$ for a.e. $x$ but $1 = F(1) - F(0) = \int_0^1 F'(x)dx = 0$. Thus, this does not hold for a general class of integrable functions.
+
+\textbf{Averaging problem} Define $F(x) := \int_a^x f(t)dt$ for $x\in [a,b]$. We want to find if $\lim_{h\to 0} (F(x+h)-F(x))/h$ exists. This is equivalent to asking whether
+\[ \lim_{|I|\to 0, x\in I} \frac{1}{|I|} \int_{|I|} f(t)dt \]
+is equal to $F'(x)$ or $f(x)$.
+
+\textbf{Maximal function} For $f\in L^1(\mathbb{R})$, define its maximal function $f^{*}$ by
+\[ f^{*}(x) = \sup_{0<r<\infty} \frac{1}{2r}\int_{x-r}^{x+r} |f|(t)dt \]
+
+\textbf{Theorem (Hardy-Littlewood)} The maximal function satisfies:
+\begin{enumerate}
+	\item $f^{*}$ is measurable
+	\item $f^{*}(x) < \infty$ for a.e. $x$
+	\item $m(\{x\in\mathbb{R}: f^{*}(x)>a\}\leq (3/a) \norm{f^{*}}_{L^1(\mathbb{R}}$
+\end{enumerate}
+
+\textbf{Vitali Covering Lemma} Suppose $B_1,\hdots, B_N$ is a finite collection of open balls in $\mathbb{R}^n$. Then there exists subcollection $B_{i_1},\hdots,B_{i_k}$ such that
+\begin{itemize}
+	\item $B_{i_1},\hdots,B_{i_k}$ disjoint
+	\item $\sum_{j=1}^k m(B_{i_j}) \geq (1/3^n)m(\sum_{l=1}^N b_l)$ 
+\end{itemize}
+
+\textbf{Tchebychev's inequality} $m(\{x: f(x)>\alpha\}) \leq (1/\alpha)\norm{f}_{L^1}$
+
+\textbf{Lebesgue's differentiation theorem} If $f\in L^1(\mathbb{R})$, then $\lim_{|I|\to 0, x\in I} 1/|I|\int_I f(y)dy = f(x)$ for almost every $x$.
+
+\textbf{Absolutely Continuous} $F:[a,b]\to \mathbb{R}$ is absolutely continuous if and only if $\forall$ $\epsilon>0$, there exists $\delta>0$ such that if 
+$(a_1,b_1),\hdots,(a_n,b_n)\subseteq [a,b]$ are disjoint intervals with $\sum_{k=1}^N (b_k-a_k) < \delta$, then $\sum_{k=1}^N |F(b_k)-F(a_k)|<\epsilon$.
+
+We remark that Absolutely continuous implies uniformily continuous which implies normal continuity.
+
+\textbf{FTOC (General Version)} Suppose $F:[a,b]\to\mathbb{R}$ is absolutely continuous, then $F'(x)$ exists for a.e. $x\in[a,b]$, $F'$ is integrable and that $F(b)-F(a) = \int_a^b F'(x)dx$. Conversely,
+if $f:[a,b]\to\mathbb{R}$ is integrable, then $F(x) = \int_a^x f(t)dt$ is absolutely continuous, and $F'(x)=f(x)$ for a.e. $x$.
+
+\textbf{Variation of $F$} \[ \text{Var}_a^b(F) := \sup_{a=x_0<\hdots<x_n=b} \sum_{j=1}^n |F(x_j)-F(x_{j-1})|\]  
+If $F$ is absolutely continuous, then it has bounded variation i.e. Var$_a^b(F) < \infty$.\\
+
+\textbf{Fourier Analysis}
+
+\textbf{Hilbert Space $\mathcal{H}$} Define $\mathcal{H} = L^2([-\pi,\pi]; \mathbb{C}) = \{f: [-\pi,\pi]\to\mathbb{C}:\: f$ measurable$\}/\sim$ with the inner product,
+\[ \langle f,g\rangle = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\overline{g}(x)dx \]
+
+\textbf{Orthonormal Basis} The functions $e_n(x) = e^{inx}$ $(n\in\mathbb{Z})$ are orthogonal i.e. $\langle e_n(x), e_m(x)\rangle$ equals 1 if $n=m$ and 0 if $n\neq m$. We can express any
+$f\in\mathcal{H}$ as
+\[ f(x) = \sum_{n=-\infty}^{n=\infty} a_ne^{inx} \]
+This is called the fourier series where,
+\[ a_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x)e^{-inx}dx \]
+Each $a_n$ is known as the fourier coefficients.
+
+\textbf{Theorem} Let $f\in L^2([-\pi,\pi]; \mathbb{C})$. Define $a_n := \langle f,e_n\rangle$. Then,
+\begin{enumerate}
+	\item The Fourier series of $f$ converges to $f$ in $\mathcal{H}$, i.e. \[ \lim_{N\to\infty} \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(x) - \sum_{n=-N}^{N} a_ne^{inx}|^2dx = 0 \]
+	\item We have Parseval's identity, \[\sum_{n=-\infty}^{n=\infty} |a_n|^2 = \frac{1}{2\pi}\int_{-\pi}^{\pi} |f(x)|^2dx \]
+\end{enumerate}
+
+\textbf{Lemma} If $f\in\mathcal{H}$, $\langle f,e_n\rangle = 0$ for all $n\in\mathbb{Z}$, then $f=0$ in $\mathcal{H}$.
+
+\textbf{Theorem*} Let $\{e_n\}_{n=-\infty}^{\infty}$ be an orthonormal set in a separable Hilbert space $\mathcal{H}$. Then, the following are equivalent:
+\begin{enumerate}
+	\item Finite linear combinations of elements in $\{e_n\}_{n=1}^{\infty}$ are dense in $\mathcal{H}$
+	\item If $f\in\mathcal{H}$ and $\langle f,e_n\rangle = 0$ for all $n$, then $f=0$
+	\item If $f\in\mathcal{H}$ and $e_n = \langle f,e_n\rangle$, then $\norm{\sum_{n=-N}^N a_ne_n - f} \to 0$
+	\item If $f\in\mathcal{H}$ and $a_n = \langle f,e_n\rangle$, then $\norm{f}^2 = \sum_{n=-\infty}^{\infty} |a_n|^2$
+\end{enumerate}
+We remark that this theorem plus the previous lemma implies the previous theorem.\\
+
+\textbf{Cantor-Lebesgue function}
+
+Consider a function $F: [0,1]\to\mathbb{R}$ defined so that: $F_1(x) =$ continuous increasing function on $[0,1]$ that satisfies $F_1(0) = 0, F_1(x) = 1/2$ if $1/3\leq x \leq 2/3$, $F_1(1) = 1$, and
+$F_1$ linear on $C_1$. Similarly, define $F_2$ using the second iteration of the ternary Cantor set $C_2$. This process yields a sequence of uniformily continuous increasing functions so that the
+sequence converges to a continuous limit $F$ called the Cantor-Lebesgue function. This function is increasing but $F'(x)=0$ almost everywhere, is constant on each interval of of the complement
+of the Cantor set. This function does not satisfy $\int_a^b F'(x)dx = F(b) - F(a)$.
+
+\end{multicols*}
+\end{document}

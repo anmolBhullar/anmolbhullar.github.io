@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\title{CSF Notes}
+\author{Anmol Bhullar}
+\date{April 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Basics}
+
+Suppose $\{\Gamma_t\subset\mathbb{R}^2\}$ is one-parameter family of embedded (i.e. simple) curves. If
+this family moves by curve shortening flow (CSF), by definition, it satisfies:
+\begin{align} \tag{1.1}
+    \partial_t (p) = \vec{\kappa}(p)
+\end{align}
+where $p$ is some point on $\Gamma_t$. In order to compute $\partial_t(p)$ and $\vec{\kappa}(p)$, first, we
+parameterize $\Gamma_t$ by some parameteric equation $\phi_t:[0,2\pi]\to\mathbb{R}^2$. Suppose this is in
+arc-length parameterization. Then, $\partial_t(p)$ is just computed by differentiating $\phi_t(x)$ 
+with respect to $t$ ($x$ some element of domain) and $\vec{\kappa}(p)$ is computed by $\partial_x^2[\phi_t(x)]$.
+Suppose $\phi_t$ is not given in arc-length parameterization. Note also that if $\alpha: I\to\mathbb{R}^2$ is 
+a plane curve $\alpha(s) = (x(s),y(s))$, the signed curvature is given by:
+\[ k(s) = \frac{x'y''-x''y'}{((x')^2+(y')^2)^{3/2}}\]
+so that we can then compute $\vec{k}$ by evaluating $k(s)N(s)$ where $N$ denotes the normal vector at of $\alpha$ at 
+$s$.
+
+\subsection{Round shrinking circles}
+We show that if $\Gamma_t = \partial B^2_{r(t)}\subset\mathbb{R}^2$, then (1.1) reduces to the ODE:
+\[ \dot{r} = -1/r \]
+and if we give it the initial value $r(0) = R$, then $r(t) = \sqrt{R^2 - 2t}$ for $t\in(-\infty,R^2/2)$.
+\begin{proof}
+    Let $r(t)$ be a $C^1$ function that gives a radius dependent on the parameter $t$.
+    Assume $B^2_{r(t)} = \{x\in\mathbb{R}^2: |x|< r(t)\}$. Then $\partial B^2_{r(t)} = \{x\in\mathbb{R}^2:|x|=r(t)\}$.
+    Fix $t$. We let $\partial B^2_{r(t)}$ be given by the parameterization $\phi_t: [0,2\pi r(t)]\to\mathbb{R}^2$,
+    \[ \phi_t(s) = r(t)(\cos(s),\sin(s)),\qquad s = x/r(t). \]
+    where we assume $r(t)\neq 0$. Then $s$ is the parameter which makes $\phi_t$ into an arclength parameterization
+    since,
+    \begin{align*}
+        |\phi_t'(s)| &= |\phi_t'(s)\cdot ds/dx| \\
+            &= |r(t)(-\sin(s),\cos(s))\cdot 1/r(t)| \\
+            &= 1
+    \end{align*}
+    Now, we compute $\partial_t(\phi_t(s))$. Consider:
+    \begin{align*}
+        \partial_t(\phi_t(s)) &= \partial_t(r(t)(\cos(s),\sin(s))) \\
+            &= \dot{r}(t)(\cos(s),\sin(s)) - [\dot{r}(t)\cdot r(t)/r^2(t)](-\sin(s),\cos(s)) \\
+            &= \dot{r}(t)(\cos(s),\sin(s))  - [\dot{r}(t)/r(t)](-\sin(s),\cos(s))
+    \end{align*}
+    and also,
+    \begin{align*}
+        \vec{\kappa}(\phi_t(s)) &= \partial_s^2(\phi_t(s)) \\
+            &= \partial_s[\partial_s(\phi_t(s))] \\
+            &= \partial_s[r(t)(-\sin(s)1/r(t),\cos(s)1/r(t))] \\
+            &= \partial_s[(-\sin(s),\cos(s))] \\
+            &= [-1/r(t)](\cos(s),\sin(s))
+    \end{align*}
+    so that (1.1) reduces to,
+    \[ \dot{r}(t)(\cos(s),\sin(s))  - [\dot{r}(t)/r(t)](-\sin(s),\cos(s)) = [-1/r(t)](\cos(s),\sin(s)) \]
+    or equivalently,
+    \begin{align*}
+    	\dot{r}(t)(\cos(s),\sin(s)) + [1/r(t)](\cos(s),\sin(s)) &= [\dot{r}(t)/r(t)](-\sin(s),\cos(s)) \\
+	[\dot{r}(t) + 1/r(t)](\cos(s),\sin(s)) &= [\dot{r}(t)/r(t)](-\sin(s),\cos(s)) \\
+	\frac{\dot{r}(t) + 1/r(t)}{\dot{r}(t)/r(t)}(\cos(s),\sin(s)) &= (-\sin(s),\cos(s)) \\
+	\frac{r(t)\dot{r}(t) + 1}{\dot{r}(t)}(\cos(s),\sin(s)) &= (-\sin(s),\cos(s)) \\
+	\Big{[}r(t) + \frac{1}{\dot{r}(t)}\Big{]}(\cos(s),\sin(s)) &= (-\sin(s),\cos(s))
+    \end{align*}
+    Might have done something wrong here. Let us try another way.\\
+    
+    Let our next attempt be to try and evaluate (1.1) using the parameterization $\psi_t(x) = r(t)(\cos(x),\sin(x))$ i.e. a parameterization which is not an arclength-parameterization.
+    Then $\partial_t(\psi_t(x)) = \dot{r}(t)(\cos(x),\sin(x))$ and the curvature is computed by the formula:
+    \begin{align*}
+    	k(x,t) &= \frac{x'y''-x''y'}{((x')^2+(y')^2)^{3/2}} \\
+		&= \frac{(-r(t)\sin(x))(-r(t)\sin(x)) - (-r(t)\cos(x))(r(t)\cos(x))}{((-r(t)\sin(x))^2+(r(t)\cos(x))^2)^{3/2}} \\
+		&= \frac{r^2(t)[\sin^2(x) + \cos^2(x)]}{(r^2(t)[\sin^2(x)+\cos^2(x)])^{3/2}} = \frac{r^2(t)}{(r^2(t))^{3/2}} = \frac{1}{r(t)}
+    \end{align*}
+    and $N(x,t)$ should be a unit normal pointing towards the center of the circle. Not sure if I am even computing my curvature and my normal correctly...
+\end{proof}
+
+\end{document}

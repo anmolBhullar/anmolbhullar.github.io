@@ -1,0 +1,186 @@
+\documentclass[11pt]{amsart}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{qtree} % the tree package
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{mathrsfs}
+
+%for the RB tree
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+
+
+
+%rb tree crap is over
+
+\pagestyle{empty}  % Avoids page numbers
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\N}{\mathbb{N}}  % Natural numbers
+\newcommand{\Z}{\mathbb{Z}}  % Integers
+\newcommand{\R}{\mathbb{R}}  % Real numbers
+\newcommand{\C}{\mathbb{C}}  % Complex numbers
+\newcommand{\p}{\partial}  %  for partial derivatives
+\newcommand{\f}{\frac} % fractions
+\newcommand{\eq}[1]{\begin{align*}#1\end{align*}}
+\newcommand{\mat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Span}[1]{\text{span}\{#1\}}
+% The stuff below is for augmented matrices. I got this off the web. I have no idea what it is doing, as long as it works.
+%
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+
+% --------------
+% THE DOCUMENT
+% --------------
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\bf \LARGE Practice Problems MATC37}\\
+\vskip.1in
+{\large Author: Anmol Bhullar}\\
+% \\ gives a line break
+% \bf means bold face
+% \LARGE, \Large, \large, \small changing the
+{\bf \large \date{today}   }
+\end{center}
+% \today produces today's date. You can, of course, also put a fixed date
+\vskip.1in
+% This creates extra vertical space of 0.1 inches
+%
+
+\section{Review of some key definitions and theorems}
+
+\subsection*{Definition of the Lebesgue measure} If $E$ is Lebesgue measurable, we say its \textit{Lebesgue measure} is equal to its outer measure i.e. $m(E) = m_*(E)$ where
+$m$ denotes the Lebesgue measure of $E$ ($m$ is a function $m:\mathscr{L}\to\mathbb{R}\cup\{\infty\}$ where $\mathscr{L}$ denotes the set of Lebesgue measurable sets) and
+$m_*:\mathcal{P}(\mathbb{R}^d)\to \mathbb{R}\cup\{\infty\}$ denotes the Lebesgue outer measure.
+
+\subsection*{Definition of Lebesgue measurable} A subset $E$ of $\mathbb{R}^d$ is said to be \textit{Lebesuge measurable} if for all $\epsilon>0$, we have the existence of some
+open set $\mathcal{O}$ such that $m_*(\mathcal{O}/E)\leq \epsilon$ where $m_*$ denotes the Lebesgue outer measure. The Lebesgue outer measure of any $E\subset\R^d$ is the 
+infimum taken over the sums of countable collections of closed cubes which cover $E$. 
+
+\subsection*{Definition of Lebesgue Integral} Let $\phi$ be a simple function, i.e. $\phi$ can be written as $\phi(x) = \sum_{k=1}^N a_k\chi_{E_k}$ where all $a_k$'s are distinct
+and non-zero and all $E_k$'s are disjoint with $m(E_k)<\infty$. We define the \textit{Lebesgue integral} of $\phi$ to be $\int \phi := \sum_{k=1}^N a_km(E_k)$. Now, let $f$ be
+some bounded function with bounded support i.e. a bounded function such that $m(\{x:f(x)\neq 0\}<\infty$. Then, there exist a sequence of increasing simple functions
+$\{\phi_k\}_{k=1}^{\infty}$ which converge pointwise to $f$. We define its \textit{Lebesgue integral} to be $\int f := \lim_{k\to\infty} \int \phi_k$. Now, take $f$ to be any non-negative
+function. We define its \textit{Lebesgue integral} to be $\int f := \sup_g \int g$ where the supremum is taken over all functions $0\leq g\leq f$. If $\int f<\infty$, we say $f$
+is \textit{Lebesgue integrable}. Finally, let $f$ be any real valued function. We say $f$ is \textit{Lebesgue integrable} if $\int |f|<\infty$. Furthermore, we say its \textit{Lebesgue
+integral} is given by $\int f = \int f^{+} - \int f^{-}$ where $f^{+}(x) =$ max$\{f(x),0\}$ and $f^{-}(x) = -$ min$\{0,f(x)\}$.
+
+\subsection*{Dominated Convergence Theorem} Let $\{f_n\}_{n=1}^{\infty}$ be a sequence of measurable functions converging pointwise to $f$ for a.e. $x$. If $0\leq |f|\leq |g|$ for some
+integrable function $g$, we have that $\int |f_n - f| \to 0$ as $n\to\infty$ and $\int f_n \to \int f$ as $n\to\infty$.
+
+\subsection*{Monotone Convergence Theorem} Let $\{f_n\}_{n=1}^{\infty}$ be a sequence of non-negative measurable functions. If $0\leq |f_n|\leq |f_{n+1}|$ and
+$f_n\to f$ pointwise for a.e. $x$, then $\lim \int f_n = \int f$.
+
+\subsection*{Fatou's Lemma} Let $\{f_n\}_{n=1}^{\infty}$ be a sequence of non-negative measurable functions. Then, $\int \liminf_{n\to\infty} f_n \leq \liminf_{n\to\infty} \int f_n$.
+
+\subsection*{Definition of $L^1$ and $L^2$} Let $\sim$ be a equivalence relation on Lebesgue integrable functions. We say that $f\sim g$ if and only if $f=g$ a.e. $x$ on their domain.
+Then, we say that $L^1(E)$ is the set of all integrable functions quotiented over $\sim$ that are defined on the domain $E\subseteq \mathbb{R}^d$.  
+This forms a vector space with the standard pointwise addition and pointwise scalar multiplication operations.  In particular, it is a normed linear space with the norm 
+$\norm{f}_{L^1(E)} = \int_E |f|$ where the integral is taken over the domain of $f$. $L^2(E)$ as a vector space is defined similarly.
+\[ L^2(E) = \{f:E\subseteq \R^d\to \R\; \rvert \int_E |f|^2 < \infty\}/\sim \]
+The norm on $L^2(E)$ is given by $\norm{f}_{L^2(E)} = (\int_E |f|^2)^{1/2}$.
+
+\subsection*{Fundamental Theorem of Calculus} If $F:[a,b]\to\mathbb{R}$ is absolutely continuous, then $F'$ exists for a.e. $x$, is integrable and $F(b) - F(a) = \int_a^b F'(t)dt$.
+Conversely, if $f\in L^1(\mathbb{R})$, then the function $F$ defined by $F(x) = \int_a^x f(t)dt$ is absolutely continuous.
+
+\section{Space of integrable and square integrable functions}
+
+\subsection*{Is the function $f(x) = x/(1+x^2)$ in $L^1(\R)$?}
+To show $f(x) := x/(1+x^2)$ is not in $L^1(\R)$, it suffices to show $\int_{\R} |x/(1+x^2)|dx=\infty$.
+This is a non-negative function clearly, so by definition, we have:
+\[ \int_{\R} |\frac{x}{1+x^2}|dx = \sup_g \int g \]
+where the supremum is taken over all non-negative bounded functions with finite support. Since $\sup_n\{|1/(1+x^2)|\chi_{[-n,n]}\}\leq \sup_g \int g$, we have that
+\[ \sup_n \{|\frac{x}{1+x^2}|\chi_{[-n,n]}\} = \lim_{n\to\infty} \int_{[-n,n]} |\frac{x}{1+x^2}|dx \leq \int_{\R} |\frac{x}{1+x^2}|dx \]
+Note $\lim_{n\to\infty} \int_{[-n,n]} |\frac{x}{1+x^2}|dx = \lim_{n\to\infty} \int_{[-n,n]}^{\mathcal{R}} |\frac{x}{1+x^2}|dx$ where $\mathcal{R}$ denotes the Riemann integral (since we are
+integrating over a compact interval). However, the limit then goes to infinity when we compute the integrals using the Riemann integral (since the limit is equal to the improper integral 
+$\int_{\R}^{\mathcal{R}} |x/(1+x^2)|dx = \infty$). Thus, $\infty \leq \int_{\R} |\frac{x}{1+x^2}|dx$ and so $x/(1+x^2)$ is not in $L^1(\R)$.
+
+\subsection*{Give an example of a function that is in $L^1(\R)$ but not in $L^2(\R)$} We proved in one of the assignments that $|1/x^2|$ is integrable over the interval $[1,\infty)$
+and not integrable over $[0,1]$. Thus, consider the function $f(x) = (1/x)\chi_{[1,\infty)}(x)$. This is not clearly integrable over $L^1$ but over $L^2$ it is since $\int_1^{\infty} |1/x^2|dx<\infty$.
+
+\subsection*{Prove that $L^2([a,b])\subseteq  L^1([a,b])$} s
+
+\section{Interchanging limits and integration}
+
+Compute the following limits (here and everywhere, you should justify your steps):
+
+\subsection*{Compute $\lim_{n\to\infty} \int_0^1 \frac{1}{1+x^n}dx$} Consider the sequence of functions $f_n := 1/(1+x^n)$ defined on the unit interval $[0,1]$. Furthermore,
+$f_n\to f = 1_{\text{id}}$, each $f_n$ is measurable and bounded by 1 with finite support. Thus, by Bounded Convergence theorem, we have that
+\[ \lim_{n\to\infty} \int_0^1 \frac{1}{1+x^n}dx = \int_0^1 \lim_{n\to\infty} \frac{1}{1+x^n}dx = \int_0^1 1dx = 1 \]
+
+\subsection*{Compute $\lim_{n\to\infty} \int_0^{\infty} \frac{1+\cos(x/n)}{2-\sin(x/n)}\frac{1}{1+x^2}dx$} Consider the sequence of (measurable) 
+functions $f_n := \frac{1+\cos(x/n)}{2-\sin(x/n)}\frac{1}{1+x^2}$. Clearly, $|f_n| \leq g := \frac{2}{1+x^2}$ which is clearly Lebesgue integrable and non-negative on $[0,\infty)$.
+Thus, by Dominated Convergence theorem, we have that:
+\[ \int_0^{\infty} \lim_{n\to\infty} \frac{1+\cos(x/n)}{2-\sin(x/n)}\frac{1}{1+x^2}dx = \lim_{n\to\infty} \int_0^{\infty} \frac{1+\cos(x/n)}{2-\sin(x/n)}\frac{1}{1+x^2}dx \]
+Clearly the integrand in the left side of the equation above is just equal to $1/(1+x^2)$. This is non-negative on $[0,\infty)$. Thus, we compute this integral via Riemann integral
+techniques as explained in the answer below. Therefore, we obtain that the integrals above are equal to $\arctan(\infty)-\arctan(0)=\pi/2$
+as wanted.
+
+\subsection*{Compute $\lim_{n\to\infty} \int_0^{\infty} \frac{x^2+n^2}{x^2+2n^2}e^{-x}dx$} Consider the sequence $f_n := (x^2+n^2)/(x^2+2n^2)e^{-x}$. Clearly $|f_n|\leq g := e^{-x}$.
+It is left to show $g$ is Lebesgue integrable on $[0,\infty)$. Recall $e^{-x} \leq 1/x^2$ on $[1,\infty)$ and $1/x^2$ is Lebesgue integrable on this interval. Also, since $e^{-x}$ is Riemann
+integrable on $[0,1]$ it is also Lebesgue integrable. Thus, $e^{-x}$ is Lebesgue integrable on $[0,\infty)$ as wanted.  We can now use DCT to get:
+\[ \lim_{n\to\infty} \int_0^{\infty} \frac{x^2+n^2}{x^2+2n^2}e^{-x}dx = \int_0^{\infty} \lim_{n\to\infty} \frac{x^2+n^2}{x^2+2n^2}e^{-x}dx = \int_0^{\infty} \lim_{n\to\infty} 
+	\frac{x^2/n^2+1}{x^2/n^2+2}e^{-x}dx\]
+Thus, we see that the integrand on the far right is equal to $(1/2)e^{-x}$. Thus, it is left to compute $(1/2) \cdot \int_0^{\infty} e^{-x}dx$. Note:
+\[ \int_{[0,\infty)} e^{-x}dx = \lim_{n\to\infty} \int_{[0,\infty)} e^{-x}\chi_{[0,n]}dx \]
+by MCT and the non-negativity of $e^{-x}$. Since each $\int_{[0,\infty)} e^{-x}\chi_{[0,n]}dx = \int_0^n e^{-x}dx$. We can solve $\int_0^{\infty} e^{-x}$ using Riemann integral techniques.
+Thus, it is equal to $1/2 ( -e^{-\infty} + e^0 ) = 1/2$.
+
+\subsection*{Compute $\lim_{n\to\infty} \int_{-n}^n \frac{\cos(x/n)}{1+x^2}dx$} Note:
+\[ \lim_{n\to\infty} \int_{-n}^n \frac{\cos(x/n)}{1+x^2}dx = \lim_{n\to\infty} \int_{\R} \frac{\cos(x/n)}{1+x^2}\chi_{[-n,n]}dx \]
+We again apply DCT using $g := 1/(1+x^2)$ on $f_n := \cos(x/n)/(1+x^2)\chi_{[-n,n]}$ defined on $\R$. Clearly $f_n \to 1/(1+x^2)$.  Thus:
+\[ \lim_{n\to\infty} \int_{-n}^n \frac{\cos(x/n)}{1+x^2}dx = \int_{\R} \frac{1}{1+x^2}dx \]
+which is simply equal to $0$ (odd function).
+
+\section{Lebesgue measurable and Lebesgue measure}
+Consider the set $E := \hat{C}\cup [7,9] \subseteq \mathbb{R}$, where $\hat{C}$ denotes the fat Cantor set where at each step a middle quarter is removed.
+
+\subsection*{Prove that $E$ is Lebesgue measurable.} Since $[7,9]$ and $\hat{C}$ are disconnected with distance $>0$, it suffices to show $\hat{C}$ is Lebesgue measurable.
+We claim $\hat{C}$ is closed which will show it is measurable. Note $\hat{C}$ is constructed via a countable intersection of closed sets. Thus, $\hat{C}$ is closed and so
+it is Lebesgue measurable which additionally implies that $E$ is Lebesgue measurable as wanted.
+
+\subsection*{Compute the Lebesgue measure of $E$.} We are removing $(1/4)^{n+1}$ from each interval at each step $n$ and doing this for $2^n$ intervals at the same step.
+Thus, we are removing: $\sum_{n=0}^{\infty} 2^n/4^{n+1} = (1/4)\sum_{n=0}^{\infty} (2/4)^n = 1/2$. Therefore, $m(E) = m(\hat{C}) + m([7,9]) = (1-1/2) + 2 = 5/2$.
+
+\section{A parameter dependent integral}
+The goal of this question is to compute the integral $\int_0^{\infty} \cos{(tx)}e^{-x^2/2}dx$.
+
+\subsection*{Prove that $F(t) := \int_0^{\infty} \cos(tx)e^{-x^2/2}dx$ is differentiable.} We have to compute the limit:
+\[ \lim_{h\to 0} \frac{F(t+h) - F(t)}{h} \]
+and see if it exists. Substituting in the formula for $F$, we get:
+\[ \lim_{h\to 0} \int_0^{\infty} e^{-x^2/2}\frac{\cos((t+h)x)-\cos(tx)}{h}dx \]
+Take an arbitrary sequence $(h_n)_1^{\infty}$ converging to 0. We get that the above is equal to:
+\[ \lim_{n\to\infty} \int_0^{\infty} e^{-x^2/2}\frac{\cos((t+h_n)x) - \cos(tx)}{h_n}dx \]
+Note $\cos(tx)e^{-x^2/2}\chi_{[0,n]}\to  \cos(tx)e^{-x^2/2}$ and $|\cos(tx)e^{-x^2/2}\chi_{[0,n]}|\leq e^{-x^2/2}$ which is certainly integrable on $[0,\infty)$. Thus, we use DCT to get:
+\[ \int_0^{\infty} e^{-x^2/2}(\lim_{n\to\infty} \frac{\cos((t+h_n)x) - \cos(tx)}{h_n})dx \]
+which is equivalent to saying:
+\[ \int_0^{\infty} e^{-x^2/2}(\lim_{h\to 0} \frac{\cos((t+h)x) - \cos(tx)}{h})dx \]
+We know the derivative of $\cos(tx)$ taken with respect to $t$ is simply $(-x)\sin(tx)$. Thus, we get:
+\[ F'(t) = \lim_{h\to 0} \frac{F(t+h) - F(t)}{h} = -\int_0^{\infty} x\sin(tx)e^{-x^2/2}dx \]
+Thus $F'(t)$ existing comes down to showing that $t\sin(tx)e^{-x^2/2}$ is Lebesgue integrable on $[0,\infty)$. This is true so $F'(t)$ exists. Thus $F$ is differentiable.
+
+\subsection*{Compute $F(t)$ (Hint: Derive a differential equation for $F(t)$ and solve it)}
+We know,
+\[ F'(t) = -\int_0^{\infty} x\sin(tx)e^{-x^2/2}dx \]
+from the previous question. The integral on the right side is solvable. It is equal to $\sqrt{\pi/2}e^{-t^2/2}t$. Thus, we get,
+\[ F'(t) = \sqrt{\pi/2}e^{-t^2/2}t \]
+We find the anti-derivative for the right side to solve for $F'(t)$:
+\[ F(t) = \sqrt{\pi/2} (-e^{-t^2/2}) \]
+
+
+\end{document}

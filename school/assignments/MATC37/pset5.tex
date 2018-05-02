@@ -1,0 +1,250 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+\title{MATC37 Assignment 5}
+\author{Anmol Bhullar - 1002678140}
+ 
+\maketitle
+
+
+\begin{problem}{1}
+    Prove the following:
+    \begin{enumerate}
+        \item[i.] For which values of $a$ is the function $f(x) := 1/|x|^{a}\chi_{[0,1]}(x)$ integrable?
+        \item[ii.] For which values of $b$ is the function $f(x) := 1/|x|^{b}\chi_{[1,\infty)}$ integrable?
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+    \begin{enumerate}
+        \item[(i.)] We know that for a closed interval $[a,b]$ (in this case $[0,1]$), if a function is Riemann integral, then it is Lebesgue integral. Thus, it follows immediately that
+        for all $a<1$ that $f_a(x) := 1/|x|^a\chi_{[0,1]}$ is Lebesgue integrable since $\int_{\mathbb{R}} f_a = \int_0^1 1/|x|^adx$. It is left to answer the question for values $a\geq 1$.
+	First, note that for all $n\in\mathbb{N}$, $(1/|x|)\chi_{[1/n,1]}$ is both Riemann and Lebesgue integrable (and so their values agrees on this interval) and so
+	$\int_{\mathbb{R}} (1/|x|)\chi_{[1/n,1]} = \log(n)$. Also, note $1/|x|\chi_{[0,1]} \geq (1/|x|)\chi_{[1/n,1]}$ and so,
+	\[ \int_0^1 1/xdx \geq \int_{1/n}^1 1/xdx \implies \int_0^1 1/xdx \geq \lim_{n\to\infty} \int_{1/n}^1 1/xdx= \lim_{n\to\infty} \log(n) = \infty \]
+	so that $(1/x)\chi_{[0,1]}$ is not integrable in the Lebesgue sense. Therefore, $f_1(x)$ is not integrable. The answer for values $a>1$ is that it is not integrable which can be
+	easily seen through the fact that $1/|x|^a \geq 1/x$ (on $[0,1]$) and that $1/x$ is not integrable on $[0,1]$ (as we just established) so that
+	\[ \infty = \int_0^1 1/xdx \leq \int_0^1 1/x^adx \]
+	as wanted.
+        \item[(ii.)] Intuitively, we should expect the near opposite of 1i) to happen since we are now looking at the domain $[1,\infty)$. Let us try and prove this i.e. prove that $f$
+        is integrable for $a>1$ and not integrable for $a\leq 1$. Note, $\lim_{n\to\infty} (1/|x|^a)\chi_{[1,n]} = (1/|x|^a)\chi_{[1,\infty)}$ and note that this sequence
+        of functions is also monotone. Thus,
+        \[ \lim_{n\to\infty} \int_1^n 1/|x|^adx = \int_1^{\infty} 1/|x|^adx. \]
+	Note $\lim_{n\to\infty} \int_{[1,n]}^{\mathcal{L}} 1/|x|^adx = \lim_{n\to\infty} (\int_{[1,n]}^{\mathcal{R}} 1/|x|^adx)$ since the Riemann and Lebesgue integrals agree on closed
+	intervals. By the p-series test, if $a>1$, $\lim_{n\to\infty} \int_{[1,n]}^{\mathcal{R}} 1/|x|^adx < \infty$ so that $\int_{[1,\infty)}^{\mathcal{L}} 1/|x|^adx < \infty$. Similarly,
+	$\int_{[1,\infty)}^{\mathcal{L}} 1/|x|^adx$ diverges if $a\leq 1$ as wanted.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}{2}
+    Prove the following:
+    \begin{enumerate}
+        \item Show that there exists a positive continuous function $f:\mathbb{R}\to\mathbb{R}$ such that $f$ is integrable, but yet $\limsup_{x\to\infty} f(x) = \infty$.
+        \item Show that if $f:\mathbb{R}\to\mathbb{R}$ is integrable and uniformily continuous, then $\lim_{x\to\pm\infty}f(x)=0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+	\begin{enumerate}
+		\item[(i.)] We construct a function $f$ that is non-zero only on the intervals $[n,n+1/n^3]$ for all integers $n\geq 1$. Let $M_n$ be the midpoint of any such interval.
+		Define $f(M_n) = n$ and for any $n \leq x \leq M_n$, define $f$ on this interval to be the straight line from $n$ to $M_n$. For $M_n \leq x\leq n+1/n^3$, define
+		$f$ to be the straight line from $M_n$ to $n+1/n^3$. Thus, we get that $f$ is a triangle on any interval $[n,n+1/n^3]$ and zero everywhere else. We can easily
+		estimate the integral of $f$ over $\mathbb{R}$ by estimating $f$ on its non-zero intervals. Thus,
+		\[ \int_{\mathbb{R}} f \leq \sum_{n=1}^{\infty} \int_{n}^{n+1/n^3} f \leq \sum_{n=1}^{\infty} n\cdot m([n,n+1/n^3]) = \sum_{n=1}^{\infty} 1/n^2 < \infty \]
+		Thus, $f$ is integrable on $\mathbb{R}$ and clearly, $\limsup_{n\to\infty} f(x) = \infty$.
+		\item[(ii.)] Assume $\lim_{x\to\infty} f(x) \neq 0$. By writing $f$ as $f^{+} - f^{-}$ if necessary, we may assume $f\geq 0$ so then $\limsup_{x\to\infty} f(x)>0$.
+		Thus, for all $N\in\mathbb{N}$, there exists $x\in[N,\infty)$ such that $f(x)>\delta$ for some $\delta>0$. By Proposition 1.12, there exists a ball $B$ of finite
+		measure such that $\int_{B^c} |f| < \delta$. Write $B$ as $(-N,N)$ for some $N\in\mathbb{N}$, then there exists some $x_0$ such that $x_0\in (N,\infty)$ and
+		$f(x_0)>\delta$. By uniform continuity, for $\delta>0$, there exists $\epsilon>0$ such that if $f(x_0)>\delta$, then $f(x')>\delta/2$ for all $x'$ with $|x_0-x'|<\epsilon$.
+		We can re-choose a smaller $\epsilon$, so we can put a condition on $\epsilon$, namely: $\epsilon < (x_0-N)/2$ and $\epsilon < 1$. Thus,
+		\[ \int_{x_0-\epsilon}^{x_0+\epsilon} |f(x)|dx \geq \delta/2 \cdot 2\epsilon = \delta \cdot \epsilon > 0 \]
+		Note $[x_0-\epsilon, x_0+\epsilon]\subseteq B^c$ by our choice of $\epsilon$ and:
+		\[ \int_{x_0-\epsilon}^{x_0+\epsilon} |f(x)|dx < \int_{B^c} |f(x)|dx = \delta \]
+		
+		\item[(ii.)] Assume $\lim_{x\to\infty} f(x) \neq 0$. By writing $f$ as $f^{+} - f^{-}$ if necessary, we may assume $f\geq 0$ so then $\limsup_{x\to\infty} f(x)>0$.
+		Thus, for all $N\in\mathbb{N}$, there exists $x_n\in[N,\infty)$ such that $f(x_n)>\delta$ for some $\delta>0$. Note, this implies $(x_n)_{n=1}^{\infty} \to \infty$.
+		By uniform continuity, for $\delta>0$, there exists $\epsilon>0$ such that if $f(x_n)>\delta$, then $f(x')>\delta/2$ for all $x'$ with $|x_n-x'|<\epsilon$ (for all $n$).
+		Thus,
+		\[ \int_{x_n-\epsilon}^{x_n+\epsilon} |f(x)|dx \geq \delta/2 \cdot 2\epsilon = \delta \cdot \epsilon > 0 \]
+		Now, define $a_1 := x_1 - \epsilon$, $a_2 := x_1 + \epsilon$, $a_3 := x_2 - \epsilon$, $a_4 := x_2 + \epsilon$, $\hdots$. Then,
+		\[ \int_{a_n}^{a_{n+1}} |f(x)|dx > \delta \cdot \epsilon \]
+		Defining a new(er) sequence, $h_n := (\int_{0}^{a_{n}} |f(x)|dx)$, we see that, $h_{n+1} - h_n = \int_{a_n}^{a_{n+1}} |f(x)|dx > \delta\cdot \epsilon$
+		which is enough to imply that $(h_n)_1^{\infty}$ is not a Cauchy sequence and so it does not converge. This is clearly a contradiction. Thus, $\limsup_{n\to\infty} f(x) = 0$
+		as wanted.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}{3}
+    Compute the following limits and justify the calculations:
+    \begin{enumerate}
+        \item $\lim_{n\to\infty} \int_0^1 (1+x/n)^ndx$
+        \item $\lim_{n\to\infty} \int_0^1 (1+nx^2)/(1+x^2)^ndx$
+        \item $\lim_{n\to\infty} \int_0^{\infty} (n\sin(x/n))/(x(1+x^2))dx$
+    \end{enumerate}
+\end{problem}
+\begin{solution}{}
+	\begin{enumerate}
+		\item[(i.)] Let $f_n(x) := (1+x/n)^n$. Clearly, $f_n\to e^x$ and $0\leq f_n \leq f_{n+1}$ on $[0,1]$. Thus, by monotone convergence theorem, we have that:
+		\[ \lim_{n\to\infty} \int_0^1 (1+x/n)^ndx = \int_0^1 \lim_{n\to\infty} (1+x/n)^ndx = \int_0^1 e^xdx = e-1 \]
+		\item[(ii.)] Let $f_n(x) := (1+nx^2)/(1+x^2)^n$. Noting that exponential increase faster than polynomials, we see that $\lim_{n\to\infty} f_n(x)$ exists for all $x\in[0,1]$.  Noting
+		each $f_n$ achieves a global maximum at $x=0$ (and each $f_n$ only has one global maximum) and each $f_n\geq 0$, we get that each $f_n$ is bounded by some
+		$M\in\mathbb{R}$ (in particular, $M\geq1$). Each $f_n$ is also supported on a set of finite measure since $f_n$ is continuous so that $f_n$ is uniformly continuous on
+		$[0,1]$ (continuity on compact sets). Thus, by BCT, we get that 
+		\[ \int_0^1 \lim_{n\to\infty} \frac{(1+nx^2)}{(1+x^2)^n}dx = \lim_{n\to\infty} \int_0^1 \frac{1+nx^2}{(1+x^2)^n}dx  \]
+		Then, the integral exists and is computed from the left side of the above equation.
+		\item[(iii.)] Use DCT by bounding via $n/x^3$ and bring the limit inside. Then, write the function as $\sin(x/n)/[(x/n)(1+x^2)]$ to compute the limit and thus, compute
+		the integral.
+	\end{enumerate}
+\end{solution}
+
+\newpage
+\begin{problem}{4}
+    Derive the following formulas by expanding part of the integrand into an infinite series and justifying the term-by-term
+    integration.
+    \begin{enumerate}
+        \item For $a>1$, $\int_0^{\infty} e^{-ax}(\sin{x})/xdx = \arctan(1/a)$
+        \item For $a<-1$, $\int_0^1 (x^a\log(x))/(1-x)dx = -\int_{k=1}^{\infty} 1/(a+k)^2$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+	\begin{enumerate}
+		i. Recall the Taylor expansion of $\sin(x)$:
+		\begin{align}
+			\int_0^{\infty} e^{-ax}\frac{\sin(x)}{x}dx &= \int_0^{\infty} \frac{e^{-ax}}{x}\Big{(}x-x^3/3!+x^5/5! -\hdots\Big{)}dx \\
+				&= \int_0^{\infty} e^{-ax}\Big{(}1-x^2/3!+x^4/5!-\hdots\Big{)}dx
+		\end{align}
+		We note that this series (in the integrand of (2)) is absolutely convergent (follows from Taylor expansion of $\sin$). Thus, we can write the integrand of
+		(2) as $(f_1(x) + f_2(x) + \hdots) - (g_1(x) + g_2(x) + \hdots)$ where $f_n$'s are the positive terms and the $g_n$'s are the negative terms of the integrand of (2).
+		Then, by linearity: $(2) = \int_0^{\infty} \sum_{n=1}^{\infty} f_n(x) - \int_0^{\infty} \sum_{n=0}^{\infty} g_n(x)$. Noting by definition of $f_n$'s and $g_n$'s, we know that
+		$f_n,g_n\geq 0$ for all $n$. Then, by Corollary 1.10, we have:
+		\begin{align}
+			(2) &= \sum_{n=0}^{\infty} \int_0^{\infty} f_n(x)dx + \sum_{n=0}^{\infty} \int_0^{\infty} g_n(x)dx \\
+				&= \int_0^{\infty} e^{-ax}dx - \int_0^{\infty} \frac{e^{-ax}x^2}{3!}dx + \int_0^{\infty} \frac{e^{-ax}x^4}{5!} - \hdots
+		\end{align}
+		Write each integral in (4) as a limit of closed intervals so that we can compute them as Riemann integrals. We get,
+		\[ (2) = 1/a - 1/(3a^3) + 1/(5a^5) + \hdots \]
+		Recognizing this as a Taylor expansion of $\arctan$ evaluated at $1/a$, we get that 
+		\[ \int_0^{\infty} e^{-ax}(\sin(x)/x)dx = \arctan(1/a) \]
+		as wanted.\\
+		
+		We now compute (ii). Recall the Taylor expansion of $1/(1-x)$, then:
+		\begin{align}
+			\int_0^1 (x^a\log(x))/(1-x)dx &= \int_0^1 (x^a\log(x))(1+x+x^2+\hdots)dx \\
+				&= \int_0^1 [x^a\log(x) + x^{a+1}\log(x) + x^{a+2}\log(x) + \hdots]dx
+		\end{align}
+		We can use Corollary 1.10 and the same technique from 4i to take the summand from (6) out (i.e. interchange summation and integral operator) to get:
+		\[ (6) = \int_0^1 \log(x)x^adx + \int_0^1 \log(x)x^{a+1}dx + \int_0^1 \log(x)x^{a+2}dx + \hdots \]
+		We can again integrate this as a Riemann integral to get that
+		\[ (6) = -\frac{1}{(a+1)^2} - \frac{1}{(a+2)^2} - \frac{1}{(a+3)^2} - \hdots = -\sum_{n=1}^{\infty} \frac{1}{(a+n)^2} \]
+		as wanted.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}{5}
+    Fatou's lemma:
+    \begin{enumerate}
+        \item Give an example of a sequence of continuous functions where the inequality in Fatou's lemma is strict.
+        \item In the lecture, we used Fatou's lemma to prove the monotone convergence theorem . Now conversely assume we already
+            know the monotone convergence theorem and use it to deduce Fatou's lemma.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+	\begin{enumerate}
+		\item[(i.)] Consider the sequence of functions $\{f_n\}_{n=1}^{\infty} = \{1/x^2, 2/x^3, 3/x^4, \hdots\}$. Each $f_n$ is clearly continuous. Furthermore, using
+		FTOC, we know that $\int_1^{\infty} f_n = 1$ for all $n\in\mathbb{N}$ but $f_n \to 0_{\text{id}}$ where $0_{\text{id}}$ is the constant function of value 0. Thus,
+		\[ 0 = \int_1^{\infty} 0_{\text{id}} < \liminf_{n\to\infty} \int_1^{\infty} f_n = 1 \]
+		so that the inequality is strict as wanted.
+		\item[(ii.)] Let $g_n := \inf\{f_n, f_{n+1},f_{n+2},\hdots\} = \inf_{n\geq j} f_j$. Using the fact that the infimum is monotone ($A\subseteq B\implies \inf(A)\leq \inf(B)$), we see
+		that $(g_n)_{n=1}^{\infty}$ is monotone. We also have by construction that $g_n \to \liminf_{n\to\infty} f_n = \lim_{n\to\infty} f_n$. Thus, $g_n\to f$. Assuming each $f_n\geq 0$ 
+		(an assumption for Fatou's lemma), we get that $g_n\geq 0$ for all $n$. Thus, by MCT:
+		\[ \lim_{n\to\infty} \int_E g_n = \int_E \lim_{n\to\infty} g_n = \int_E f \]
+		where $E$ is the domain for each $f_n$. Thus,
+		\[ \int_E \lim_{n\to\infty} g_n = \lim_{n\to\infty} \int_E g_n = \liminf_{n\to\infty} \int_E g_n \leq \liminf_{n\to\infty} \int_E f_n\]
+		so that $\int_E f \leq \liminf_{n\to\infty} \int_E f_n$ as wanted.
+	\end{enumerate}
+\end{solution}
+
+\newpage
+\begin{problem}{6}
+    Comparing the function spaces $L^1$ and $L^2$
+    \begin{enumerate}
+        \item Give an example of a function that is in $L^1(\mathbb{R})$ but not in $L^2(\mathbb{R})$.
+        \item Give an example of a function that is in $L^2(\mathbb{R})$ but not in $L^1(\mathbb{R})$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+	\begin{enumerate}
+		\item[(i.)] Consider $f(x) := 1/\sqrt{|x|}$ on $[0,1]$ and 0 elsewhere. By question 1, $f$ is Lebesgue integrable on $[0,1]$ and so is integrable everywhere. 
+		Thus, $f\in L^1(\mathbb{R})$. However, again by question 2, $f^2$ is not integrable on $[0,1]$ and so is not integrable on $\mathbb{R}$. Thus, $f\not\in L^2(\mathbb{R})$.
+		\item[(ii.)] Consider $f(x) := (1/x)\chi_{[1,\infty)}$. By question 1, we know $f$ is not Lebesgue integrable, but $f^2(x) = (1/x^2)\chi_{[1,\infty)}$ is. Thus,
+		$f\not\in L^1(\mathbb{R})$ but $f\in L^2(\mathbb{R})$.
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}{7}
+    Consider the space $L^2([0,1])$ with the norm $\norm{f}_{L^2([0,1])} = (\int_0^1 |f|^2)^{1/2}$.
+    \begin{enumerate}
+        \item Prove that $L^2([0,1])\subseteq L^1([0,1])$ with the estimate $\norm{f}_{L^1([0,1])} = \norm{f}_{L^2[0,1]}$.
+        \item Prove that if $f$ is differentiable, then $|f(x)-f(y)|\leq\norm{f'}_{L^2([0,1])}|x-y|^{1/2}$ for all $x,y\in[0,1]$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}{}
+	\begin{enumerate}
+		\item[(i.)] Let $f\in L^2([0,1]))$. We show $\norm{f}_{L^1} \leq \norm{f}_{L^2}$. $L^2$ is an inner product space so the Cauchy-Schwarz inequality holds.
+		In particular, $\langle f, 1_{\text{id}}\rangle \leq \norm{f}_{L^2}\norm{1_{\text{id}}}_{L^2}$ so that,
+		\[ \norm{f}_{L^1} = \int_0^1 f \leq \Big{(}\int_0^1 f^2\Big{)}^{1/2}\Big{(}\int_0^1 1_{\text{id}}\Big{)}^{1/2} = \Big{(}\int_0^1 f^2\Big{)}^{1/2} = \norm{f}_{L^2}\]
+		so that $\norm{f}_{L^1} \leq \norm{f}_{L^2}$ as wanted. Note $1_{\text{id}}$ is the constant function at 1. Clearly $1_{\text{id}}\in L^1\cap L^2$ with both norms being
+		equal to 1. Now, choose some $g\in L^2([0,1])$. Then $\int_0^1 g \leq (\int_0^1 g^2) < \infty$ by our obtained result. Thus, $g\in L^1([0,1])$ as wanted.
+		\item[(ii.)] The inequality is trivial if $x=y$. Assume $x<y$. Note that if a function $f$ is integrable on $[0,1]$, then it is clearly integrable on a subset of $[0,1]$. Choosing
+		$f^p$ instead, then yields the fact that $L^p([0,1]) \subseteq L^p([x,y])$ for finite $p\geq 1$. Now, by FTOC, we know that:
+		\[ |f(x) - f(y)| \leq | \int_x^y (f'(t))dt | \leq \int_x^y |f'(t)| dt = \int_x^y |1_{\text{id}}\cdot f'(t)|dt\]
+		By Cauchy-Schwarz, we then obtain that:
+		\[ \int_0^1 |1_{\text{id}}\cdot f'(t)|dt = \langle 1_{\text{id}},f\rangle \leq \Big{(}\int_x^y 1_{\text{id}}\Big{)}^{1/2}\Big{(}\int_x^y |f'(t)|^2dt\Big{)}^{1/2} = |x-y|^{1/2}\norm{f'}_{L^2} \]
+		so that $|f(x) - f(y)| \leq |x-y|^{1/2}\norm{f'}_{L^2}$. The above can be repeated for $y<x$ so we are done.
+	\end{enumerate}
+\end{solution}
+
+\end{document}

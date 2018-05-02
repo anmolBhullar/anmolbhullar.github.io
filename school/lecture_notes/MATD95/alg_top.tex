@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\title{Algebraic Topology Companion Notes}
+\author{Anmol Bhullar}
+\date{April 2018}
+
+\begin{document}
+
+\maketitle
+
+Filling in some details or trying some proofs myself from James Munkres' \textit{Topology}.
+
+\section*{\S 51 Homotopy of Paths}
+
+\setcounter{section}{51}
+
+\begin{lemma}
+	The relations $\simeq$ and $\simeq_p$ are equivalence relations.
+\end{lemma}
+\begin{proof}
+	First, we show $\simeq$ is an equivalence relation between homotopic continuous functions from $X\to Y$.\\
+	We will prove reflexivity first. Let $f: X\to Y$ be continuous. We show $f$ is homotopic with itself. To do this, we have to show there exists a continuous mapping 
+	$F:X\times I\to Y$ such that $F(x,0) = f(x)$ and $F(x,1)=f(x)$ for all $x\in X$. Thus, define $F$ to be given by $(x,t)\mapsto f(x)$. Since $f$ is continuous, it 
+	follows that $F$ is then also continuous.\\
+	Now, we show symmetry. Let $f$ and $g$ be any homotopic functions from $X$ to $Y$. We show $g\simeq f$. To do this,
+	we have to show there exists a continuous function $F: X\times I\to Y$ (not to be confused with the one above, we are no longer using it) such that $F(x,0) = g(x)$ and
+	$F(x,1) = f(x)$. Thus, define $F$ to be given by the mapping $(x,t) \mapsto G(x,1-t)$ where $G$ is the homotopy between $f$ and $g$. Thus, we immediately obtain that
+	$F(x,0)=G(x,1)=g(x)$ and $F(x,1)=G(x,0)=f(x)$ as wanted. To see this is continuous, it suffices to see that the component functions are continuous. It is clear that
+	$\pi_1(F(x,t))$ is continuous since $G$ is continuous. The fact that $\pi_2(F(x,t))$ is continuous follows from the fact that it is a composition of continuous functions
+	(namely $(x,t)\mapsto (x,1-t)$ and $(x,t)\mapsto G(x,t)$).\\
+	Now, we prove $\simeq$ is transitive to conclude that $\simeq$ is an equivalence relation. Let $f\simeq g$
+	and $g\simeq h$ for homotopic functions $f,g:X\to Y$ and homotopic functions $g,h:X\to Y$. Let $F'$ and $F''$ be the homotopy of $f,g$ and $g,h$ respectively.
+	Now, define $H:X\times [0,2]\to Y$ via $(x,t)\mapsto F'(x,t)$ if $t\leq 1$ and $(x,t)\mapsto F''(x,t-1)$ if $t\geq 1$. We see that $H$ is well defined since
+	$H(x,1) = F'(x,1) = g(x) = F''(x,0)$. $H$ is also continuous since $H$ is continuous on $t<1$ via $F'$ and continuous on $t>1$ via $F''$. Thus, by the pasting lemma, we have
+	that $H$ is continuous on $X\times [0,2]$. Using this as motivation, we define the homotopy $\delta: X\times I \to Y$ between $f,h$ via $(x,t) \mapsto F'(x,2t)$ if $t\leq 
+	1/2$ and $(x,t)\mapsto F''(x,2t-1)$ if $t\geq 1/2$.\\
+	
+	Now, we show $\simeq_p$ is an equivalence relation. Let $f: I\to X$ be a continuous path from $x_0$ to $x_1$ and define $F$ to be the homotopy from the reflexive 
+	proof of $\simeq$. Then, we only need to show the additional condition that $F(0,t) = x_0$ and $F(1,t) = x_1$. Note $F(x,t) = f(x)$ so $F(0,t) = f(0) = x_0$ and $F(1,t)=f(1)=x_1$
+	as wanted. Thus, $f\simeq_p f$ showing reflexivity. Now, we show symmetry. Let $f,f':I\to X$ be two homotopic paths from $x_0$ to $x_1$. Define $F:I^2 \to X$ via
+	$(s,t)\mapsto F'(s,1-t)$ where $F'$ is the path homotopy between $f$ and $f'$. Then from the symmetry proof of $\simeq$ above, we have only left to prove that
+	$F(0,t) = x_0$ and $F(1,t) = x_1$. Note $F(0,t) = F'(0,1-t) = x_0$ and $F(1,t) = F'(1,1-t) = x_1$ as wanted. We now, only need show transitivity to conclude that $\simeq_p$ is
+	an equivalence relation. Let $f,g:I\to X$ and $g,h:I\to X$ be path homotopies between $x_0$ and $x_1$. We show $f,h$ are path homotopic. Define $\delta$ to be a path
+	homotopy between $f$ and $h$ the same way it was done in the transitive proof above. Thus, it is left to prove $\delta(0,t) = x_0$ and $\delta(1,t) = x_1$.
+	If $t<1/2$, we have $\delta(0,t) = F'(0,2t) = x_0$ since $F'$ is a path homotopy between $f$ and $g$ which are paths between $x_0$ and $x_1$. Similarly, $\delta(1,t) = x_1$.
+	We can repeat this for $t\geq 1$ to again, get the same result. Thus, $\delta$ is a path homotopy as wanted. Therefore, $\simeq_p$ is an equivalence relation as wanted.
+\end{proof}
+
+\begin{example}
+	Let $f$ and $g$ be any two maps of a space $X$ into $\mathbb{R}^2$. It is easy to see that $f$ and $g$ are homotopic; the map
+	\[ F(x,t) = (1-t)f(x) + tg(x) \]
+	is a homotopy between them called the \textbf{straight line homotopy}.
+\end{example}
+\begin{proof}
+	Note that $F(x,0) = (1-0)f(x) + 0g(x) = f(x)$ and $F(x,1) = (1-1)f(x) + 1g(x) = g(x)$ as wanted. $F$ is continuous because $f$ and $g$ are continuous functions on $X$, thus,
+	so are $(1-t)f(x)$ and $tg(x)$ for all $t\in\mathbb{R}$. $F(x,t)$ is the sum of these two functions so, we immediately obtain that $F$ is a continuous function. Thus, $F$ is a homotopy
+	between $f$ and $g$. 
+\end{proof}
+
+\subsubsection*{Exercise 1}
+
+Show that if $h,h':X\to Y$ are homotopic and $k,k':Y\to Z$ are homotopic, then $k\circ h$ and $k'\circ h'$ are homotopic.
+\begin{proof}
+\end{proof}
+
+\end{document}
