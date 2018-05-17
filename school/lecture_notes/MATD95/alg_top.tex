@@ -72,6 +72,134 @@ Filling in some details or trying some proofs myself from James Munkres' \textit
 
 Show that if $h,h':X\to Y$ are homotopic and $k,k':Y\to Z$ are homotopic, then $k\circ h$ and $k'\circ h'$ are homotopic.
 \begin{proof}
+	We want to deform $k\circ h: X\to Z$ into $k' \circ h':X \to Z$ in a continuous manner. Let $H$ be the homotopy between $h$ and $h'$ and $K$ be the homotopy between $k$ and $k'$.
+	Let,
+	\[ G: (x,t) \mapsto K(H(x,t),t) \]
+	If $t=0$, we have $K(H(x,0),0) = k(H(x,0)) = k\circ h (x)$. If $t=1$, we have $K(H(x,1),1) = k'(H(x,1)) = k' \circ h' (x)$. $G$ is a composition of continuous functions, so it is continuous.
+	Thus, $k\circ h$ and $k'\circ h'$ are homotopic.
+\end{proof}
+
+\subsubsection*{Exercise 2}
+
+Given spaces $X$ and $Y$, let $[X, Y]$ denote the set of homotopy \textit{classes} of maps of $X$ into $Y$.
+\begin{enumerate}
+	\item[(a)] Let $I = [0,1]$. Show that for any $X$, the set $[X, I]$ has a single element.
+	\item[(b)] Show that if $Y$ is path connected, the set $[I, Y]$ has a single element.
+\end{enumerate}
+\begin{proof}
+	For (a), it suffices to show that any continuous maps $f,f': X\to I$ is homotopic. Note $I$ is convex so the straight line homotopy is enough to show that $f$ and $f'$ are homotopic.
+\end{proof}
+
+\subsubsection*{Exercise 3}
+
+A space $X$ is said to be \textbf{contractible} if the identity map $i_X: X\to X$ is nulhomotopic (able to be continuously deformed into a constant map).
+\begin{enumerate}
+	\item[(a)] Show that $I$ and $\mathbb{R}$ are contractible.
+	\item[(b)] Show that a contractible space is path-connected.
+	\item[(c)] Show that if $Y$ is contractible, then for any $X$, the set $[X,Y]$ has a single element.
+	\item[(d)] Show that if $X$ is contractible and $Y$ is path connected, then $[X,Y]$ has a single element.
+\end{enumerate}
+\begin{proof}
+	(a): Define $F: I\times I\to I$ to be given by $F(x,t) = (1-t)x$. This is the straight line homotopy between the identity map $i_I$ and the constant map $x\mapsto 0$.
+	$\mathbb{R}$ is contractible for the same reason, simply apply the straight line homotopy between $i_{\mathbb{R}}$ and $x\mapsto 0$. Note, this is possible since both $I$ and 
+	$\mathbb{R}$ are convex.\\
+	
+	(b): Let $X$ be a contractible space. Let $F$ be the homotopy between $i_X$ and some constant map $f$. Then, $\psi: t\mapsto F(x,t)$ is a continuous path with endpoints $x$ and $f(x)$.
+	Similarly, $\phi: t\mapsto F(y,t)$ is a continuous path with endpoints $y$ and $f(y)$. Since $f$ is a constant map, we have $f(x)=f(y)$ and so we can construct a continuous path $\Phi: I\to X$
+	using the pasting lemma with endpoints $x$ and $y$.\\
+	
+	(c): Let the identity map on $Y$ be homotopic to the constant map, mapping everything to $y_0\in Y$. Let $g: X\to Y$ be given by $x\mapsto y_0$ and $f: X\to Y$ be any continuous map.
+	Let $H$ be the homotopy between $i_Y$ and the map $Y\mapsto y_0$. Define $F: X\times I \to Y$ be given by $F(x,t) = H(f(x),t)$. Then, $F$ is a homotopy since $H$ is and so $[X,Y]$ has
+	a single element.\\
+	
+	(d): Let $H$ be the homotopy between the identity map on $X$ and the map $X\mapsto x_0\in X$. Then, $f\circ H: X\times I \to Y$ is a homotopy between $f$ and $X\mapsto f(x_0)$ since
+	$f\circ H(x,0) = f(x)$ and $f\circ H(x,1) = f\circ x_0 = f(x_0)$. Taking $g: X\to Y$ to be another continuous map, we can see $g\circ H$ is a homotopy between $g$ and $X\mapsto g(x_0)$.
+	$Y$ is path connected so there exists a path between $g(x_0)$ and $f(x_0)$. Through this, we get a homotopy between $f$ and $g$. Thus, $[X,Y]$ has a single element.
+\end{proof}
+
+Side note: One could think that you may not need contractibility to be able to answer (d) if we let our homotopy $H(x,t)$ be equal to the path that connects some continuous functions $f(x)$ and $g(x)$
+in $Y$. However, this mapping is not continuous.
+
+\section{The Fundamental Group}
+
+\subsection*{Exercise 1}
+
+A subset $A$ of $\mathbb{R}^n$ is said to be \textbf{star convex} if for some point $a_0$ of $A$, all the line segments joining $a_0$ to other points of $A$ lie in $A$.
+\begin{enumerate}
+	\item[(a)] Find a star convex set that is not convex
+	\item[(b)] Show that if $A$ is star convex, $A$ is simply connected.
+\end{enumerate}
+\begin{proof}
+	\item[(a)] Let $A$ be a star in $\mathbb{R}^2$ centered at $(0,0)$. This is clearly not convex just by taking any two points on any (distinct) "tips" of the star.
+	\item[(b)] Let $a_0\in A$ be the point which is connected to any other point of $A$ via a straight line (lying entirely in $A$). 
+	From this property of $a_0$, we see that $A$ is path connected. Now, we show that $|\pi_1 (A,a_0)| = 1$ and so the fundamental group based at any other point also has order 1 
+	(and so it must be the trivial fundamental group). To see this, let $f$ and $g$ be any two paths based at $a_0$. 
+	Define $F: I^2 \to A$ by $F(x,t) = [\phi_{f(x)} * \bar{\phi}_{g(x)}] (t)$ where $\phi_a: I\to A$ is the straight line connecting $a$ and $a_0$. Intuitively, $F$ deforms $f$ into $g$ by first
+	taking $f(x)$ to $a_0$, then takes $a_0$ to $g(x)$. Thus, $f\simeq_p g$ and so $|\pi_1(A,a_0)| = 1$ as wanted.
+\end{proof}
+
+\subsection*{Exercise 2}
+
+Let $\alpha$ be a path in $X$ from $x_0$ to $x_1$; let $\beta$ be a path in $X$ from $x_1$ to $x_2$. Show that if $\gamma = \alpha * \beta$, then $\hat{\gamma} = \hat{\beta}\circ \hat{\alpha}$.
+\begin{proof}
+	\begin{align*}
+		\hat{\beta} \circ \hat{\alpha([f])} &= [\overline{\beta}] * ([\overline{\alpha}] * [f] * [\alpha]) * [\beta] \\
+			&= ([\overline{\beta}] * [\overline{\alpha}]) * [f] * ([\alpha] * [\beta]) \\
+			&= [\overline{\beta} * \overline{\alpha}] * [f] * [\alpha * \beta]
+	\end{align*}
+	Recall from group theory that $(a \cdot b)^{-1} = b^{-1} \cdot a^{-1}$ so:
+	\begin{align*}
+		\hat{\beta} \circ \hat{\alpha}([f]) = [\overline{\alpha * \beta}] * [f] * [\alpha * \beta] = \hat{\gamma}([f])
+	\end{align*}
+	as wanted.
+\end{proof}
+
+\subsection*{Exercise 3}
+
+Let $x_0$ and $x_1$ be points of the path-connected space $X$. Show that $\pi_1(X,x_0)$ is abelian if and only if for every pair $\alpha$ and $\beta$ of paths from $x_0$ to $x_1$, we have
+$\hat{\alpha} = \hat{\beta}$.
+\begin{proof}
+	Assume the fundamental group at $x_0$ is abelian. Consider:
+	\begin{align*}
+		\hat{\alpha}([f]) &= [\overline{\alpha}] * [f] * [\alpha] \\
+			&= ([\overline{\beta}] * [\beta]) * [\overline{\alpha}] * [f] * [\alpha] * ([\overline{\beta}] * [\beta]) \\
+			&= [\overline{\beta}] * ([f] * [\alpha] * [\overline{\beta}]) * ([\beta]) * [\overline{\alpha}]) * [\beta] \\
+			&= [\overline{\beta}] * [f] * [\beta] = \hat{\beta}([f])
+	\end{align*}
+	where we have used the fact that $([f] * [\alpha] * [\overline{\beta}])$ is a path from $x_0$ to $x_0$ and so is $([\beta]) * [\overline{\alpha}])$ and so we can switch them using our
+	abelian property. Now, assume instead that $\hat{\alpha} = \hat{\beta}$.\\
+	
+	We know that $\gamma := f * \alpha$ is a path from $x_0$ to $x_1$ and so $\hat{\gamma} = \hat{\alpha}$. Note $[\overline{\gamma}] = [\overline{f * \alpha}] = [\overline{\alpha}] * [\overline{f}]$
+	and so,
+	\begin{align*}
+		\hat{\gamma}([f * g]) &= [\overline{\gamma}] * [f * g] * [\gamma] \\
+			&= [\overline{\alpha}] * [\overline{f}] * [f] * [g] * [f] * [\alpha] \\
+			&= [\overline{\alpha}] * [g] * [f] * [\alpha] \\
+			&= [\overline{\alpha}] * [g * f] * [\alpha] = \hat{\alpha}([g * f]) = \hat{\gamma}([g * f])
+	\end{align*}
+	and so $\hat{\gamma}([f * g]) = \hat{\gamma}([g * f])$. Using cancellation, we get $[f * g] = [g * f]$ (multiply by $[\gamma]$ on the left and by $[\overline{\gamma}]$ on the right) 
+	so that $\pi_1(X,x_0)$ is abelian.
+\end{proof}
+
+\subsection*{Exercise 4}
+
+Let $A\subset X$; suppose that $r: A\to X$ is a continuous map such that $r(a) = a$ for each $a\in A$. (The map $r$ is called a retraction of $X$ onto $A$). If $a_0\in A$, show that
+\[ r_*: \pi_1(X,a_0) \to \pi_1(A,a_0) \]
+is surjective.
+\begin{proof}
+	Choose any $[f] \in \pi_1(A,a_0)$. Since $f$ (and any map, path homotopic to it) lies in $A$, we know that $r([f]) = [f]$ by definition of retraction. Thus, $[f]\in \pi_1(X,x_0)$ as wanted.
+\end{proof}
+
+\section{Covering Spaces}
+
+\subsection*{A fiber over a point in a covering space is the discrete space}
+
+Let $p: E\to B$ be a covering map. Let $b\in B$. Equip $p^{-1}(b)$ with the subspace topology. Then $p^{-1}(b)$ is precisely the discrete space.
+\begin{proof}
+	A subspace $p^{-1}(b)$ of $E$ is discrete if and only if for each $h\in p^{-1}(b)$, there exists an open set $V$ in $E$ such that $V\cap p^{-1}(b) = \{h\}$. Note $p$ is a covering
+	map, so in particular, there exists some neighbourhood $U$ of $B$ that $p$ evenly covers. So, we partition $p^{-1}(U)$ into open disjoint sets and denote them by $V_{\alpha}$.
+	Thus, $h\in p^{-1}(b)$ falls in some unique $V_{\alpha}$ and so $\{h\} \subset V_{\alpha} \cap p^{-1}(b)$. Note that $p$ is a covering map so $p|_{V_{\alpha}}: V_{\alpha} \to B$ 
+	is a homeomorphism. In particular, this means that $\# (p|_{V_{\alpha}}^{-1})=1$ or equivalently, $\{h\} = V_{\alpha} \cap p^{-1}(b)$. Thus, $p^{-1}(b)$ is a discrete space.
 \end{proof}
 
 \end{document}

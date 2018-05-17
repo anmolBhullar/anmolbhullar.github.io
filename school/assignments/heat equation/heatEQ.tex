@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Heat Equation Problems}
+\author{Anmol Bhullar}
+ 
+\maketitle
+
+The heat equation is given by:
+\[ u_t - \bigtriangleup u = 0 \]
+where $t>0$ and $x\in U\subset\mathbb{R}^n$ is open and the unknown is $u: \bar{U}\times [0,\infty) \to \mathbb{R}$, $u = u(x,t)$, the
+laplacian $\bigtriangleup$ is taken with respect to the spatial variables $x = (x_1,\hdots,x_n)$ (i.e. not including $t$)
+
+\begin{problem}{1}
+	The fundamental solution of the heat equation is given by:
+	\[ \Phi(x,t) := \begin{cases} \frac{1}{(4\pi t)^{n/2}} e^{-\frac{|x|^2}{4t}} & (x\in\mathbb{R}^n, t > 0) \\ 0 & (x\in\mathbb{R}^n, t < 0) \end{cases} \]
+	Show that the fundamental solution of the heat equation solves the heat equation.
+\end{problem}
+
+
+\begin{solution}{}
+	s
+\end{solution}
+
+\begin{problem}{2}
+	Show that $\int_{\mathbb{R}^n} \Phi(x,t)d^nx = 1$.
+\end{problem}
+
+\begin{solution}
+	s
+\end{solution}
+
+\begin{problem}{3}
+	Show $\Phi(x,t) \to \delta_0(x)$ as $t \to 0$ i.e. for all $\psi \in C_c^{\infty}$, we have $\int \Phi(x,t)\psi(x)d^nx \to \phi(0)$ as $t\to 0$.
+\end{problem}
+
+\begin{problem}{4}
+	Check that the solution of the initial value problem
+	\[ \begin{cases} 
+      		\partial_t u = \bigtriangleup u &\\
+      		u|_{t=0} = f &
+	\end{cases} \]
+	is given by,
+	\[ u(x,t) = \int_{\mathbb{R}^n} \Phi(x-y,t)f(y)d^n y = \int_{\mathbb{R}^n} \frac{1}{(4\pi t)^{n/2}}e^{-\frac{|x-y|^2}{4t}}f(y) d^ny \]
+\end{problem}
+
+\begin{problem}{5}
+	For $t>0$ show $u(x,t)$ is $C^{\infty}$ and compute formulas for $\partial_x u$ and $\partial_t u$.
+\end{problem}
+
+\begin{problem}{6}[The Maximum Principle]
+	If $u(x,t)\leq C$ at $t=0$, then $u(x,t)\leq C$ for all $t\geq 0$.
+\end{problem}
+
+\end{document}
