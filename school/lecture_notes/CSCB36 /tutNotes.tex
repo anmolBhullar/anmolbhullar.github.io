@@ -1,18 +1,47 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 
-\title{CSF Notes}
-\author{Anmol Bhullar}
+\title{Tutorial Notes}
+\author{CSCB36 TUT001}
 \date{April 2018}
 
 \begin{document}
 
 \maketitle
 
-\section{Basics}
+\section*{Tutorial \#2: Example of a Badly Written Proof}
+
+\begin{enumerate}
+	\item[Line 1:] Writing "$P(n) = f(n) = n$ for all $n\in\mathbb{N}$". This should be "For all $n\in\mathbb{N},$ $P(n): f(n) = n$". Note that we moved the quantifier statement to the beginning of
+	the sentence.\textbf{(*)}
+	\item[Line 2-4:] Don't use stack of equations. Also, these steps have no justification. Instead, these lines should be written as:
+		\begin{align*}
+			f(n) = f(2) &= 2^2 - 2 \\
+				&= 2 \\
+				&= n
+		\end{align*}
+	\item[Line 5:] "Therefore, $f(2)$ holds." should be "Therefore, $P(2)$ holds."
+	\item[Line 6:] This is an off by one error. Rather than "Let $n>2$", we should have "Let $n\geq 2$" since the former shows that $P(2)$, $P(3)\implies P(4)$, $P(4)\implies P(5)$, $\hdots$
+		In particular, it does not show $P(3)$ but the latter does.
+	\item[Line 7:] Refer to this by induction hypothesis or \textbf{IH}.
+	\item[Line 9:] This is using what we want to prove. Notice, it is written "$P(n+1) = (n+1)^2-2 = n+1$". Also, it is wrong to say $P(n+1) = (n+1)^2-2$ since $P$ is a predicate.
+	\item[Line 11:] Indicate that we are using our \textbf{IH}.
+	\item[Line 15:] Should say "$P(n+1)$ is true" instead of just "true".
+	\item[Line 9-14:] This is again, a stack of equations. The logic of these lines is wrong.
+		There is no way of fixing these lines (even if we get rid of the stack) since what we are trying to prove ($P(n+1)$) is demonstrably false.
+\end{enumerate}
+
+\section*{Tutorial \#3: Understanding "only" and "all" or "every" in statements}
+
+Let,
+\begin{align*}
+\end{align*}
 
 \end{document}

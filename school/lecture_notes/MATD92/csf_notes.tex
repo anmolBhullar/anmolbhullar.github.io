@@ -5,6 +5,8 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 
+\newtheorem{theorem}{Theorem}
+
 \title{CSF Notes}
 \author{Anmol Bhullar}
 \date{April 2018}
@@ -29,6 +31,17 @@ signed curvature is given by the formula:
 \[ k(s) = \frac{x'y''-x''y'}{((x')^2+(y')^2)^{3/2}}\]
 so that we can then compute $\vec{k}$ by evaluating $k(s)N(s)$ where $N$ denotes the normal vector at of $\alpha$ at 
 $s$.
+
+\section{The CSF equation is not strictly parabolic}
+
+The curve shortening flow equation can be (erroneously) viewed as a heat equation by writing $\gamma$ in terms of its arclength parameter. Notice:
+\[ \partial_t \gamma = \partial_s^2 \gamma \]
+which is exactly the heat equation. However, the catch is that $\partial_s$ is not a partial derivative but is instead defined via the equation:
+\[ \partial_s = v^{-1}\partial_x,\qquad v = \frac{\partial \gamma}{\partial x} \]
+We can see the true nature of this equation by writing it in vector form. Write $\gamma = (\gamma^1, \gamma^2)$ and we would obtain:
+\[ \begin{pmatrix} \partial_t \gamma^1 \\ \partial_t \gamma^2 \end{pmatrix} = |\partial_x \gamma|^{-4} \begin{pmatrix} (\partial_x \gamma^2)^2 & \partial_x\gamma^2 \partial_x\gamma^2 \\
+	\partial_x\gamma^1\partial_x\gamma^2 & (\partial_x\gamma^1)^2 \end{pmatrix} \begin{pmatrix} \partial_x^2 \gamma^1 \\ \partial_x^2 \gamma^2 \end{pmatrix} \]
+Note that the matrix (in front of the vector on the right side) is positive \textit{semi}definite and so the CSF equation is not strictly parabolic.
 
 \subsection{Round shrinking circles}
 We show that if $\Gamma_t = \partial B^2_{r(t)}\subset\mathbb{R}^2$, then (1.1) reduces to the ODE:
@@ -185,5 +198,184 @@ Now, we can compute $\partial_t A(t)$. Consider:
 	\partial_t A(t) &= \frac{-1}{2} \int_0^{2\pi} \langle \partial_t F, vN\rangle + \langle F, \partial_t vN\rangle du \\
 		&= \frac{-1}{2} \int_0^{2\pi} \langle \partial_t F, vN\rangle + \langle F, \partial_t (v)N\rangle +  \langle F, v\partial_t N\rangle du
 \end{align*}
+We have by the curve shortening flow that $\partial_t F = \kappa N$ so $\langle \partial_t F, vN\rangle = \langle \kappa N, vN\rangle = \kappa v$. Now, we try to compute $\partial_t N$.
+Note:
+\[ 0 = \langle T, N\rangle \implies 0 = \partial_t \langle T, N\rangle = \langle \partial_t T, N\rangle + \langle T, \partial_t N\rangle \]
+So, we first compute $\partial_t T$: $\partial_t T = \partial_t (\partial_s F) = \partial_{ts} F$. We prove the following equality: (recall $s$ depends on both $u$ \textbf{and} $t$)
+\[ \partial_{ts} = \partial_{st} + \kappa^2 \partial_s \qquad(*)\]
+Recall that $\partial_s$ is defined as $v^{-1}\partial_u$ and so,
+\begin{align*}
+	\partial_t\partial_s = \partial_t[v^{-1}\partial_u] = \partial_t(v^{-1})\partial_u + v^{-1}\partial_t(\partial_u)
+\end{align*}
+So, again we need to do a preliminary calculation. Find $\partial_t v$:
+\begin{align*}
+	\partial_t v^2 = \partial_t(\langle \partial_u F, \partial_u F\rangle) &= 2\langle \partial_{tu} F, \partial_u F\rangle\\
+		&= 2\langle \partial_{u}(\partial_t F), \partial_u F\rangle \\
+		&= 2\langle \partial_u(\kappa N), vT\rangle \\
+		&= 2\langle \partial_u(\kappa)N + (\partial_u N)\kappa, vT\rangle \\
+		&= 2\langle -\kappa^2 vT, vT\rangle = -2v^2 \kappa^2
+\end{align*}
+where we have \textbf{to show $\partial_u \kappa = 0$?} Thus, $\partial_t v = -v\kappa^2$. So, we can continue with (*):
+\begin{align*}
+	\partial_t(v^{-1})\partial_u + v^{-1}\partial_t(\partial_u) &= v^{-2}v\kappa^2 \partial_u + v^{-1}\partial_u\partial_t \\
+		&= \kappa^2 v^{-1} \partial_u  + v^{-1}\partial_u\partial_t \\
+		&= \kappa^2\partial_s + \partial_s\partial_t
+\end{align*}
+Thus, $\partial_t\partial_s = \partial_t[v^{-1}\partial_u] = \partial_t(v^{-1})\partial_u + v^{-1}\partial_t(\partial_u)$ as wanted. So,
+\begin{align*}
+	\partial_t T = \partial_t(\partial_s F) &= \partial_s(\partial_t F) + \kappa^2 \partial_s F \\
+		&= \partial_s(\kappa N) + \kappa^2 T \\
+		&= N\partial_s \kappa + \kappa\partial_s N + \kappa^2 T \\
+		&= N\partial_s \kappa -  \kappa^2 T + \kappa^2 T \\
+		&= N\partial_s \kappa = (\partial_s \kappa)T
+\end{align*}
+Now, we compute $\partial_t N$:
+\begin{align*}
+	0 = \partial_t \langle T, N\rangle &= \langle \partial_t T, N\rangle + \langle T, \partial_t N\rangle \\
+		&= \langle N\partial_s\kappa, N\rangle + \langle T,\partial_t N\rangle
+\end{align*}
+So, $\langle T, \partial_t N\rangle = \partial_s \kappa$. Now, $T$ and $\partial_t N$ are parallel so $\partial_t N = -T \partial_s \kappa$. Thus,
+\[ \langle F, v\partial_t N\rangle = \langle F, -vT\partial_s \kappa\rangle = \langle F, -T\partial_u \kappa\rangle \]
+and $v\kappa^2 N = \kappa v\kappa N = \kappa\partial_u T$. So, we currently have:
+\[ \partial_t A = -\frac{1}{2} \int_0^{2\pi} [v\kappa - \langle F, \kappa\partial_u T\rangle + \langle F, -T \partial_u \kappa\rangle] du \]
+Note $\partial_u \langle F,\kappa T\rangle + \langle F, -(\partial_u \kappa)T\rangle = \langle \partial_u F, \kappa T\rangle + \langle F, \kappa \partial_u T\rangle$ and
+ \[ \int_0^{2\pi} \partial_u \langle F, \kappa T\rangle = \langle F(2\pi), \kappa(2\pi)T(2\pi) \rangle - \langle F(0), \kappa(0)T(0) \rangle = 0 \]
+So,
+\[ \int_0^{2\pi} \langle F,-(\partial_u \kappa)T\rangle = \int_0^{2\pi} [\langle \partial_u F, \kappa T\rangle + \langle F, \kappa \partial_u T\rangle]du \]
+Thus:
+\begin{align*}
+	\partial_t A &= -\frac{1}{2} \int_0^{2\pi} [v\kappa - \langle F, \kappa\partial_u T\rangle + \langle \partial_u F, \kappa T\rangle + \langle F, 
+        \kappa \partial_u T\rangle] du \\
+		&= -\int_0^{2\pi} [v\kappa + \langle \partial_u F, \kappa T\rangle] du \\
+		&= -\int_0^{2\pi} [v\kappa] du = -2\pi
+\end{align*}
+since the total curvature of a simple closed curve is $2\pi$. Thus, $\partial_t A = -2\pi$ and so $A(t) = A(0) -2\pi t$ as wanted.$\hfill\blacksquare$
+\newpage
+
+\subsection{Things to do:}
+\begin{enumerate}
+    \item Prove: If $\Gamma_{-1}$ satisfies $\kappa + (1/2)\langle \gamma, N\rangle = 0$, then $\Gamma_t := \sqrt{-t}\Gamma_{-1}$ moves under the curve shortening flow.
+    \item Prove: If $\Gamma_t := \sqrt{-t}\Gamma_{-1}$ $(t < 0)$ moves under the curve shortening flow, then $\Gamma_{-1}$ satisfies 
+        $\kappa + (1/2)\langle\gamma,N\rangle = 0$.
+    \item Show the parabolic rescaling of curves moving under the curve shortening flow still move under the curve shortening flow.
+    \item Work out the details to Huisken's Monotonicity formula.
+    \item Prove convexity is preserved under the curve shortening flow.
+    \item Prove if two curves move under the curve shortening flow and are disjoint at initial time, then they stay disjoint under the flow.
+\end{enumerate}
+
+\section{Huisken's Monotonicity Formula}
+
+\subsection{Curvature under uniform scaling}
+
+First, we show how curvature changes under uniform scaling.
+
+Say I have some smooth curve $\Gamma$ in $\mathbb{R}^2$, I am trying to figure out what happens to its curvature when we scale it by some multiple (say any $t>0$). 
+
+First, I assume I have some parameterization $\gamma$ of $\Gamma$. Then, I can calculate $\kappa (\gamma(x))$ by $||\partial_s^2 \gamma(s)||$ where $s$ is 
+some arc-length parameter. This is all good.
+
+Now, let's say I want to find the curvature of the curve $t\Gamma$. Then,
+I can parameterize this via $t\gamma$. But the old arc-length parameter $s$ does not give us the unit tangent vector any more since I have the factor $t>0$. 
+To remedy this, we simply divide by $t$ so:
+\[ \mathbf{T} = \frac{\partial_s(t\gamma)}{t}= \frac{t(\partial_s \gamma)}{t} = \partial_s \gamma \]
+which we know is a unit vector since $\partial_s \gamma$ is. To find $\kappa \vec{N}$, we then need to compute 
+\[ \frac{\partial_s\mathbf{T}}{t} = \frac{\partial_s \partial_s \gamma}{t} = \frac{\kappa\vec{N}}{t} \]
+so that,
+\[ \kappa = \frac{\partial_s^2 \gamma}{t} \]
+We can also apply this line of reasoning to $\vec{N}$. In order to keep $\vec{N}$ a unit vector, we must divide by the scaling factor so if $\mathbf{N}$ is the
+unit vector of $\gamma$, then $\vec{N} = \mathbf{N}/t$ is the unit vector of $t\gamma$.
+
+\subsection{Characterizing self-similar shrinking solutions}
+
+We study curves which are of the form $\Gamma_t = \sqrt{-t}\Gamma_{-1}$ where $(t < 0)$ and $\Gamma_{-1}$ is a smooth closed (and not necessairly embedded) 
+curve in $\mathbb{R}^2$.
+
+We first show that if $\Gamma_{-1}$ makes the equation $\kappa + (1/2)\langle \gamma,\vec{N}\rangle = 0$ hold, then $\{\Gamma_t\}_t$ moves under CSF. \\
+
+We can start by calculating the curvature of $\Gamma_t$. Consider:
+\[ \kappa(\gamma_t(x)) = \kappa(\sqrt{-t}\gamma_{-1}(x)) = \frac{\kappa(\gamma_{-1}(x))}{\sqrt{-t}} \]
+Note $\Gamma_{-1}$ has the following assumed property:
+\[ \kappa(\gamma_{-1}(x)) + (1/2)\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x))\rangle = 0 \]
+so we can write:
+\begin{align} 
+	\kappa(\gamma_t(x)) = \frac{\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x))\rangle}{-2t}
+\end{align}
+We also have $\vec{N}(\gamma_t(x)) = \vec{N}(\gamma_{-1}(x))/\sqrt{-t}$ and
+\begin{align*}
+	\partial_t(\gamma_t(x)) &= \partial_t(\sqrt{-t})\gamma_{-1}(x) + \sqrt{-t}\partial_t \gamma_{-1}(x) \\
+		&= \frac{-\gamma_{-1}(x)}{2\sqrt{-t}}
+\end{align*}
+so:
+\begin{align*}
+	\langle \partial_t \gamma_t(x), \vec{N}(\gamma_{t}(x))\rangle &= \langle \frac{-\gamma_{-1}(x)}{2\sqrt{-t}}, \frac{\vec{N}(\gamma_{-1}(x))}{\sqrt{-t}} \rangle \\
+		&= \frac{\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x)) \rangle}{2t} \\
+		&= -\kappa(\gamma_t(x))
+\end{align*}
+which makes sense since we have negative (i.e. backwards) time.
+
+Now, we show the converse is true: If $\{\Gamma_t\}_t$ move under the curve shortening flow, then $\Gamma_{-1}$ satisfies
+\[ \kappa(\gamma_{-1}(x)) + (1/2)\langle \gamma_{-1}(x), N(\gamma_{-1}(x))\rangle = 0\] 
+Note, we still have:
+\[ \langle \partial_t \gamma_t(x), \vec{N}(\gamma_{t}(x))\rangle = \frac{\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x)) \rangle}{2t} \]
+and by assumption, we also have:
+\[ \langle \partial_t \gamma_t(x), \vec{N}(\gamma_{t}(x))\rangle = -\kappa(\gamma_t(x)) \]
+which implies that we have:
+\[ \kappa(\gamma_t(x)) + \frac{\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x)) \rangle}{2t} = 0 \]
+Plugging in $t=-1$ and cancelling the negatives (from the curvature and the denominator), we get:
+\[ \kappa(\gamma_{-1}(x)) + \frac{\langle \gamma_{-1}(x), \vec{N}(\gamma_{-1}(x)) \rangle}{2} = 0 \]
+as wanted.\\
+
+This characterizes self-similar shrinking solutions of the curve shortening flow. It is much harder to prove (but it is true) that for embedded curves,
+the line and the circle are the only examples of such curves.
+
+\subsection{The Monotonicity Formula}
+
+We want to consider blowup sequences $\lambda \Gamma$ as $\lambda\to\infty$. The length formula previously seen will not help us here since we know
+length$(\lambda\Gamma) = \lambda$length$(\Gamma)$. This is where the monotonicity formula comes into play.\\
+
+Let $\{\Gamma_t \subseteq \mathbb{R}^2\}$ be a CSF and let $X_0 = (x_0,t_0)$ be a point in space-time, and let
+\begin{align}
+	\rho_{X_0}(x,t) = (4\pi (t_0 - t))^{-1/2}e^{-|x-x_0|^2/4(t_0-t)}\qquad (t < t_0)
+\end{align}
+be the one dimensional backwards heat kernel centered at $X_0$.
+
+\begin{theorem}[Huisken's Monotonicity Formula]
+	\begin{align}
+		\frac{d}{dt} \int_{\Gamma_t} \rho_{X_0}ds = -\int_{\Gamma_t} \Big{|}\kappa + \frac{\langle \kappa, N\rangle}{2(t_0-t)}\Big{|}^2\rho_{X_0}ds
+	\end{align}
+\end{theorem}
+As seen before, the quantity within the absolute signs exactly characterizes the selfsimilarly shrinking solutions.
+\begin{proof}
+	Recall that the tangential gradient is the gradient without the normal component. So, the tangential gradient of $\rho$ is:
+	\begin{align} \triangledown \rho - \langle \triangledown \rho, N \rangle N \end{align}
+	We can write that this is equal to $\partial_s \rho$ since we are only moving along the tangential part or as $\triangledown_T \rho$ ($T =$ tangent
+	unit vector of $\Gamma$) i.e.
+	\begin{align} 
+		\triangledown_T \rho = \partial_s \rho \equiv (\triangledown_T \rho)^T = \triangledown \rho - \langle \triangledown \rho, N\rangle N
+	\end{align}
+	Following this notation, we would have that $\partial_s^2$ represents the `intrinsic Laplacian' i.e. gives only the second derivative along the curve.
+	So by definition,
+	\begin{align} 
+		\partial_s^2 \rho &\equiv \langle T, \triangledown_T \triangledown_T \rho\rangle  \\
+			&= \langle T, \triangledown_T (\triangledown \rho - \langle \triangledown \rho, N\rangle N)\rangle \\
+            &= \langle T, \triangledown_T \triangledown \rho\rangle - \langle T, \triangledown_T \langle \triangledown \rho, N\rangle N\rangle \rangle \\
+            &= \langle T, \triangledown_T \triangledown \rho\rangle - 2\kappa \langle N, \triangledown \rho\rangle
+	\end{align}
+    We have $\rho = \rho_0$ which is just equal to $(4\pi t)^{-1/2}e^{-|x|^2/4t}$ so
+\end{proof}
+
+\subsection{Avoidance Principle}
+
+Two curves which follow CSF and are disjoint will stay disjoint under the flow.
+\begin{proof}
+    Suppose we have curves $T$ and $\overline{T}$ which intersect at a single point (and this is the first occurence of intersection). 
+    If at their intial curves, the curves did not intersect and one
+    of the curves did not enclose the other, then they will never touch. So, suppose at the initial curves, one curve encolsed the other. Suppose
+    $T$ encloses $\overline{T}$. Since $T$ encloses $\overline{T}$, we have that $\vec{\kappa_{T}}\leq \vec{\kappa_{\overline{T}}}$. If 
+    $\vec{\kappa_{T}} < \vec{\kappa_{\overline{T}}}$, then using the curve shortening flow equation, we can conclude that they must have intersected
+    before which is a contradiction. So, we have $\vec{\kappa_T} = \vec{\kappa_{\overline{T}}}$. (Now, I think I have to use the maximum principle
+    here somewhere to conclude another contradiction.) Thus, curves $T$ and $\overline{T}$ cannot exist and so two curves which are initially disjoint
+    will stay disjoint under the curve shortening flow.
+\end{proof}
 
 \end{document}

@@ -202,4 +202,51 @@ Let $p: E\to B$ be a covering map. Let $b\in B$. Equip $p^{-1}(b)$ with the subs
 	is a homeomorphism. In particular, this means that $\# (p|_{V_{\alpha}}^{-1})=1$ or equivalently, $\{h\} = V_{\alpha} \cap p^{-1}(b)$. Thus, $p^{-1}(b)$ is a discrete space.
 \end{proof}
 
+\section{Deformation Retracts and Homotopy Types}
+
+\subsection*{Exercise 2}
+
+For each of the following spaces, the fundamental group is either trivial, infinite cyclic, or isomorphic to the fundamental group of the figure eight. Determine for each
+space which of the three alternatives holds.
+\begin{enumerate}
+	\item The `solid torus', $B^2 \times S^1$.
+	\item The torus $T$ with a point removed.
+	\item The cylinder $S^1 \times I$
+	\item The infinite cylinder $S^1 \times \mathbb{R}$
+	\item $\mathbb{R}^3$ with the non-negative $x,y,$ and $z$ axes deleted
+	\item $\{x : ||x||>1 \}$
+	\item $\{x: ||x||\geq 1\}$
+	\item $\{x: ||x|| < 1 \}$
+	\item $S^1 \cup (\mathbb{R}\times 0)$
+	\item $S^1 \cup (\mathbb{R}_{+} \times \mathbb{R})$
+	\item $S^1 \cup (\mathbb{R}\times 0)$
+	\item $\mathbb{R}^2 - (\mathbb{R}_+ \times 0$
+\end{enumerate}
+
+\begin{proof}
+	\begin{enumerate}
+		\item We can embed this solid torus in $\mathbb{R}^4$ via the natural parameterizations of $S^1$ and $B^2$. So, embed the solid torus in $\mathbb{R}^3$ so that
+		its center is the origin (0,0,0) and so that horizontally, half of it lies above the xy- plane and half of it lies below the xy- plane. Then, we construct
+		a homotopy $H: B^2\times S^1 \times I \to \mathbb{R}^3$ where $H(x,y,z,t) = (x,y,(1-t)z)$ so that we can flatten this donut into an annulus. Now,
+		let $\phi: B^2\times S^1 \to \mathbb{R}^3$ be a functions such that it returns the intersection of the line that cross through $(x,y,z)$ and $(0,0,0)$ and the
+		set $\{(x,y,z): ||(x,y,z)|| = 1\}$. Using this, we can construct a homotopy which squishes the flat ring into a circle embedded in $R^3$. Thus, $S^1\times 0$ is a
+		deformation retract of $B^2\times S^1$ implying $\pi_1(B^2\times S^1) \simeq \pi_1(S^1)$.
+		\item (figure eight)
+		\item Embed $S^1\times I$ so that its center is the origin and so that horizontally, half of it lies above the xy-plane and half of it lies below the xy- plane.
+		Then, define $H: S^1\times I \times I \to \mathbb{R}^3$ via $H(x,y,z,t) = (x,y,z,(1-t)z)$ which flattens the cylinder into $S^1\times 0$. Thus, giving us that
+		$S^1\times 0$ is a deformation retract of $S^1\times I$ which implies $\pi_1(S^1\times I)\simeq \pi_1(S^1)$.
+		\item We apply the same procedure from above to get $\pi_1(S^1\times \mathbb{R}) \simeq \pi_1(S^1)$.
+		\item (figure eight) 
+		\item This has $\partial B_2(0)$ as a deformation retract. Since $\pi_1(\partial B_2(0)) \simeq \pi_1(S^1)$, we are done.
+		\item Using the function $\phi$ from (1) but redefining it so that it maps $\{x: ||x||>1\}\to \mathbb{R}^2$, we get that $\{x: ||x||>1\}$ has $S^1$ as a deformation retract.
+		\item This is a star convex set so the fundamental group is trivial.
+		\item We can construct a homotopy which collapses $\mathbb{R}_+ \times 0$ into the point $(1,0)$ but leaves $S^1$ the same. This shows $S^1$ is a deformation retract
+		of this space.
+		\item Using a homotopy, we can collaps $\mathbb{R}_+ \times \mathbb{R}$ onto the positive (or right) side of $S^1$. Thus, $S^1$ is a deformation retract of this set.
+		\item We can retract $\mathbb{R}\times 0$ to $I \times 0$. Note, $S^1 \cup (I \times 0)$ is homeomorphic to $S^1 \cup (0 \times I)$ which is the theta space.
+		\item This set is star convex.
+	\end{enumerate}
+\end{proof}
+
+
 \end{document}
