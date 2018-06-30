@@ -1,0 +1,270 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+\title{CSF Notes}
+\author{Anmol Bhullar}
+\date{April 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Basics}
+
+Suppose $\{\Gamma_t\subset\mathbb{R}^2\}$ is one-parameter family of embedded (i.e. simple) curves. If
+this family moves by curve shortening flow (CSF), by definition, it satisfies:
+\begin{align} \tag{1.1}
+    \partial_t (p) = \vec{\kappa}(%p)
+\end{align}
+where $p$ is some point on $\Gamma_t$. In order to compute $\partial_t(p)$ and $\vec{\kappa}(p)$, first, we
+parameterize $\Gamma_t$ by some parameteric equation $\phi_t:[0,2\pi]\to\mathbb{R}^2$. Suppose this is in
+arc-length parameterization. Then, $\partial_t(p)$ is just computed by differentiating $\phi_t(x)$
+with respect to $t$ ($x$ some element of domain) and $\vec{\kappa}(p)$ is computed by $\partial_x^2[\phi_t(x)]$.
+Suppose $\phi_t$ is not given in arc-length parameterization. Then, if $\phi_t(s) = (x(s),y(s))$, we have that the
+signed curvature is given by the formula:
+\[ k(s) = \frac{x'y''-x''y'}{((x')^2+(y')^2)^{3/2}}\]
+so that we can then compute $\vec{k}$ by evaluating $k(s)N(s)$ where $N$ denotes the normal vector at of $\alpha$ at
+$s$.
+
+\subsection{Round shrinking circles}
+We show that if $\Gamma_t = \partial B^2_{r(t)}\subset\mathbb{R}^2$, then (1.1) reduces to the ODE:
+\[ \dot{r} = -1/r \]
+and if we give it the initial value $r(0) = R$, then $r(t) = \sqrt{R^2 - 2t}$ for $t\in(-\infty,R^2/2)$.
+\begin{proof}
+    Let $r(t)$ be a $C^1$ function that gives a radius dependent on the parameter $t$.
+    Assume $B^2_{r(t)} = \{x\in\mathbb{R}^2: |x|< r(t)\}$. Then $\partial B^2_{r(t)} = \{x\in\mathbb{R}^2:|x|=r(t)\}$.
+    Fix $t$. We let $\partial B^2_{r(t)}$ be given by the parameterization $\phi_t: [0,2\pi]\to\mathbb{R}^2$,
+    \[ \phi_t(s) = r(t)(\cos(s),\sin(s))\]
+    Now, we compute $\partial_t(\phi_t(s))$. Consider:
+    \begin{align*}
+        \partial_t(\phi_t(s)) = \partial_t(r(t)(\cos(s),\sin(s))) = \dot{r}(t)(\cos(s),\sin(s))
+    \end{align*}
+    and also, we can compute the signed curvature:
+    \begin{align*}
+        k(s) &= \frac{r^2(t)[\cos'(s)\sin''(s)-\cos''(s)\sin'(s)]}{((r(t)\cos'(s))^2+(r(t)\sin'(s))^2)^{3/2}} \\
+                   &= \frac{r^2(t)[\sin^2(s) + \cos^2(s)]}{(r^2(t)[\sin^2(s) + \cos^2(s)])^{3/2}} = \frac{r^2(t)}{r^3(t)} = \frac{1}{r(t)}
+    \end{align*}
+
+    Now, we compute the unit normal. Note $v(s) = |\partial_s(\phi_t(s))| = r(t)$. So, the unit tangent vector $\mathbf{T}(s)$ is given by,
+    \[ \mathbf{T}(s) = \partial_s(\phi_t(s))/v(s) = r(t)(-\sin(s),\cos(s))/r(t) = (-\sin(s),\cos(s))\]
+    from this, we can compute the unit normal:
+    \[ \kappa\mathbf{N} = \frac{\partial_s(T(s))}{\partial_s(v(s))} = (-\cos(s),-\sin(s))\cdot 1/r(t)   \]
+    From this, we see that $\mathbf{N} = (-\cos(s),-\sin(s))$ so that (1.1) reduces down to:
+    \[ \dot{r}(t)(\cos(s),\sin(s))  = [1/r(t)](-\cos(s),-\sin(s)) \]
+    which of course, yields:
+    \[ \dot{r}(t) = -1/r(t) \]
+    as wanted. Now, set $R > 0$ and give the initial value data $r(0) = R$. We have $dr/dt = -1/r$ which we can rearrange to get $r dr = -1 dt$.
+    Integrating both sides, we get $r^2/2 = -t + c$ for some constant $c$. If $r(0) = R$, then $c = R$. Thus, we get:
+    \[ r(t) = \sqrt{2}\sqrt{R-t} \;\text{for}\;t\in (-\infty, R)\]
+\end{proof}
+
+\subsection{Grim Reaper Curve}
+
+A self similar solution to the curve shortening flow is given by the grim reaper curve. This is given by the family
+$\Gamma_t =$ graph$(\log \cos p)+t$ where $p\in(-\pi/2,\pi/2)$ and $t\in\mathbb{R}$.\\
+
+Now, instead consider the family:
+\[ \Phi_t =\:\text{graph}(u_t(p)) = \{(p,u_t(p)): p\in\:\text{Dom}(u_t:U\subset\mathbb{R}\to\mathbb{R})\}. \]
+We ask which equation does $u_t$ satisfy. We parameterize $\Phi_t$ via the map $\phi_t: U\to \mathbb{R}^2$ given by
+the mapping $p\in U\mapsto (p,u_t(p))$. Immediately, we see that
+\[ \partial_t(\phi_t(p)) = (\partial_t(p),\partial_t(u_t(p))) = (0,\partial_t(u_t(p))) \]
+Now, we calculate $\vec{k}$ by calculating $k\textbf{N}$. Note,
+\[ \nu(p) = |\partial_p(\phi_t(p))| = |(\partial_p(p),\partial_p(u_t(p)))| = \sqrt{1^2 + (\partial_p u_t(p))^2}\]
+so that,
+\[ \mathbf{T}(p) = \frac{\partial_p u_t(p)}{\nu(p)} = \frac{(1,\partial_p(u_t(p)))}{\sqrt{1^2 + (\partial_p u_t(p))^2}}\]
+and so,
+\begin{align*}
+    \partial_p \mathbf{T}(p) &= \partial_p\Big{(}\frac{(1,\partial_p u_t(p))}{\sqrt{1+(\partial_p u_t(p))^2}}\Big{)} \\
+    &= \frac{\partial_p (1,\partial_p u_t(p))}{\sqrt{1+(\partial_p u_t(p))^2}} - (1,\partial_p u_t(p))\partial_p[1+(\partial_p u_t(p))^2]^{-1/2} \\
+    &= \frac{(0,\partial_p^2 u_t(p))}{\sqrt{1+(\partial_p u_t(p))^2}} - \frac{\partial_p u_t(p)[\partial_p^2 u_t(p)](1,\partial_p u_t(p))}{[1+(\partial_p u_t(p))^2]^{3/2}} \\
+    &= \frac{[1+(\partial_p u_t(p))^2](0,\partial_p^2 u_t(p))}{[1+(\partial_p u_t(p))^2]^{3/2}} - \frac{\partial_p u_t(p)[\partial_p^2 u_t(p)](1,\partial_p u_t(p))}{[1+(\partial_p u_t(p))^2]^{3/2}} \\
+    &= \frac{[\partial_p^2 u_t(p)](0,1+(\partial_p u_t(p))^2) - [\partial_p^2 u_t(p)](\partial_p u_t(p),(\partial_p u_t(p))^2}{[1+(\partial_p u_t(p))^2]^{3/2}} \\
+    &= [\partial_p^2 u_t(p)]\frac{(0,1+(\partial_p u_t(p))^2) - (\partial_p u_t(p),(\partial_p u_t(p))^2}{[1+(\partial_p u_t(p))^2]^{3/2}}) \\
+    &= [\partial_p^2 u_t(p)]\frac{(-\partial_p u_t(p),1)}{[1+(\partial_p u_t(p))^2]^{3/2}}
+\end{align*}
+Thus $\vec{\kappa}$ can be computed by:
+\begin{align*}
+    \kappa\mathbf{N} &= \frac{\partial_p T(p)}{\nu(p)} = \frac{1}{\nu(p)}\partial_p T(p) \\
+        &= \frac{1}{\sqrt{1^2 + (\partial_p u_t(p))^2}}\frac{[\partial_p^2 u_t(p)](-\partial_p u_t(p),1)}{[1+(\partial_p u_t(p))^2]^{3/2}} \\
+        &= \frac{[\partial_p^2 u_t(p)](-\partial_p u_t(p),1)}{[1+(\partial_p u_t(p))^2]^2}
+\end{align*}
+Note, that by computing the norm of $\vec{\kappa}$, we get:
+\begin{align*}
+    |\kappa\mathbf{N}| &= \frac{|\partial_p^2 u_t(p)}{(1+(\partial_p u_t(p))^2)^2}\big{|}(-\partial_p u_t(p),1)\big{|} \\
+    &= \frac{|\partial_p^2 u_t(p)|}{(1+(\partial_p u_t(p))^2)^{3/2}}
+\end{align*}
+Thus, we obtain the following:
+\[ \kappa = \frac{\partial_p^2 u_t(p)}{(1+(\partial_p u_t(p))^2)^{3/2}}\text{,}\qquad \mathbf{N} = \frac{(-\partial_p u_t(p),1)}{\sqrt{1+(\partial_p u_t(p))^2}}\]
+Now, we use the equation:
+\[ \partial_t \phi_t(p)\cdot \mathbf{N} = \kappa \]
+which after substitution, reduces down to:
+\[ \frac{\partial_t u_t(p)}{(1+(\partial_p u_t(p))^2)^{1/2}} = \frac{\partial_p^2 u_t(p)}{(1+(\partial_p u_t(p))^2)^{3/2}} \]
+Thus, we get:
+\[ \partial_t u_t(p) = \frac{\partial_p^2 u_t(p)}{1+(\partial_p u_t(p))^2}\text{, or}\quad \partial_p^2 u_t(p) = \partial_t u_t(p)[1+(\partial_p u_t(p))^2] \]
+If $\partial_t u_t(p) = 1$, we get the ODE:
+\[ \partial_p^2 u_t(p) = 1+(\partial_p u_t(p))^2 \]
+We attempt to solve this. First, we rewrite it as:
+\[ y''(x) = 1  + (y'(x))^2 \]
+
+\subsection{Evolution equation of length}
+
+We derive the evolution equation of  $L(t) = \int_{\Gamma_t} ds$. Note if $\Gamma_t$ is parameterized by $\gamma(x,t): S^1 \times [0,T) \to \mathbb{R}^2$, then:
+\[ L(t) = \int_{S^1} \langle \partial_x \gamma, \partial_x \gamma\rangle^{1/2}dx \]
+We compute,
+\begin{align*}
+    \partial_t L(t) &= \partial_t \Big{(} \int_{S^1} \langle \partial_x \gamma, \partial_x \gamma\rangle^{1/2}dx \Big{)} \\
+        &= \int_{S^1} \partial_t \langle \partial_x \gamma, \partial_x \gamma\rangle^{1/2}dx \\
+        &= \int_{S^1} \frac{1}{2}\langle \partial_x \gamma, \partial_x \gamma\rangle^{-1/2}
+            [\langle \partial_t \partial_x \gamma, \partial_x \gamma\rangle + \langle \partial_x \gamma, \partial_t \partial_x \gamma\rangle] dx \\
+        &= \int_{S^1} \frac{1}{2}|\partial_x \gamma|^{-1} 2\langle \partial_t \partial_x \gamma, \partial_x \gamma\rangle dx \\
+        &= \int_{S^1} \langle \partial_t \partial_x \gamma, \frac{\partial_x \gamma}{|\partial_x \gamma|}\rangle dx \\
+        &= \int_{S^1} \langle \partial_x \partial_t \gamma, T\rangle dx
+\end{align*}
+By definition of the curve shortening flow, we know that $\partial_t \gamma = \kappa N$. Thus,
+\[ \partial_t L(t) = \int_{S^1} \langle \partial_x (\kappa N), T\rangle dx \]
+By the Frenet-Serret formulas, we have $\partial_s N = -\kappa T$ and so by chain rule, we obtain $\partial_x N = -(\partial_x s)\kappa T$. Thus,
+\[ \langle \partial_x (\kappa N), T\rangle = \langle (\partial_x \kappa)N, T\rangle + \langle \kappa \partial_x N, T\rangle = 0 + \kappa [(\partial_x s)\kappa T]\cdot T = -\kappa^2 \partial_x s \]
+Writing instead $\langle \partial_x (\kappa N),T\rangle = -\kappa^2 \frac{ds}{dx}$, we easily obtain the final equation:
+\[ \partial_t L(t) = \int_{\Gamma_t} -\kappa^2 ds \]
+
+\subsection{Evolution equation of curvature}
+
+We show that $\kappa_t = \kappa_{ss} + \kappa^3$. For convenience sake, set $|\partial_x \gamma| = 1$ and $\langle \partial_x^2 \gamma, T\rangle = 0$ at the point $(x,t)$.
+Note $\langle \partial_x^2 \gamma, N\rangle = \langle \kappa N, N\rangle = \kappa$. Since $|\partial_x \gamma| = 1$, we can also say:
+\[ \kappa = \frac{\langle \partial_x^2 \gamma, N\rangle}{|\partial_x \gamma|^2} \]
+We evaluate $\kappa_t$ i.e. $\partial_t \kappa$.
+\begin{align*}
+    \partial_t \kappa &= \frac{\partial_t(\langle \partial_x^2 \gamma, N\rangle)}{|\partial_x \gamma|^2} + \frac{\langle \partial_x^2 \gamma, N\rangle}{\partial_t  |\partial_x \gamma|^2} \\
+        &= \partial_t(\langle \partial_x^2 \gamma, N\rangle) + \partial_t (\langle \partial_x \gamma, \partial_x \gamma\rangle^{-1})\langle \partial_x^2 \gamma, N\rangle \\
+        &= \partial_t(\langle \partial_x^2 \gamma, N\rangle) - \langle \partial_x \gamma, \partial_x \gamma\rangle^{-2}\partial_t (\langle \partial_x\gamma, \partial_x\gamma\rangle) \langle \partial_x^2 \gamma, N\rangle \\
+        &= \partial_t(\langle \partial_x^2 \gamma, N\rangle) - 2|\partial_x \gamma|^{-4}\langle \partial_t \partial_x\gamma, \partial_x\gamma\rangle \langle \partial_x^2 \gamma, N\rangle \\
+        &= \partial_t(\langle \partial_x^2 \gamma, N\rangle) - 2\langle \partial_t \partial_x\gamma, T\rangle \langle \partial_x^2 \gamma, N\rangle \\
+        &= \langle \partial_t \partial_x^2 \gamma, N\rangle + \langle \partial_x^2 \gamma, \partial_t N\rangle - 2\langle \partial_t \partial_x\gamma, T\rangle \langle \partial_x^2 \gamma, N\rangle \\
+        &= \langle \partial_x^2 \partial_t \gamma, N\rangle + \langle \partial_x^2 \gamma, \partial_t N\rangle - 2\langle \partial_x \partial_t\gamma, T\rangle \langle \partial_x^2 \gamma, N\rangle
+\end{align*}
+Now, substitute $\kappa N$ for $\partial_t \gamma$ and $\kappa N$ for $\partial_x^2 \gamma$ to get:
+\begin{align*}
+    \partial_t \kappa &= \langle \partial_x^2 (\kappa N), N\rangle + \langle \kappa N, \partial_t N\rangle - 2\langle \partial_x (\kappa N), T\rangle \langle \kappa N, N\rangle \\
+        &= \partial_x^2 (\kappa)\langle N, N\rangle + \kappa\langle \partial_x^2 N, N\rangle + \kappa\langle N, \partial_t N\rangle - 2[\partial_x (\kappa)\langle N, T\rangle +
+            \kappa\langle \partial_x N, T\rangle]\kappa\langle N, N\rangle \\
+        &= \partial_x^2 (\kappa) + \kappa\langle \partial_x(\partial_x N), N\rangle - 2\kappa^2\langle \partial_x N, T\rangle
+\end{align*}
+By the Frenet formulas, we know $\partial_x N = -\kappa T$. So we can continue our computation:
+\begin{align*}
+    \partial_t \kappa &= \partial_x^2 (\kappa) + \kappa\langle \partial_x(-\kappa T), N\rangle - 2\kappa^2\langle -\kappa T, T\rangle \\
+        &= \partial_x^2 (\kappa) + \kappa[\langle \partial_x (-\kappa)T, N\rangle - \langle \kappa \partial_x T, N\rangle] + 2\kappa^3 \\
+        &= \partial_x^2 (\kappa) - \kappa^2[\langle \partial_x T, N\rangle] + 2\kappa^3 \\
+        &= \partial_x^2 (\kappa) - \kappa^3 + 2\kappa^3 \\
+        &= \partial_x^2 (\kappa) + \kappa^3
+\end{align*}
+From our assumption in the beginning, we can regard $\partial_x^2 (\kappa)$ as $\partial_{ss} (\kappa)$. From this, we get:
+\[ \kappa_t = \partial_{ss} \kappa + \kappa^3 \]
+as wanted.
+
+\subsection{Evolution equation of area}
+
+Let $A(t)$ denote the area enclosed by $\Gamma_t$. We equate $\partial_t A(t)$.\\
+
+Let $\Gamma_t$ be given by $(x,t) = F(u)$. By Green's theorem, we immediately obtain:
+\[ A(t) = \frac{1}{2} \int_{0}^{2\pi} \big{(}x\frac{\partial y}{\partial u} - y\frac{\partial y}{\partial u}\big{)}du \]
+We have $\partial F/\partial u = \partial (x,y) / \partial u = (\partial x/\partial u, \partial y/\partial u)$. Note
+\[ \langle (\partial x/\partial u, \partial y/\partial u),-(\partial y/\partial u, \partial x/\partial u)\rangle=0 \]
+so these are orthogonal. Since $\partial F/\partial u$ is the tangent, we then obtain that $n := -(\partial y/\partial u, \partial x/\partial u)$ is proportional to the inward pointing unit normal.
+In particular, $N = n/|n|$. Note $|n|$ is simply equal to the norm of $\partial_u F$ so we denote it by $v$. Furthermore,
+\[ \langle n, F\rangle = -x \frac{\partial y}{\partial u} + y\frac{\partial x}{\partial u} \]
+but $n = vN$ so, we simply write:
+\[ \langle vN, F\rangle = -x \frac{\partial y}{\partial u} + y\frac{\partial x}{\partial u} \]
+Thus,
+\[ A(t) = \frac{-1}{2} \int_0^{2\pi} \langle F, vN\rangle du \]
+Now, we can compute $\partial_t A(t)$. Consider:
+\begin{align*}
+    \partial_t A(t) &= \frac{-1}{2} \int_0^{2\pi} \langle \partial_t F, vN\rangle + \langle F, \partial_t vN\rangle du \\
+        &= \frac{-1}{2} \int_0^{2\pi} \langle \partial_t F, vN\rangle + \langle F, \partial_t (v)N\rangle +  \langle F, v\partial_t N\rangle du
+\end{align*}
+
+\section{Derivative Estimate}
+
+We show first that for a solution of the heat equation $u: S^1 \times [0,T] \to \mathbb{R}^2$,
+\[ \sup_{t} |\partial_x^k u| \leq \frac{C_k}{t^{k/2}} \]
+Using ideas from this, we show that given $\sup_{t\in [0,T]} \sup_{\Gamma_t} |\kappa| \leq K$, then
+\[ \sup_{\Gamma_t} |\partial_s^k \kappa| \leq \frac{C_k}{t^{k/2}} \]
+where $\{\Gamma_t\}_{t=0}^T$ is a solution of the curve shortening flow.
+
+\begin{proof}[Proof of Case I]
+    First, we prove the case for $k=0$. We want to show max$_t |u| \leq C_0$ for some constant $C_0$. We know $u$ achieves its maximum since
+    the domain of $u$ is a compact space and so the range of $u$ must be compact and hence, for some $(x_0,t_0)\in S^1\times [0,T)$, we get that
+    $|u(x,t)| \leq |u(x_0,t_0)|$. From the maximum principle, we get that $u$ is contant on $[0,t_0]$ and so we can define $C_0 :=$ max$_{t=0} |u|$ to get:
+    \[ \text{max}_t |u| \leq C_0 \]
+    as wanted. \\
+
+    Now, we prove the case for $k=1$. Note, we want to show
+    \[ \text{max}_t \leq C_1/\sqrt{t} \]
+    for some constant $C_1$. We note that
+    \[ ' := \partial_x \]
+    so that
+    \[ \partial_t u' = \partial_t \partial_x u = \partial_x \partial_t u = \partial_x^3 u \]
+    Via the chain rule, we obtain the result:
+    \[ (\partial_t - \partial_x^2) (u')^2 = 2u' \cdot (\partial_t - \partial_x^2) u' - 2(u'')^2 \]
+    and similarly,
+    \[ (\partial_t - \partial_x^2) u^2 = 2u \cdot (\partial_t - \partial_x^2) u - 2(u')^2 \]
+    We also note that
+    \[ (\partial_t - \partial_x^2) u' = \partial_t u' - \partial_x^2 u' = \partial_t u' - \partial_t u = 0 \]
+    and so $(\partial_t - \partial_x^2) (u')^2 = -2(u'')^2$ and the same result holds if we
+    replace $u'$ with $u$. In general, this holds for $u^{(k)}$ for any (positive) integer $k$.\\
+
+    Now, define $f$ to be equal to $u^2 + \alpha t (u')^2$ for some yet to be picked constant $\alpha$ and
+    we compute:
+    \begin{align*}
+      (\partial_t - \partial_x^2) f &= (\partial_t - \partial_x^2) u^2 - (\partial_t - \partial_x^2) (\alpha t(u')^2) \\
+        &= -2 (u')^2 + \partial_t (\alpha t (u')^2) - \partial_x^2 (\alpha t (u')^2) \\
+        &= -2 (u')^2 + \alpha (u')^2 + \alpha t \partial_t (u')^2 - \alpha t\partial_x^2 (u')^2 \\
+        &= -2 (u')^2 + \alpha (u')^2 + \alpha t (\partial_t - \partial_x^2) (u')^2 \\
+        &= -2 (u')^2 + \alpha (u')^2 - 2\alpha t (u'')^2
+    \end{align*}
+    which is less than (or equal) to 0 when $\alpha = 2$. From the maximum principle (and the case $k=0$), we deduce that
+    \[ \text{max}_t |f| \leq \text{max}_{t=0} |f| \]
+    and so plugging in the definition of $f$, we get:
+    \[ 2t\text{max}_t (u')^2 \leq \text{max}_t (u^2 + 2t(u')^2) \leq \text{max}_{t=0} u^2\]
+    Since the expression on the rightmost side is bounded by, let's say $C_1^2$. Then, we obtain
+    \[ \text{max}_t u' \leq \frac{C_1}{\sqrt{2t}} \]
+    which is more or less what we wanted.\\
+
+    Now, let $i$ be an arbitrary integer bigger than 1 and assume for all $0\leq n < i$ that the claim we want to prove
+    holds. We show the claim also holds for $i$. Just as before, we compute
+    \[ (\partial_t - \partial_x^2) (u^{(i)})^2 = 2u^i \cdot (\partial_t - \partial_x^2) (u^{(i)}) - 2(u^{(i+1)})^2 \]
+    where as shown before, we have $(\partial_t - \partial_x^2) (u^{(i)}) = 0$ so that in particular,
+    \[ (\partial_t - \partial_x^2) (u^{(i)})^2 = -2(u^{(i+1)})^2 \]
+    Now, define $f$ to be equal to the expression $(u^{(i-1)})^2 + \alpha t (u^{(i)})^2$ for some yet to be defined
+    constant $\alpha$. Then, note:
+    \[ (\partial_t - \partial_x^2) f = -2(u^{(i)})^2 + \alpha (u^{(i)})^2 - 2(u^{(i+1)})^2 \]
+    which is then less than or equal to 0, say when $\alpha = 2$. Thus, we can repeat the same exact steps (as the one for $k=1$ case)
+    to get:
+    \[ \text{max}_t u^{(i)} \leq \text{max}_{t=0} u^{(i-1)} \leq C_{i}/t^{i/2} \]
+    where the last inequality follows from our induction hypothesis. Thus, our claim is proven.
+\end{proof}
+
+\begin{proof}[Proof of Case II]
+    Let $\{\Gamma_t\}_t$ be a solution of the curve shortening flow. We are given the $k=0$ case as an assumption which states
+    \[ \sup_{t\in [0,T]} \sup_{\Gamma_t} |\kappa| \leq K \]
+    We start by proving the $k=1$ case. Note,
+    \begin{align*}
+        (\partial_t - \partial_s^2)(\kappa^2) &= -2(\partial_s \kappa)^2 + 2\kappa[(\partial_t - \partial_s^2)(\kappa)] \\
+            &= -2(\partial_s \kappa)^2 + 2\kappa[\kappa^3] \\
+            &= -2(\partial_s \kappa)^2 + 2\kappa^4
+    \end{align*}
+    Now differentiate the equation derived in $\S 2.4$ by $\partial_s$ (this is the equation $\kappa_t = \kappa_{ss} + \kappa^3$):
+    \begin{align*}
+        \partial_s(\partial_t \kappa) &= \partial_s(\partial_{ss} \kappa) + \partial_s(\kappa^3) \\
+            &= \partial_{sss} \kappa + 3\kappa^2(\partial_s \kappa)
+    \end{align*}
+    Now, recall the commutator identity $(\partial_t(\partial_s \kappa) = \partial_s(\partial_t \kappa) + \kappa^2(\partial_s \kappa))$. Combine the
+    equation derived above with this identity to get:
+    \begin{align*}
+    \end{align*}
+\end{proof}
+
+\end{document}

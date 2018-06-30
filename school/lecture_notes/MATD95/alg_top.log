@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  11 JUN 2018 14:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 JUN 2018 14:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -365,36 +365,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--171
 
  []
 
-[5] [6] [7] (./alg_top.aux) ) 
+[5] [6] [7] [8] (./alg_top.aux) ) 
 Here is how much of TeX's memory you used:
- 1449 strings out of 493089
- 16008 string characters out of 6134842
+ 1454 strings out of 493089
+ 16087 string characters out of 6134842
  76508 words of memory out of 5000000
- 4946 multiletter control sequences out of 15000+600000
- 12463 words of font info for 48 fonts, out of 8000000 for 9000
+ 4951 multiletter control sequences out of 15000+600000
+ 13710 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 27i,9n,26p,223b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+ 27i,10n,26p,223b,238s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbo
 ls/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msbm7.pfb>
-Output written on alg_top.pdf (7 pages, 191689 bytes).
+Output written on alg_top.pdf (8 pages, 210993 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

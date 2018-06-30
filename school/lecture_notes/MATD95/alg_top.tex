@@ -248,5 +248,52 @@ space which of the three alternatives holds.
 	\end{enumerate}
 \end{proof}
 
+\newpage
+
+\setcounter{section}{58}
+\section{The Fundamental Group of $S^n$}
+
+\subsection*{Exercise 3}
+
+\begin{enumerate}
+	\item[(a)] Show that $\mathbb{R}^1$ and $\mathbb{R}^n$ are not homeomorphic if $n>1$
+	\item[(b)] Show that $\mathbb{R}^2$ and $\mathbb{R}^n$ are not homeomorphic if $n>2$
+\end{enumerate}
+\begin{proof}
+	\begin{enumerate}
+		\item[(a)] Suppose $\mathbb{R}$ and $\mathbb{R}^n$ are homeomorphic for $n>1$, then by definition, there exists some homeomorphism.
+		$f: \mathbb{R}^1 \to \mathbb{R}^n$. Considering the restriction $\mathbb{R}^1-\{0\}$ induces a homeomorphism
+		\[ f_{\mathbb{R} - \{0\}}: \mathbb{R}-\{0\} \to \mathbb{R}^n - \{f(0)\} \]
+		We see that $\mathbb{R}-\{0\}$ is not connected but $\mathbb{R}^n - \{f(0)\}$ is (note $|\{f(0)\}|=1$ since $f$ is bijective). Since connectedness
+		is a topological invariant, we have a contradiction and so such a mapping $f$ cannot exist so that $\mathbb{R}$ and $\mathbb{R}^n$ are not
+		homeomorphic.
+
+		\item[(b)] Suppose $\mathbb{R}^2$ and $\mathbb{R}^n$ are homeomorphic for $n>2$, then by definition, there exists some homeomorphism
+		$f: \mathbb{R}^2\to \mathbb{R}^n$. Similarly, to before, we have another homeomorphism:
+		\[ f_{\mathbb{R}^2 - \{0\}}: \mathbb{R}^2 - \{0\} \to \mathbb{R}^n - \{f(0)\} \]
+		We know $S^1$ is a deformation retract of $\mathbb{R}^2-\{0\}$ so that both spaces have isomorphic fundamental groups. Similarly, $S^{n-1}$ is
+		a deformation retract of $\mathbb{R}^{n}-\{0\}$. Since $n>2$, we know $n-1>1$ so that in particular, $S^{n-1}$ has a trivial fundamental group.
+		This implies that $\mathbb{R}^n-\{0\}$ is simply connected but $\mathbb{R}^{2}-\{0\}$ is not. This is a contradiction as simple connectedness is
+		a topological invariant. Therefore, we know that such a mapping $f$ cannot exist and so $\mathbb{R}^2$ and $\mathbb{R}^n$ for $n>2$ are not
+		homeomorphic.  
+	\end{enumerate}
+\end{proof}
+
+\section{Fundamental Groups of Some Surfaces}
+
+\subsection*{Exercise 1}
+
+Compute the fundamental groups of the ``solid torus" $S^1\times B^2$ and the product space $S^1 \times S^2$:
+\begin{proof}
+	Consider for the solid torus (and any point $x_0\times y_0$ on the surface)
+	\begin{align*}
+		\pi_1(S^1 \times B^2, x_0\times y_0) &= \pi_1(S^1, x_0) \times \pi_1(B^2, y_0)\qquad\text{[Theorem 60.1]} \\
+			&\simeq \mathbb{Z} \times \{e\}\qquad [B^2\;\text{ is convex]} \\
+			&\simeq \mathbb{Z}
+	\end{align*}
+	so that the fundamental group of the solid torus is isomorphic to $\mathbb{Z}$. We can do a similar computation to this
+	to get the same result for the surface $S^1\times S^2$ taking advantage of the fact that $S^2$ is simply connected.
+\end{proof}
+
 
 \end{document}

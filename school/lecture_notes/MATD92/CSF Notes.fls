@@ -2,8 +2,8 @@ PWD /Users/anmol/Documents/anmolbhullar.github.io/school/lecture_notes/MATD92
 INPUT /usr/local/texlive/2015/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT csf_notes.tex
-OUTPUT csf_notes.log
+INPUT CSF Notes.tex
+OUTPUT CSF Notes.log
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
@@ -34,9 +34,9 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
-INPUT csf_notes.aux
-INPUT csf_notes.aux
-OUTPUT csf_notes.aux
+INPUT CSF Notes.aux
+INPUT CSF Notes.aux
+OUTPUT CSF Notes.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
@@ -71,14 +71,14 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-OUTPUT csf_notes.pdf
-INPUT /usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+OUTPUT CSF Notes.pdf
+INPUT /usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
-INPUT csf_notes.aux
+INPUT CSF Notes.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -93,5 +93,4 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
